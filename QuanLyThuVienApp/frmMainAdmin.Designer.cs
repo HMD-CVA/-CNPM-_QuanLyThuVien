@@ -93,7 +93,7 @@
             this.btnQLSach.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnQLSach.Size = new System.Drawing.Size(127, 67);
             this.btnQLSach.TabIndex = 1;
-            this.btnQLSach.Text = "            Quản lý\r\n            sách";
+            this.btnQLSach.Text = "            Quản lý\r\n            tài liệu";
             this.btnQLSach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLSach.UseVisualStyleBackColor = false;
             this.btnQLSach.Click += new System.EventHandler(this.btnQLSach_Click);
@@ -346,7 +346,7 @@
             this.btnSach.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnSach.Size = new System.Drawing.Size(127, 67);
             this.btnSach.TabIndex = 0;
-            this.btnSach.Text = "Thông tin sách";
+            this.btnSach.Text = "Thông tin tài liệu";
             this.btnSach.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSach.UseVisualStyleBackColor = false;
             this.btnSach.Click += new System.EventHandler(this.btnSach_Click);

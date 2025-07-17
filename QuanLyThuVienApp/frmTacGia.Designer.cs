@@ -52,7 +52,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.MaTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuongTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTacGia)).BeginInit();
             this.SuspendLayout();
@@ -285,7 +285,7 @@
             this.dgvTacGia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaTG,
             this.TenTG,
-            this.SoLuong,
+            this.SoLuongTL,
             this.MoTa});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -315,19 +315,19 @@
             this.label1.Location = new System.Drawing.Point(302, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 20);
+            this.label1.Size = new System.Drawing.Size(193, 20);
             this.label1.TabIndex = 34;
-            this.label1.Text = "DANH SÁCH TÁC GIẢ";
+            this.label1.Text = "DANH tài liệu TÁC GIẢ";
             // 
             // MaTG
             // 
             this.MaTG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.MaTG.DataPropertyName = "MaTG";
-            this.MaTG.HeaderText = "Mã tác giả";
+            this.MaTG.HeaderText = "Mã";
             this.MaTG.MinimumWidth = 6;
             this.MaTG.Name = "MaTG";
             this.MaTG.ReadOnly = true;
-            this.MaTG.Width = 94;
+            this.MaTG.Width = 51;
             // 
             // TenTG
             // 
@@ -338,25 +338,23 @@
             this.TenTG.Name = "TenTG";
             this.TenTG.ReadOnly = true;
             // 
-            // SoLuong
+            // SoLuongTL
             // 
-            this.SoLuong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.SoLuong.DataPropertyName = "SoLuong";
-            this.SoLuong.HeaderText = "Số mã sách";
-            this.SoLuong.MinimumWidth = 6;
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.ReadOnly = true;
-            this.SoLuong.Width = 103;
+            this.SoLuongTL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SoLuongTL.DataPropertyName = "SoLuongTL";
+            this.SoLuongTL.HeaderText = "Số lượng tài liệu";
+            this.SoLuongTL.MinimumWidth = 6;
+            this.SoLuongTL.Name = "SoLuongTL";
+            this.SoLuongTL.ReadOnly = true;
+            this.SoLuongTL.Width = 97;
             // 
             // MoTa
             // 
             this.MoTa.DataPropertyName = "MoTa";
-            this.MoTa.HeaderText = "Mô tả";
-            this.MoTa.MinimumWidth = 6;
+            this.MoTa.HeaderText = "Mô Tả";
             this.MoTa.Name = "MoTa";
             this.MoTa.ReadOnly = true;
             this.MoTa.Visible = false;
-            this.MoTa.Width = 125;
             // 
             // frmTacGia
             // 
@@ -421,7 +419,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongTL;
         private System.Windows.Forms.DataGridViewTextBoxColumn MoTa;
     }
 }

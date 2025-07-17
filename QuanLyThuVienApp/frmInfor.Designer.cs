@@ -76,7 +76,7 @@
             this.groupBox1.Size = new System.Drawing.Size(540, 393);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh sách thành viên";
+            this.groupBox1.Text = "Danh tài liệu thành viên";
             // 
             // textBox6
             // 

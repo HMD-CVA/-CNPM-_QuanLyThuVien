@@ -27,7 +27,8 @@ namespace QuanLyThuVienApp
             {
                 MaNXB = "NXB" + p.MaNXB,
                 p.TenNXB,
-                p.SoLuongTL               
+                p.SoLuongTL,
+                p.MoTa
             }).ToList();
 
             if (dgvNXB.Rows.Count > 0)
@@ -39,8 +40,8 @@ namespace QuanLyThuVienApp
         {
             txtMa.Text = dgvNXB.Rows[RowIndex].Cells["MaNXB"].Value.ToString();
             txtTen.Text = dgvNXB.Rows[RowIndex].Cells["TenNXB"].Value.ToString();
-            //if (dgvNXB.Rows[RowIndex].Cells["MoTa"].Value != null) txtMoTa.Text = dgvNXB.Rows[RowIndex].Cells["MoTa"].Value.ToString();
-            //else txtMoTa.Text = string.Empty;
+            if (dgvNXB.Rows[RowIndex].Cells["MoTa"].Value != null) txtMoTa.Text = dgvNXB.Rows[RowIndex].Cells["MoTa"].Value.ToString();
+            else txtMoTa.Text = string.Empty;
         }
         private void btnTim_Click(object sender, EventArgs e)
         {
@@ -63,6 +64,7 @@ namespace QuanLyThuVienApp
                 MaNXB = "NXB" + p.MaNXB,
                 p.TenNXB,
                 p.SoLuongTL,
+                p.MoTa
             }).ToList();
 
             if (dgvNXB.Rows.Count > 0)
@@ -99,7 +101,7 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
-            if (txtTenNXB.Text == "" || txtMoTaNXB.Text == "")
+            if (txtTenNXB.Text == "" && txtMoTaNXB.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -108,6 +110,7 @@ namespace QuanLyThuVienApp
             NhaXuatBan nxb = new NhaXuatBan();
             nxb.TenNXB = txtTenNXB.Text;
             nxb.SoLuongTL = 0;
+            nxb.MoTa = txtMoTaNXB.Text;
 
             QLTVEntities db = new QLTVEntities();
             db.NhaXuatBans.Add(nxb);
@@ -129,7 +132,7 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
-            if (txtTen.Text == "" || txtMoTa.Text == "")
+            if (txtTen.Text == "" && txtMoTa.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -140,6 +143,7 @@ namespace QuanLyThuVienApp
             NhaXuatBan nxb = db.NhaXuatBans.Where(p => p.MaNXB == maNXB).FirstOrDefault();
 
             nxb.TenNXB = txtTen.Text;
+            nxb.MoTa = txtMoTa.Text;
 
             db.SaveChanges();
             loadDuLieu();
@@ -163,7 +167,7 @@ namespace QuanLyThuVienApp
 
             if (nxb.SoLuongTL > 0)
             {
-                MessageBox.Show("Nhà xuất bản đang có sách trong thư viện!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Nhà xuất bản đang có tài liệu trong thư viện!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

@@ -58,7 +58,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(225, 16);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Làm thế nào để đăng ký mượn sách?";
+            this.label1.Text = "Làm thế nào để đăng ký mượn tài liệu?";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -70,7 +70,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(204, 16);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Sẽ thế nào nếu trả sách quá hạn?";
+            this.label2.Text = "Sẽ thế nào nếu trả tài liệu quá hạn?";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
@@ -82,7 +82,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(243, 16);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Cách gia hạn mượn sách trên ứng dụng?";
+            this.label3.Text = "Cách gia hạn mượn tài liệu trên ứng dụng?";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
@@ -106,7 +106,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(272, 16);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Cách cho mượn sách cho bạn chưa đăng ký?";
+            this.label5.Text = "Cách cho mượn tài liệu cho bạn chưa đăng ký?";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6

@@ -33,11 +33,25 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvNguoiDung = new System.Windows.Forms.DataGridView();
+            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayDangKi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuyenHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDC = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtNgaySinh = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtQuyenHan = new System.Windows.Forms.TextBox();
             this.txtNgayDangKy = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -57,20 +71,6 @@
             this.radioAdmin = new System.Windows.Forms.RadioButton();
             this.radioUser = new System.Windows.Forms.RadioButton();
             this.btnMoKhoa = new System.Windows.Forms.Button();
-            this.txtNgaySinh = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtSDT = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtDC = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayDangKi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuyenHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -131,6 +131,77 @@
             this.dgvNguoiDung.Size = new System.Drawing.Size(915, 262);
             this.dgvNguoiDung.TabIndex = 0;
             this.dgvNguoiDung.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguoiDung_CellClick);
+            // 
+            // MaNV
+            // 
+            this.MaNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MaNV.DataPropertyName = "MaNV";
+            this.MaNV.HeaderText = "Mã";
+            this.MaNV.MinimumWidth = 60;
+            this.MaNV.Name = "MaNV";
+            this.MaNV.ReadOnly = true;
+            this.MaNV.Width = 60;
+            // 
+            // HoTen
+            // 
+            this.HoTen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HoTen.DataPropertyName = "HoTen";
+            this.HoTen.HeaderText = "Họ Tên";
+            this.HoTen.MinimumWidth = 6;
+            this.HoTen.Name = "HoTen";
+            this.HoTen.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 6;
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // NgaySinh
+            // 
+            this.NgaySinh.DataPropertyName = "NgaySinh";
+            this.NgaySinh.HeaderText = "Ngày sinh";
+            this.NgaySinh.Name = "NgaySinh";
+            this.NgaySinh.ReadOnly = true;
+            // 
+            // SDT
+            // 
+            this.SDT.DataPropertyName = "SDT";
+            this.SDT.HeaderText = "SĐT";
+            this.SDT.Name = "SDT";
+            this.SDT.ReadOnly = true;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "Địa chỉ";
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.ReadOnly = true;
+            // 
+            // NgayDangKi
+            // 
+            this.NgayDangKi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NgayDangKi.DataPropertyName = "NgayDangKi";
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            this.NgayDangKi.DefaultCellStyle = dataGridViewCellStyle5;
+            this.NgayDangKi.HeaderText = "Ngày đăng ký";
+            this.NgayDangKi.MinimumWidth = 6;
+            this.NgayDangKi.Name = "NgayDangKi";
+            this.NgayDangKi.ReadOnly = true;
+            this.NgayDangKi.Width = 94;
+            // 
+            // QuyenHan
+            // 
+            this.QuyenHan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.QuyenHan.DataPropertyName = "QuyenHan";
+            this.QuyenHan.HeaderText = "Quyền hạn";
+            this.QuyenHan.MinimumWidth = 6;
+            this.QuyenHan.Name = "QuyenHan";
+            this.QuyenHan.ReadOnly = true;
+            this.QuyenHan.Width = 88;
             // 
             // label1
             // 
@@ -199,6 +270,63 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin người dùng";
+            // 
+            // txtDC
+            // 
+            this.txtDC.Location = new System.Drawing.Point(85, 130);
+            this.txtDC.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDC.Name = "txtDC";
+            this.txtDC.ReadOnly = true;
+            this.txtDC.Size = new System.Drawing.Size(369, 23);
+            this.txtDC.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 133);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 17);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Địa chỉ";
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Location = new System.Drawing.Point(85, 95);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.ReadOnly = true;
+            this.txtSDT.Size = new System.Drawing.Size(128, 23);
+            this.txtSDT.TabIndex = 10;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(9, 98);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 17);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "SĐT";
+            // 
+            // txtNgaySinh
+            // 
+            this.txtNgaySinh.Location = new System.Drawing.Point(85, 61);
+            this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNgaySinh.Name = "txtNgaySinh";
+            this.txtNgaySinh.ReadOnly = true;
+            this.txtNgaySinh.Size = new System.Drawing.Size(128, 23);
+            this.txtNgaySinh.TabIndex = 8;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 64);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 17);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Ngày sinh";
             // 
             // txtQuyenHan
             // 
@@ -381,7 +509,7 @@
             this.groupBox2.Size = new System.Drawing.Size(277, 58);
             this.groupBox2.TabIndex = 32;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Danh sách tài khoản";
+            this.groupBox2.Text = "Danh tài liệu tài khoản";
             // 
             // radioDangKhoa
             // 
@@ -431,134 +559,6 @@
             this.btnMoKhoa.Text = "Mở khóa";
             this.btnMoKhoa.UseVisualStyleBackColor = false;
             this.btnMoKhoa.Click += new System.EventHandler(this.btnMoKhoa_Click);
-            // 
-            // txtNgaySinh
-            // 
-            this.txtNgaySinh.Location = new System.Drawing.Point(85, 61);
-            this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNgaySinh.Name = "txtNgaySinh";
-            this.txtNgaySinh.ReadOnly = true;
-            this.txtNgaySinh.Size = new System.Drawing.Size(128, 23);
-            this.txtNgaySinh.TabIndex = 8;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 64);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 17);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Ngày sinh";
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.Location = new System.Drawing.Point(85, 95);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.ReadOnly = true;
-            this.txtSDT.Size = new System.Drawing.Size(128, 23);
-            this.txtSDT.TabIndex = 10;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 98);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 17);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "SĐT";
-            // 
-            // txtDC
-            // 
-            this.txtDC.Location = new System.Drawing.Point(85, 130);
-            this.txtDC.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDC.Name = "txtDC";
-            this.txtDC.ReadOnly = true;
-            this.txtDC.Size = new System.Drawing.Size(369, 23);
-            this.txtDC.TabIndex = 12;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 133);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 17);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Địa chỉ";
-            // 
-            // MaNV
-            // 
-            this.MaNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MaNV.DataPropertyName = "MaNV";
-            this.MaNV.HeaderText = "Mã";
-            this.MaNV.MinimumWidth = 60;
-            this.MaNV.Name = "MaNV";
-            this.MaNV.ReadOnly = true;
-            this.MaNV.Width = 60;
-            // 
-            // HoTen
-            // 
-            this.HoTen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HoTen.DataPropertyName = "HoTen";
-            this.HoTen.HeaderText = "Họ Tên";
-            this.HoTen.MinimumWidth = 6;
-            this.HoTen.Name = "HoTen";
-            this.HoTen.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.MinimumWidth = 6;
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // NgaySinh
-            // 
-            this.NgaySinh.DataPropertyName = "NgaySinh";
-            this.NgaySinh.HeaderText = "Ngày sinh";
-            this.NgaySinh.Name = "NgaySinh";
-            this.NgaySinh.ReadOnly = true;
-            // 
-            // SDT
-            // 
-            this.SDT.DataPropertyName = "SDT";
-            this.SDT.HeaderText = "SĐT";
-            this.SDT.Name = "SDT";
-            this.SDT.ReadOnly = true;
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "Địa chỉ";
-            this.DiaChi.Name = "DiaChi";
-            this.DiaChi.ReadOnly = true;
-            // 
-            // NgayDangKi
-            // 
-            this.NgayDangKi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.NgayDangKi.DataPropertyName = "NgayDangKi";
-            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
-            this.NgayDangKi.DefaultCellStyle = dataGridViewCellStyle5;
-            this.NgayDangKi.HeaderText = "Ngày đăng ký";
-            this.NgayDangKi.MinimumWidth = 6;
-            this.NgayDangKi.Name = "NgayDangKi";
-            this.NgayDangKi.ReadOnly = true;
-            this.NgayDangKi.Width = 116;
-            // 
-            // QuyenHan
-            // 
-            this.QuyenHan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.QuyenHan.DataPropertyName = "QuyenHan";
-            this.QuyenHan.HeaderText = "Quyền hạn";
-            this.QuyenHan.MinimumWidth = 6;
-            this.QuyenHan.Name = "QuyenHan";
-            this.QuyenHan.ReadOnly = true;
-            this.QuyenHan.Width = 96;
             // 
             // frmPhanQuyen
             // 

@@ -159,8 +159,8 @@
             this.cbTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTimKiem.FormattingEnabled = true;
             this.cbTimKiem.Items.AddRange(new object[] {
-            "Mã sách",
-            "Tên sách",
+            "Mã tài liệu",
+            "Tên tài liệu",
             "Tác giả",
             "Nhà xuất bản",
             "Thể loại"});
@@ -199,7 +199,7 @@
             this.lbMaSach.Name = "lbMaSach";
             this.lbMaSach.Size = new System.Drawing.Size(61, 17);
             this.lbMaSach.TabIndex = 13;
-            this.lbMaSach.Text = "Mã sách";
+            this.lbMaSach.Text = "Mã tài liệu";
             // 
             // label3
             // 
@@ -210,7 +210,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 17);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Tên sách";
+            this.label3.Text = "Tên tài liệu";
             // 
             // label4
             // 
@@ -333,7 +333,7 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(95, 25);
             this.btnThem.TabIndex = 16;
-            this.btnThem.Text = "Thêm sách";
+            this.btnThem.Text = "Thêm tài liệu";
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -346,7 +346,7 @@
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(95, 25);
             this.btnSua.TabIndex = 16;
-            this.btnSua.Text = "Sửa sách";
+            this.btnSua.Text = "Sửa tài liệu";
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
@@ -359,7 +359,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(95, 25);
             this.btnXoa.TabIndex = 16;
-            this.btnXoa.Text = "Xóa sách";
+            this.btnXoa.Text = "Xóa tài liệu";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
@@ -443,7 +443,7 @@
             this.radioThem.Name = "radioThem";
             this.radioThem.Size = new System.Drawing.Size(96, 21);
             this.radioThem.TabIndex = 18;
-            this.radioThem.Text = "Thêm sách";
+            this.radioThem.Text = "Thêm tài liệu";
             this.radioThem.UseVisualStyleBackColor = true;
             this.radioThem.CheckedChanged += new System.EventHandler(this.radioThem_CheckedChanged);
             // 
@@ -455,7 +455,7 @@
             this.radioSuaXoa.Name = "radioSuaXoa";
             this.radioSuaXoa.Size = new System.Drawing.Size(122, 21);
             this.radioSuaXoa.TabIndex = 19;
-            this.radioSuaXoa.Text = "Sửa / Xóa sách";
+            this.radioSuaXoa.Text = "Sửa / Xóa tài liệu";
             this.radioSuaXoa.UseVisualStyleBackColor = true;
             this.radioSuaXoa.CheckedChanged += new System.EventHandler(this.radioSuaXoa_CheckedChanged);
             // 

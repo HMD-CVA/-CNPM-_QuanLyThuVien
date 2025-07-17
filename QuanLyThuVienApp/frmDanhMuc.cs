@@ -31,6 +31,8 @@ namespace QuanLyThuVienApp
                 MaDanhMuc = "DM" + p.MaDanhMuc,
                 p.TenDanhMuc,
                 p.ViTri,
+                p.SoLuongTL,
+                p.MoTa
             }).ToList();
 
             if (dgvTheLoai.Rows.Count > 0)
@@ -42,7 +44,9 @@ namespace QuanLyThuVienApp
         {
             txtMa.Text = dgvTheLoai.Rows[RowIndex].Cells["MaDanhMuc"].Value.ToString();
             txtTen.Text = dgvTheLoai.Rows[RowIndex].Cells["TenDanhMuc"].Value.ToString();
-            txtMoTa.Text = dgvTheLoai.Rows[RowIndex].Cells["ViTri"].Value.ToString();
+            txtShowViTri.Text = dgvTheLoai.Rows[RowIndex].Cells["ViTri"].Value.ToString();
+            if (dgvTheLoai.Rows[RowIndex].Cells["MoTa"].Value != null) txtShowMoTa.Text = dgvTheLoai.Rows[RowIndex].Cells["MoTa"].Value.ToString();
+            else txtShowMoTa.Text = string.Empty;
         }
         private void dgvTheLoai_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -74,6 +78,8 @@ namespace QuanLyThuVienApp
                 MaTheLoai = "DM" + p.MaDanhMuc,
                 p.TenDanhMuc,
                 p.ViTri,
+                p.SoLuongTL,
+                p.MoTa
             }).ToList();
 
             if (dgvTheLoai.Rows.Count > 0)
@@ -84,6 +90,7 @@ namespace QuanLyThuVienApp
             {
                 txtMa.Clear();
                 txtTen.Clear();
+                txtShowViTri.Clear();
                 txtMoTa.Clear();
             }
         }
@@ -104,7 +111,7 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
-            if (txtTenTL.Text == "" || txtMoTaTL.Text == "")
+            if (txtTenTL.Text == "" && txtViTri.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -112,14 +119,17 @@ namespace QuanLyThuVienApp
 
             DanhMucTaiLieu theLoai = new DanhMucTaiLieu();
             theLoai.TenDanhMuc = txtTenTL.Text;
-            theLoai.ViTri = txtMoTaTL.Text;
+            theLoai.ViTri = txtViTri.Text;
+            theLoai.MoTa = txtMoTa.Text;
+            theLoai.SoLuongTL = 0;
 
             QLTVEntities db = new QLTVEntities();
             db.DanhMucTaiLieux.Add(theLoai);
             db.SaveChanges();
             loadDuLieu();
             txtTenTL.Clear();
-            txtMoTaTL.Clear();
+            txtViTri.Clear();
+            txtMoTa.Clear();
             MessageBox.Show("Thêm thể loại thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -134,7 +144,7 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
-            if (txtTen.Text == "" || txtMoTa.Text == "")
+            if (txtTen.Text == "" && txtShowViTri.Text == "" && txtShowMoTa.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -145,7 +155,8 @@ namespace QuanLyThuVienApp
             DanhMucTaiLieu theLoai = db.DanhMucTaiLieux.Where(p => p.MaDanhMuc == maTL).FirstOrDefault();
 
             theLoai.TenDanhMuc = txtTen.Text;
-            theLoai.ViTri = txtMoTa.Text;
+            theLoai.ViTri = txtShowViTri.Text;
+            theLoai.MoTa = txtShowMoTa.Text;
 
             db.SaveChanges();
             loadDuLieu();
@@ -165,11 +176,10 @@ namespace QuanLyThuVienApp
             QLTVEntities db = new QLTVEntities();
             int maTL = int.Parse(txtMa.Text.Substring(2));
             DanhMucTaiLieu theLoai = db.DanhMucTaiLieux.Where(p => p.MaDanhMuc == maTL).FirstOrDefault();
-
-            List <TaiLieu> cntTL = db.TaiLieux.Where(p => p.MaDanhMuc == maTL).ToList();
-            if (cntTL.Count > 0)
+            
+            if (theLoai.SoLuongTL > 0)
             {
-                MessageBox.Show("Thể loại này đang có sách trong thư viện!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thể loại này đang có tài liệu trong thư viện!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

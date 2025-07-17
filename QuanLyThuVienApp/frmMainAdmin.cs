@@ -100,9 +100,9 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            //frmQuanLyBanDoc frm = new frmQuanLyBanDoc();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmQuanLyNhanVien frm = new frmQuanLyNhanVien();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void btnQLPhieuMuon_Click(object sender, EventArgs e)

@@ -129,7 +129,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Tên sách";
+            this.label2.Text = "Tên tài liệu";
             // 
             // label4
             // 
@@ -246,8 +246,8 @@
             this.cbTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTimKiem.FormattingEnabled = true;
             this.cbTimKiem.Items.AddRange(new object[] {
-            "Mã sách",
-            "Tên sách",
+            "Mã tài liệu",
+            "Tên tài liệu",
             "Tác giả",
             "Nhà xuất bản",
             "Thể loại"});
@@ -315,7 +315,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 17);
             this.label7.TabIndex = 2;
-            this.label7.Text = "Mã sách";
+            this.label7.Text = "Mã tài liệu";
             // 
             // txtMaSach
             // 

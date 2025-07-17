@@ -242,7 +242,7 @@
             this.btnSach.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnSach.Size = new System.Drawing.Size(127, 67);
             this.btnSach.TabIndex = 0;
-            this.btnSach.Text = "Thông tin sách";
+            this.btnSach.Text = "Thông tin tài liệu";
             this.btnSach.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSach.UseVisualStyleBackColor = false;
             this.btnSach.Click += new System.EventHandler(this.btnSach_Click);
@@ -299,7 +299,7 @@
             this.btnMuonSach.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.btnMuonSach.Size = new System.Drawing.Size(127, 67);
             this.btnMuonSach.TabIndex = 1;
-            this.btnMuonSach.Text = "            Mượn\r\n            sách";
+            this.btnMuonSach.Text = "            Mượn\r\n            tài liệu";
             this.btnMuonSach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMuonSach.UseVisualStyleBackColor = false;
             this.btnMuonSach.Click += new System.EventHandler(this.btnMuonSach_Click);

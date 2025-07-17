@@ -30,7 +30,8 @@ namespace QuanLyThuVienApp
             {
                 MaTG = "TG" + p.MaTG,
                 p.TenTG,
-                p.SoLuongTL
+                p.SoLuongTL,
+                p.MoTa
             }).ToList();
 
             if(dgvTacGia.Rows.Count > 0 ) 
@@ -73,7 +74,8 @@ namespace QuanLyThuVienApp
             {
                 MaTG = "TG" + p.MaTG,
                 p.TenTG,
-                p.SoLuongTL
+                p.SoLuongTL,
+                p.MoTa
             }).ToList();
 
             if (dgvTacGia.Rows.Count > 0)
@@ -104,7 +106,7 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
-            if (txtTenTG.Text == "" || txtMoTaTG.Text == "")
+            if (txtTenTG.Text == "" && txtMoTa.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -113,6 +115,7 @@ namespace QuanLyThuVienApp
             TacGia tacGia = new TacGia();
             tacGia.TenTG = txtTenTG.Text;
             tacGia.SoLuongTL = 0;
+            tacGia.MoTa = txtMoTaTG.Text;
 
             QLTVEntities db = new QLTVEntities();
             db.TacGias.Add(tacGia);
@@ -134,17 +137,18 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
-            if (txtTen.Text == "" || txtMoTa.Text == "")
+            QLTVEntities db = new QLTVEntities();
+            int maTG = int.Parse(txtMa.Text.Substring(2));
+            TacGia tacGia = db.TacGias.Where(p => p.MaTG == maTG).FirstOrDefault();
+
+            if (txtTen.Text == "" && txtMoTa.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            QLTVEntities db = new QLTVEntities();
-            int maTG = int.Parse(txtMa.Text.Substring(2));
-            TacGia tacGia = db.TacGias.Where(p=>p.MaTG == maTG).FirstOrDefault();
-
             tacGia.TenTG = txtTen.Text;
+            tacGia.MoTa = txtMoTa.Text;
 
             db.SaveChanges();
             loadDuLieu();
@@ -168,7 +172,7 @@ namespace QuanLyThuVienApp
 
             if(tacGia.SoLuongTL > 0) 
             {
-                MessageBox.Show("Tác giả đang có sách trong thư viện!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tác giả đang có tài liệu trong thư viện!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             

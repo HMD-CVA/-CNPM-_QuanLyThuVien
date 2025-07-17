@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmQuanLyBanDoc : Form
+    public partial class frmQuanLyNhanVien : Form
     {
         public static int OTP;
         public static DateTime thoiGian;
 
-        public frmQuanLyBanDoc()
+        public frmQuanLyNhanVien()
         {
             InitializeComponent();
         }
@@ -30,22 +30,23 @@ namespace QuanLyThuVienApp
 
         private void loadDuLieu()
         {
-            DB_Test db = new DB_Test();
-            dgvBanDoc.DataSource = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.TrangThaiXacThuc == true && p.BiKhoa == false)
+            QLTVEntities db = new QLTVEntities();
+            dgvNhanVien.DataSource = db.NhanViens.Where(p => p.NguoiDung.QuyenHan == "user")
                 .Select(p => new
                 {
-                    MaBanDoc = "BD" + p.ID,
+                    MaNV = "NV" + p.NguoiDungID,
+                    p.NguoiDung.TenDangNhap,
                     p.HoTen,
                     p.Email,
                     p.NgayDangKi,
-                    p.SoSachMuon
+                    TrangThai = (p.NguoiDung.BiKhoa == true) ? "Tạm khóa" : "Hoạt động"
                 }).ToList();
 
-            if(dgvBanDoc.Rows.Count > 0)
+            if(dgvNhanVien.Rows.Count > 0)
             {
-                txtID.Text = dgvBanDoc.Rows[0].Cells["MaBanDoc"].Value.ToString();
-                txtSuaEmail.Text = dgvBanDoc.Rows[0].Cells["Email"].Value.ToString();
-                txtSuaTen.Text = dgvBanDoc.Rows[0].Cells["HoTen"].Value.ToString();
+                txtID.Text = dgvNhanVien.Rows[0].Cells["MaNV"].Value.ToString();
+                txtSuaEmail.Text = dgvNhanVien.Rows[0].Cells["Email"].Value.ToString();
+                txtSuaTen.Text = dgvNhanVien.Rows[0].Cells["HoTen"].Value.ToString();
             }
         }
 
@@ -76,21 +77,23 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            DB_Test db = new DB_Test();
-            NguoiDung nguoiDung = db.NguoiDungs.Where(p=>p.Email == txtEmail.Text).FirstOrDefault();
+            QLTVEntities db = new QLTVEntities();
+            NhanVien nhanVien = db.NhanViens.Where(p => p.Email == txtEmail.Text).FirstOrDefault();
 
-            if (nguoiDung != null)
+            if (nhanVien != null)
             {
-                if (nguoiDung.TrangThaiXacThuc == true)
-                {
-                    MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else
-                {
-                    db.NguoiDungs.Remove(nguoiDung);
-                    db.SaveChanges();
-                }
+                MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+                //if (nguoiDung.TrangThaiXacThuc == true)
+                //{
+                //    MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return;
+                //}
+                //else
+                //{
+                //    db.NhanViens.Remove(nhanVien);
+                //    db.SaveChanges();
+                //}
             }
 
             Random random = new Random();
@@ -139,14 +142,14 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            DB_Test db = new DB_Test();
-            NguoiDung nd = db.NguoiDungs.Where(p => p.Email == txtEmail.Text).FirstOrDefault();
+            
+            //NhanVien nd = db.NhanViens.Where(p => p.Email == txtEmail.Text).FirstOrDefault();
 
-            if(nd != null)
-            {
-                db.NguoiDungs.Remove(nd);
-                db.SaveChanges();
-            }
+            //if(nd != null)
+            //{
+            //    db.NhanViens.Remove(nd);
+            //    db.SaveChanges();
+            //}
 
             if (txtMa.Text != OTP.ToString())
             {
@@ -154,7 +157,7 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            if((DateTime.Now - thoiGian).TotalMinutes > 5)
+            if((DateTime.Now - thoiGian).TotalSeconds > 30)
             {
                 MessageBox.Show("Mã xác thực đã hết hạn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -167,33 +170,40 @@ namespace QuanLyThuVienApp
             byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(matKhau);
             byte[] hashBytes = mD5.ComputeHash(inputBytes);
 
-            NguoiDung nguoiDung = new NguoiDung();
-            nguoiDung.Email = txtEmail.Text;
-            nguoiDung.TrangThaiXacThuc = true;
-            nguoiDung.BiKhoa = false;
-            nguoiDung.HoTen = txtTen.Text;
-            nguoiDung.QuyenHan = "user";
-            nguoiDung.NgayDangKi = DateTime.Now;
-            nguoiDung.SoSachMuon = 0;
-            nguoiDung.MaOTP = txtMa.Text;
-            nguoiDung.ThoiGianNhanOTP = thoiGian;
-            nguoiDung.MatKhau = hashBytes;
-            nguoiDung.TenDangNhap = txtEmail.Text;
+            QLTVEntities db = new QLTVEntities();
 
+            string tenDangNhap = "nv" + (db.NguoiDungs.Max(u => (int?)u.ID) ?? 0 + 1).ToString();
+            NguoiDung nguoiDung = new NguoiDung();
+            nguoiDung.TenDangNhap = tenDangNhap;
+            nguoiDung.MatKhau = hashBytes;
+            nguoiDung.QuyenHan = "user";
+            nguoiDung.BiKhoa = false;
+            db.NguoiDungs.Add(nguoiDung);
+            db.SaveChanges();
+           
+            NhanVien nhanVien = new NhanVien();
+            nhanVien.HoTen = txtTen.Text;
+            nhanVien.Email = txtEmail.Text;
+            nhanVien.NgayDangKi = DateTime.Now;
+            nhanVien.MaOTP = txtMa.Text;
+            nhanVien.ThoiGianNhanOTP = thoiGian;
+            nhanVien.TrangThaiXacThuc = true;
+            nhanVien.NguoiDungID = nguoiDung.ID;
             try
             {
-                db.NguoiDungs.Add(nguoiDung);
+                db.NhanViens.Add(nhanVien);
                 db.SaveChanges();
-                GuiEmail.guiEmail(txtEmail.Text, "Mật khẩu đăng nhập của bạn là " + matKhau);
+                GuiEmail.guiEmail(txtEmail.Text, $"Tên đăng nhập của bạn là: {nguoiDung.TenDangNhap}\nMật khẩu đăng nhập của bạn là: + {matKhau}\nVui lòng đăng nhập và đổi thông tin ngay để bảo đảm tính bảo mật!");
 
                 txtEmail.Clear();
                 txtMa.Clear();
                 txtTen.Clear();
+                txtTDN.Clear();
                 loadDuLieu();
 
                 btnDangKy.Enabled = false;
                 txtEmail.ReadOnly = false;
-                MessageBox.Show("Tạo tài khoản bạn đọc thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tạo tài khoản nhân viên thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -208,44 +218,44 @@ namespace QuanLyThuVienApp
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string luaChon = cbTimKiem.Text;
-            if (luaChon == "") return;
+            //string luaChon = cbTimKiem.Text;
+            //if (luaChon == "") return;
 
-            DB_Test db = new DB_Test();
-            List<NguoiDung> nguoiDungs = new List<NguoiDung>();
+            //QLTVEntities db = new QLTVEntities();
+            //List<NguoiDung> nguoiDungs = new List<NguoiDung>();
 
-            if (luaChon == "Mã bạn đọc")
-                nguoiDungs = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.TrangThaiXacThuc == true
-                && p.BiKhoa == false && ("BD" + p.ID.ToString()).Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Tên bạn đọc")
-                nguoiDungs = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.TrangThaiXacThuc == true
-                && p.BiKhoa == false && p.HoTen.Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Email")
-                nguoiDungs = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.TrangThaiXacThuc == true
-                && p.BiKhoa == false && p.Email.Contains(txtTimKiem.Text)).ToList();
-            else return;
+            //if (luaChon == "Mã bạn đọc")
+            //    nguoiDungs = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.TrangThaiXacThuc == true
+            //    && p.BiKhoa == false && ("BD" + p.ID.ToString()).Contains(txtTimKiem.Text)).ToList();
+            //else if (luaChon == "Tên bạn đọc")
+            //    nguoiDungs = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.TrangThaiXacThuc == true
+            //    && p.BiKhoa == false && p.HoTen.Contains(txtTimKiem.Text)).ToList();
+            //else if (luaChon == "Email")
+            //    nguoiDungs = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.TrangThaiXacThuc == true
+            //    && p.BiKhoa == false && p.Email.Contains(txtTimKiem.Text)).ToList();
+            //else return;
 
-            dgvBanDoc.DataSource = nguoiDungs.Select(p => new
-            {
-                MaBanDoc = "BD" + p.ID,
-                p.HoTen,
-                p.Email,
-                p.NgayDangKi,
-                p.SoSachMuon
-            }).ToList();
+            //dgvNhanVien.DataSource = nguoiDungs.Select(p => new
+            //{
+            //    MaBanDoc = "BD" + p.ID,
+            //    p.HoTen,
+            //    p.Email,
+            //    p.NgayDangKi,
+            //    p.SoSachMuon
+            //}).ToList();
 
-            if (dgvBanDoc.Rows.Count > 0)
-            {
-                txtID.Text = dgvBanDoc.Rows[0].Cells["MaBanDoc"].Value.ToString();
-                txtSuaEmail.Text = dgvBanDoc.Rows[0].Cells["Email"].Value.ToString();
-                txtSuaTen.Text = dgvBanDoc.Rows[0].Cells["HoTen"].Value.ToString();
-            }
-            else
-            {
-                txtID.Clear();
-                txtSuaEmail.Clear();
-                txtSuaTen.Clear();
-            }
+            //if (dgvNhanVien.Rows.Count > 0)
+            //{
+            //    txtID.Text = dgvNhanVien.Rows[0].Cells["MaBanDoc"].Value.ToString();
+            //    txtSuaEmail.Text = dgvNhanVien.Rows[0].Cells["Email"].Value.ToString();
+            //    txtSuaTen.Text = dgvNhanVien.Rows[0].Cells["HoTen"].Value.ToString();
+            //}
+            //else
+            //{
+            //    txtID.Clear();
+            //    txtSuaEmail.Clear();
+            //    txtSuaTen.Clear();
+            //}
 
         }
 
@@ -276,58 +286,58 @@ namespace QuanLyThuVienApp
 
 
 
-            DB_Test db = new DB_Test();
-            NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.Email == txtSuaEmail.Text).FirstOrDefault();
+            //QLTVEntities db = new QLTVEntities();
+            //NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.Email == txtSuaEmail.Text).FirstOrDefault();
 
-            if(nguoiDung != null)
-            {
-                if(nguoiDung.TrangThaiXacThuc == true)
-                {
-                    MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else
-                {
-                    db.NguoiDungs.Remove(nguoiDung);
-                    db.SaveChanges();
-                }
-            }
+            //if(nguoiDung != null)
+            //{
+            //    if(nguoiDung.TrangThaiXacThuc == true)
+            //    {
+            //        MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        db.NguoiDungs.Remove(nguoiDung);
+            //        db.SaveChanges();
+            //    }
+            //}
 
-            int id = int.Parse(txtID.Text.Substring(2));
-            nguoiDung = db.NguoiDungs.Where(p => p.ID == id).FirstOrDefault();
+            //int id = int.Parse(txtID.Text.Substring(2));
+            //nguoiDung = db.NguoiDungs.Where(p => p.ID == id).FirstOrDefault();
 
-            if (txtSuaEmail.Text == nguoiDung.Email)
-            {
-                MessageBox.Show("Cần nhập email mới!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (txtSuaEmail.Text == nguoiDung.Email)
+            //{
+            //    MessageBox.Show("Cần nhập email mới!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            Random random = new Random();
-            string OTP = random.Next(100000, 999999).ToString();
+            //Random random = new Random();
+            //string OTP = random.Next(100000, 999999).ToString();
 
-            try
-            {
-                GuiEmail.guiEmail(txtSuaEmail.Text, "Mã xác thực của bạn là " + OTP);
+            //try
+            //{
+            //    GuiEmail.guiEmail(txtSuaEmail.Text, "Mã xác thực của bạn là " + OTP);
 
-                nguoiDung.MaOTP = OTP;
-                nguoiDung.ThoiGianNhanOTP = DateTime.Now;
-                db.SaveChanges();
+            //    nguoiDung.MaOTP = OTP;
+            //    nguoiDung.ThoiGianNhanOTP = DateTime.Now;
+            //    db.SaveChanges();
 
-                frmXacThuc frm = new frmXacThuc(nguoiDung.ID, xacNhan =>
-                {
-                    if (xacNhan)
-                    {
-                        nguoiDung.Email = txtSuaEmail.Text;
-                        db.SaveChanges();
-                        loadDuLieu();
-                    }
-                });
-                frm.ShowDialog();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //    frmXacThuc frm = new frmXacThuc(nguoiDung.ID, xacNhan =>
+            //    {
+            //        if (xacNhan)
+            //        {
+            //            nguoiDung.Email = txtSuaEmail.Text;
+            //            db.SaveChanges();
+            //            loadDuLieu();
+            //        }
+            //    });
+            //    frm.ShowDialog();
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btnSuaTen_Click(object sender, EventArgs e)
@@ -349,12 +359,12 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            DB_Test db = new DB_Test();
+            QLTVEntities db = new QLTVEntities();
             int id = int.Parse(txtID.Text.Substring(2));
 
             NguoiDung nguoiDung = db.NguoiDungs.Where(p=>p.ID == id).FirstOrDefault();
 
-            nguoiDung.HoTen = txtSuaTen.Text;
+            //nguoiDung.HoTen = txtSuaTen.Text;
             db.SaveChanges();
             loadDuLieu();
             MessageBox.Show("Cập nhật tên thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -377,7 +387,7 @@ namespace QuanLyThuVienApp
             Random random = new Random();
             string matKhau = random.Next(100000, 999999).ToString();
 
-            DB_Test db = new DB_Test();
+            QLTVEntities db = new QLTVEntities();
             int id = int.Parse(txtID.Text.Substring(2));
 
             NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == id).FirstOrDefault();
@@ -391,7 +401,7 @@ namespace QuanLyThuVienApp
 
             try
             {
-                GuiEmail.guiEmail(nguoiDung.Email, "Mật khẩu mới của bạn là " + matKhau);
+                //GuiEmail.guiEmail(nguoiDung.Email, "Mật khẩu mới của bạn là " + matKhau);
 
                 MessageBox.Show("Mật khẩu mới sẽ được gửi về email đăng ký!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -405,11 +415,11 @@ namespace QuanLyThuVienApp
         {
             if (e.RowIndex == -1) return;
 
-            if (dgvBanDoc.Rows.Count > 0)
+            if (dgvNhanVien.Rows.Count > 0)
             {
-                txtID.Text = dgvBanDoc.Rows[e.RowIndex].Cells["MaBanDoc"].Value.ToString();
-                txtSuaEmail.Text = dgvBanDoc.Rows[e.RowIndex].Cells["Email"].Value.ToString();
-                txtSuaTen.Text = dgvBanDoc.Rows[e.RowIndex].Cells["HoTen"].Value.ToString();
+                txtID.Text = dgvNhanVien.Rows[e.RowIndex].Cells["MaNV"].Value.ToString();
+                txtSuaEmail.Text = dgvNhanVien.Rows[e.RowIndex].Cells["Email"].Value.ToString();
+                txtSuaTen.Text = dgvNhanVien.Rows[e.RowIndex].Cells["HoTen"].Value.ToString();
             }
             else
             {

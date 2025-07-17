@@ -76,9 +76,9 @@ namespace QuanLyThuVienApp
             QLTVEntities db = new QLTVEntities();
             List<TaiLieu> sach = new List<TaiLieu>();
 
-            if (luaChon == "Mã sách")
+            if (luaChon == "Mã tài liệu")
                 sach = db.TaiLieux.Where(p => ("S" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Tên sách")
+            else if (luaChon == "Tên tài liệu")
                 sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
             else if (luaChon == "Tác giả")
                 sach = db.TaiLieux.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();

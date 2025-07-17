@@ -30,10 +30,10 @@ namespace QuanLyThuVienApp
             label5.ForeColor = Color.Black;
             label6.ForeColor = Color.Black;
 
-            richTextBox1.Text = "-> Nhấn vào Đăng ký mượn sách\n\n" +
-                   "-> Bên phải cuốn sách bạn muốn mượn, chọn Đăng ký để thêm vào danh sách\n\n" +
-                   "-> Trên Danh sách đăng ký mượn, nhấn vào Đăng ký để gửi yêu cầu\n\n" +
-                   "-> Vui lòng đến thư viện để lấy sách trong vòng 5 ngày, sau 5 ngày không đến mượn sách chúng tôi sẽ hủy phiếu đăng ký";
+            richTextBox1.Text = "-> Nhấn vào Đăng ký mượn tài liệu\n\n" +
+                   "-> Bên phải cuốn tài liệu bạn muốn mượn, chọn Đăng ký để thêm vào danh tài liệu\n\n" +
+                   "-> Trên Danh tài liệu đăng ký mượn, nhấn vào Đăng ký để gửi yêu cầu\n\n" +
+                   "-> Vui lòng đến thư viện để lấy tài liệu trong vòng 5 ngày, sau 5 ngày không đến mượn tài liệu chúng tôi sẽ hủy phiếu đăng ký";
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace QuanLyThuVienApp
             label4.ForeColor = Color.Black;
             label5.ForeColor = Color.Black;
             label6.ForeColor = Color.Black;
-            richTextBox1.Text = "-> Nếu bạn quá hạn mượn sách, bạn sẽ chịu mức phạt tương ứng với số ngày quá hạn\n\n" +
+            richTextBox1.Text = "-> Nếu bạn quá hạn mượn tài liệu, bạn sẽ chịu mức phạt tương ứng với số ngày quá hạn\n\n" +
                 "-> Mỗi ngày quá hạn được tính là 1000 VNĐ\n\n" +
                 "-> Nếu thư viện thấy có dấu hiệu vi phạm nghiêm trọng, chúng tôi sẽ tiến hành khóa tài khoản của bạn và ghi nhận vào hồ sơ";
         }
@@ -57,8 +57,8 @@ namespace QuanLyThuVienApp
             label4.ForeColor = Color.Black;
             label5.ForeColor = Color.Black;
             label6.ForeColor = Color.Black;
-            richTextBox1.Text = "-> Hiện tại chúng tôi chưa cho phép gia hạn sách mượn trên ứng dụng\n\n" +
-                "-> Nếu muốn gia hạn thời gian mượn sách, hãy đến thư viện để được hỗ trợ";
+            richTextBox1.Text = "-> Hiện tại chúng tôi chưa cho phép gia hạn tài liệu mượn trên ứng dụng\n\n" +
+                "-> Nếu muốn gia hạn thời gian mượn tài liệu, hãy đến thư viện để được hỗ trợ";
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -83,11 +83,11 @@ namespace QuanLyThuVienApp
             label6.ForeColor = Color.Black;
             richTextBox1.Text = "   (Dành cho nhân viên thư viện)\n\n" +
                 "-> Chọn mục Quản lý phiếu\n\n" +
-                "-> Trong phần Danh sách phiếu, chọn Đăng ký\n\n" +
+                "-> Trong phần Danh tài liệu phiếu, chọn Đăng ký\n\n" +
                 "-> Nhấn vào Mượn mới\n\n" +
-                "-> Lựa chọn bạn đọc cần mượn sách, nếu chưa có tài khoản thì tạo tài khoản cho bạn đọc, nhấn Mượn sách\n\n" +
-                "-> Lựa chọn sách bạn đọc cần mượn\n\n" +
-                "-> Nhấn Cho mượn để hoàn tất cho mượn sách";
+                "-> Lựa chọn bạn đọc cần mượn tài liệu, nếu chưa có tài khoản thì tạo tài khoản cho bạn đọc, nhấn Mượn tài liệu\n\n" +
+                "-> Lựa chọn tài liệu bạn đọc cần mượn\n\n" +
+                "-> Nhấn Cho mượn để hoàn tất cho mượn tài liệu";
         }
 
         private void label6_Click(object sender, EventArgs e)

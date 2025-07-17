@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_QLTVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_QLTVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChiTietPhieuMuon">
           <Key>
             <PropertyRef Name="MaChiTiet" />
@@ -22,6 +22,7 @@
           <Property Name="TenDanhMuc" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ViTri" Type="nvarchar" MaxLength="100" />
           <Property Name="SoLuongTL" Type="int" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="DocGia">
           <Key>
@@ -66,6 +67,7 @@
           <Property Name="MaNXB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenNXB" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SoLuongTL" Type="int" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="PhieuMuon">
           <Key>
@@ -86,6 +88,7 @@
           <Property Name="MaTG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenTG" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SoLuongTL" Type="int" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="TaiLieu">
           <Key>
@@ -240,8 +243,7 @@
             <End Role="TaiLieu" EntitySet="TaiLieu" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_QLTVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -265,6 +267,7 @@
           <Property Name="ViTri" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SoLuongTL" Type="Int32" />
           <NavigationProperty Name="TaiLieux" Relationship="Self.FK__TaiLieu__MaDanhM__5DCAEF64" FromRole="DanhMucTaiLieu" ToRole="TaiLieu" />
+          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DocGia">
           <Key>
@@ -314,6 +317,7 @@
           <Property Name="TenNXB" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoLuongTL" Type="Int32" />
           <NavigationProperty Name="TaiLieux" Relationship="Self.FK__TaiLieu__MaNXB__5FB337D6" FromRole="NhaXuatBan" ToRole="TaiLieu" />
+          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PhieuMuon">
           <Key>
@@ -338,6 +342,7 @@
           <Property Name="TenTG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoLuongTL" Type="Int32" />
           <NavigationProperty Name="TaiLieux" Relationship="Self.FK__TaiLieu__MaTG__5EBF139D" FromRole="TacGia" ToRole="TaiLieu" />
+          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TaiLieu">
           <Key>
@@ -515,6 +520,7 @@
           <EntitySetMapping Name="DanhMucTaiLieux">
             <EntityTypeMapping TypeName="DB_QLTVModel.DanhMucTaiLieu">
               <MappingFragment StoreEntitySet="DanhMucTaiLieu">
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
                 <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
                 <ScalarProperty Name="ViTri" ColumnName="ViTri" />
@@ -564,6 +570,7 @@
           <EntitySetMapping Name="NhaXuatBans">
             <EntityTypeMapping TypeName="DB_QLTVModel.NhaXuatBan">
               <MappingFragment StoreEntitySet="NhaXuatBan">
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
                 <ScalarProperty Name="TenNXB" ColumnName="TenNXB" />
                 <ScalarProperty Name="SoLuongTL" ColumnName="SoLuongTL" />
@@ -586,6 +593,7 @@
           <EntitySetMapping Name="TacGias">
             <EntityTypeMapping TypeName="DB_QLTVModel.TacGia">
               <MappingFragment StoreEntitySet="TacGia">
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="MaTG" ColumnName="MaTG" />
                 <ScalarProperty Name="TenTG" ColumnName="TenTG" />
                 <ScalarProperty Name="SoLuongTL" ColumnName="SoLuongTL" />

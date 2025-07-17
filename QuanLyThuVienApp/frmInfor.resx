@@ -119,10 +119,10 @@
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>
-Ứng dụng quản lý thư viện là một giải pháp phần mềm hiện đại, được thiết kế để hỗ trợ các thư viện trong việc quản lý sách, tài liệu, và thông tin người dùng một cách hiệu quả. Với giao diện thân thiện và dễ sử dụng, ứng dụng giúp tự động hóa các tác vụ như:
+Ứng dụng quản lý thư viện là một giải pháp phần mềm hiện đại, được thiết kế để hỗ trợ các thư viện trong việc quản lý tài liệu, tài liệu, và thông tin người dùng một cách hiệu quả. Với giao diện thân thiện và dễ sử dụng, ứng dụng giúp tự động hóa các tác vụ như:
 
-- Quản lý danh mục sách, tài liệu.
-- Theo dõi tình trạng mượn/trả sách của độc giả.
+- Quản lý danh mục tài liệu, tài liệu.
+- Theo dõi tình trạng mượn/trả tài liệu của độc giả.
 - Tìm kiếm và tra cứu thông tin nhanh chóng.
 
 Ứng dụng này không chỉ giảm thiểu công việc thủ công, mà còn cải thiện sự chính xác và tiết kiệm thời gian, mang lại trải nghiệm tốt nhất cho cả quản trị viên và người sử dụng thư viện.</value>

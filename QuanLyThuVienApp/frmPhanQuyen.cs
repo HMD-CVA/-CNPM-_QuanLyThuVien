@@ -322,7 +322,7 @@ namespace QuanLyThuVienApp
             if (txtID.Text == "") return;
 
             DialogResult result = MessageBox.Show(
-                "Tài khoản này sẽ không thể mượn sách mới?",
+                "Tài khoản này sẽ không thể mượn tài liệu mới?",
                 "Thông báo!",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -346,7 +346,7 @@ namespace QuanLyThuVienApp
             if (txtID.Text == "") return;
 
             DialogResult result = MessageBox.Show(
-                "Tài khoản này sẽ có thể mượn sách?",
+                "Tài khoản này sẽ có thể mượn tài liệu?",
                 "Thông báo!",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question

@@ -99,9 +99,9 @@ namespace QuanLyThuVienApp
             QLTVEntities db = new QLTVEntities();
             List<TaiLieu> sach = new List<TaiLieu>();
 
-            if (luaChon == "Mã sách")
+            if (luaChon == "Mã tài liệu")
                 sach = db.TaiLieux.Where(p => ("S" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Tên sách")
+            else if (luaChon == "Tên tài liệu")
                 sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
             else if (luaChon == "Tác giả")
                 sach = db.TaiLieux.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();
@@ -149,7 +149,7 @@ namespace QuanLyThuVienApp
         private void btnThem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "Bạn có muốn thêm sách mới không?",
+                "Bạn có muốn thêm tài liệu mới không?",
                 "Thông báo!",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -227,7 +227,7 @@ namespace QuanLyThuVienApp
             loadDuLieu();
             txtTenSach.Clear();
             txtSoLuong.Clear();
-            MessageBox.Show("Thêm sách thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Thêm tài liệu thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -235,7 +235,7 @@ namespace QuanLyThuVienApp
             if (txtMaSach.Text == "") return;
 
                 DialogResult result = MessageBox.Show(
-                    "Bạn có muốn sửa thông tin sách không?",
+                    "Bạn có muốn sửa thông tin tài liệu không?",
                     "Thông báo!",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
@@ -324,7 +324,7 @@ namespace QuanLyThuVienApp
 
             db.SaveChanges();
             loadDuLieu();
-            MessageBox.Show("Sửa sách thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Sửa tài liệu thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -332,7 +332,7 @@ namespace QuanLyThuVienApp
             if (txtMaSach.Text == "") return;
 
             DialogResult result = MessageBox.Show(
-                "Bạn có muốn xóa sách này không?",
+                "Bạn có muốn xóa tài liệu này không?",
                 "Thông báo!",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -345,24 +345,30 @@ namespace QuanLyThuVienApp
             //ChiTietPhieuMuon chiTietPhieuMuon = db.ChiTietPhieuMuons.Where(p => "S" + p.IDSach == txtMaSach.Text).FirstOrDefault();
             //if (chiTietPhieuMuon != null)
             //{
-            //    MessageBox.Show("Không thể xóa sách đã phát sinh dữ liệu!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    MessageBox.Show("Không thể xóa tài liệu đã phát sinh dữ liệu!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    return;
             //}
 
             TaiLieu sach = db.TaiLieux.Where(p => "S" + p.MaTaiLieu == txtMaSach.Text).FirstOrDefault();
 
+            if (sach.SoTaiLieuMuon != 0)
+            {
+                MessageBox.Show("Không thể xóa tài liệu do đang được mượn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             TacGia tacGia = db.TacGias.Where(p => p.MaTG == sach.MaTG).FirstOrDefault();
             NhaXuatBan nhaXuatBan = db.NhaXuatBans.Where(p => p.MaNXB == sach.MaNXB).FirstOrDefault();
-            DanhMucTaiLieu theLoai = db.DanhMucTaiLieux.Where(p => p.MaDanhMuc == sach.MaDanhMuc).FirstOrDefault();
+            DanhMucTaiLieu danhMuc = db.DanhMucTaiLieux.Where(p => p.MaDanhMuc == sach.MaDanhMuc).FirstOrDefault();
 
             tacGia.SoLuongTL -= 1;
             nhaXuatBan.SoLuongTL -= 1;
-            //theLoai.SoMaSach -= 1;
+            danhMuc.SoLuongTL -= 1;
 
             db.TaiLieux.Remove(sach);
             db.SaveChanges();
             loadDuLieu();
-            MessageBox.Show("Xóa sách thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Xóa tài liệu thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void radioThem_CheckedChanged(object sender, EventArgs e)
