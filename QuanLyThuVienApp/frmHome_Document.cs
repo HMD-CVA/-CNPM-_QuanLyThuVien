@@ -18,8 +18,8 @@ namespace QuanLyThuVienApp
         }
         private void loadDuLieu()
         {
-            DB_Test db = new DB_Test();
-            dgvSach.DataSource = db.Saches.Select(p => new {
+            QLTVEntities db = new QLTVEntities();
+            dgvSach.DataSource = db.TaiLieux.Select(p => new {
                 MaSach = "S" + p.ID,
                 p.TenSach,
                 p.TacGia.TenTG,
@@ -28,7 +28,7 @@ namespace QuanLyThuVienApp
                 p.SoLuong,
                 p.SoSachMuon,
             }).ToList();
-
+         
             cbTacGia.DataSource = db.TacGias.ToList().Prepend(new TacGia { MaTG = -1, TenTG = "" }).ToList();
             cbTacGia.DisplayMember = "TenTG";
             cbTacGia.ValueMember = "MaTG";
@@ -73,7 +73,7 @@ namespace QuanLyThuVienApp
 
             //if (radioThem.Checked) return;
 
-            DB_Test db = new DB_Test();
+            QLTVEntities db = new QLTVEntities();
 
             string tenTacGia = dgvSach.Rows[e.RowIndex].Cells[2].Value.ToString();
             string tenNXB = dgvSach.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -90,6 +90,11 @@ namespace QuanLyThuVienApp
             cbTacGia.SelectedValue = tacGia.MaTG;
             cbNXB.SelectedValue = nxb.MaNXB;
             cbTheLoai.SelectedValue = theLoai.MaTheLoai;
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

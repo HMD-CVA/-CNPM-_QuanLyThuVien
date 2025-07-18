@@ -191,6 +191,18 @@
     <Compile Include="frmMainUser.Designer.cs">
       <DependentUpon>frmMainUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMuonSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMuonSach.Designer.cs">
+      <DependentUpon>frmMuonSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNhapSLMuonXoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhapSLMuonXoa.Designer.cs">
+      <DependentUpon>frmNhapSLMuonXoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNXB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,6 +305,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainUser.resx">
       <DependentUpon>frmMainUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMuonSach.resx">
+      <DependentUpon>frmMuonSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNhapSLMuonXoa.resx">
+      <DependentUpon>frmNhapSLMuonXoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNXB.resx">
       <DependentUpon>frmNXB.cs</DependentUpon>
