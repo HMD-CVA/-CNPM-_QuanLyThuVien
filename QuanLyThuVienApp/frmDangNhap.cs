@@ -13,6 +13,19 @@ namespace QuanLyThuVienApp
 {
     public partial class frmDangNhap : MetroFramework.Forms.MetroForm
     {
+        private void ShowLoading()
+        {
+            progressBar1.Visible = true;
+            progressBar1.BringToFront();
+            this.UseWaitCursor = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            progressBar1.Visible = false;
+            this.UseWaitCursor = false;
+        }
         public frmDangNhap()
         {
             InitializeComponent();
@@ -28,7 +41,7 @@ namespace QuanLyThuVienApp
             this.Close();
         }
 
-        private void btnDangNhap_Click(object sender, EventArgs e)
+        private async void btnDangNhap_Click(object sender, EventArgs e)
         {
             if(txtTenDangNhap.Text=="" || txtMatKhau.Text == "")
             {
@@ -47,12 +60,17 @@ namespace QuanLyThuVienApp
                 {
                     if  (nhanVien.TrangThaiXacThuc == false) // nhanVien.TrangThaiXacThuc == null ||
                     {
-                        Random random = new Random();
-                        string OTP = random.Next(100000, 999999).ToString();
-                        GuiEmail.guiEmail(nhanVien.Email, "Mã xác thực của bạn là: " + OTP);
-                        nhanVien.MaOTP = OTP;
-                        nhanVien.ThoiGianNhanOTP = DateTime.Now;
-                        db.SaveChanges();
+                        ShowLoading();
+                        await Task.Run(() =>
+                        {
+                            Random random = new Random();
+                            string OTP = random.Next(100000, 999999).ToString();
+                            GuiEmail.guiEmail(nhanVien.Email, "Mã xác thực của bạn là: " + OTP);
+                            nhanVien.MaOTP = OTP;
+                            nhanVien.ThoiGianNhanOTP = DateTime.Now;
+                            db.SaveChanges();
+                        });
+                        HideLoading();
                         frmXacThuc frmXacThuc = new frmXacThuc(nhanVien.MaNV);
                         this.Hide();
                         frmXacThuc.ShowDialog();

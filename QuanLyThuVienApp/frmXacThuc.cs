@@ -17,6 +17,19 @@ namespace QuanLyThuVienApp
         private int ID;
         private bool kiemTra = false;
         private readonly Action<bool> callback;
+        private void ShowLoading()
+        {
+            progressBar1.Visible = true;
+            progressBar1.BringToFront();
+            this.UseWaitCursor = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            progressBar1.Visible = false;
+            this.UseWaitCursor = false;
+        }
         private void startTimer(int seconds)
         {
             lblTimer.Text = seconds.ToString() + "s";
@@ -67,7 +80,7 @@ namespace QuanLyThuVienApp
             this.Close();
         }
         
-        private void btnGuiLai_Click(object sender, EventArgs e)
+        private async void btnGuiLai_Click(object sender, EventArgs e)
         {
             QLTVEntities db = new QLTVEntities();
             NhanVien nguoiDung = db.NhanViens.Where(p => p.NguoiDungID == ID).SingleOrDefault();
@@ -75,10 +88,15 @@ namespace QuanLyThuVienApp
             Random random = new Random();
             string OTP = random.Next(100000, 999999).ToString();
 
-            nguoiDung.MaOTP = OTP;
-            GuiEmail.guiEmail(nguoiDung.Email, "Mã xác thực của bạn là " + OTP);
-            nguoiDung.ThoiGianNhanOTP = DateTime.Now;
-            db.SaveChanges();
+            ShowLoading();
+            await Task.Run(() =>
+            {
+                nguoiDung.MaOTP = OTP;
+                GuiEmail.guiEmail(nguoiDung.Email, "Mã xác thực của bạn là " + OTP);
+                nguoiDung.ThoiGianNhanOTP = DateTime.Now;
+                db.SaveChanges();
+            });
+            HideLoading();
             startTimer(30);
         }
 

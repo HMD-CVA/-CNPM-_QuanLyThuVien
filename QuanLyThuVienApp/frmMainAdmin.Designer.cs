@@ -66,7 +66,7 @@
             this.btnQLPhieuMuon.IconSize = 45;
             this.btnQLPhieuMuon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLPhieuMuon.Location = new System.Drawing.Point(0, 134);
-            this.btnQLPhieuMuon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQLPhieuMuon.Margin = new System.Windows.Forms.Padding(2);
             this.btnQLPhieuMuon.Name = "btnQLPhieuMuon";
             this.btnQLPhieuMuon.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnQLPhieuMuon.Size = new System.Drawing.Size(127, 67);
@@ -88,7 +88,7 @@
             this.btnQLSach.IconSize = 45;
             this.btnQLSach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLSach.Location = new System.Drawing.Point(0, 0);
-            this.btnQLSach.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQLSach.Margin = new System.Windows.Forms.Padding(2);
             this.btnQLSach.Name = "btnQLSach";
             this.btnQLSach.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnQLSach.Size = new System.Drawing.Size(127, 67);
@@ -107,7 +107,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(8, 131);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(127, 481);
             this.panel2.TabIndex = 8;
@@ -124,12 +124,12 @@
             this.btnQLBanDoc.IconSize = 45;
             this.btnQLBanDoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLBanDoc.Location = new System.Drawing.Point(0, 67);
-            this.btnQLBanDoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQLBanDoc.Margin = new System.Windows.Forms.Padding(2);
             this.btnQLBanDoc.Name = "btnQLBanDoc";
             this.btnQLBanDoc.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btnQLBanDoc.Size = new System.Drawing.Size(127, 67);
             this.btnQLBanDoc.TabIndex = 2;
-            this.btnQLBanDoc.Text = "            Quản lý\r\n            bạn đọc";
+            this.btnQLBanDoc.Text = "            Quản lý\r\n              nhân \r\n               viên\r\n\r\n";
             this.btnQLBanDoc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnQLBanDoc.UseVisualStyleBackColor = false;
             this.btnQLBanDoc.Click += new System.EventHandler(this.btnQLBanDoc_Click);
@@ -192,7 +192,7 @@
             this.btnInfor.Location = new System.Drawing.Point(34, 0);
             this.btnInfor.Margin = new System.Windows.Forms.Padding(38, 41, 38, 41);
             this.btnInfor.Name = "btnInfor";
-            this.btnInfor.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.btnInfor.Padding = new System.Windows.Forms.Padding(8);
             this.btnInfor.Size = new System.Drawing.Size(28, 28);
             this.btnInfor.TabIndex = 6;
             this.btnInfor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -207,7 +207,7 @@
             this.btnTroGiup.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnTroGiup.IconSize = 25;
             this.btnTroGiup.Location = new System.Drawing.Point(0, 0);
-            this.btnTroGiup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTroGiup.Margin = new System.Windows.Forms.Padding(2);
             this.btnTroGiup.Name = "btnTroGiup";
             this.btnTroGiup.Size = new System.Drawing.Size(28, 28);
             this.btnTroGiup.TabIndex = 5;
@@ -240,7 +240,7 @@
             this.btnDangXuat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDangXuat.IconSize = 25;
             this.btnDangXuat.Location = new System.Drawing.Point(1021, 0);
-            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(28, 28);
             this.btnDangXuat.TabIndex = 4;
@@ -260,7 +260,7 @@
             this.btnCaNhan.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCaNhan.IconSize = 24;
             this.btnCaNhan.Location = new System.Drawing.Point(984, 0);
-            this.btnCaNhan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCaNhan.Margin = new System.Windows.Forms.Padding(2);
             this.btnCaNhan.Name = "btnCaNhan";
             this.btnCaNhan.Size = new System.Drawing.Size(28, 28);
             this.btnCaNhan.TabIndex = 3;
@@ -297,7 +297,7 @@
             this.btnPhanQuyen.IconSize = 40;
             this.btnPhanQuyen.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnPhanQuyen.Location = new System.Drawing.Point(254, 0);
-            this.btnPhanQuyen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPhanQuyen.Margin = new System.Windows.Forms.Padding(2);
             this.btnPhanQuyen.Name = "btnPhanQuyen";
             this.btnPhanQuyen.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnPhanQuyen.Size = new System.Drawing.Size(127, 67);
@@ -319,7 +319,7 @@
             this.btnThongKe.IconSize = 40;
             this.btnThongKe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnThongKe.Location = new System.Drawing.Point(127, 0);
-            this.btnThongKe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThongKe.Margin = new System.Windows.Forms.Padding(2);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnThongKe.Size = new System.Drawing.Size(127, 67);
@@ -341,7 +341,7 @@
             this.btnSach.IconSize = 40;
             this.btnSach.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSach.Location = new System.Drawing.Point(0, 0);
-            this.btnSach.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSach.Margin = new System.Windows.Forms.Padding(2);
             this.btnSach.Name = "btnSach";
             this.btnSach.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnSach.Size = new System.Drawing.Size(127, 67);
@@ -363,7 +363,7 @@
             this.DisplayHeader = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmMainAdmin";
             this.Padding = new System.Windows.Forms.Padding(8, 30, 8, 8);

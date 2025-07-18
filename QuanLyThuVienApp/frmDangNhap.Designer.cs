@@ -34,11 +34,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.linkDangKyTK = new System.Windows.Forms.LinkLabel();
             this.txtMatKhau = new MetroFramework.Controls.MetroTextBox();
             this.txtTenDangNhap = new MetroFramework.Controls.MetroTextBox();
             this.linkQuenMatKhau = new System.Windows.Forms.LinkLabel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // label1
@@ -100,32 +99,6 @@
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(93, 195);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(157, 17);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Bạn chưa có tài khoản?";
-            // 
-            // linkDangKyTK
-            // 
-            this.linkDangKyTK.AutoSize = true;
-            this.linkDangKyTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkDangKyTK.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkDangKyTK.LinkColor = System.Drawing.Color.Red;
-            this.linkDangKyTK.Location = new System.Drawing.Point(248, 195);
-            this.linkDangKyTK.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.linkDangKyTK.Name = "linkDangKyTK";
-            this.linkDangKyTK.Size = new System.Drawing.Size(95, 17);
-            this.linkDangKyTK.TabIndex = 5;
-            this.linkDangKyTK.TabStop = true;
-            this.linkDangKyTK.Text = "Đăng ký ngay";
-           // this.linkDangKyTK.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDangKyTK_LinkClicked);
             // 
             // txtMatKhau
             // 
@@ -203,7 +176,7 @@
             this.linkQuenMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkQuenMatKhau.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkQuenMatKhau.LinkColor = System.Drawing.Color.Red;
-            this.linkQuenMatKhau.Location = new System.Drawing.Point(160, 225);
+            this.linkQuenMatKhau.Location = new System.Drawing.Point(160, 188);
             this.linkQuenMatKhau.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkQuenMatKhau.Name = "linkQuenMatKhau";
             this.linkQuenMatKhau.Size = new System.Drawing.Size(105, 17);
@@ -212,14 +185,23 @@
             this.linkQuenMatKhau.Text = "Quên mật khẩu";
             this.linkQuenMatKhau.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkQuenMatKhau_LinkClicked);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(46, 217);
+            this.progressBar1.MarqueeAnimationSpeed = 30;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(321, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 7;
+            this.progressBar1.Visible = false;
+            // 
             // frmDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 265);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.linkQuenMatKhau);
-            this.Controls.Add(this.linkDangKyTK);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.txtMatKhau);
@@ -248,10 +230,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Button btnThoat;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.LinkLabel linkDangKyTK;
         private MetroFramework.Controls.MetroTextBox txtMatKhau;
         private MetroFramework.Controls.MetroTextBox txtTenDangNhap;
         private System.Windows.Forms.LinkLabel linkQuenMatKhau;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

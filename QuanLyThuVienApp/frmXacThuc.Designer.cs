@@ -36,6 +36,7 @@
             this.txtMaXacThuc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // label1
@@ -43,7 +44,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SkyBlue;
-            this.label1.Location = new System.Drawing.Point(84, 33);
+            this.label1.Location = new System.Drawing.Point(84, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(179, 20);
@@ -54,7 +55,7 @@
             // 
             this.btnXacThuc.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnXacThuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXacThuc.Location = new System.Drawing.Point(50, 122);
+            this.btnXacThuc.Location = new System.Drawing.Point(50, 103);
             this.btnXacThuc.Margin = new System.Windows.Forms.Padding(2);
             this.btnXacThuc.Name = "btnXacThuc";
             this.btnXacThuc.Size = new System.Drawing.Size(80, 25);
@@ -67,7 +68,7 @@
             // 
             this.btnGuiLai.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnGuiLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuiLai.Location = new System.Drawing.Point(134, 122);
+            this.btnGuiLai.Location = new System.Drawing.Point(134, 103);
             this.btnGuiLai.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuiLai.Name = "btnGuiLai";
             this.btnGuiLai.Size = new System.Drawing.Size(80, 25);
@@ -80,7 +81,7 @@
             // 
             this.btnThoat.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(218, 122);
+            this.btnThoat.Location = new System.Drawing.Point(218, 103);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(80, 25);
@@ -94,7 +95,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(105, 165);
+            this.label5.Location = new System.Drawing.Point(105, 146);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 17);
@@ -104,7 +105,7 @@
             // txtMaXacThuc
             // 
             this.txtMaXacThuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaXacThuc.Location = new System.Drawing.Point(172, 73);
+            this.txtMaXacThuc.Location = new System.Drawing.Point(172, 54);
             this.txtMaXacThuc.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaXacThuc.Name = "txtMaXacThuc";
             this.txtMaXacThuc.Size = new System.Drawing.Size(88, 23);
@@ -114,7 +115,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(85, 76);
+            this.label2.Location = new System.Drawing.Point(85, 57);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 17);
@@ -123,16 +124,27 @@
             // 
             // lblTimer
             // 
-            this.lblTimer.Location = new System.Drawing.Point(280, 169);
+            this.lblTimer.Location = new System.Drawing.Point(280, 146);
             this.lblTimer.Name = "lblTimer";
             this.lblTimer.Size = new System.Drawing.Size(53, 20);
             this.lblTimer.TabIndex = 10;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(50, 177);
+            this.progressBar1.MarqueeAnimationSpeed = 30;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(248, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 11;
+            this.progressBar1.Visible = false;
             // 
             // frmXacThuc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(351, 208);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMaXacThuc);
@@ -163,5 +175,6 @@
         private System.Windows.Forms.TextBox txtMaXacThuc;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox lblTimer;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

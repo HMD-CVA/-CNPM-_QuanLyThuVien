@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -53,30 +54,32 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtSuaTen = new System.Windows.Forms.TextBox();
-            this.btnSuaEmail = new System.Windows.Forms.Button();
-            this.btnSuaTen = new System.Windows.Forms.Button();
-            this.btnResetMK = new System.Windows.Forms.Button();
+            this.btnXoaTK = new System.Windows.Forms.Button();
+            this.btnResetTK = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtSuaEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dgvNhanVien);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 244);
+            this.panel1.Location = new System.Drawing.Point(0, 171);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(915, 231);
+            this.panel1.Size = new System.Drawing.Size(915, 304);
             this.panel1.TabIndex = 21;
             // 
             // dgvNhanVien
@@ -118,7 +121,7 @@
             this.dgvNhanVien.RowHeadersVisible = false;
             this.dgvNhanVien.RowHeadersWidth = 51;
             this.dgvNhanVien.RowTemplate.Height = 24;
-            this.dgvNhanVien.Size = new System.Drawing.Size(915, 231);
+            this.dgvNhanVien.Size = new System.Drawing.Size(915, 304);
             this.dgvNhanVien.TabIndex = 1;
             this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBanDoc_CellClick);
             // 
@@ -337,9 +340,8 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtSuaTen);
-            this.groupBox2.Controls.Add(this.btnSuaEmail);
-            this.groupBox2.Controls.Add(this.btnSuaTen);
-            this.groupBox2.Controls.Add(this.btnResetMK);
+            this.groupBox2.Controls.Add(this.btnXoaTK);
+            this.groupBox2.Controls.Add(this.btnResetTK);
             this.groupBox2.Controls.Add(this.txtID);
             this.groupBox2.Controls.Add(this.txtSuaEmail);
             this.groupBox2.Controls.Add(this.label5);
@@ -350,7 +352,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(322, 216);
+            this.groupBox2.Size = new System.Drawing.Size(322, 168);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin nhân viên";
@@ -363,41 +365,29 @@
             this.txtSuaTen.Size = new System.Drawing.Size(201, 23);
             this.txtSuaTen.TabIndex = 5;
             // 
-            // btnSuaEmail
+            // btnXoaTK
             // 
-            this.btnSuaEmail.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSuaEmail.Location = new System.Drawing.Point(37, 136);
-            this.btnSuaEmail.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSuaEmail.Name = "btnSuaEmail";
-            this.btnSuaEmail.Size = new System.Drawing.Size(122, 25);
-            this.btnSuaEmail.TabIndex = 4;
-            this.btnSuaEmail.Text = "Cập nhật email";
-            this.btnSuaEmail.UseVisualStyleBackColor = false;
-            this.btnSuaEmail.Click += new System.EventHandler(this.btnSuaEmail_Click);
+            this.btnXoaTK.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnXoaTK.Location = new System.Drawing.Point(170, 133);
+            this.btnXoaTK.Margin = new System.Windows.Forms.Padding(2);
+            this.btnXoaTK.Name = "btnXoaTK";
+            this.btnXoaTK.Size = new System.Drawing.Size(122, 25);
+            this.btnXoaTK.TabIndex = 4;
+            this.btnXoaTK.Text = "Xoá tài khoản";
+            this.btnXoaTK.UseVisualStyleBackColor = false;
+            this.btnXoaTK.Click += new System.EventHandler(this.btnXoaTK_Click);
             // 
-            // btnSuaTen
+            // btnResetTK
             // 
-            this.btnSuaTen.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSuaTen.Location = new System.Drawing.Point(172, 136);
-            this.btnSuaTen.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSuaTen.Name = "btnSuaTen";
-            this.btnSuaTen.Size = new System.Drawing.Size(122, 25);
-            this.btnSuaTen.TabIndex = 4;
-            this.btnSuaTen.Text = "Sửa tên";
-            this.btnSuaTen.UseVisualStyleBackColor = false;
-            this.btnSuaTen.Click += new System.EventHandler(this.btnSuaTen_Click);
-            // 
-            // btnResetMK
-            // 
-            this.btnResetMK.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnResetMK.Location = new System.Drawing.Point(106, 171);
-            this.btnResetMK.Margin = new System.Windows.Forms.Padding(2);
-            this.btnResetMK.Name = "btnResetMK";
-            this.btnResetMK.Size = new System.Drawing.Size(122, 25);
-            this.btnResetMK.TabIndex = 4;
-            this.btnResetMK.Text = "Reset mật khẩu";
-            this.btnResetMK.UseVisualStyleBackColor = false;
-            this.btnResetMK.Click += new System.EventHandler(this.btnResetMK_Click);
+            this.btnResetTK.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnResetTK.Location = new System.Drawing.Point(28, 133);
+            this.btnResetTK.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetTK.Name = "btnResetTK";
+            this.btnResetTK.Size = new System.Drawing.Size(122, 25);
+            this.btnResetTK.TabIndex = 4;
+            this.btnResetTK.Text = "Đặt lại tài khoản";
+            this.btnResetTK.UseVisualStyleBackColor = false;
+            this.btnResetTK.Click += new System.EventHandler(this.btnResetTK_Click);
             // 
             // txtID
             // 
@@ -460,12 +450,27 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tìm kiếm";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(4, 137);
+            this.progressBar1.MarqueeAnimationSpeed = 30;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(304, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 29;
+            this.progressBar1.Visible = false;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmQuanLyNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(915, 475);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -485,6 +490,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,10 +514,9 @@
         private System.Windows.Forms.TextBox txtEmail;
         private FontAwesome.Sharp.IconButton btnBack;
         private System.Windows.Forms.TextBox txtSuaTen;
-        private System.Windows.Forms.Button btnResetMK;
+        private System.Windows.Forms.Button btnResetTK;
         private System.Windows.Forms.TextBox txtSuaEmail;
-        private System.Windows.Forms.Button btnSuaTen;
-        private System.Windows.Forms.Button btnSuaEmail;
+        private System.Windows.Forms.Button btnXoaTK;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
@@ -521,5 +526,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDangKi;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

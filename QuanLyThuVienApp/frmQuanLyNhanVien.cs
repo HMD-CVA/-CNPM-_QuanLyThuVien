@@ -14,6 +14,20 @@ namespace QuanLyThuVienApp
 {
     public partial class frmQuanLyNhanVien : Form
     {
+        private void ShowLoading()
+        {
+            progressBar1.Visible = true;
+            progressBar1.BringToFront();
+            this.UseWaitCursor = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            progressBar1.Visible = false;
+            this.UseWaitCursor = false;
+        }
+
         public frmQuanLyNhanVien()
         {
             InitializeComponent();
@@ -24,26 +38,33 @@ namespace QuanLyThuVienApp
             loadDuLieu();
         }
 
-        private void loadDuLieu()
+        private async void loadDuLieu()
         {
-            QLTVEntities db = new QLTVEntities();
-            dgvNhanVien.DataSource = db.NhanViens.Where(p => p.NguoiDung.QuyenHan == "user")
-                .Select(p => new
-                {
-                    MaNV = "NV" + p.NguoiDungID,
-                    p.NguoiDung.TenDangNhap,
-                    p.HoTen,
-                    p.Email,
-                    p.NgayDangKi,
-                    TrangThai = (p.TrangThaiXacThuc == false) ? "Chờ kích hoạt" : (p.NguoiDung.BiKhoa == true) ? "Tạm khóa" : "Hoạt động"
-                }).ToList();
-
-            if(dgvNhanVien.Rows.Count > 0)
+            ShowLoading();
+            await Task.Run(() =>
             {
-                txtID.Text = dgvNhanVien.Rows[0].Cells["MaNV"].Value.ToString();
-                txtSuaEmail.Text = dgvNhanVien.Rows[0].Cells["Email"].Value.ToString();
-                txtSuaTen.Text = dgvNhanVien.Rows[0].Cells["HoTen"].Value.ToString();
-            }
+                QLTVEntities db = new QLTVEntities();
+                var data = db.NhanViens.Where(p => p.NguoiDung.QuyenHan == "user")
+                    .Select(p => new
+                    {
+                        MaNV = "NV" + p.NguoiDungID,
+                        p.NguoiDung.TenDangNhap,
+                        p.HoTen,
+                        p.Email,
+                        p.NgayDangKi,
+                        TrangThai = (p.TrangThaiXacThuc == false) ? "Chờ kích hoạt" : (p.NguoiDung.BiKhoa == true) ? "Tạm khóa" : "Hoạt động"
+                    }).ToList();
+                Invoke(new Action(() => {
+                    dgvNhanVien.DataSource = data;
+                    if (dgvNhanVien.Rows.Count > 0)
+                    {       
+                        txtID.Text = dgvNhanVien.Rows[0].Cells["MaNV"].Value.ToString();
+                        txtSuaEmail.Text = dgvNhanVien.Rows[0].Cells["Email"].Value.ToString();
+                        txtSuaTen.Text = dgvNhanVien.Rows[0].Cells["HoTen"].Value.ToString();
+                    }
+                }));
+            });
+            HideLoading();
         }
 
         private bool isEmail(string inputEmail)
@@ -59,40 +80,36 @@ namespace QuanLyThuVienApp
                 return (false);
         }
 
-        private void btnGuiMa_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            if(txtEmail.Text == "")
+            txtEmail.Clear();
+            txtTen.Clear();
+        }
+
+        private async void btnDangKy_Click(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "" || txtTen.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập email!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (!isEmail(txtEmail.Text))
+            string email = txtEmail.Text.Trim();
+            string hoTen = txtTen.Text.Trim();
+            if (!isEmail(email))
             {
                 MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             QLTVEntities db = new QLTVEntities();
-            NhanVien nhanVien = db.NhanViens.Where(p => p.Email == txtEmail.Text).FirstOrDefault();
+            NhanVien nhanViens = db.NhanViens.Where(p => p.Email == email).FirstOrDefault();
 
-            if (nhanVien != null)
+            if (nhanViens != null)
             {
                 MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            txtEmail.Text = "";
-            txtTen.Text = "";
-
-            txtEmail.ReadOnly = false;
-        }
-
-        private void btnDangKy_Click(object sender, EventArgs e)
-        {
             DialogResult result = MessageBox.Show(
                 "Bạn có muốn đăng ký tài khoản mới không?",
                 "Thông báo!",
@@ -101,57 +118,43 @@ namespace QuanLyThuVienApp
             );
 
             if (result == DialogResult.No) return;
-
-            if (txtEmail.Text == "" || txtTen.Text == "")
+            ShowLoading();
+            await Task.Run(() =>
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                Random random = new Random();
+                string matKhau = random.Next(100000, 999999).ToString();
 
-            Random random = new Random();
-            string matKhau = random.Next(100000, 999999).ToString();
+                MD5 mD5 = MD5.Create();
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(matKhau);
+                byte[] hashBytes = mD5.ComputeHash(inputBytes);
 
-            MD5 mD5 = MD5.Create();
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(matKhau);
-            byte[] hashBytes = mD5.ComputeHash(inputBytes);
-
-            QLTVEntities db = new QLTVEntities();
-
-            string tenDangNhap = "nv" + (db.NguoiDungs.Max(u => (int?)u.ID) ?? 0 + 1).ToString();
-            NguoiDung nguoiDung = new NguoiDung();
-            nguoiDung.TenDangNhap = tenDangNhap;
-            nguoiDung.MatKhau = hashBytes;
-            nguoiDung.QuyenHan = "user";
-            nguoiDung.BiKhoa = false;
-            db.NguoiDungs.Add(nguoiDung);
-            db.SaveChanges();
+                string tenDangNhap = "nv" + (db.NguoiDungs.Max(u => (int?)u.ID) ?? 0 + 1).ToString();
+                NguoiDung nguoiDung = new NguoiDung();
+                nguoiDung.TenDangNhap = tenDangNhap;
+                nguoiDung.MatKhau = hashBytes;
+                nguoiDung.QuyenHan = "user";
+                nguoiDung.BiKhoa = false;
+                db.NguoiDungs.Add(nguoiDung);
+                db.SaveChanges();
            
-            NhanVien nhanVien = new NhanVien();
-            nhanVien.HoTen = txtTen.Text;
-            nhanVien.Email = txtEmail.Text;
-            nhanVien.NgayDangKi = null;
-            nhanVien.MaOTP = null;
-            nhanVien.ThoiGianNhanOTP = null;
-            nhanVien.TrangThaiXacThuc = false;
-            nhanVien.NguoiDungID = nguoiDung.ID;
-            try
-            {
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.HoTen = hoTen;
+                nhanVien.Email = email;
+                nhanVien.NgayDangKi = null;
+                nhanVien.MaOTP = null;
+                nhanVien.ThoiGianNhanOTP = null;
+                nhanVien.TrangThaiXacThuc = false;
+                nhanVien.NguoiDungID = nguoiDung.ID;
+
                 db.NhanViens.Add(nhanVien);
                 db.SaveChanges();
-                GuiEmail.guiEmail(txtEmail.Text, $"Tên đăng nhập của bạn là: {nguoiDung.TenDangNhap}\nMật khẩu đăng nhập của bạn là: + {matKhau}\nVui lòng đăng nhập và đổi thông tin ngay để bảo đảm tính bảo mật!");
-
-                txtEmail.Clear();
-                txtTen.Clear();
-                loadDuLieu();
-
-                btnDangKy.Enabled = false;
-                txtEmail.ReadOnly = false;
-                MessageBox.Show("Tạo tài khoản nhân viên thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                GuiEmail.guiEmail(email, $"Tên đăng nhập của bạn là: {nguoiDung.TenDangNhap}\nMật khẩu đăng nhập của bạn là: {matKhau}\n\nCảnh báo: Vui lòng đăng nhập và đổi thông tin ngay để bảo đảm tính bảo mật!");
+            });
+            HideLoading();
+            txtEmail.Clear();
+            txtTen.Clear();
+            loadDuLieu();
+            MessageBox.Show("Tạo tài khoản nhân viên thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);  
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -199,15 +202,34 @@ namespace QuanLyThuVienApp
                 txtSuaEmail.Clear();
                 txtSuaTen.Clear();
             }
-
         }
 
-        private void btnSuaEmail_Click(object sender, EventArgs e)
+        private async void btnXoaTK_Click(object sender, EventArgs e)
         {
-            if (txtID.Text == "") return;
+            if (dgvNhanVien.CurrentRow == null)
+            {
+                MessageBox.Show("Vui lòng chọn một nhân viên để xoá.");
+                return;
+            }
+
+            string maNV = dgvNhanVien.CurrentRow.Cells["MaNV"].Value.ToString();
+            int nguoiDungID;
+
+            if (!int.TryParse(maNV.Replace("NV", ""), out nguoiDungID))
+            {
+                MessageBox.Show("Mã nhân viên không hợp lệ.");
+                return;
+            }
+            QLTVEntities db = new QLTVEntities();
+            var nd_Check = db.NguoiDungs.SingleOrDefault(p => p.ID == nguoiDungID);
+            if (nd_Check.BiKhoa == true)
+            {
+                MessageBox.Show("Tài khoản này hiện đang bị khóa, không thể xoá!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             DialogResult result = MessageBox.Show(
-                "Bạn có muốn thay đổi email cho tài khoản này không?",
+                "Bạn có muốn xoá tài khoản này không?",
                 "Thông báo!",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -215,110 +237,55 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
-            if (txtSuaEmail.Text == "")
+            ShowLoading();
+            await Task.Run(() => {
+                   
+                   var nv = db.NhanViens.SingleOrDefault(p => p.NguoiDungID == nguoiDungID);
+                   if (nv != null) db.NhanViens.Remove(nv);
+
+                   var nd = db.NguoiDungs.SingleOrDefault(p => p.ID == nguoiDungID);
+                   if (nd != null) db.NguoiDungs.Remove(nd);
+
+                   db.SaveChanges();   
+            });
+            HideLoading();
+            loadDuLieu();
+            MessageBox.Show("Xoá tài khoản thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private async void btnResetTK_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtID.Text))
             {
-                MessageBox.Show("Vui lòng nhập email mới!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn nhân viên cần đặt lại tài khoản.", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            if (!isEmail(txtSuaEmail.Text))
+            int id = int.Parse(txtID.Text.Substring(2));
+            string emailMoi = txtSuaEmail.Text.Trim();
+            string hoTenMoi = txtSuaTen.Text.Trim();
+            if (!isEmail(emailMoi))
             {
                 MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-
-
-            //QLTVEntities db = new QLTVEntities();
-            //NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.Email == txtSuaEmail.Text).FirstOrDefault();
-
-            //if(nguoiDung != null)
-            //{
-            //    if(nguoiDung.TrangThaiXacThuc == true)
-            //    {
-            //        MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        db.NguoiDungs.Remove(nguoiDung);
-            //        db.SaveChanges();
-            //    }
-            //}
-
-            //int id = int.Parse(txtID.Text.Substring(2));
-            //nguoiDung = db.NguoiDungs.Where(p => p.ID == id).FirstOrDefault();
-
-            //if (txtSuaEmail.Text == nguoiDung.Email)
-            //{
-            //    MessageBox.Show("Cần nhập email mới!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            //Random random = new Random();
-            //string OTP = random.Next(100000, 999999).ToString();
-
-            //try
-            //{
-            //    GuiEmail.guiEmail(txtSuaEmail.Text, "Mã xác thực của bạn là " + OTP);
-
-            //    nguoiDung.MaOTP = OTP;
-            //    nguoiDung.ThoiGianNhanOTP = DateTime.Now;
-            //    db.SaveChanges();
-
-            //    frmXacThuc frm = new frmXacThuc(nguoiDung.ID, xacNhan =>
-            //    {
-            //        if (xacNhan)
-            //        {
-            //            nguoiDung.Email = txtSuaEmail.Text;
-            //            db.SaveChanges();
-            //            loadDuLieu();
-            //        }
-            //    });
-            //    frm.ShowDialog();
-            //}
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-        }
-
-        private void btnSuaTen_Click(object sender, EventArgs e)
-        {
-            if (txtID.Text == "") return;
-
-            DialogResult result = MessageBox.Show(
-                "Bạn có muốn sửa tên người dùng cho tài khoản này không?",
-                "Thông báo!",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.No) return;
-
-            if (txtSuaTen.Text == "")
+            QLTVEntities db = new QLTVEntities();
+            NguoiDung nguoiDung_Check = db.NguoiDungs.FirstOrDefault(p => p.ID == id);
+            if (nguoiDung_Check.BiKhoa == true)
             {
-                MessageBox.Show("Vui lòng nhập họ tên!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tài khoản này hiện đang bị khóa, không thể đặt lại!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            QLTVEntities db = new QLTVEntities();
-            int id = int.Parse(txtID.Text.Substring(2));
+            NhanVien nhanViens = db.NhanViens.Where(p => p.Email == emailMoi && p.NguoiDungID != nguoiDung_Check.ID).FirstOrDefault();
 
-            NguoiDung nguoiDung = db.NguoiDungs.Where(p=>p.ID == id).FirstOrDefault();
-
-            //nguoiDung.HoTen = txtSuaTen.Text;
-            db.SaveChanges();
-            loadDuLieu();
-            MessageBox.Show("Cập nhật tên thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void btnResetMK_Click(object sender, EventArgs e)
-        {
-            if (txtID.Text == "") return;
+            if (nhanViens != null)
+            {
+                MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             DialogResult result = MessageBox.Show(
-                "Bạn có muốn đặt lại mật khẩu cho tài khoản này không?",
+                "Bạn có muốn đặt lại tài khoản này không?",
                 "Thông báo!",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -326,34 +293,56 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
+            string thongBaoLoi = null;
+            bool thanhCong = false;
 
-            Random random = new Random();
-            string matKhau = random.Next(100000, 999999).ToString();
-
-            QLTVEntities db = new QLTVEntities();
-            int id = int.Parse(txtID.Text.Substring(2));
-
-            NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == id).FirstOrDefault();
-
-            MD5 mD5 = MD5.Create();
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(matKhau);
-            byte[] hashBytes = mD5.ComputeHash(inputBytes);
-
-            nguoiDung.MatKhau = hashBytes;
-            db.SaveChanges();
-
-            try
+            ShowLoading();
+            await Task.Run(() =>
             {
-                //GuiEmail.guiEmail(nguoiDung.Email, "Mật khẩu mới của bạn là " + matKhau);
+                NguoiDung nguoiDung = db.NguoiDungs.FirstOrDefault(p => p.ID == id);
+                NhanVien nhanVien = db.NhanViens.FirstOrDefault(p => p.NguoiDungID == id);
+                if (nguoiDung == null || nhanVien == null)
+                {
+                    thongBaoLoi = "Không tìm thấy người dùng tương ứng!";
+                    return;
+                }
 
-                MessageBox.Show("Mật khẩu mới sẽ được gửi về email đăng ký!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                Random random = new Random();
+                string matKhau = random.Next(100000, 999999).ToString();
+                MD5 mD5 = MD5.Create();
+                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(matKhau);
+                byte[] hashBytes = mD5.ComputeHash(inputBytes);
+
+                nguoiDung.MatKhau = hashBytes;           
+                nhanVien.HoTen = hoTenMoi;
+
+                bool doiEmail = nhanVien.Email != emailMoi;
+
+                if (doiEmail)
+                {
+                    nhanVien.Email = emailMoi;
+                    nhanVien.TrangThaiXacThuc = false;
+                    nhanVien.NgayDangKi = null;
+                    nhanVien.MaOTP = null;
+                    nhanVien.ThoiGianNhanOTP = null;
+                }
+
+
+                db.SaveChanges();
+                GuiEmail.guiEmail(nhanVien.Email,
+                    $"Tài khoản của bạn đã được cập nhật.\n" +
+                    $"Tên đăng nhập: {nguoiDung.TenDangNhap}\n" +
+                    $"Mật khẩu mới: {matKhau}\n\n" +
+                    $"Vui lòng đăng nhập và xác thực lại email!");
+
+                thanhCong = true;
+
+            });
+            HideLoading();
+            loadDuLieu();
+            if(thongBaoLoi != null) MessageBox.Show(thongBaoLoi, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (thanhCong) MessageBox.Show("Mật khẩu mới sẽ được gửi về email đăng ký!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void dgvBanDoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
