@@ -100,10 +100,10 @@ namespace QuanLyThuVienApp
 
         private void linkQuenMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //frmTimTaiKhoan frm = new frmTimTaiKhoan();
-            //this.Hide();
-            //frm.ShowDialog();
-            //this.Show();
+            frmTimTaiKhoan frm = new frmTimTaiKhoan();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
         }
     }
 }

@@ -14,6 +14,19 @@ namespace QuanLyThuVienApp
 {
     public partial class frmTimTaiKhoan : MetroFramework.Forms.MetroForm
     {
+        private void ShowLoading()
+        {
+            progressBar1.Visible = true;
+            progressBar1.BringToFront();
+            this.UseWaitCursor = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            progressBar1.Visible = false;
+            this.UseWaitCursor = false;
+        }
         public frmTimTaiKhoan()
         {
             InitializeComponent();
@@ -42,7 +55,7 @@ namespace QuanLyThuVienApp
             this.Close();
         }
 
-        private void btnTiepTuc_Click(object sender, EventArgs e)
+        private async void btnTiepTuc_Click(object sender, EventArgs e)
         {
             if(txtEmail.Text == "")
             {
@@ -56,10 +69,10 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            DB_Test db = new DB_Test();
-            NguoiDung nguoiDung = db.NguoiDungs.Where(p=>p.Email == txtEmail.Text).FirstOrDefault();
+            QLTVEntities db = new QLTVEntities();
+            NhanVien nv = db.NhanViens.Where(p=>p.Email == txtEmail.Text.Trim()).FirstOrDefault();
 
-            if(nguoiDung == null)
+            if(nv == null)
             {
                 MessageBox.Show("Không tồn tại tài khoản liên kết email này!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -70,16 +83,21 @@ namespace QuanLyThuVienApp
 
             try
             {
-                GuiEmail.guiEmail(txtEmail.Text, "Mã xác thực của bạn là " + OTP);
-                nguoiDung.MaOTP = OTP.ToString();
-                nguoiDung.ThoiGianNhanOTP = DateTime.Now;
-                db.SaveChanges();
-
-                frmXacThuc frm = new frmXacThuc(nguoiDung.ID, xacNhan =>
+                ShowLoading();
+                await Task.Run(() =>
+                {
+                    GuiEmail.guiEmail(txtEmail.Text, "Mã xác thực của bạn là " + OTP);
+                    nv.MaOTP = OTP.ToString();
+                    nv.ThoiGianNhanOTP = DateTime.Now;
+                    db.SaveChanges();
+                });
+                HideLoading();
+                
+                frmXacThuc frm = new frmXacThuc(nv.NguoiDungID, xacNhan =>
                 {
                     if (xacNhan)
                     {
-                        frmDatLaiMatKhau frm2 = new frmDatLaiMatKhau(nguoiDung.ID);
+                        frmDatLaiMatKhau frm2 = new frmDatLaiMatKhau(nv.NguoiDungID);
                         this.Hide();
                         frm2.ShowDialog();
                         this.Close();
@@ -93,7 +111,5 @@ namespace QuanLyThuVienApp
             catch (Exception ex) { MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
         }
-
-        
     }
 }

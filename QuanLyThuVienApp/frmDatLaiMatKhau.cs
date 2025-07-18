@@ -43,20 +43,13 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            if (txtMK1.Text.Length < 6)
-            {
-                MessageBox.Show("Mật khẩu có tối thiểu 6 ký tự!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMK2.Focus();
-                return;
-            }
-
             if (txtMK1.Text != txtMK2.Text)
             {
                 MessageBox.Show("Xác nhận mật khẩu sai!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DB_Test db = new DB_Test();
+            QLTVEntities db = new QLTVEntities();
             NguoiDung nguoiDung = db.NguoiDungs.Where(p=>p.ID == ID).FirstOrDefault();
 
             if (nguoiDung == null) return;
