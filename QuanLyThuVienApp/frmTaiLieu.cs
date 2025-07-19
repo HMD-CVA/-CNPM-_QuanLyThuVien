@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmSach : Form
+    public partial class frmTaiLieu : Form
     {
-        public frmSach()
+        public frmTaiLieu()
         {
             InitializeComponent();
         }

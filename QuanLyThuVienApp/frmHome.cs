@@ -30,7 +30,7 @@ namespace QuanLyThuVienApp
         }
         private void btnSach_Click(object sender, EventArgs e)
         {
-            frmHome_Document frm = new frmHome_Document();
+            frmTaiLieu frm = new frmTaiLieu();
             frm.MdiParent = this;
             frm.Show();
         }

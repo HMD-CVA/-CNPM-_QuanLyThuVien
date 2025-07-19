@@ -11,9 +11,9 @@ using System.Windows.Forms.VisualStyles;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmTacGia : MetroFramework.Forms.MetroForm
+    public partial class frmQuanLyTacGia : MetroFramework.Forms.MetroForm
     {
-        public frmTacGia()
+        public frmQuanLyTacGia()
         {
             InitializeComponent();
         }

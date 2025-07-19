@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmNXB : MetroFramework.Forms.MetroForm
+    public partial class frmQuanLyNXB : MetroFramework.Forms.MetroForm
     {
-        public frmNXB()
+        public frmQuanLyNXB()
         {
             InitializeComponent();
         }

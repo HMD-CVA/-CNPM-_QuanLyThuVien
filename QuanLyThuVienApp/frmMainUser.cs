@@ -87,7 +87,7 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmSach frm = new frmSach();
+            frmTaiLieu frm = new frmTaiLieu();
             frm.MdiParent = this;
             frm.Show();
         }

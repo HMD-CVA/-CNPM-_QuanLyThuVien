@@ -11,9 +11,9 @@ using System.Windows.Media.Media3D;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmQuanLySach : Form
+    public partial class frmQuanLyTaiLieu : Form
     {
-        public frmQuanLySach()
+        public frmQuanLyTaiLieu()
         {
             InitializeComponent();
         }
@@ -411,19 +411,19 @@ namespace QuanLyThuVienApp
 
         private void btnThemTG_Click(object sender, EventArgs e)
         {
-            frmTacGia frm = new frmTacGia();
+            frmQuanLyTacGia frm = new frmQuanLyTacGia();
             frm.ShowDialog();
             loadDuLieu();
         }
         private void btnThemNXB_Click(object sender, EventArgs e)
         {
-            frmNXB frm = new frmNXB();
+            frmQuanLyNXB frm = new frmQuanLyNXB();
             frm.ShowDialog();
             loadDuLieu();
         }
         private void btnThemTheLoai_Click(object sender, EventArgs e)
         {
-            frmDanhMuc frm = new frmDanhMuc();
+            frmQuanLyDanhMuc frm = new frmQuanLyDanhMuc();
             frm.ShowDialog();
             loadDuLieu();
         }

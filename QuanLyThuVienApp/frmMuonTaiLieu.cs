@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmMuonSach : Form
+    public partial class frmMuonTaiLieu : Form
     {
-        public frmMuonSach()
+        public frmMuonTaiLieu()
         {
             InitializeComponent();
         }
@@ -22,27 +22,36 @@ namespace QuanLyThuVienApp
             loadDuLieu();
             themNutDGV();
         }
+
         private void themNutDGV()
         {
-            // Tạo nút đăng ký
-            DataGridViewButtonColumn nutDangKy = new DataGridViewButtonColumn();
-            nutDangKy.HeaderText = "";
-            nutDangKy.Text = "Đăng ký";
-            nutDangKy.Name = "btnDangKy";
-            nutDangKy.Width = 78;
-            nutDangKy.UseColumnTextForButtonValue = true;
+            // Kiểm tra nếu chưa có thì mới thêm
+            if (!dgvSach.Columns.Contains("btnDangKy"))
+            {
+                DataGridViewButtonColumn nutDangKy = new DataGridViewButtonColumn();
+                nutDangKy.HeaderText = "";
+                nutDangKy.Text = "Đăng ký";
+                nutDangKy.Name = "btnDangKy";
+                nutDangKy.Width = 78;
+                nutDangKy.UseColumnTextForButtonValue = true;
 
-            // Tạo nút xóa
-            DataGridViewButtonColumn nutXoa = new DataGridViewButtonColumn();
-            nutXoa.HeaderText = "";
-            nutXoa.Text = "Xóa";
-            nutXoa.Name = "btnXoa";
-            nutXoa.Width = 45;
-            nutXoa.UseColumnTextForButtonValue = true;
+                dgvSach.Columns.Add(nutDangKy);
+            }
 
-            // Thêm nút
-            dgvSach.Columns.Add(nutDangKy);
-            dgvSachMuon.Columns.Add(nutXoa);
+            if (!dgvSachMuon.Columns.Contains("btnXoa"))
+            {
+                DataGridViewButtonColumn nutXoa = new DataGridViewButtonColumn();
+                nutXoa.HeaderText = "";
+                nutXoa.Text = "Xóa";
+                nutXoa.Name = "btnXoa";
+                nutXoa.Width = 45;
+                nutXoa.UseColumnTextForButtonValue = true;
+
+                dgvSachMuon.Columns.Add(nutXoa);
+            }
+
+            // Đảm bảo nút luôn ở cuối cùng
+            dgvSach.Columns["btnDangKy"].DisplayIndex = dgvSach.Columns.Count - 1;
         }
 
         private void loadDuLieu()
@@ -51,9 +60,9 @@ namespace QuanLyThuVienApp
             dgvSach.DataSource = db.TaiLieux.Select(p => new {
                 MaTaiLieu = "S" + p.MaTaiLieu,
                 p.TenTaiLieu,
+                p.DanhMucTaiLieu.TenDanhMuc,
                 p.TacGia.TenTG,
                 p.NhaXuatBan.TenNXB,
-                p.DanhMucTaiLieu.TenDanhMuc,
                 p.TaiBan,
                 CoSan = p.SoLuong - p.SoTaiLieuMuon,
                 p.SoLuong,
@@ -65,7 +74,6 @@ namespace QuanLyThuVienApp
         private void dgvSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            txtMoTa.Text = dgvSach.Rows[e.RowIndex].Cells["MoTa"].Value.ToString();
             if (dgvSach.Columns[e.ColumnIndex].Name != "btnDangKy") return;
 
             int soLuongConLai = int.Parse(dgvSach.Rows[e.RowIndex].Cells["CoSan"].Value.ToString());
@@ -117,7 +125,7 @@ namespace QuanLyThuVienApp
             DataGridViewRow row = dgvSachMuon.Rows[e.RowIndex];
             int soLuongHienTai = int.Parse(row.Cells["SoLuong2"].Value.ToString());
 
-            using (var nhapSoLuongForm = new frmNhapSLMuonXoa(soLuongHienTai, false)) // true = chế độ xóa
+            using (var nhapSoLuongForm = new frmNhapSLMuonXoa(soLuongHienTai, false)) // false = chế độ xóa
             {
                 if (nhapSoLuongForm.ShowDialog() == DialogResult.OK)
                 {
@@ -139,37 +147,43 @@ namespace QuanLyThuVienApp
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            //string luaChon = cbTimKiem.Text;
-            //if (luaChon == "") return;
+            string luaChon = cbTimKiem.Text;
+            if (string.IsNullOrWhiteSpace(luaChon)) return;
 
-            //QLTVEntities db = new QLTVEntities();
-            //List<Sach> sach = new List<Sach>();
+            QLTVEntities db = new QLTVEntities();
+            List<TaiLieu> sach = new List<TaiLieu>();
 
-            //if (luaChon == "Mã sách")
-            //    sach = db.Saches.Where(p => ("S" + p.ID.ToString()).Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Tên sách")
-            //    sach = db.Saches.Where(p => p.TenSach.Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Tác giả")
-            //    sach = db.Saches.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Nhà xuất bản")
-            //    sach = db.Saches.Where(p => p.NhaXuatBan.TenNXB.Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Thể loại")
-            //    sach = db.Saches.Where(p => p.TheLoai.TenTheLoai.Contains(txtTimKiem.Text)).ToList();
+            if (luaChon == "Mã tài liệu")
+                sach = db.TaiLieux.Where(p => ("S" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
+            else if (luaChon == "Tên tài liệu")
+                sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
+            else if (luaChon == "Tác giả")
+                sach = db.TaiLieux.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();
+            else if (luaChon == "Nhà xuất bản")
+                sach = db.TaiLieux.Where(p => p.NhaXuatBan.TenNXB.Contains(txtTimKiem.Text)).ToList();
+            else if (luaChon == "Danh mục")
+                sach = db.TaiLieux.Where(p => p.DanhMucTaiLieu.TenDanhMuc.Contains(txtTimKiem.Text)).ToList();
 
-            //dgvSach.DataSource = sach.Select(p => new
-            //{
-            //    MaSach = "S" + p.ID,
-            //    p.TenSach,
-            //    p.TacGia.TenTG,
-            //    p.NhaXuatBan.TenNXB,
-            //    p.TheLoai.TenTheLoai,
-            //    CoSan = p.SoLuong - p.SoSachMuon
-            //}).ToList();
+            dgvSach.DataSource = sach.Select(p => new {
+                MaTaiLieu = "S" + p.MaTaiLieu,
+                p.TenTaiLieu,
+                p.DanhMucTaiLieu.TenDanhMuc,
+                p.TacGia.TenTG,
+                p.NhaXuatBan.TenNXB,
+                p.TaiBan,
+                CoSan = p.SoLuong - p.SoTaiLieuMuon,
+                p.SoLuong,
+                p.SoTaiLieuMuon,
+                p.MoTa
+            }).ToList();
+
+            themNutDGV();
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             loadDuLieu();
+            themNutDGV();
         }
 
         private void btnXoaHet_Click(object sender, EventArgs e)
@@ -186,11 +200,11 @@ namespace QuanLyThuVienApp
                "Thông báo!",
                MessageBoxButtons.YesNo,
                MessageBoxIcon.Question
-           );
+            );
 
             if (result == DialogResult.No) return;
 
-            //QLTVEntities db = new QLTVEntities();
+            QLTVEntities db = new QLTVEntities();
             //NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == frmMainUser.ID).SingleOrDefault();
             //int soLuongMuon = 0;
 
@@ -269,6 +283,16 @@ namespace QuanLyThuVienApp
             //    MessageBox.Show("Số lượng không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    e.Cancel = true;
             //}
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (this.Owner != null && this.Owner is frmQuanLyPhieuMuon)
+            {
+                ((frmQuanLyPhieuMuon)this.Owner).loadPhieuMuon();
+            }
+            this.Close();
+
         }
     }
 }

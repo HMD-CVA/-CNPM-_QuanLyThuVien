@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmDanhMuc : MetroFramework.Forms.MetroForm
+    public partial class frmQuanLyDanhMuc : MetroFramework.Forms.MetroForm
     {
-        public frmDanhMuc()
+        public frmQuanLyDanhMuc()
         {
             InitializeComponent();
         }
