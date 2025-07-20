@@ -32,13 +32,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtTenDangNhap = new MetroFramework.Controls.MetroTextBox();
             this.txtEmail = new MetroFramework.Controls.MetroTextBox();
+            this.txtSDT = new MetroFramework.Controls.MetroTextBox();
             this.btnDangKy = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtHoTen = new MetroFramework.Controls.MetroTextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // label1
@@ -75,41 +75,6 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Số điện thoại";
             // 
-            // txtTenDangNhap
-            // 
-            // 
-            // 
-            // 
-            this.txtTenDangNhap.CustomButton.Image = null;
-            this.txtTenDangNhap.CustomButton.Location = new System.Drawing.Point(235, 1);
-            this.txtTenDangNhap.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTenDangNhap.CustomButton.Name = "";
-            this.txtTenDangNhap.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtTenDangNhap.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtTenDangNhap.CustomButton.TabIndex = 1;
-            this.txtTenDangNhap.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtTenDangNhap.CustomButton.UseSelectable = true;
-            this.txtTenDangNhap.CustomButton.Visible = false;
-            this.txtTenDangNhap.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtTenDangNhap.Lines = new string[0];
-            this.txtTenDangNhap.Location = new System.Drawing.Point(127, 118);
-            this.txtTenDangNhap.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTenDangNhap.MaxLength = 32767;
-            this.txtTenDangNhap.Name = "txtTenDangNhap";
-            this.txtTenDangNhap.PasswordChar = '\0';
-            this.txtTenDangNhap.PromptText = "Nhập email";
-            this.txtTenDangNhap.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtTenDangNhap.SelectedText = "";
-            this.txtTenDangNhap.SelectionLength = 0;
-            this.txtTenDangNhap.SelectionStart = 0;
-            this.txtTenDangNhap.ShortcutsEnabled = true;
-            this.txtTenDangNhap.Size = new System.Drawing.Size(259, 25);
-            this.txtTenDangNhap.TabIndex = 0;
-            this.txtTenDangNhap.UseSelectable = true;
-            this.txtTenDangNhap.WaterMark = "Nhập email";
-            this.txtTenDangNhap.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtTenDangNhap.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
             // txtEmail
             // 
             // 
@@ -127,23 +92,58 @@
             this.txtEmail.CustomButton.Visible = false;
             this.txtEmail.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtEmail.Lines = new string[0];
-            this.txtEmail.Location = new System.Drawing.Point(127, 89);
+            this.txtEmail.Location = new System.Drawing.Point(127, 118);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.MaxLength = 32767;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
-            this.txtEmail.PromptText = "Nhập số điện thoại";
+            this.txtEmail.PromptText = "Nhập email";
             this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtEmail.SelectedText = "";
             this.txtEmail.SelectionLength = 0;
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.ShortcutsEnabled = true;
             this.txtEmail.Size = new System.Drawing.Size(259, 25);
-            this.txtEmail.TabIndex = 1;
+            this.txtEmail.TabIndex = 0;
             this.txtEmail.UseSelectable = true;
-            this.txtEmail.WaterMark = "Nhập số điện thoại";
+            this.txtEmail.WaterMark = "Nhập email";
             this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // txtSDT
+            // 
+            // 
+            // 
+            // 
+            this.txtSDT.CustomButton.Image = null;
+            this.txtSDT.CustomButton.Location = new System.Drawing.Point(235, 1);
+            this.txtSDT.CustomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSDT.CustomButton.Name = "";
+            this.txtSDT.CustomButton.Size = new System.Drawing.Size(23, 23);
+            this.txtSDT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtSDT.CustomButton.TabIndex = 1;
+            this.txtSDT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtSDT.CustomButton.UseSelectable = true;
+            this.txtSDT.CustomButton.Visible = false;
+            this.txtSDT.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.txtSDT.Lines = new string[0];
+            this.txtSDT.Location = new System.Drawing.Point(127, 89);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSDT.MaxLength = 32767;
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.PasswordChar = '\0';
+            this.txtSDT.PromptText = "Nhập số điện thoại";
+            this.txtSDT.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtSDT.SelectedText = "";
+            this.txtSDT.SelectionLength = 0;
+            this.txtSDT.SelectionStart = 0;
+            this.txtSDT.ShortcutsEnabled = true;
+            this.txtSDT.Size = new System.Drawing.Size(259, 25);
+            this.txtSDT.TabIndex = 1;
+            this.txtSDT.UseSelectable = true;
+            this.txtSDT.WaterMark = "Nhập số điện thoại";
+            this.txtSDT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtSDT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // btnDangKy
             // 
@@ -217,29 +217,24 @@
             this.txtHoTen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtHoTen.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // label7
+            // progressBar1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(130, 197);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 17);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Cần kết nối internet";
+            this.progressBar1.Location = new System.Drawing.Point(20, 198);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(366, 23);
+            this.progressBar1.TabIndex = 9;
             // 
             // frmDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(409, 231);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangKy);
             this.Controls.Add(this.txtHoTen);
+            this.Controls.Add(this.txtSDT);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtTenDangNhap);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -252,6 +247,7 @@
             this.Name = "frmDangKy";
             this.Padding = new System.Windows.Forms.Padding(15, 30, 15, 16);
             this.Resizable = false;
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmDangKy_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -263,12 +259,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private MetroFramework.Controls.MetroTextBox txtTenDangNhap;
         private MetroFramework.Controls.MetroTextBox txtEmail;
+        private MetroFramework.Controls.MetroTextBox txtSDT;
         private System.Windows.Forms.Button btnDangKy;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Label label6;
         private MetroFramework.Controls.MetroTextBox txtHoTen;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

@@ -15,6 +15,7 @@ namespace QuanLyThuVienApp
         public static string quyenHan = "user";
         public static string tenDN;
         public static string text;
+        private int maNV;
 
         public frmMainUser()
         {
@@ -38,6 +39,7 @@ namespace QuanLyThuVienApp
                 NguoiDung ngD = db.NguoiDungs.Where(p => p.TenDangNhap == _tenDangNhap).FirstOrDefault();
                 NhanVien nguoiDung = db.NhanViens.Where(p => p.NguoiDungID == ngD.ID).FirstOrDefault();
                 text = "Chào mừng nhân viên: " + nguoiDung.HoTen + " đã quay trở lại!";
+                maNV = nguoiDung.MaNV;
             }
                 
             tenDN = _tenDangNhap;
@@ -96,9 +98,9 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            //frmMuonSach frm = new frmMuonSach();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmQuanLyPhieuMuon frm = new frmQuanLyPhieuMuon(maNV, this);
+            frm.MdiParent = this;
+            frm.Show();
         }
 
         private void btnLichSuMuon_Click(object sender, EventArgs e)

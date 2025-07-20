@@ -15,13 +15,28 @@ namespace QuanLyThuVienApp
 {
     public partial class frmDangKy : MetroFramework.Forms.MetroForm
     {
+        private void ShowLoading()
+        {
+            progressBar1.Visible = true;
+            progressBar1.BringToFront();
+            this.UseWaitCursor = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            progressBar1.Visible = false;
+            this.UseWaitCursor = false;
+        }
         public frmDangKy()
         {
             InitializeComponent();
+            txtHoTen.Focus();
         }
 
         private void frmDangKy_Load(object sender, EventArgs e)
         {
+            txtHoTen.Focus();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -41,101 +56,71 @@ namespace QuanLyThuVienApp
             else
                 return (false);
         }
-
-        private void btnDangKy_Click(object sender, EventArgs e)
+        private bool KiemTraSoDienThoai(string sdt)
         {
-            //if(txtEmail.Text=="" || txtTenDangNhap.Text=="" || txtMatKhau.Text=="" || txtMatKhau2.Text == "" || txtHoTen.Text == "")
-            //{
-            //    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            sdt = sdt.Trim();
+            string pattern = @"^(0[3|5|7|8|9])+([0-9]{8})$";
+            return Regex.IsMatch(sdt, pattern);
+        }
 
-            if(!isEmail(txtEmail.Text)) 
+        private async void btnDangKy_Click(object sender, EventArgs e)
+        {
+            if (txtSDT.Text == "" || txtEmail.Text == "" || txtHoTen.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!isEmail(txtEmail.Text)) 
             {
                 MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmail.Focus();
                 return;
             }
 
-            QLTVEntities db = new QLTVEntities();
-            NguoiDung nguoiDung = db.NguoiDungs.Where(p=>p.TenDangNhap==txtTenDangNhap.Text).SingleOrDefault();
+            if (!KiemTraSoDienThoai(txtSDT.Text))
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSDT.Focus();
+                return;
+            }
 
-        //    if(nguoiDung != null)
-        //    {
-        //        if(nguoiDung.TrangThaiXacThuc == true)
-        //        {
-        //            MessageBox.Show("Tên đăng nhập đã tồn tại!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            txtTenDangNhap.Focus();
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            db.NguoiDungs.Remove(nguoiDung);
-        //            db.SaveChanges();
-        //        }
-        //    }
+            QLTVEntities db = new QLTVEntities();        
+            DocGia docGia = db.DocGias.Where(p => p.Email == txtEmail.Text.Trim()).SingleOrDefault();
 
-        //    nguoiDung = db.NguoiDungs.SingleOrDefault(p=>p.Email==txtEmail.Text);
-        //    if (nguoiDung != null)
-        //    {
-        //        if (nguoiDung.TrangThaiXacThuc == true)
-        //        {
-        //            MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            txtTenDangNhap.Focus();
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            db.NguoiDungs.Remove(nguoiDung);
-        //            db.SaveChanges();
-        //        }
-        //    }
-            
-        //    if(txtMatKhau.Text.Length < 6)
-        //    {
-        //        MessageBox.Show("Mật khẩu có tối thiểu 6 ký tự!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        txtMatKhau.Focus();
-        //        return;
-        //    }
+            if (docGia != null)
+            {
+                MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return;
+            }
 
-        //    if (txtMatKhau2.Text != txtMatKhau.Text)
-        //    {
-        //        MessageBox.Show("Xác nhận mật khẩu sai!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        txtMatKhau2.Focus();
-        //        return;
-        //    }
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc thêm độc giả này?",
+                "Thông báo!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
-        //    // Mã hóa mật khẩu
-        //    MD5 mD5 = MD5.Create();
-        //    byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(txtMatKhau.Text);
-        //    byte[] hashBytes = mD5.ComputeHash(inputBytes);
+            if (result == DialogResult.No) return;
 
-        //    // Tạo OTP
-        //    Random rand = new Random();
-        //    string OTP = rand.Next(100000, 999999).ToString();
+            ShowLoading();
+            await Task.Run(() =>
+            {
+                DocGia DG = new DocGia();
+                DG.HoTen = txtHoTen.Text.Trim();
+                DG.Email = txtEmail.Text.Trim();
+                DG.SDT = txtSDT.Text.Trim();
+                DG.BiKhoa = false;
+                db.DocGias.Add(DG);
+                db.SaveChanges();
+            });
+            HideLoading();
 
-        //    try
-        //    {
-        //        NguoiDung nd = new NguoiDung();
-
-        //        nd.TenDangNhap = txtTenDangNhap.Text;
-        //        nd.HoTen = txtHoTen.Text;
-        //        nd.MatKhau = hashBytes;
-        //        nd.Email = txtEmail.Text;
-        //        nd.MaOTP = OTP;
-        //        db.NguoiDungs.Add(nd);
-        //        db.SaveChanges();
-
-        //        GuiEmail.guiEmail(txtEmail.Text, "Mã xác thực của bạn là " + OTP);
-        //        nd.ThoiGianNhanOTP = DateTime.Now;
-        //        db.SaveChanges();
-        //        frmXacThuc frm = new frmXacThuc(nd.ID);
-        //        this.Hide();
-        //        frm.ShowDialog();
-        //        this.Close();
-        //    }
-        //    catch(Exception ex) { MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-           
+            MessageBox.Show("Đã thêm thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtHoTen.Text = string.Empty;
+            txtEmail.Text = string.Empty;   
+            txtSDT.Text = string.Empty;
         }
     }
 }

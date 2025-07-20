@@ -290,7 +290,7 @@ namespace QuanLyThuVienApp
             db.SaveChanges();
             loadUser();
 
-            MessageBox.Show("Cấp quyền admin thành công!", "Thonpg báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Cấp quyền admin thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnHuyQuyenAdmin_Click(object sender, EventArgs e)
         {

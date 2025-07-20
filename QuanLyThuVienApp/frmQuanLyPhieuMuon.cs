@@ -14,10 +14,18 @@ namespace QuanLyThuVienApp
 {
     public partial class frmQuanLyPhieuMuon : Form
     {
+        private int maNV;
         public static bool giaHan = false;
+        private Form frmMainUser;
         public frmQuanLyPhieuMuon()
         {
             InitializeComponent();
+        }
+        public frmQuanLyPhieuMuon(int _maNV, Form frmMainUser)
+        {
+            InitializeComponent();
+            maNV = _maNV;
+            this.frmMainUser = frmMainUser;
         }
 
         private void frmQuanLyPhieuMuon_Load(object sender, EventArgs e)
@@ -39,7 +47,7 @@ namespace QuanLyThuVienApp
             btnGiaHan.Show();
             //btnMuonMoi.Hide();
             btnHuyPhieu.Hide();
-            btnChoMuon.Hide();
+            //btnChoMuon.Hide();
 
             lbTienPhat1.Show();
             lbTienPhat2.Show();
@@ -50,7 +58,7 @@ namespace QuanLyThuVienApp
             {
                 MaPhieu = "MP" + p.MaPhieu,
                 HoTenDG = p.DocGia.HoTen,
-                HoTenNV = p.NhanVien.HoTen,
+                HoTenNV = (p.MaNV == null) ? "" : p.NhanVien.HoTen,  // ?????????????????
                 p.NgayMuon,
                 p.HanTra,
                 DaTra = (p.DaTra == true) ? "Đã trả" : "Chưa trả",
@@ -80,7 +88,7 @@ namespace QuanLyThuVienApp
             btnGiaHan.Hide();
             //btnMuonMoi.Hide();
             btnHuyPhieu.Hide();
-            btnChoMuon.Hide();
+            //btnChoMuon.Hide();
 
             lbTienPhat1.Hide();
             lbTienPhat2.Hide();
@@ -91,7 +99,7 @@ namespace QuanLyThuVienApp
             {
                 MaPhieu = "MP" + p.MaPhieu,
                 HoTenDG = p.DocGia.HoTen,
-                HoTenNV = p.NhanVien.HoTen,
+                HoTenNV = (p.MaNV == null) ? "" : p.NhanVien.HoTen,  // ?????????????????
                 p.NgayMuon,
                 p.HanTra,
                 DaTra = (p.DaTra == true) ? "Đã trả" : "Chưa trả",
@@ -165,14 +173,12 @@ namespace QuanLyThuVienApp
             optionPhieuMuon(db.PhieuMuons.ToList());
             
         }
-
         private void radioPhieuTra_CheckedChanged(object sender, EventArgs e)
         {
             loadChiTietPM(0);
             QLTVEntities db = new QLTVEntities();
             optionPhieuTra(db.PhieuMuons.ToList());
         }
-
         private void rdbAll_CheckedChanged(object sender, EventArgs e)
         {
             btnHoaDonPhat.Hide();
@@ -180,7 +186,7 @@ namespace QuanLyThuVienApp
             btnGiaHan.Hide();
             //btnMuonMoi.Hide();
             btnHuyPhieu.Hide();
-            btnChoMuon.Hide();
+            //btnChoMuon.Hide();
 
             lbTienPhat1.Hide();
             lbTienPhat2.Hide();
@@ -257,30 +263,52 @@ namespace QuanLyThuVienApp
 
         private void btnTraSach_Click(object sender, EventArgs e)
         {
-            if (dgvPhieuMuon.Rows.Count == 0) return;
+            if (dgvChiTietPM.Rows.Count == 0)
+            {
+                //MessageBox.Show("Không có phiếu mượn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            if (dgvPhieuMuon.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Hãy chọn 1 phiếu mượn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //DialogResult result = MessageBox.Show(
+            //    "Xác nhận đã thanh toán " + lbTienPhat2.Text + " tiền phạt!", 
+            //    "Thông báo!",                  
+            //    MessageBoxButtons.YesNo,              
+            //    MessageBoxIcon.Question               
+            //);
 
             DialogResult result = MessageBox.Show(
-                "Xác nhận đã thanh toán " + lbTienPhat2.Text + " tiền phạt!", 
-                "Thông báo!",                  
-                MessageBoxButtons.YesNo,              
-                MessageBoxIcon.Question               
+                "Bạn có xác nhận độc giả này đã trả đủ sách không ?", "Thông báo!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
             );
 
             if (result == DialogResult.No) return;
 
-            QLTVEntities db = new QLTVEntities();
-            int tongSach = 0;
-            //foreach(DataGridViewRow row in dgvPhieuMuon.Rows)
-            //{
-            //    int idSach = int.Parse(row.Cells["MaSach"].Value.ToString().Substring(1));
-            //    int soLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
-            //    tongSach += soLuong;
-            //    Sach sach = db.Saches.Where(p=>p.ID == idSach).FirstOrDefault();
-            //    sach.SoSachMuon -= soLuong;
-            //}
+            DataGridViewRow selectedRow = dgvPhieuMuon.SelectedRows[0];
+            int maPhieu = int.Parse(selectedRow.Cells["MaPhieu"].Value.ToString().Substring(2));
 
-            //int maPhieu = int.Parse(dgvPhieuMuon.Rows[0].Cells["MaPhieu2"].Value.ToString());
+            QLTVEntities db = new QLTVEntities();
+       
+            PhieuMuon pm = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
+            pm.DaTra = true;
+            pm.NgayTra = DateTime.Now;
+            //int tongSach = 0;
+            foreach (DataGridViewRow row in dgvChiTietPM.Rows)
+            {
+                int idSach = int.Parse(row.Cells["MaTaiLieu"].Value.ToString().Substring(2));
+                int soLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
+                //tongSach += soLuong;
+                TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == idSach).FirstOrDefault();
+                tl.SoTaiLieuMuon -= soLuong;
+            }
+
+
             //int IDBanDoc = int.Parse(dgvPhieuMuon.Rows[0].Cells["IDBanDoc"].Value.ToString());
 
             //NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == IDBanDoc).FirstOrDefault();
@@ -290,10 +318,12 @@ namespace QuanLyThuVienApp
             //phieuMuon.TrangThai = 2;
             //phieuMuon.NgayTra = DateTime.Now;
 
-            //db.SaveChanges();
-            //btnLamMoi.PerformClick();
+            db.SaveChanges();
+            btnLamMoi.PerformClick();
 
             MessageBox.Show("Trả sách thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            loadPhieuMuon();
+            loadChiTietPM(0);
         }
 
         private void btnGiaHan_Click(object sender, EventArgs e)
@@ -322,7 +352,7 @@ namespace QuanLyThuVienApp
             if (result == DialogResult.No) return;
 
             QLTVEntities db = new QLTVEntities();
-            int tongSach = 0;
+            //int tongSach = 0;
             //foreach (DataGridViewRow row in dgvPhieuMuon.Rows)
             //{
             //    int idSach = int.Parse(row.Cells["MaSach"].Value.ToString().Substring(1));
@@ -350,38 +380,16 @@ namespace QuanLyThuVienApp
             MessageBox.Show("Hủy phiếu đăng ký thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnChoMuon_Click(object sender, EventArgs e)
-        {
-            if (dgvPhieuMuon.Rows.Count == 0) return;
-
-            DialogResult result = MessageBox.Show(
-                "Bạn có muốn xác nhận cho mượn không?",
-                "Thông báo!",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.No) return;
-
-            int maPhieu = int.Parse(dgvPhieuMuon.Rows[0].Cells["MaPhieu2"].Value.ToString());
-            QLTVEntities db = new QLTVEntities();
-            PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
-
-            //phieuMuon.TrangThai = 1;
-            phieuMuon.NgayMuon = DateTime.Now;
-            phieuMuon.HanTra = DateTime.Now.AddDays(14);
-
-            db.SaveChanges();
-            btnLamMoi.PerformClick();
-
-            MessageBox.Show("Cho mượn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void btnMuonMoi_Click(object sender, EventArgs e)
         {
-            frmMuonTaiLieu frm = new frmMuonTaiLieu();
-            frm.Owner = this;
-            frm.ShowDialog();
+            //frmMuonTaiLieu frm = new frmMuonTaiLieu(maNV);
+            //frm.Owner = this;
+            //frm.ShowDialog();
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmMuonTaiLieu frm = new frmMuonTaiLieu(maNV);
+            frm.MdiParent = frmMainUser;
+            frm.Show();
         }
 
         private void btnHoaDonPhat_Click(object sender, EventArgs e)

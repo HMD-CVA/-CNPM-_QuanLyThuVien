@@ -12,13 +12,20 @@ namespace QuanLyThuVienApp
 {
     public partial class frmMuonTaiLieu : Form
     {
-        public frmMuonTaiLieu()
+        private int maNV;
+        private frmMuonTaiLieu()
         {
             InitializeComponent();
         }
-     
+        public frmMuonTaiLieu(int _maNV)
+        {
+            InitializeComponent();
+            maNV = _maNV;
+        }
+
         private void frmMuonSach_Load(object sender, EventArgs e)
         {
+            loadDuLieuDG();
             loadDuLieu();
             themNutDGV();
         }
@@ -54,11 +61,24 @@ namespace QuanLyThuVienApp
             dgvSach.Columns["btnDangKy"].DisplayIndex = dgvSach.Columns.Count - 1;
         }
 
+        private void loadDuLieuDG()
+        {
+            //QLTVEntities db = new QLTVEntities();
+            //dgvDocGia.DataSource = db.DocGias.Select(p => new
+            //{
+            //    MaDocGia = "DG" + p.MaDocGia,
+            //    p.HoTen,
+            //    p.SDT,
+            //    p.Email,
+            //    BiKhoa = (p.BiKhoa == true) ? "Bị khoá" : "Hoạt động"
+            //}).ToList();
+        }
+
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
             dgvSach.DataSource = db.TaiLieux.Select(p => new {
-                MaTaiLieu = "S" + p.MaTaiLieu,
+                MaTaiLieu = "TL" + p.MaTaiLieu,
                 p.TenTaiLieu,
                 p.DanhMucTaiLieu.TenDanhMuc,
                 p.TacGia.TenTG,
@@ -70,7 +90,6 @@ namespace QuanLyThuVienApp
                 p.MoTa
             }).ToList();
         }
-
         private void dgvSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -193,7 +212,21 @@ namespace QuanLyThuVienApp
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            if (dgvSachMuon.Rows.Count == 0) return;
+            string hotenDG = txtHoTen.Text.Trim();
+            string emailDG = txtEmail.Text.Trim();
+            string sdtDG = txtSDT.Text.Trim();
+
+            if (string.IsNullOrEmpty(hotenDG) || string.IsNullOrEmpty(emailDG))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin độc giả!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dgvSachMuon.Rows.Count == 0)
+            {
+                MessageBox.Show("Hãy đăng ký tài liệu để mượn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             DialogResult result = MessageBox.Show(
                "Bạn có muốn đăng ký mượn sách không?",
@@ -205,6 +238,44 @@ namespace QuanLyThuVienApp
             if (result == DialogResult.No) return;
 
             QLTVEntities db = new QLTVEntities();
+            DocGia docGia = new DocGia();
+            docGia.HoTen = hotenDG;
+            docGia.Email = emailDG;
+            docGia.SDT = sdtDG;
+            db.DocGias.Add(docGia);
+            db.SaveChanges();
+
+            PhieuMuon phieuMuon = new PhieuMuon();
+            phieuMuon.MaDG = docGia.MaDocGia;
+            phieuMuon.MaNV = maNV; // ???????????????
+            phieuMuon.NgayMuon = DateTime.Now;
+            phieuMuon.HanTra = (phieuMuon.NgayMuon ?? DateTime.Now).AddDays(7);
+            phieuMuon.DaTra = false;
+            phieuMuon.NgayTra = null;
+            db.PhieuMuons.Add(phieuMuon);
+            db.SaveChanges();
+
+            foreach (DataGridViewRow row in dgvSachMuon.Rows)
+            {
+                if (row.IsNewRow) continue; // Bỏ qua dòng trống cuối
+
+                string maTLString = row.Cells["MaSach2"].Value.ToString(); // "S5" => bỏ "S"
+                int maTL = int.Parse(maTLString.Substring(2)); // Giả sử mã là dạng "S5"
+
+                int soLuong = int.Parse(row.Cells["SoLuong2"].Value.ToString());
+
+                ChiTietPhieuMuon chiTietPM = new ChiTietPhieuMuon();
+                chiTietPM.MaPM = phieuMuon.MaPhieu;
+                chiTietPM.MaTL = maTL;
+                chiTietPM.SoLuong = soLuong;
+                db.ChiTietPhieuMuons.Add(chiTietPM);
+
+                TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == chiTietPM.MaTL).SingleOrDefault();
+                tl.SoTaiLieuMuon += chiTietPM.SoLuong;
+            }
+            db.SaveChanges();
+
+            //db.SaveChanges();
             //NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == frmMainUser.ID).SingleOrDefault();
             //int soLuongMuon = 0;
 
@@ -235,24 +306,6 @@ namespace QuanLyThuVienApp
             //phieuMuon.TrangThai = 0;  
             //db.PhieuMuons.Add(phieuMuon);
 
-            /*
-             Lưu phiếu chi tiết, cập nhật số lượng sách
-             */
-
-            //foreach(DataGridViewRow row in dgvSachMuon.Rows)
-            //{
-            //    ChiTietPhieuMuon chiTiet = new ChiTietPhieuMuon();
-            //    chiTiet.MaPhieu = phieuMuon.MaPhieu;
-            //    chiTiet.IDSach = int.Parse(row.Cells["MaSach2"].Value.ToString().Substring(1));
-            //    chiTiet.SoLuong = int.Parse(row.Cells["SoLuong2"].Value.ToString());
-            //    db.ChiTietPhieuMuons.Add(chiTiet);
-
-            //    Sach sach = db.Saches.Where(p => p.ID == chiTiet.IDSach).SingleOrDefault();
-            //    sach.SoSachMuon += chiTiet.SoLuong;
-            //}
-
-            //nguoiDung.SoSachMuon += soLuongMuon;
-            //db.SaveChanges();
 
             // Tạm tắt event CellValidating để clear dgv
             dgvSachMuon.CellValidating -= dgvSachMuon_CellValidating;
@@ -261,6 +314,9 @@ namespace QuanLyThuVienApp
 
             loadDuLieu();
             MessageBox.Show("Đăng ký mượn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtEmail.Text = string.Empty;
+            txtHoTen.Text = string.Empty;
+            txtSDT.Text = string.Empty;
         }
 
         private void dgvSachMuon_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -293,6 +349,12 @@ namespace QuanLyThuVienApp
             }
             this.Close();
 
+        }
+
+        
+        private void frmDangKy_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            loadDuLieuDG();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace QuanLyThuVienApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMuonTaiLieu());
+            Application.Run(new frmDangNhap());
         }
     }
 }
