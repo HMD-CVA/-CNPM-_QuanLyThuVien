@@ -29,11 +29,12 @@ namespace QuanLyThuVienApp
         public frmDangNhap()
         {
             InitializeComponent();
+            txtTenDangNhap.Focus();
         }
        
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-
+            txtTenDangNhap.Focus();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

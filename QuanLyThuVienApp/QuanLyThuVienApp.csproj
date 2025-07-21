@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -99,8 +100,8 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -146,6 +147,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB_QLTV.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DB_QLTVDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_QLTVDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DocGia.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
@@ -172,6 +178,12 @@
     </Compile>
     <Compile Include="frmDoiMatKhau.Designer.cs">
       <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGiaHan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGiaHan.Designer.cs">
+      <DependentUpon>frmGiaHan.cs</DependentUpon>
     </Compile>
     <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
@@ -239,6 +251,12 @@
     <Compile Include="frmQuanLyTaiLieu.Designer.cs">
       <DependentUpon>frmQuanLyTaiLieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReportPrintPhieuMuon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportPrintPhieuMuon.Designer.cs">
+      <DependentUpon>frmReportPrintPhieuMuon.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTaiLieu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,7 +308,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TacGia.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
@@ -308,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDoiMatKhau.resx">
       <DependentUpon>frmDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGiaHan.resx">
+      <DependentUpon>frmGiaHan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
@@ -341,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyTaiLieu.resx">
       <DependentUpon>frmQuanLyTaiLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportPrintPhieuMuon.resx">
+      <DependentUpon>frmReportPrintPhieuMuon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTaiLieu.resx">
       <DependentUpon>frmTaiLieu.cs</DependentUpon>
@@ -377,6 +400,17 @@
     <None Include="DB_QLTV.edmx.diagram">
       <DependentUpon>DB_QLTV.edmx</DependentUpon>
     </None>
+    <None Include="DB_QLTVDataSet.xsc">
+      <DependentUpon>DB_QLTVDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DB_QLTVDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB_QLTVDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DB_QLTVDataSet.xss">
+      <DependentUpon>DB_QLTVDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SachTheoTheLoai.datasource" />
     <None Include="Properties\DataSources\SLSachTheoTheLoai.datasource" />
@@ -390,6 +424,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="rpPrintPhieuMuon.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -407,19 +442,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DB_QLTV.edmx</DependentUpon>
       <LastGenOutput>DB_QLTV.cs</LastGenOutput>
-    </Content>
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -444,6 +466,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>

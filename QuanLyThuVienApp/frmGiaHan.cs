@@ -35,25 +35,25 @@ namespace QuanLyThuVienApp
             this.Close();
         }
 
-        //private void btnGiaHan_Click(object sender, EventArgs e)
-        //{
-        //    int days = int.Parse(numericUpDown1.Value.ToString());
-        //    if(days == 0)
-        //    {
-        //        MessageBox.Show("Vui lòng chọn số ngày gia hạn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return;
-        //    }
+        private void btnGiaHan_Click(object sender, EventArgs e)
+        {
+            int days = int.Parse(numericUpDown1.Value.ToString());
+            if (days == 0)
+            {
+                MessageBox.Show("Vui lòng chọn số ngày gia hạn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-        //    DB_Test db = new DB_Test();
-        //    PhieuMuon phieuMuon = db.PhieuMuons.Where(p=>p.MaPhieu == maPhieu).FirstOrDefault();
+            QLTVEntities db = new QLTVEntities();
+            PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
 
-        //    DateTime hanTra = phieuMuon.HanTra.Value; 
-        //    phieuMuon.HanTra = hanTra.AddDays(days);
+            DateTime hanTra = phieuMuon.HanTra.Value;
+            phieuMuon.HanTra = hanTra.AddDays(days);
 
-        //    db.SaveChanges();
-        //    MessageBox.Show("Gia hạn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    frmQuanLyPhieuMuon.giaHan = true;
-        //    this.Close();
-        //}
+            db.SaveChanges();
+            MessageBox.Show("Gia hạn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmQuanLyPhieuMuon.giaHan = true;
+            this.Close();
+        }
     }
 }
