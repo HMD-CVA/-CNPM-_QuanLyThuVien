@@ -60,6 +60,7 @@ namespace QuanLyThuVienApp
 
 
             dgvPhieuMuon.DataSource = phieuMuons.Where(p => p.DaTra == false)
+            .OrderByDescending(p => p.MaPhieu)
             .Select(p => new
             {
                 MaPhieu = "MP" + p.MaPhieu,
@@ -101,7 +102,11 @@ namespace QuanLyThuVienApp
 
 
             dgvPhieuMuon.DataSource = phieuMuons
-            .Where(p => p.DaTra == false && p.HanTra.HasValue && p.HanTra.Value.Date < DateTime.Now.Date)
+            .Where(p =>
+                p.HanTra.HasValue &&
+                ((p.NgayTra == null && p.HanTra.Value.Date < DateTime.Now.Date) || (p.NgayTra != null && p.HanTra.Value.Date < p.NgayTra.Value.Date))
+            )
+            .OrderByDescending(p => p.MaPhieu)
             .Select(p => new
             {
                 MaPhieu = "MP" + p.MaPhieu,
@@ -127,7 +132,9 @@ namespace QuanLyThuVienApp
             //lbTienPhat2.Hide();
 
 
-            dgvPhieuMuon.DataSource = phieuMuons.Where(p => p.DaTra == true)
+            dgvPhieuMuon.DataSource = phieuMuons
+            .Where(p => p.DaTra == true)
+            .OrderByDescending(p => p.MaPhieu)
             .Select(p => new
             {
                 MaPhieu = "MP" + p.MaPhieu,
@@ -142,13 +149,18 @@ namespace QuanLyThuVienApp
         public void loadPhieuMuon()
         {
             QLTVEntities db = new QLTVEntities();
-            dgvPhieuMuon.DataSource = db.PhieuMuons.Select(p => new {
+            dgvPhieuMuon.DataSource = db.PhieuMuons
+                .OrderByDescending(p => p.MaPhieu)
+                .Select(p => new {
                 MaPhieu = "MP" + p.MaPhieu,
                 HoTenDG = p.DocGia.HoTen,
                 HoTenNV = p.NhanVien.HoTen,
                 p.NgayMuon,
                 p.HanTra,
-                DaTra = (p.DaTra == true) ? "Đã trả" : (p.NgayTra == null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now) ? "Trễ hạn" : "Chưa trả"),
+                DaTra = (
+                    (p.NgayTra == null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now)) ||
+                    (p.NgayTra != null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(p.NgayTra))
+                ) ? "Trễ hạn" :  (p.DaTra == true ? "Đã trả" : "Chưa trả"),
                 NgayTra = (p.DaTra == true) ? p.NgayTra : null
             }).ToList();
         }

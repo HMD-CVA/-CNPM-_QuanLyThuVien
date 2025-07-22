@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnTimKiem = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvChiTietPM = new System.Windows.Forms.DataGridView();
@@ -52,13 +52,6 @@
             this.radioPhieuTra = new System.Windows.Forms.RadioButton();
             this.radioPhieuMuon = new System.Windows.Forms.RadioButton();
             this.dgvPhieuMuon = new System.Windows.Forms.DataGridView();
-            this.MaPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTenDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnMuonMoi = new System.Windows.Forms.Button();
             this.btnGiaHan = new System.Windows.Forms.Button();
@@ -66,6 +59,13 @@
             this.lbTienPhat1 = new System.Windows.Forms.Label();
             this.lbTienPhat2 = new System.Windows.Forms.Label();
             this.btnHoaDonPhat = new System.Windows.Forms.Button();
+            this.MaPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTenDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietPM)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupPhieuTra.SuspendLayout();
@@ -108,14 +108,14 @@
             this.dgvChiTietPM.AllowUserToDeleteRows = false;
             this.dgvChiTietPM.AllowUserToResizeRows = false;
             this.dgvChiTietPM.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvChiTietPM.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvChiTietPM.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvChiTietPM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvChiTietPM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaChiTiet,
@@ -125,14 +125,14 @@
             this.TenTG,
             this.TenNXB,
             this.SoLuong});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvChiTietPM.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvChiTietPM.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvChiTietPM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvChiTietPM.Location = new System.Drawing.Point(0, 0);
             this.dgvChiTietPM.Margin = new System.Windows.Forms.Padding(2);
@@ -335,14 +335,14 @@
             this.dgvPhieuMuon.AllowUserToDeleteRows = false;
             this.dgvPhieuMuon.AllowUserToResizeRows = false;
             this.dgvPhieuMuon.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPhieuMuon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPhieuMuon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPhieuMuon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhieuMuon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaPhieu,
@@ -352,14 +352,14 @@
             this.HanTra,
             this.DaTra,
             this.NgayTra});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPhieuMuon.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPhieuMuon.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPhieuMuon.Location = new System.Drawing.Point(11, 32);
             this.dgvPhieuMuon.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPhieuMuon.MultiSelect = false;
@@ -373,72 +373,6 @@
             this.dgvPhieuMuon.TabIndex = 37;
             this.dgvPhieuMuon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuMuon_CellClick);
             this.dgvPhieuMuon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhieuMuon_CellFormatting);
-            // 
-            // MaPhieu
-            // 
-            this.MaPhieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MaPhieu.DataPropertyName = "MaPhieu";
-            this.MaPhieu.HeaderText = "Mã";
-            this.MaPhieu.MinimumWidth = 6;
-            this.MaPhieu.Name = "MaPhieu";
-            this.MaPhieu.ReadOnly = true;
-            this.MaPhieu.Width = 51;
-            // 
-            // HoTenDG
-            // 
-            this.HoTenDG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HoTenDG.DataPropertyName = "HoTenDG";
-            this.HoTenDG.HeaderText = "Độc giả";
-            this.HoTenDG.MinimumWidth = 6;
-            this.HoTenDG.Name = "HoTenDG";
-            this.HoTenDG.ReadOnly = true;
-            // 
-            // HoTenNV
-            // 
-            this.HoTenNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HoTenNV.DataPropertyName = "HoTenNV";
-            this.HoTenNV.HeaderText = "Nhân viên";
-            this.HoTenNV.MinimumWidth = 6;
-            this.HoTenNV.Name = "HoTenNV";
-            this.HoTenNV.ReadOnly = true;
-            // 
-            // NgayMuon
-            // 
-            this.NgayMuon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.NgayMuon.DataPropertyName = "NgayMuon";
-            this.NgayMuon.HeaderText = "Ngày mượn";
-            this.NgayMuon.MinimumWidth = 6;
-            this.NgayMuon.Name = "NgayMuon";
-            this.NgayMuon.ReadOnly = true;
-            this.NgayMuon.Width = 101;
-            // 
-            // HanTra
-            // 
-            this.HanTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.HanTra.DataPropertyName = "HanTra";
-            this.HanTra.HeaderText = "Hạn trả";
-            this.HanTra.Name = "HanTra";
-            this.HanTra.ReadOnly = true;
-            this.HanTra.Width = 75;
-            // 
-            // DaTra
-            // 
-            this.DaTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.DaTra.DataPropertyName = "DaTra";
-            this.DaTra.HeaderText = "Trạng thái";
-            this.DaTra.MinimumWidth = 6;
-            this.DaTra.Name = "DaTra";
-            this.DaTra.ReadOnly = true;
-            this.DaTra.Width = 92;
-            // 
-            // NgayTra
-            // 
-            this.NgayTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.NgayTra.DataPropertyName = "NgayTra";
-            this.NgayTra.HeaderText = "Ngày trả";
-            this.NgayTra.Name = "NgayTra";
-            this.NgayTra.ReadOnly = true;
-            this.NgayTra.Width = 83;
             // 
             // label2
             // 
@@ -527,6 +461,72 @@
             this.btnHoaDonPhat.UseVisualStyleBackColor = false;
             this.btnHoaDonPhat.Click += new System.EventHandler(this.btnHoaDonPhat_Click);
             // 
+            // MaPhieu
+            // 
+            this.MaPhieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MaPhieu.DataPropertyName = "MaPhieu";
+            this.MaPhieu.HeaderText = "Mã";
+            this.MaPhieu.MinimumWidth = 6;
+            this.MaPhieu.Name = "MaPhieu";
+            this.MaPhieu.ReadOnly = true;
+            this.MaPhieu.Width = 51;
+            // 
+            // HoTenDG
+            // 
+            this.HoTenDG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HoTenDG.DataPropertyName = "HoTenDG";
+            this.HoTenDG.HeaderText = "Độc giả";
+            this.HoTenDG.MinimumWidth = 6;
+            this.HoTenDG.Name = "HoTenDG";
+            this.HoTenDG.ReadOnly = true;
+            // 
+            // HoTenNV
+            // 
+            this.HoTenNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HoTenNV.DataPropertyName = "HoTenNV";
+            this.HoTenNV.HeaderText = "Nhân viên";
+            this.HoTenNV.MinimumWidth = 6;
+            this.HoTenNV.Name = "HoTenNV";
+            this.HoTenNV.ReadOnly = true;
+            // 
+            // NgayMuon
+            // 
+            this.NgayMuon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.NgayMuon.DataPropertyName = "NgayMuon";
+            this.NgayMuon.HeaderText = "Ngày mượn";
+            this.NgayMuon.MinimumWidth = 6;
+            this.NgayMuon.Name = "NgayMuon";
+            this.NgayMuon.ReadOnly = true;
+            this.NgayMuon.Width = 101;
+            // 
+            // HanTra
+            // 
+            this.HanTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.HanTra.DataPropertyName = "HanTra";
+            this.HanTra.HeaderText = "Hạn trả";
+            this.HanTra.Name = "HanTra";
+            this.HanTra.ReadOnly = true;
+            this.HanTra.Width = 75;
+            // 
+            // DaTra
+            // 
+            this.DaTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.DaTra.DataPropertyName = "DaTra";
+            this.DaTra.HeaderText = "Trạng thái";
+            this.DaTra.MinimumWidth = 6;
+            this.DaTra.Name = "DaTra";
+            this.DaTra.ReadOnly = true;
+            this.DaTra.Width = 92;
+            // 
+            // NgayTra
+            // 
+            this.NgayTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.NgayTra.DataPropertyName = "NgayTra";
+            this.NgayTra.HeaderText = "Ngày trả";
+            this.NgayTra.Name = "NgayTra";
+            this.NgayTra.ReadOnly = true;
+            this.NgayTra.Width = 83;
+            // 
             // frmQuanLyPhieuMuon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -584,13 +584,6 @@
         private System.Windows.Forms.Label lbTienPhat1;
         private System.Windows.Forms.Label lbTienPhat2;
         private System.Windows.Forms.Button btnHoaDonPhat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaPhieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenDG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayMuon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HanTra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DaTra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaChiTiet;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTaiLieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTaiLieu;
@@ -600,5 +593,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.RadioButton rdbAll;
         private System.Windows.Forms.RadioButton rdbTreHan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaPhieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenDG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayMuon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HanTra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DaTra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayTra;
     }
 }

@@ -18,14 +18,43 @@ namespace QuanLyThuVienApp
         public frmReportPrintPhieuMuon()
         {
             InitializeComponent();
+            loadFRM();
         }
 
         public frmReportPrintPhieuMuon(int _maPhieu)
         {
-            maPhieu = _maPhieu;
             InitializeComponent();
+            maPhieu = _maPhieu;
+            loadFRM();
         }
 
+        private void loadFRM()
+        {
+            // Lấy thông tin cài đặt trang từ RDLC
+            var pageSettings = reportViewer1.LocalReport.GetDefaultPageSettings();
+
+            // Lấy kích thước giấy (PaperSize) theo inch
+            float widthInch = pageSettings.PaperSize.Width / 100.0f;
+            float heightInch = pageSettings.PaperSize.Height / 100.0f;
+
+            // Chuyển đổi từ inch sang pixel (1 inch = 96 px)
+            int widthPx = (int)(widthInch * 96);
+            int heightPx = (int)(heightInch * 96);
+
+            // Cộng thêm khoảng padding cho vừa khung
+            int padding = 50;
+
+            // Cập nhật kích thước form
+            this.Width = widthPx + padding;
+            this.Height = heightPx + padding;
+
+            // Cập nhật kích thước reportViewer
+            reportViewer1.Width = this.ClientSize.Width;
+            reportViewer1.Height = this.ClientSize.Height;
+
+            // Đặt chế độ zoom
+            reportViewer1.ZoomMode = ZoomMode.FullPage;
+        }
 
         private void frmReportHoaDonPhat_Load(object sender, EventArgs e)
         {
@@ -39,23 +68,22 @@ namespace QuanLyThuVienApp
             }
 
             string trangThai = string.Empty;
-            if (phieuMuon.DaTra == true)
+            if (phieuMuon.HanTra.HasValue &&
+               ((phieuMuon.NgayTra.HasValue && phieuMuon.HanTra.Value.Date < phieuMuon.NgayTra.Value.Date) ||
+                (!phieuMuon.NgayTra.HasValue && phieuMuon.HanTra.Value.Date < DateTime.Now.Date)))
+            {
+                trangThai = "Trễ hạn";
+            }
+            else if (phieuMuon.DaTra == true)
             {
                 trangThai = "Đã trả";
             }
             else
             {
-                if (phieuMuon.HanTra.HasValue && DateTime.Now.Date > phieuMuon.HanTra.Value.Date)
-                {
-                    trangThai = "Trễ hạn";
-                }
-                else
-                {
-                    trangThai = "Chưa trả";
-                }
+                trangThai = "Chưa trả";
             }
 
-            ReportParameter[] para = new ReportParameter[7];
+            ReportParameter[] para = new ReportParameter[9];
             para[0] = new ReportParameter("NguoiIn", phieuMuon.NhanVien.HoTen);
             para[1] = new ReportParameter("HoTenDocGia", phieuMuon.DocGia.HoTen);
             para[2] = new ReportParameter("SDT", phieuMuon.DocGia.SDT.ToString());
@@ -63,6 +91,9 @@ namespace QuanLyThuVienApp
             para[4] = new ReportParameter("NgayMuon", phieuMuon.NgayMuon.Value.ToString("dd/MM/yyyy"));
             para[5] = new ReportParameter("HanTra", phieuMuon.HanTra.Value.ToString("dd/MM/yyyy"));
             para[6] = new ReportParameter("TrangThai", trangThai);
+            para[7] = new ReportParameter("MaPhieu", "MP" + phieuMuon.MaPhieu.ToString());
+            para[8] = new ReportParameter("NgayTra", phieuMuon.NgayTra.HasValue ? phieuMuon.NgayTra.Value.ToString("dd/MM/yyyy"): "Chưa trả");
+
 
             reportViewer1.LocalReport.SetParameters(para);
             this.reportViewer1.RefreshReport();
