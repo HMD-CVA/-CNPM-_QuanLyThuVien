@@ -7,13 +7,13 @@
       <Diagram DiagramId="cceb71d0a2e04949badf966ca362c927" Name="Diagram1">
         <EntityTypeShape EntityType="DB_QLTVModel.ChiTietPhieuMuon" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_QLTVModel.DanhMucTaiLieu" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_QLTVModel.DocGia" Width="1.5" PointX="1.375" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QLTVModel.DocGia" Width="1.5" PointX="0.875" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_QLTVModel.NguoiDung" Width="1.5" PointX="11" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_QLTVModel.NhanVien" Width="1.5" PointX="8.5" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_QLTVModel.NhaXuatBan" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QLTVModel.NhaXuatBan" Width="1.5" PointX="0.625" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_QLTVModel.PhieuMuon" Width="1.5" PointX="4.625" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_QLTVModel.TacGia" Width="1.5" PointX="7.625" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_QLTVModel.TaiLieu" Width="1.5" PointX="4.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_QLTVModel.TaiLieu" Width="1.5" PointX="3.875" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="DB_QLTVModel.FK__ChiTietPhi__MaPM__70DDC3D8" ManuallyRouted="false" />
         <AssociationConnector Association="DB_QLTVModel.FK__ChiTietPhi__MaTL__71D1E811" ManuallyRouted="false" />
         <AssociationConnector Association="DB_QLTVModel.FK__TaiLieu__MaDanhM__5DCAEF64" ManuallyRouted="false" />
