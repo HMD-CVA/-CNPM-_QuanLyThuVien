@@ -184,7 +184,7 @@ namespace QuanLyThuVienApp
                 sach = db.TaiLieux.Where(p => p.DanhMucTaiLieu.TenDanhMuc.Contains(txtTimKiem.Text)).ToList();
 
             dgvSach.DataSource = sach.Select(p => new {
-                MaTaiLieu = "S" + p.MaTaiLieu,
+                MaTaiLieu = "TL" + p.MaTaiLieu,
                 p.TenTaiLieu,
                 p.DanhMucTaiLieu.TenDanhMuc,
                 p.TacGia.TenTG,

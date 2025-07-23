@@ -27,7 +27,7 @@ namespace QuanLyThuVienApp
         {
             QLTVEntities db = new QLTVEntities();
             dgvSach.DataSource = db.TaiLieux.Select(p => new {
-                MaTaiLieu = "S" + p.MaTaiLieu, 
+                MaTaiLieu = "TL" + p.MaTaiLieu, 
                 p.TenTaiLieu, 
                 p.TacGia.TenTG, 
                 p.NhaXuatBan.TenNXB, 
@@ -77,7 +77,7 @@ namespace QuanLyThuVienApp
             List<TaiLieu> sach = new List<TaiLieu>();
 
             if (luaChon == "Mã tài liệu")
-                sach = db.TaiLieux.Where(p => ("S" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
+                sach = db.TaiLieux.Where(p => ("TL" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
             else if (luaChon == "Tên tài liệu")
                 sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
             else if (luaChon == "Tác giả")
@@ -89,7 +89,7 @@ namespace QuanLyThuVienApp
 
             dgvSach.DataSource = sach.Select(p => new
             {
-                MaTaiLieu = "S" + p.MaTaiLieu,
+                MaTaiLieu = "TL" + p.MaTaiLieu,
                 p.TenTaiLieu,
                 p.TacGia.TenTG,
                 p.NhaXuatBan.TenNXB,
@@ -124,6 +124,11 @@ namespace QuanLyThuVienApp
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
             if (txtTimKiem.Text == string.Empty) loadDuLieu();
+        }
+
+        private void d(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

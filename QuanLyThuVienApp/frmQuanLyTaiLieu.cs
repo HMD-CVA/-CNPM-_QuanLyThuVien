@@ -28,7 +28,7 @@ namespace QuanLyThuVienApp
         {
             QLTVEntities db = new QLTVEntities();
             dgvSach.DataSource = db.TaiLieux.Select(p => new {
-                MaTaiLieu = "S" + p.MaTaiLieu,
+                MaTaiLieu = "TL" + p.MaTaiLieu,
                 p.TenTaiLieu,
                 p.DanhMucTaiLieu.TenDanhMuc,
                 p.TacGia.TenTG,
@@ -70,7 +70,7 @@ namespace QuanLyThuVienApp
             TacGia tacGia = db.TacGias.Where(p => p.TenTG == tenTacGia).FirstOrDefault();
             NhaXuatBan nxb = db.NhaXuatBans.Where(p => p.TenNXB == tenNXB).FirstOrDefault();
             DanhMucTaiLieu theLoai = db.DanhMucTaiLieux.Where(p => p.TenDanhMuc == tenTheLoai).FirstOrDefault();
-            TaiLieu taiLieu = db.TaiLieux.Where(p => "S" + p.MaTaiLieu.ToString() == maTL).FirstOrDefault();
+            TaiLieu taiLieu = db.TaiLieux.Where(p => "TL" + p.MaTaiLieu.ToString() == maTL).FirstOrDefault();
 
             txtMaSach.Text = dgvSach.Rows[RowIndex].Cells[0].Value.ToString();
             txtTenSach.Text = dgvSach.Rows[RowIndex].Cells[1].Value.ToString();
@@ -100,7 +100,7 @@ namespace QuanLyThuVienApp
             List<TaiLieu> sach = new List<TaiLieu>();
 
             if (luaChon == "Mã tài liệu")
-                sach = db.TaiLieux.Where(p => ("S" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
+                sach = db.TaiLieux.Where(p => ("TL" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
             else if (luaChon == "Tên tài liệu")
                 sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
             else if (luaChon == "Tác giả")
@@ -112,7 +112,7 @@ namespace QuanLyThuVienApp
 
             dgvSach.DataSource = sach.Select(p => new
             {
-                MaSach = "S" + p.MaTaiLieu,
+                MaSach = "TL" + p.MaTaiLieu,
                 p.TenTaiLieu,
                 p.DanhMucTaiLieu.TenDanhMuc,
                 p.TacGia.TenTG,
@@ -349,7 +349,7 @@ namespace QuanLyThuVienApp
             //    return;
             //}
 
-            TaiLieu sach = db.TaiLieux.Where(p => "S" + p.MaTaiLieu == txtMaSach.Text).FirstOrDefault();
+            TaiLieu sach = db.TaiLieux.Where(p => "TL" + p.MaTaiLieu == txtMaSach.Text).FirstOrDefault();
 
             if (sach.SoTaiLieuMuon != 0)
             {

@@ -43,5 +43,14 @@ namespace QuanLyThuVienApp
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void btnQLPhieuMuon_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmLichSuMuon frm = new frmLichSuMuon();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

@@ -95,7 +95,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(105, 146);
+            this.label5.Location = new System.Drawing.Point(120, 139);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(131, 17);
@@ -124,14 +124,14 @@
             // 
             // lblTimer
             // 
-            this.lblTimer.Location = new System.Drawing.Point(280, 146);
+            this.lblTimer.Location = new System.Drawing.Point(265, 57);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(53, 20);
+            this.lblTimer.Size = new System.Drawing.Size(33, 20);
             this.lblTimer.TabIndex = 10;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(50, 177);
+            this.progressBar1.Location = new System.Drawing.Point(50, 166);
             this.progressBar1.MarqueeAnimationSpeed = 30;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(248, 23);

@@ -30,8 +30,7 @@ namespace QuanLyThuVienApp
             {
                 text = "Tài khoản của bạn đang bị khóa, vui lòng đến thư viện để được xử lý!";
                 tslbThongTin.ForeColor = Color.Red;
-                btnMuonSach.Enabled = false;
-                btnSach.Enabled = false;
+                btnQLPhieuMuon.Enabled = false;
             }
             else if( _biKhoa == false)
             {
@@ -85,15 +84,6 @@ namespace QuanLyThuVienApp
             this.Close();
         }
 
-        private void btnSach_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmTaiLieu frm = new frmTaiLieu();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
         private void btnMuonSach_Click(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
@@ -101,15 +91,6 @@ namespace QuanLyThuVienApp
             frmQuanLyPhieuMuon frm = new frmQuanLyPhieuMuon(maNV, this);
             frm.MdiParent = this;
             frm.Show();
-        }
-
-        private void btnLichSuMuon_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            //frmLichSuMuon frm = new frmLichSuMuon();
-            //frm.MdiParent = this;
-            //frm.Show();
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
@@ -126,6 +107,15 @@ namespace QuanLyThuVienApp
             foreach (Form form in this.MdiChildren)
                 form.Close();
             frmTroGiup frm = new frmTroGiup();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void btnLichSuMuon_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmQuanLyTaiLieu frm = new frmQuanLyTaiLieu();
             frm.MdiParent = this;
             frm.Show();
         }

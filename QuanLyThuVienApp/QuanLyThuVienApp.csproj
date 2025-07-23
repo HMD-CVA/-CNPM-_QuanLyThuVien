@@ -197,6 +197,12 @@
     <Compile Include="frmInfor.Designer.cs">
       <DependentUpon>frmInfor.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLichSuMuon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLichSuMuon.Designer.cs">
+      <DependentUpon>frmLichSuMuon.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMainAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfor.resx">
       <DependentUpon>frmInfor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLichSuMuon.resx">
+      <DependentUpon>frmLichSuMuon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainAdmin.resx">
       <DependentUpon>frmMainAdmin.cs</DependentUpon>

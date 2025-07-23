@@ -13,7 +13,7 @@ namespace QuanLyThuVienApp
     public partial class frmXacThuc : MetroFramework.Forms.MetroForm
     {
         private Timer countdownTimer;
-        private int remainingSeconds = 30;
+        private int remainingSeconds = 45;
         private int ID;
         private bool kiemTra = false;
         private readonly Action<bool> callback;
@@ -68,10 +68,11 @@ namespace QuanLyThuVienApp
 
         private void frmXacNhanOTP_Load(object sender, EventArgs e)
         {
+            MessageBox.Show("Vui lòng xác thực tài khoản của bạn thông qua Email trước khi sử dụng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             countdownTimer = new Timer();
             countdownTimer.Interval = 1000; // 1 giây
             countdownTimer.Tick += CountdownTimer_Tick;
-            startTimer(30);
+            startTimer(remainingSeconds);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -97,7 +98,7 @@ namespace QuanLyThuVienApp
                 db.SaveChanges();
             });
             HideLoading();
-            startTimer(30);
+            startTimer(remainingSeconds);
         }
 
         private void btnXacThuc_Click(object sender, EventArgs e)

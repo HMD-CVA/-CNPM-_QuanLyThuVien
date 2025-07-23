@@ -217,6 +217,7 @@
             this.Name = "frmDangNhap";
             this.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
             this.Resizable = false;
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmDangNhap_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

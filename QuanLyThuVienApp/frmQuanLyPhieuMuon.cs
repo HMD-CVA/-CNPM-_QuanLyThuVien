@@ -142,7 +142,7 @@ namespace QuanLyThuVienApp
                 HoTenNV = (p.MaNV == null) ? "" : p.NhanVien.HoTen, 
                 p.NgayMuon,
                 p.HanTra,
-                DaTra = (p.DaTra == true) ? "Đã trả" : "Chưa trả",
+                DaTra = (p.HanTra.Value.Date < DateTime.Now.Date) ? "Trễ hạn" : "Đã trả",
                 NgayTra = (p.DaTra == true) ? p.NgayTra : null
             }).ToList();
         }
@@ -466,6 +466,11 @@ namespace QuanLyThuVienApp
                 form.Close();
             frmMuonTaiLieu frm = new frmMuonTaiLieu(maNV);
             frm.MdiParent = frmMainUser;
+            
+            frm.FormClosed += (s, args) =>
+            {
+                loadPhieuMuon(); // Gọi lại hàm load dữ liệu
+            };
             frm.Show();
         }
 
@@ -488,6 +493,7 @@ namespace QuanLyThuVienApp
             frmReportPrintPhieuMuon frm = new frmReportPrintPhieuMuon(maPhieu);
             frm.Owner = this;
             frm.ShowDialog();
+            
         }
     }
 }

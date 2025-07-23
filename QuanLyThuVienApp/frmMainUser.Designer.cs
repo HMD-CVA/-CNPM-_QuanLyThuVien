@@ -42,13 +42,11 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnThongKe = new FontAwesome.Sharp.IconButton();
-            this.btnSach = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnQLPhieuMuon = new FontAwesome.Sharp.IconButton();
             this.btnLichSuMuon = new FontAwesome.Sharp.IconButton();
-            this.btnMuonSach = new FontAwesome.Sharp.IconButton();
             this.metroPanel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +80,7 @@
             this.btnCaNhan.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCaNhan.IconSize = 24;
             this.btnCaNhan.Location = new System.Drawing.Point(984, 0);
-            this.btnCaNhan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCaNhan.Margin = new System.Windows.Forms.Padding(2);
             this.btnCaNhan.Name = "btnCaNhan";
             this.btnCaNhan.Size = new System.Drawing.Size(28, 28);
             this.btnCaNhan.TabIndex = 3;
@@ -102,7 +100,7 @@
             this.btnDangXuat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDangXuat.IconSize = 25;
             this.btnDangXuat.Location = new System.Drawing.Point(1021, 0);
-            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(28, 28);
             this.btnDangXuat.TabIndex = 4;
@@ -142,7 +140,7 @@
             this.btnInfor.Location = new System.Drawing.Point(34, 0);
             this.btnInfor.Margin = new System.Windows.Forms.Padding(38, 41, 38, 41);
             this.btnInfor.Name = "btnInfor";
-            this.btnInfor.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.btnInfor.Padding = new System.Windows.Forms.Padding(8);
             this.btnInfor.Size = new System.Drawing.Size(28, 28);
             this.btnInfor.TabIndex = 6;
             this.btnInfor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -157,7 +155,7 @@
             this.btnTroGiup.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnTroGiup.IconSize = 25;
             this.btnTroGiup.Location = new System.Drawing.Point(0, 0);
-            this.btnTroGiup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTroGiup.Margin = new System.Windows.Forms.Padding(2);
             this.btnTroGiup.Name = "btnTroGiup";
             this.btnTroGiup.Size = new System.Drawing.Size(28, 28);
             this.btnTroGiup.TabIndex = 5;
@@ -194,8 +192,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.AliceBlue;
-            this.panel1.Controls.Add(this.btnThongKe);
-            this.panel1.Controls.Add(this.btnSach);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(8, 64);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -207,15 +203,15 @@
             // 
             this.btnThongKe.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnThongKe.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnThongKe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThongKe.IconChar = FontAwesome.Sharp.IconChar.ChartSimple;
             this.btnThongKe.IconColor = System.Drawing.Color.Black;
             this.btnThongKe.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnThongKe.IconSize = 40;
             this.btnThongKe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnThongKe.Location = new System.Drawing.Point(127, 0);
-            this.btnThongKe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThongKe.Location = new System.Drawing.Point(0, 134);
+            this.btnThongKe.Margin = new System.Windows.Forms.Padding(2);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.btnThongKe.Size = new System.Drawing.Size(127, 67);
@@ -225,40 +221,41 @@
             this.btnThongKe.UseVisualStyleBackColor = false;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
-            // btnSach
-            // 
-            this.btnSach.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnSach.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnSach.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSach.IconChar = FontAwesome.Sharp.IconChar.Book;
-            this.btnSach.IconColor = System.Drawing.Color.Black;
-            this.btnSach.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnSach.IconSize = 40;
-            this.btnSach.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSach.Location = new System.Drawing.Point(0, 0);
-            this.btnSach.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnSach.Name = "btnSach";
-            this.btnSach.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.btnSach.Size = new System.Drawing.Size(127, 67);
-            this.btnSach.TabIndex = 0;
-            this.btnSach.Text = "Thông tin tài liệu";
-            this.btnSach.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSach.UseVisualStyleBackColor = false;
-            this.btnSach.Click += new System.EventHandler(this.btnSach_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel2.Controls.Add(this.btnThongKe);
+            this.panel2.Controls.Add(this.btnQLPhieuMuon);
             this.panel2.Controls.Add(this.btnLichSuMuon);
-            this.panel2.Controls.Add(this.btnMuonSach);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(8, 131);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(127, 481);
             this.panel2.TabIndex = 4;
+            // 
+            // btnQLPhieuMuon
+            // 
+            this.btnQLPhieuMuon.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnQLPhieuMuon.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnQLPhieuMuon.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQLPhieuMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLPhieuMuon.IconChar = FontAwesome.Sharp.IconChar.Bookmark;
+            this.btnQLPhieuMuon.IconColor = System.Drawing.Color.Black;
+            this.btnQLPhieuMuon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnQLPhieuMuon.IconSize = 40;
+            this.btnQLPhieuMuon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLPhieuMuon.Location = new System.Drawing.Point(0, 67);
+            this.btnQLPhieuMuon.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQLPhieuMuon.Name = "btnQLPhieuMuon";
+            this.btnQLPhieuMuon.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.btnQLPhieuMuon.Size = new System.Drawing.Size(127, 67);
+            this.btnQLPhieuMuon.TabIndex = 1;
+            this.btnQLPhieuMuon.Text = "            Quản lý\r\n              phiếu \r\n              mượn";
+            this.btnQLPhieuMuon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLPhieuMuon.UseVisualStyleBackColor = false;
+            this.btnQLPhieuMuon.Click += new System.EventHandler(this.btnMuonSach_Click);
             // 
             // btnLichSuMuon
             // 
@@ -266,43 +263,21 @@
             this.btnLichSuMuon.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnLichSuMuon.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLichSuMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLichSuMuon.IconChar = FontAwesome.Sharp.IconChar.History;
+            this.btnLichSuMuon.IconChar = FontAwesome.Sharp.IconChar.Book;
             this.btnLichSuMuon.IconColor = System.Drawing.Color.Black;
             this.btnLichSuMuon.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLichSuMuon.IconSize = 40;
             this.btnLichSuMuon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLichSuMuon.Location = new System.Drawing.Point(0, 67);
-            this.btnLichSuMuon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLichSuMuon.Location = new System.Drawing.Point(0, 0);
+            this.btnLichSuMuon.Margin = new System.Windows.Forms.Padding(2);
             this.btnLichSuMuon.Name = "btnLichSuMuon";
             this.btnLichSuMuon.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.btnLichSuMuon.Size = new System.Drawing.Size(127, 67);
             this.btnLichSuMuon.TabIndex = 3;
-            this.btnLichSuMuon.Text = "            Lịch sử\r\n            mượn";
+            this.btnLichSuMuon.Text = "            Quản lý\r\n             tài liệu";
             this.btnLichSuMuon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLichSuMuon.UseVisualStyleBackColor = false;
             this.btnLichSuMuon.Click += new System.EventHandler(this.btnLichSuMuon_Click);
-            // 
-            // btnMuonSach
-            // 
-            this.btnMuonSach.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnMuonSach.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnMuonSach.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMuonSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMuonSach.IconChar = FontAwesome.Sharp.IconChar.Bookmark;
-            this.btnMuonSach.IconColor = System.Drawing.Color.Black;
-            this.btnMuonSach.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMuonSach.IconSize = 40;
-            this.btnMuonSach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMuonSach.Location = new System.Drawing.Point(0, 0);
-            this.btnMuonSach.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnMuonSach.Name = "btnMuonSach";
-            this.btnMuonSach.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.btnMuonSach.Size = new System.Drawing.Size(127, 67);
-            this.btnMuonSach.TabIndex = 1;
-            this.btnMuonSach.Text = "            Mượn\r\n            tài liệu";
-            this.btnMuonSach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMuonSach.UseVisualStyleBackColor = false;
-            this.btnMuonSach.Click += new System.EventHandler(this.btnMuonSach_Click);
             // 
             // frmMainUser
             // 
@@ -317,7 +292,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmMainUser";
             this.Padding = new System.Windows.Forms.Padding(8, 30, 8, 8);
@@ -329,7 +304,6 @@
             this.metroPanel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -350,10 +324,9 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private FontAwesome.Sharp.IconButton btnLichSuMuon;
-        private FontAwesome.Sharp.IconButton btnMuonSach;
+        private FontAwesome.Sharp.IconButton btnQLPhieuMuon;
         private FontAwesome.Sharp.IconButton btnThongKe;
-        private FontAwesome.Sharp.IconButton btnSach;
+        private FontAwesome.Sharp.IconButton btnLichSuMuon;
     }
 }
 
