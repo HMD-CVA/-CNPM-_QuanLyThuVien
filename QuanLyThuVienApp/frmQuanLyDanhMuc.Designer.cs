@@ -48,17 +48,17 @@
             this.btnTim = new FontAwesome.Sharp.IconButton();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvTheLoai = new System.Windows.Forms.DataGridView();
+            this.MaDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViTri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuongTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMoTa = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtShowMoTa = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.MaDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ViTri = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuongTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTheLoai)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +71,7 @@
             this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLamMoi.IconSize = 19;
             this.btnLamMoi.Location = new System.Drawing.Point(273, 111);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(24, 23);
             this.btnLamMoi.TabIndex = 53;
@@ -88,7 +88,7 @@
             "Tên danh mục",
             "Vị trí danh mục"});
             this.cbTim.Location = new System.Drawing.Point(114, 74);
-            this.cbTim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbTim.Margin = new System.Windows.Forms.Padding(2);
             this.cbTim.Name = "cbTim";
             this.cbTim.Size = new System.Drawing.Size(118, 25);
             this.cbTim.TabIndex = 52;
@@ -97,7 +97,7 @@
             // 
             this.txtViTri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtViTri.Location = new System.Drawing.Point(572, 97);
-            this.txtViTri.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtViTri.Margin = new System.Windows.Forms.Padding(2);
             this.txtViTri.Name = "txtViTri";
             this.txtViTri.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtViTri.Size = new System.Drawing.Size(200, 23);
@@ -141,7 +141,7 @@
             this.btnXoa.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.Location = new System.Drawing.Point(676, 375);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(60, 25);
             this.btnXoa.TabIndex = 46;
@@ -154,7 +154,7 @@
             this.btnSua.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.Location = new System.Drawing.Point(612, 375);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(60, 25);
             this.btnSua.TabIndex = 45;
@@ -167,7 +167,7 @@
             this.btnThem.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThem.Location = new System.Drawing.Point(637, 183);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(61, 25);
             this.btnThem.TabIndex = 47;
@@ -179,7 +179,7 @@
             // 
             this.txtShowViTri.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtShowViTri.Location = new System.Drawing.Point(572, 290);
-            this.txtShowViTri.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtShowViTri.Margin = new System.Windows.Forms.Padding(2);
             this.txtShowViTri.Name = "txtShowViTri";
             this.txtShowViTri.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtShowViTri.Size = new System.Drawing.Size(200, 23);
@@ -189,7 +189,7 @@
             // 
             this.txtTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTen.Location = new System.Drawing.Point(572, 259);
-            this.txtTen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(200, 23);
             this.txtTen.TabIndex = 43;
@@ -198,7 +198,7 @@
             // 
             this.txtMa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMa.Location = new System.Drawing.Point(572, 221);
-            this.txtMa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMa.Margin = new System.Windows.Forms.Padding(2);
             this.txtMa.Name = "txtMa";
             this.txtMa.ReadOnly = true;
             this.txtMa.Size = new System.Drawing.Size(200, 23);
@@ -208,7 +208,7 @@
             // 
             this.txtTenTL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenTL.Location = new System.Drawing.Point(572, 60);
-            this.txtTenTL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenTL.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenTL.Name = "txtTenTL";
             this.txtTenTL.Size = new System.Drawing.Size(200, 23);
             this.txtTenTL.TabIndex = 41;
@@ -217,7 +217,7 @@
             // 
             this.txtTim.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTim.Location = new System.Drawing.Point(17, 111);
-            this.txtTim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTim.Margin = new System.Windows.Forms.Padding(2);
             this.txtTim.Name = "txtTim";
             this.txtTim.Size = new System.Drawing.Size(215, 23);
             this.txtTim.TabIndex = 40;
@@ -242,7 +242,7 @@
             this.btnTim.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnTim.IconSize = 19;
             this.btnTim.Location = new System.Drawing.Point(243, 111);
-            this.btnTim.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTim.Margin = new System.Windows.Forms.Padding(2);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(24, 24);
             this.btnTim.TabIndex = 37;
@@ -290,7 +290,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTheLoai.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTheLoai.Location = new System.Drawing.Point(17, 166);
-            this.dgvTheLoai.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvTheLoai.Margin = new System.Windows.Forms.Padding(2);
             this.dgvTheLoai.MultiSelect = false;
             this.dgvTheLoai.Name = "dgvTheLoai";
             this.dgvTheLoai.ReadOnly = true;
@@ -300,6 +300,50 @@
             this.dgvTheLoai.Size = new System.Drawing.Size(408, 234);
             this.dgvTheLoai.TabIndex = 35;
             this.dgvTheLoai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTheLoai_CellClick);
+            // 
+            // MaDanhMuc
+            // 
+            this.MaDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MaDanhMuc.DataPropertyName = "MaDanhMuc";
+            this.MaDanhMuc.HeaderText = "Mã";
+            this.MaDanhMuc.MinimumWidth = 6;
+            this.MaDanhMuc.Name = "MaDanhMuc";
+            this.MaDanhMuc.ReadOnly = true;
+            this.MaDanhMuc.Width = 51;
+            // 
+            // TenDanhMuc
+            // 
+            this.TenDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
+            this.TenDanhMuc.HeaderText = "Tên Danh Mục";
+            this.TenDanhMuc.MinimumWidth = 6;
+            this.TenDanhMuc.Name = "TenDanhMuc";
+            this.TenDanhMuc.ReadOnly = true;
+            // 
+            // ViTri
+            // 
+            this.ViTri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ViTri.DataPropertyName = "ViTri";
+            this.ViTri.HeaderText = "Vị Trí";
+            this.ViTri.MinimumWidth = 6;
+            this.ViTri.Name = "ViTri";
+            this.ViTri.ReadOnly = true;
+            this.ViTri.Width = 59;
+            // 
+            // SoLuongTL
+            // 
+            this.SoLuongTL.DataPropertyName = "SoLuongTL";
+            this.SoLuongTL.HeaderText = "Số lượng tài liệu";
+            this.SoLuongTL.Name = "SoLuongTL";
+            this.SoLuongTL.ReadOnly = true;
+            // 
+            // MoTa
+            // 
+            this.MoTa.DataPropertyName = "MoTa";
+            this.MoTa.HeaderText = "Mô tả";
+            this.MoTa.Name = "MoTa";
+            this.MoTa.ReadOnly = true;
+            this.MoTa.Visible = false;
             // 
             // label7
             // 
@@ -320,9 +364,9 @@
             this.label1.Location = new System.Drawing.Point(301, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 20);
+            this.label1.Size = new System.Drawing.Size(199, 20);
             this.label1.TabIndex = 34;
-            this.label1.Text = "DANH tài liệu THỂ LOẠI";
+            this.label1.Text = "DANH SÁCH THỂ LOẠI";
             // 
             // txtMoTa
             // 
@@ -368,51 +412,7 @@
             this.label9.TabIndex = 56;
             this.label9.Text = "Mô tả";
             // 
-            // MaDanhMuc
-            // 
-            this.MaDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MaDanhMuc.DataPropertyName = "MaDanhMuc";
-            this.MaDanhMuc.HeaderText = "Mã";
-            this.MaDanhMuc.MinimumWidth = 6;
-            this.MaDanhMuc.Name = "MaDanhMuc";
-            this.MaDanhMuc.ReadOnly = true;
-            this.MaDanhMuc.Width = 51;
-            // 
-            // TenDanhMuc
-            // 
-            this.TenDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
-            this.TenDanhMuc.HeaderText = "Tên Danh Mục";
-            this.TenDanhMuc.MinimumWidth = 6;
-            this.TenDanhMuc.Name = "TenDanhMuc";
-            this.TenDanhMuc.ReadOnly = true;
-            // 
-            // ViTri
-            // 
-            this.ViTri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ViTri.DataPropertyName = "ViTri";
-            this.ViTri.HeaderText = "Vị Trí";
-            this.ViTri.MinimumWidth = 6;
-            this.ViTri.Name = "ViTri";
-            this.ViTri.ReadOnly = true;
-            this.ViTri.Width = 63;
-            // 
-            // SoLuongTL
-            // 
-            this.SoLuongTL.DataPropertyName = "SoLuongTL";
-            this.SoLuongTL.HeaderText = "Số lượng tài liệu";
-            this.SoLuongTL.Name = "SoLuongTL";
-            this.SoLuongTL.ReadOnly = true;
-            // 
-            // MoTa
-            // 
-            this.MoTa.DataPropertyName = "MoTa";
-            this.MoTa.HeaderText = "Mô tả";
-            this.MoTa.Name = "MoTa";
-            this.MoTa.ReadOnly = true;
-            this.MoTa.Visible = false;
-            // 
-            // frmDanhMuc
+            // frmQuanLyDanhMuc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -442,10 +442,10 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
             this.DisplayHeader = false;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmDanhMuc";
+            this.Name = "frmQuanLyDanhMuc";
             this.Padding = new System.Windows.Forms.Padding(15, 30, 15, 16);
             this.Resizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
