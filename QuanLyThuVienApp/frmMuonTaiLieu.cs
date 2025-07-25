@@ -258,6 +258,7 @@ namespace QuanLyThuVienApp
             );
 
             if (result == DialogResult.No) return;
+
             DocGia DG = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
             PhieuMuon phieuMuon = new PhieuMuon();
             phieuMuon.MaDG = DG.MaDocGia;
@@ -342,10 +343,8 @@ namespace QuanLyThuVienApp
                   @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
                   @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
             Regex re = new Regex(strRegex);
-            if (re.IsMatch(inputEmail))
-                return (true);
-            else
-                return (false);
+            if (re.IsMatch(inputEmail)) return (true);
+            else return (false);
         }
     }
 }

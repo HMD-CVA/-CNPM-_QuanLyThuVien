@@ -61,9 +61,10 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmCaNhan frm = new frmCaNhan(tenDN, quyenHan);
-            frm.MdiParent = this;
-            frm.Show();
+            frmDangNhap frm = new frmDangNhap();
+            this.Hide();
+            frm.ShowDialog();
+            this.Close();
         }
 
         private void btnGioiThieu_Click(object sender, EventArgs e)
@@ -77,10 +78,15 @@ namespace QuanLyThuVienApp
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            frmDangNhap frm = new frmDangNhap();
-            this.Hide();
-            frm.ShowDialog();
-            this.Close();
+            DialogResult result = MessageBox.Show(
+               "Bạn có muốn thoát không?",
+               "Thông báo!",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No) return;
+            Application.Exit();
         }
 
         private void btnSach_Click(object sender, EventArgs e)

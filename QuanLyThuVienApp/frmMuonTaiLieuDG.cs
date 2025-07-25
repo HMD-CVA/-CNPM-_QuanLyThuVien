@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace QuanLyThuVienApp
 {
     public partial class frmMuonTaiLieuDG : Form
     {
-        private List<(int, int)> listTL = new List<(int, int)>(frmTaiLieuDG.taiLieusMuon);
+        private List<(int, int)> listTL = new List<(int, int)>();
         public frmMuonTaiLieuDG()
         {
             InitializeComponent();
@@ -20,6 +21,7 @@ namespace QuanLyThuVienApp
      
         private void frmMuonSach_Load(object sender, EventArgs e)
         {
+            listTL = frmTaiLieuDG.taiLieusMuon;
             loadDuLieu();
         }
         
@@ -51,6 +53,7 @@ namespace QuanLyThuVienApp
         private void HienThiDuLieu(int RowIndex)
         {
             //int soLuongSachCon = int.Parse(dgvSachMuon.Rows[RowIndex].Cells["SoLuong"].Value.ToString()) - int.Parse(dgvSachMuon.Rows[RowIndex].Cells["SoTaiLieuMuon"].Value.ToString());
+            if (listTL.Count == 0) { return; }
 
             txtMaSach.Text = dgvSachMuon.Rows[RowIndex].Cells["MaTaiLieu"].Value.ToString();
             txtTenSach.Text = dgvSachMuon.Rows[RowIndex].Cells["TenTaiLieu"].Value.ToString();
@@ -135,77 +138,166 @@ namespace QuanLyThuVienApp
 
         private void btnXoaHet_Click(object sender, EventArgs e)
         {
+            frmTaiLieuDG.taiLieusMuon.Clear();
+            listTL.Clear();
             dgvSachMuon.Rows.Clear();
         }
-
+        private bool isEmail(string inputEmail)
+        {
+            inputEmail = inputEmail ?? string.Empty;
+            string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                  @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                  @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            Regex re = new Regex(strRegex);
+            if (re.IsMatch(inputEmail)) return (true);
+            else return (false);
+        }
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-           // if (dgvSachMuon.Rows.Count == 0) return;
+            if (dgvSachMuon.Rows.Count == 0)
+            {
+                MessageBox.Show("Hãy đăng ký tài liệu để mượn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string emailDG = txtEmail.Text.Trim();
 
-           // DialogResult result = MessageBox.Show(
-           //    "Bạn có muốn đăng ký mượn sách không?",
-           //    "Thông báo!",
-           //    MessageBoxButtons.YesNo,
-           //    MessageBoxIcon.Question
-           //);
+            if (string.IsNullOrEmpty(emailDG))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-           // if (result == DialogResult.No) return;
+            if (!isEmail(emailDG))
+            {
+                MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-           // QLTVEntities db = new QLTVEntities();
-           // NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == frmMainUser.ID).SingleOrDefault();
-           // int soLuongMuon = 0;
+            QLTVEntities db = new QLTVEntities();
+            DocGia dg = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
+            if (dg == null)
+            {
+                using (frmDangKy frm = new frmDangKy(emailDG))
+                {
+                    DialogResult resultB = frm.ShowDialog(this);
 
-           // foreach (DataGridViewRow row in dgvSachMuon.Rows)
-           //     soLuongMuon += int.Parse(row.Cells["SoLuong2"].Value.ToString());
+                    if (!frm.checkDK)
+                    {
+                        MessageBox.Show("Đăng ký thất bại hoặc đã bị hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtEmail.Focus();
+                        return;
+                    }
+                }
+            }
 
-           // if(soLuongMuon + nguoiDung.SoSachMuon > 10)
-           // {
-           //     MessageBox.Show("Quá giới hạn sách có thể mượn! (" + soLuongMuon + "/" + (10 - nguoiDung.SoSachMuon.Value) + ")", "Thông báo!"
-           //         , MessageBoxButtons.OK, MessageBoxIcon.Error);
-           //     return;
-           // }
-           // /*
-           //  Lưu phiếu mượn
-           //  */
-           // PhieuMuon phieuMuon = new PhieuMuon();
+            DialogResult result = MessageBox.Show(
+               "Bạn có muốn đăng ký mượn sách không?",
+               "Thông báo!",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question
+           );
 
-           // phieuMuon.IDBanDoc = nguoiDung.ID;
-           // phieuMuon.NgayDangKyMuon = DateTime.Now;
-           // ////////////////////////////////
-           // // 0: chờ đến thư viện lấy sách
-           // // 1: đang mượn
-           // // 2: đã trả
-           // // -1: quá hạn
-           // ////////////////////////////////
-           // phieuMuon.TrangThai = 0;  
-           // db.PhieuMuons.Add(phieuMuon);
+            if (result == DialogResult.No) return;
 
-           // /*
-           //  Lưu phiếu chi tiết, cập nhật số lượng sách
-           //  */
+            DocGia DG = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
+            PhieuMuon phieuMuon = new PhieuMuon();
+            phieuMuon.MaDG = DG.MaDocGia;
+            phieuMuon.MaNV = null; // ???????????????
+            phieuMuon.NgayMuon = null;
+            phieuMuon.HanTra = null;
+            phieuMuon.DaTra = false;
+            phieuMuon.NgayTra = null;
+            db.PhieuMuons.Add(phieuMuon);
+            db.SaveChanges();
 
-           // foreach(DataGridViewRow row in dgvSachMuon.Rows)
-           // {
-           //     ChiTietPhieuMuon chiTiet = new ChiTietPhieuMuon();
-           //     chiTiet.MaPhieu = phieuMuon.MaPhieu;
-           //     chiTiet.IDSach = int.Parse(row.Cells["MaSach2"].Value.ToString().Substring(1));
-           //     chiTiet.SoLuong = int.Parse(row.Cells["SoLuong2"].Value.ToString());
-           //     db.ChiTietPhieuMuons.Add(chiTiet);
+            // Chưa Add chi tiết phiếu mượn nhe
+            foreach (DataGridViewRow row in dgvSachMuon.Rows)
+            {
+                if (row.IsNewRow) continue; // Bỏ qua dòng trống cuối
 
-           //     Sach sach = db.Saches.Where(p => p.ID == chiTiet.IDSach).SingleOrDefault();
-           //     sach.SoSachMuon += chiTiet.SoLuong;
-           // }
+                string maTLString = row.Cells["MaTaiLieu"].Value.ToString();
+                int maTL = int.Parse(maTLString.Substring(2));
 
-           // nguoiDung.SoSachMuon += soLuongMuon;
-           // db.SaveChanges();
+                int soLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
 
-           // // Tạm tắt event CellValidating để clear dgv
-           // dgvSachMuon.CellValidating -= dgvSachMuon_CellValidating;
-           // dgvSachMuon.Rows.Clear();
-           // dgvSachMuon.CellValidating += dgvSachMuon_CellValidating;
+                ChiTietPhieuMuon chiTietPM = new ChiTietPhieuMuon();
+                chiTietPM.MaPM = phieuMuon.MaPhieu;
+                chiTietPM.MaTL = maTL;
+                chiTietPM.SoLuong = soLuong;
+                db.ChiTietPhieuMuons.Add(chiTietPM);
 
-           // loadDuLieu();
-           // MessageBox.Show("Đăng ký mượn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == chiTietPM.MaTL).SingleOrDefault();
+                tl.SoTaiLieuMuon += chiTietPM.SoLuong;
+            }
+            db.SaveChanges();
+
+            frmTaiLieuDG.taiLieusMuon.Clear();
+            listTL.Clear(); 
+            //dgvSachMuon.DataSource = listTL; // Ngắt binding
+            //dgvSachMuon.Rows.Clear();      // Giờ mới được xóa
+
+            // QLTVEntities db = new QLTVEntities();
+            // NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == frmMainUser.ID).SingleOrDefault();
+            // int soLuongMuon = 0;
+
+            // foreach (DataGridViewRow row in dgvSachMuon.Rows)
+            //     soLuongMuon += int.Parse(row.Cells["SoLuong2"].Value.ToString());
+
+            // if(soLuongMuon + nguoiDung.SoSachMuon > 10)
+            // {
+            //     MessageBox.Show("Quá giới hạn sách có thể mượn! (" + soLuongMuon + "/" + (10 - nguoiDung.SoSachMuon.Value) + ")", "Thông báo!"
+            //         , MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //     return;
+            // }
+            // /*
+            //  Lưu phiếu mượn
+            //  */
+            // PhieuMuon phieuMuon = new PhieuMuon();
+
+            // phieuMuon.IDBanDoc = nguoiDung.ID;
+            // phieuMuon.NgayDangKyMuon = DateTime.Now;
+            // ////////////////////////////////
+            // // 0: chờ đến thư viện lấy sách
+            // // 1: đang mượn
+            // // 2: đã trả
+            // // -1: quá hạn
+            // ////////////////////////////////
+            // phieuMuon.TrangThai = 0;  
+            // db.PhieuMuons.Add(phieuMuon);
+
+            // /*
+            //  Lưu phiếu chi tiết, cập nhật số lượng sách
+            //  */
+
+            // foreach(DataGridViewRow row in dgvSachMuon.Rows)
+            // {
+            //     ChiTietPhieuMuon chiTiet = new ChiTietPhieuMuon();
+            //     chiTiet.MaPhieu = phieuMuon.MaPhieu;
+            //     chiTiet.IDSach = int.Parse(row.Cells["MaSach2"].Value.ToString().Substring(1));
+            //     chiTiet.SoLuong = int.Parse(row.Cells["SoLuong2"].Value.ToString());
+            //     db.ChiTietPhieuMuons.Add(chiTiet);
+
+            //     Sach sach = db.Saches.Where(p => p.ID == chiTiet.IDSach).SingleOrDefault();
+            //     sach.SoSachMuon += chiTiet.SoLuong;
+            // }
+
+            // nguoiDung.SoSachMuon += soLuongMuon;
+            // db.SaveChanges();
+
+            // // Tạm tắt event CellValidating để clear dgv
+            // dgvSachMuon.CellValidating -= dgvSachMuon_CellValidating;
+            // dgvSachMuon.Rows.Clear();
+            // dgvSachMuon.CellValidating += dgvSachMuon_CellValidating;
+
+            //dgvSachMuon.CellValidating -= dgvSachMuon_CellValidating;
+            //dgvSachMuon.Rows.Clear();
+            //dgvSachMuon.CellValidating += dgvSachMuon_CellValidating;
+
+            txtEmail.Text = string.Empty;
+
+            loadDuLieu();
+            MessageBox.Show("Đăng ký mượn thành công!\nVui lòng đến gặp thủ thư trong vòng 15' để nhận được phiếu mượn," +
+                " nếu quá thời gian thì phiếu mượn sẽ tự động bị huỷ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void dgvSachMuon_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
