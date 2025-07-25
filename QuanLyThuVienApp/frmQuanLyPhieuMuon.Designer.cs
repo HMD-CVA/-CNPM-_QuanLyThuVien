@@ -52,13 +52,6 @@
             this.radioPhieuTra = new System.Windows.Forms.RadioButton();
             this.radioPhieuMuon = new System.Windows.Forms.RadioButton();
             this.dgvPhieuMuon = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnMuonMoi = new System.Windows.Forms.Button();
-            this.btnGiaHan = new System.Windows.Forms.Button();
-            this.btnTraSach = new System.Windows.Forms.Button();
-            this.lbTienPhat1 = new System.Windows.Forms.Label();
-            this.lbTienPhat2 = new System.Windows.Forms.Label();
-            this.btnHoaDonPhat = new System.Windows.Forms.Button();
             this.MaPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTenDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +59,13 @@
             this.HanTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnMuonMoi = new System.Windows.Forms.Button();
+            this.btnGiaHan = new System.Windows.Forms.Button();
+            this.btnTraSach = new System.Windows.Forms.Button();
+            this.lbTienPhat1 = new System.Windows.Forms.Label();
+            this.lbTienPhat2 = new System.Windows.Forms.Label();
+            this.btnHoaDonPhat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietPM)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupPhieuTra.SuspendLayout();
@@ -374,93 +374,6 @@
             this.dgvPhieuMuon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuMuon_CellClick);
             this.dgvPhieuMuon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhieuMuon_CellFormatting);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(238, 9);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(179, 17);
-            this.label2.TabIndex = 38;
-            this.label2.Text = "DANH SÁCH PHIẾU MƯỢN";
-            // 
-            // btnMuonMoi
-            // 
-            this.btnMuonMoi.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnMuonMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMuonMoi.Location = new System.Drawing.Point(118, 226);
-            this.btnMuonMoi.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMuonMoi.Name = "btnMuonMoi";
-            this.btnMuonMoi.Size = new System.Drawing.Size(106, 25);
-            this.btnMuonMoi.TabIndex = 40;
-            this.btnMuonMoi.Text = "Mượn mới";
-            this.btnMuonMoi.UseVisualStyleBackColor = false;
-            this.btnMuonMoi.Click += new System.EventHandler(this.btnMuonMoi_Click);
-            // 
-            // btnGiaHan
-            // 
-            this.btnGiaHan.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnGiaHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGiaHan.Location = new System.Drawing.Point(348, 226);
-            this.btnGiaHan.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGiaHan.Name = "btnGiaHan";
-            this.btnGiaHan.Size = new System.Drawing.Size(106, 25);
-            this.btnGiaHan.TabIndex = 41;
-            this.btnGiaHan.Text = "Gia hạn";
-            this.btnGiaHan.UseVisualStyleBackColor = false;
-            this.btnGiaHan.Click += new System.EventHandler(this.btnGiaHan_Click);
-            // 
-            // btnTraSach
-            // 
-            this.btnTraSach.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTraSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraSach.Location = new System.Drawing.Point(228, 226);
-            this.btnTraSach.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTraSach.Name = "btnTraSach";
-            this.btnTraSach.Size = new System.Drawing.Size(116, 25);
-            this.btnTraSach.TabIndex = 41;
-            this.btnTraSach.Text = "Trả phiếu mượn";
-            this.btnTraSach.UseVisualStyleBackColor = false;
-            this.btnTraSach.Click += new System.EventHandler(this.btnTraSach_Click);
-            // 
-            // lbTienPhat1
-            // 
-            this.lbTienPhat1.AutoSize = true;
-            this.lbTienPhat1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTienPhat1.ForeColor = System.Drawing.Color.Red;
-            this.lbTienPhat1.Location = new System.Drawing.Point(266, 256);
-            this.lbTienPhat1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbTienPhat1.Name = "lbTienPhat1";
-            this.lbTienPhat1.Size = new System.Drawing.Size(76, 17);
-            this.lbTienPhat1.TabIndex = 42;
-            this.lbTienPhat1.Text = "Tiền phạt: ";
-            // 
-            // lbTienPhat2
-            // 
-            this.lbTienPhat2.AutoSize = true;
-            this.lbTienPhat2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTienPhat2.ForeColor = System.Drawing.Color.Red;
-            this.lbTienPhat2.Location = new System.Drawing.Point(336, 256);
-            this.lbTienPhat2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbTienPhat2.Name = "lbTienPhat2";
-            this.lbTienPhat2.Size = new System.Drawing.Size(49, 17);
-            this.lbTienPhat2.TabIndex = 42;
-            this.lbTienPhat2.Text = "0 VNĐ";
-            // 
-            // btnHoaDonPhat
-            // 
-            this.btnHoaDonPhat.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnHoaDonPhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHoaDonPhat.Location = new System.Drawing.Point(458, 226);
-            this.btnHoaDonPhat.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHoaDonPhat.Name = "btnHoaDonPhat";
-            this.btnHoaDonPhat.Size = new System.Drawing.Size(106, 25);
-            this.btnHoaDonPhat.TabIndex = 41;
-            this.btnHoaDonPhat.Text = "In phiếu mượn";
-            this.btnHoaDonPhat.UseVisualStyleBackColor = false;
-            this.btnHoaDonPhat.Click += new System.EventHandler(this.btnHoaDonPhat_Click);
-            // 
             // MaPhieu
             // 
             this.MaPhieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -526,6 +439,93 @@
             this.NgayTra.Name = "NgayTra";
             this.NgayTra.ReadOnly = true;
             this.NgayTra.Width = 83;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(238, 9);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(179, 17);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "DANH SÁCH PHIẾU MƯỢN";
+            // 
+            // btnMuonMoi
+            // 
+            this.btnMuonMoi.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMuonMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMuonMoi.Location = new System.Drawing.Point(11, 226);
+            this.btnMuonMoi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMuonMoi.Name = "btnMuonMoi";
+            this.btnMuonMoi.Size = new System.Drawing.Size(106, 25);
+            this.btnMuonMoi.TabIndex = 40;
+            this.btnMuonMoi.Text = "Mượn mới";
+            this.btnMuonMoi.UseVisualStyleBackColor = false;
+            this.btnMuonMoi.Click += new System.EventHandler(this.btnMuonMoi_Click);
+            // 
+            // btnGiaHan
+            // 
+            this.btnGiaHan.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnGiaHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGiaHan.Location = new System.Drawing.Point(468, 226);
+            this.btnGiaHan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGiaHan.Name = "btnGiaHan";
+            this.btnGiaHan.Size = new System.Drawing.Size(106, 25);
+            this.btnGiaHan.TabIndex = 41;
+            this.btnGiaHan.Text = "Gia hạn";
+            this.btnGiaHan.UseVisualStyleBackColor = false;
+            this.btnGiaHan.Click += new System.EventHandler(this.btnGiaHan_Click);
+            // 
+            // btnTraSach
+            // 
+            this.btnTraSach.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnTraSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTraSach.Location = new System.Drawing.Point(121, 226);
+            this.btnTraSach.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTraSach.Name = "btnTraSach";
+            this.btnTraSach.Size = new System.Drawing.Size(116, 25);
+            this.btnTraSach.TabIndex = 41;
+            this.btnTraSach.Text = "Trả phiếu mượn";
+            this.btnTraSach.UseVisualStyleBackColor = false;
+            this.btnTraSach.Click += new System.EventHandler(this.btnTraSach_Click);
+            // 
+            // lbTienPhat1
+            // 
+            this.lbTienPhat1.AutoSize = true;
+            this.lbTienPhat1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTienPhat1.ForeColor = System.Drawing.Color.Red;
+            this.lbTienPhat1.Location = new System.Drawing.Point(266, 256);
+            this.lbTienPhat1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTienPhat1.Name = "lbTienPhat1";
+            this.lbTienPhat1.Size = new System.Drawing.Size(76, 17);
+            this.lbTienPhat1.TabIndex = 42;
+            this.lbTienPhat1.Text = "Tiền phạt: ";
+            // 
+            // lbTienPhat2
+            // 
+            this.lbTienPhat2.AutoSize = true;
+            this.lbTienPhat2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTienPhat2.ForeColor = System.Drawing.Color.Red;
+            this.lbTienPhat2.Location = new System.Drawing.Point(336, 256);
+            this.lbTienPhat2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTienPhat2.Name = "lbTienPhat2";
+            this.lbTienPhat2.Size = new System.Drawing.Size(49, 17);
+            this.lbTienPhat2.TabIndex = 42;
+            this.lbTienPhat2.Text = "0 VNĐ";
+            // 
+            // btnHoaDonPhat
+            // 
+            this.btnHoaDonPhat.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnHoaDonPhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHoaDonPhat.Location = new System.Drawing.Point(578, 226);
+            this.btnHoaDonPhat.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHoaDonPhat.Name = "btnHoaDonPhat";
+            this.btnHoaDonPhat.Size = new System.Drawing.Size(106, 25);
+            this.btnHoaDonPhat.TabIndex = 41;
+            this.btnHoaDonPhat.Text = "In phiếu mượn";
+            this.btnHoaDonPhat.UseVisualStyleBackColor = false;
+            this.btnHoaDonPhat.Click += new System.EventHandler(this.btnHoaDonPhat_Click);
             // 
             // frmQuanLyPhieuMuon
             // 

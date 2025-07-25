@@ -72,7 +72,7 @@ namespace QuanLyThuVienApp
                             db.SaveChanges();
                         });
                         HideLoading();
-                        frmXacThuc frmXacThuc = new frmXacThuc(nhanVien.MaNV);
+                        frmXacThucNV frmXacThuc = new frmXacThucNV(nhanVien.MaNV);
                         this.Hide();
                         frmXacThuc.ShowDialog();
                         this.Show();
@@ -83,7 +83,7 @@ namespace QuanLyThuVienApp
 
                     if (nguoiDung.QuyenHan == "user")
                     {
-                        frmMainUser frm = new frmMainUser(nguoiDung.TenDangNhap.ToString(), nguoiDung.BiKhoa);                        
+                        frmMainUserNV frm = new frmMainUserNV(nguoiDung.TenDangNhap.ToString(), nguoiDung.BiKhoa);                        
                         frm.ShowDialog();     
                     }
                     else

@@ -30,7 +30,7 @@ namespace QuanLyThuVienApp
         }
         private void btnSach_Click(object sender, EventArgs e)
         {
-            frmTaiLieu frm = new frmTaiLieu();
+            frmTaiLieuDG frm = new frmTaiLieuDG();
             frm.MdiParent = this;
             frm.Show();
         }
@@ -49,6 +49,15 @@ namespace QuanLyThuVienApp
             foreach (Form form in this.MdiChildren)
                 form.Close();
             frmLichSuMuon frm = new frmLichSuMuon();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void btnPhieuMuon_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmMuonTaiLieu frm = new frmMuonTaiLieu();
             frm.MdiParent = this;
             frm.Show();
         }

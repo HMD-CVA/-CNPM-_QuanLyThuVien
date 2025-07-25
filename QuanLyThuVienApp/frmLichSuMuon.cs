@@ -20,7 +20,8 @@ namespace QuanLyThuVienApp
 
         private void frmLichSuMuon_Load(object sender, EventArgs e)
         {
-            loadDuLieu();
+            MessageBox.Show("Vui lòng nhập đầy đủ thông tin phiếu mượn của bạn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //loadDuLieu();
         }
 
         private void loadDuLieu()
@@ -162,6 +163,46 @@ namespace QuanLyThuVienApp
         {
             if (dgvPhieuMuon.Rows[e.RowIndex].Cells["DaTra"].Value.ToString() == "Trễ hạn")
                 e.CellStyle.ForeColor = Color.Red;
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEmail.Text) && string.IsNullOrEmpty(txtMaPhieu.Text) && string.IsNullOrEmpty(txtSDT.Text)) 
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin phiếu mượn của bạn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+            string email = txtEmail.Text.Trim();
+            string maPhieu = txtMaPhieu.Text.Trim();
+            string sdt = txtSDT.Text.Trim();
+
+            QLTVEntities db = new QLTVEntities();
+            var ketQua = db.PhieuMuons
+            .Where(pm =>
+                (string.IsNullOrEmpty(email) || pm.DocGia.Email.Contains(email)) &&
+                (string.IsNullOrEmpty(maPhieu) || pm.MaPhieu.ToString().Contains(maPhieu)) &&
+                (string.IsNullOrEmpty(sdt) || pm.DocGia.SDT.Contains(sdt))
+            )
+            .ToList();
+
+            dgvPhieuMuon.DataSource =  db.PhieuMuons
+            .Where(pm =>
+            (string.IsNullOrEmpty(email) || pm.DocGia.Email.Contains(email)) &&
+            (string.IsNullOrEmpty(maPhieu) || ("MP" + pm.MaPhieu.ToString()).Contains(maPhieu)) &&
+            (string.IsNullOrEmpty(sdt) || pm.DocGia.SDT.Contains(sdt)))
+            .Select(p => new
+            {
+                MaPhieu = "MP" + p.MaPhieu,
+                TenDG = p.DocGia.HoTen,
+                TenNV = p.NhanVien.HoTen,
+                p.NgayMuon,
+                p.HanTra,
+                DaTra = (
+                    (p.NgayTra == null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now)) ||
+                    (p.NgayTra != null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(p.NgayTra))
+                ) ? "Trễ hạn" : (p.DaTra == true ? "Đã trả" : "Chưa trả"),
+                NgayTra = (p.DaTra == true) ? p.NgayTra : null
+            }).ToList();
         }
     }
 }

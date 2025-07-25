@@ -15,9 +15,12 @@ namespace QuanLyThuVienApp
 {
     public partial class frmDangKy : MetroFramework.Forms.MetroForm
     {
+        public bool checkDK = false; 
+        private string emailDG;
         private void ShowLoading()
         {
             progressBar1.Visible = true;
+            progressBar1.MarqueeAnimationSpeed = 30;
             progressBar1.BringToFront();
             this.UseWaitCursor = true;
             Application.DoEvents();
@@ -26,21 +29,32 @@ namespace QuanLyThuVienApp
         private void HideLoading()
         {
             progressBar1.Visible = false;
+            progressBar1.MarqueeAnimationSpeed = 0;
             this.UseWaitCursor = false;
         }
-        public frmDangKy()
+        private frmDangKy()
         {
             InitializeComponent();
+            txtHoTen.Focus();
+        }
+        public frmDangKy(string _EmailDG)
+        {
+            InitializeComponent();
+            emailDG = _EmailDG;
+            txtEmail.Text = emailDG;
+            txtEmail.ReadOnly = true;
             txtHoTen.Focus();
         }
 
         private void frmDangKy_Load(object sender, EventArgs e)
         {
             txtHoTen.Focus();
+            progressBar1.Visible = false;
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
+            
             this.Close();   
         }
 
@@ -65,16 +79,9 @@ namespace QuanLyThuVienApp
 
         private async void btnDangKy_Click(object sender, EventArgs e)
         {
-            if (txtSDT.Text == "" || txtEmail.Text == "" || txtHoTen.Text == "")
+            if (txtSDT.Text == "" || txtHoTen.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!isEmail(txtEmail.Text)) 
-            {
-                MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEmail.Focus();
                 return;
             }
 
@@ -86,17 +93,9 @@ namespace QuanLyThuVienApp
             }
 
             QLTVEntities db = new QLTVEntities();        
-            DocGia docGia = db.DocGias.Where(p => p.Email == txtEmail.Text.Trim()).SingleOrDefault();
-
-            if (docGia != null)
-            {
-                MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEmail.Focus();
-                return;
-            }
 
             DialogResult result = MessageBox.Show(
-                "Bạn có chắc thêm độc giả này?",
+                "Bạn có chắc thông tin này đã chính xác?",
                 "Thông báo!",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -104,23 +103,49 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
+            string OTP = string.Empty;
             ShowLoading();
+            Application.DoEvents();
             await Task.Run(() =>
             {
-                DocGia DG = new DocGia();
-                DG.HoTen = txtHoTen.Text.Trim();
-                DG.Email = txtEmail.Text.Trim();
-                DG.SDT = txtSDT.Text.Trim();
-                DG.BiKhoa = false;
-                db.DocGias.Add(DG);
-                db.SaveChanges();
+                Random random = new Random();
+                OTP = random.Next(100000, 999999).ToString();
+                GuiEmail.guiEmail(emailDG, "Mã xác thực của bạn là: " + OTP);
+                
             });
             HideLoading();
 
-            MessageBox.Show("Đã thêm thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            txtHoTen.Text = string.Empty;
-            txtEmail.Text = string.Empty;   
-            txtSDT.Text = string.Empty;
+
+            // Ẩn frmB và mở frmC
+            this.Hide();
+            using (frmXacThucDG frm = new frmXacThucDG(emailDG, OTP, DateTime.Now))
+            {
+                var dialogResult = frm.ShowDialog(); // ShowDialog sẽ block tới khi frmC đóng
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    // Nếu xác thực thành công
+                    DocGia DG = new DocGia();
+                    DG.HoTen = txtHoTen.Text.Trim();
+                    DG.Email = emailDG;
+                    DG.SDT = txtSDT.Text.Trim();
+                    DG.BiKhoa = false;
+                    db.DocGias.Add(DG);
+                    db.SaveChanges();
+
+                    MessageBox.Show("Chào mừng bạn đến với thư viện!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    checkDK = true;
+                    this.DialogResult = DialogResult.OK; // cho frmA biết là đăng ký thành công
+                    this.Close();
+                }
+                else
+                {
+                    // Xác thực thất bại hoặc người dùng đóng frmXacThuc
+                    MessageBox.Show("Xác thực không thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Show();
+                }
+            }
         }
     }
 }

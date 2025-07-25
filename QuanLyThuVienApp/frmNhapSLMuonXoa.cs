@@ -21,7 +21,7 @@ namespace QuanLyThuVienApp
             {
                 loai = "xoá";
             }
-            labNhap.Text = $"Nhập số lượng tài liệu cần {loai} (tối đa {maxSoLuong}):";
+            labNhap.Text = $"Nhập số lượng tài liệu cần {loai} (còn lại {maxSoLuong}):";
             numericUpDown1.Minimum = 1;
             numericUpDown1.Maximum = maxSoLuong;
         }
@@ -39,6 +39,7 @@ namespace QuanLyThuVienApp
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
+            SoLuong = 0;
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }

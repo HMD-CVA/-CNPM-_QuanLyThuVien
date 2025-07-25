@@ -10,8 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmXacThuc : MetroFramework.Forms.MetroForm
+    public partial class frmXacThucNV : MetroFramework.Forms.MetroForm
     {
+        string nv = "NhanViens";
         private Timer countdownTimer;
         private int remainingSeconds = 45;
         private int ID;
@@ -36,12 +37,12 @@ namespace QuanLyThuVienApp
             remainingSeconds = seconds;
             countdownTimer.Start();
         }
-        public frmXacThuc()
+        public frmXacThucNV()
         {
             InitializeComponent();
         }
 
-        public frmXacThuc(int _ID)
+        public frmXacThucNV(int _ID)
         {
             ID = _ID;
             InitializeComponent();
@@ -58,7 +59,7 @@ namespace QuanLyThuVienApp
                 MessageBox.Show("Mã xác thực đã hết hạn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public frmXacThuc(int _ID, Action<bool> callback)
+        public frmXacThucNV(int _ID, Action<bool> callback)
         {
             ID = _ID;
             kiemTra = true;

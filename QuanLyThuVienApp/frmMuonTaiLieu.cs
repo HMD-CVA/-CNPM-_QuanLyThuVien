@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
 
 namespace QuanLyThuVienApp
 {
     public partial class frmMuonTaiLieu : Form
     {
         private int maNV;
-        private frmMuonTaiLieu()
+        public frmMuonTaiLieu()
         {
             InitializeComponent();
         }
@@ -212,41 +214,53 @@ namespace QuanLyThuVienApp
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            string hotenDG = txtHoTen.Text.Trim();
-            string emailDG = txtEmail.Text.Trim();
-            string sdtDG = txtSDT.Text.Trim();
-
-            if (string.IsNullOrEmpty(hotenDG) || string.IsNullOrEmpty(emailDG))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin độc giả!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             if (dgvSachMuon.Rows.Count == 0)
             {
                 MessageBox.Show("Hãy đăng ký tài liệu để mượn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            string emailDG = txtEmail.Text.Trim();
+
+            if (string.IsNullOrEmpty(emailDG))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!isEmail(emailDG))
+            {
+                MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            QLTVEntities db = new QLTVEntities();
+            DocGia dg = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
+            if (dg == null)
+            {
+                using (frmDangKy frm = new frmDangKy(emailDG))
+                {
+                    DialogResult resultB = frm.ShowDialog(this);
+
+                    if (!frm.checkDK)
+                    {
+                        MessageBox.Show("Đăng ký thất bại hoặc đã bị hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtEmail.Focus();
+                        return;
+                    }
+                }
+            }
             DialogResult result = MessageBox.Show(
-               "Bạn có muốn đăng ký mượn sách không?",
+               "Bạn có muốn tạo phiếu mượn này không?",
                "Thông báo!",
                MessageBoxButtons.YesNo,
                MessageBoxIcon.Question
             );
 
             if (result == DialogResult.No) return;
-
-            QLTVEntities db = new QLTVEntities();
-            DocGia docGia = new DocGia();
-            docGia.HoTen = hotenDG;
-            docGia.Email = emailDG;
-            docGia.SDT = sdtDG;
-            db.DocGias.Add(docGia);
-            db.SaveChanges();
-
+            DocGia DG = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
             PhieuMuon phieuMuon = new PhieuMuon();
-            phieuMuon.MaDG = docGia.MaDocGia;
+            phieuMuon.MaDG = DG.MaDocGia;
             phieuMuon.MaNV = maNV; // ???????????????
             phieuMuon.NgayMuon = DateTime.Now;
             phieuMuon.HanTra = (phieuMuon.NgayMuon ?? DateTime.Now).AddDays(7);
@@ -259,8 +273,8 @@ namespace QuanLyThuVienApp
             {
                 if (row.IsNewRow) continue; // Bỏ qua dòng trống cuối
 
-                string maTLString = row.Cells["MaSach2"].Value.ToString(); // "S5" => bỏ "S"
-                int maTL = int.Parse(maTLString.Substring(2)); // Giả sử mã là dạng "S5"
+                string maTLString = row.Cells["MaSach2"].Value.ToString();
+                int maTL = int.Parse(maTLString.Substring(2)); 
 
                 int soLuong = int.Parse(row.Cells["SoLuong2"].Value.ToString());
 
@@ -275,48 +289,14 @@ namespace QuanLyThuVienApp
             }
             db.SaveChanges();
 
-            //db.SaveChanges();
-            //NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == frmMainUser.ID).SingleOrDefault();
-            //int soLuongMuon = 0;
-
-            //foreach (DataGridViewRow row in dgvSachMuon.Rows)
-            //    soLuongMuon += int.Parse(row.Cells["SoLuong2"].Value.ToString());
-
-            //if(soLuongMuon + nguoiDung.SoSachMuon > 10)
-            //{
-            //    MessageBox.Show("Quá giới hạn sách có thể mượn! (" + soLuongMuon + "/" + (10 - nguoiDung.SoSachMuon.Value) + ")", "Thông báo!"
-            //        , MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-
-            /*
-             Lưu phiếu mượn
-             */
-            //PhieuMuon phieuMuon = new PhieuMuon();
-
-            //phieuMuon.IDBanDoc = nguoiDung.ID;
-            //phieuMuon.NgayDangKyMuon = DateTime.Now;
-            //////////////////////////////////
-            //// 0: chờ đến thư viện lấy sách
-            //// 1: đang mượn
-            //// 2: đã trả
-            //// -1: quá hạn
-            //////////////////////////////////
-            //phieuMuon.TrangThai = 0;  
-            //db.PhieuMuons.Add(phieuMuon);
-
-
             // Tạm tắt event CellValidating để clear dgv
             dgvSachMuon.CellValidating -= dgvSachMuon_CellValidating;
             dgvSachMuon.Rows.Clear();
             dgvSachMuon.CellValidating += dgvSachMuon_CellValidating;
 
             loadDuLieu();
-            MessageBox.Show("Đăng ký mượn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Tạo phiếu mượn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             txtEmail.Text = string.Empty;
-            txtHoTen.Text = string.Empty;
-            txtSDT.Text = string.Empty;
         }
 
         private void dgvSachMuon_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -350,11 +330,22 @@ namespace QuanLyThuVienApp
             this.Close();
 
         }
-
         
         private void frmDangKy_FormClosed(object sender, FormClosedEventArgs e)
         {
             loadDuLieuDG();
+        }
+        private bool isEmail(string inputEmail)
+        {
+            inputEmail = inputEmail ?? string.Empty;
+            string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                  @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                  @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            Regex re = new Regex(strRegex);
+            if (re.IsMatch(inputEmail))
+                return (true);
+            else
+                return (false);
         }
     }
 }

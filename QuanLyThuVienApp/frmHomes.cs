@@ -10,19 +10,18 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmMainUser : MetroFramework.Forms.MetroForm
+    public partial class frmHomes : MetroFramework.Forms.MetroForm
     {
         public static string quyenHan = "user";
         public static string tenDN;
         public static string text;
-        private int maNV;
 
-        public frmMainUser()
+        public frmHomes()
         {
             InitializeComponent();
         }
 
-        public frmMainUser(string _tenDangNhap, bool? _biKhoa)
+        public frmHomes(string _tenDangNhap, bool? _biKhoa)
         {
             InitializeComponent();
 
@@ -30,7 +29,8 @@ namespace QuanLyThuVienApp
             {
                 text = "Tài khoản của bạn đang bị khóa, vui lòng đến thư viện để được xử lý!";
                 tslbThongTin.ForeColor = Color.Red;
-                btnQLPhieuMuon.Enabled = false;
+                btnMuonSach.Enabled = false;
+                btnSach.Enabled = false;
             }
             else if( _biKhoa == false)
             {
@@ -38,7 +38,6 @@ namespace QuanLyThuVienApp
                 NguoiDung ngD = db.NguoiDungs.Where(p => p.TenDangNhap == _tenDangNhap).FirstOrDefault();
                 NhanVien nguoiDung = db.NhanViens.Where(p => p.NguoiDungID == ngD.ID).FirstOrDefault();
                 text = "Chào mừng nhân viên: " + nguoiDung.HoTen + " đã quay trở lại!";
-                maNV = nguoiDung.MaNV;
             }
                 
             tenDN = _tenDangNhap;
@@ -84,13 +83,33 @@ namespace QuanLyThuVienApp
             this.Close();
         }
 
+        private void btnSach_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmTaiLieuDG frm = new frmTaiLieuDG();
+            frm.MdiParent = this;  
+            frm.Show();
+        }
+
         private void btnMuonSach_Click(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmQuanLyPhieuMuon frm = new frmQuanLyPhieuMuon(maNV, this);
+            frmMuonTaiLieuDG frm = new frmMuonTaiLieuDG();
             frm.MdiParent = this;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
+        }
+
+        private void btnLichSuMuon_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            //frmLichSuMuon frm = new frmLichSuMuon();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
@@ -107,15 +126,6 @@ namespace QuanLyThuVienApp
             foreach (Form form in this.MdiChildren)
                 form.Close();
             frmTroGiup frm = new frmTroGiup();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void btnLichSuMuon_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmQuanLyTaiLieu frm = new frmQuanLyTaiLieu();
             frm.MdiParent = this;
             frm.Show();
         }

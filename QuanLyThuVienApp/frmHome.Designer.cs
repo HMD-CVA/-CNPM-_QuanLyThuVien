@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPhieuMuon = new FontAwesome.Sharp.IconButton();
             this.btnQLPhieuMuon = new FontAwesome.Sharp.IconButton();
             this.btnInfor = new FontAwesome.Sharp.IconButton();
             this.btnTroGiup = new FontAwesome.Sharp.IconButton();
@@ -54,6 +55,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel2.Controls.Add(this.btnPhieuMuon);
             this.panel2.Controls.Add(this.btnQLPhieuMuon);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -62,6 +64,28 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(127, 443);
             this.panel2.TabIndex = 12;
+            // 
+            // btnPhieuMuon
+            // 
+            this.btnPhieuMuon.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnPhieuMuon.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnPhieuMuon.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPhieuMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhieuMuon.IconChar = FontAwesome.Sharp.IconChar.Receipt;
+            this.btnPhieuMuon.IconColor = System.Drawing.Color.Black;
+            this.btnPhieuMuon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPhieuMuon.IconSize = 45;
+            this.btnPhieuMuon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPhieuMuon.Location = new System.Drawing.Point(0, 67);
+            this.btnPhieuMuon.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPhieuMuon.Name = "btnPhieuMuon";
+            this.btnPhieuMuon.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.btnPhieuMuon.Size = new System.Drawing.Size(127, 67);
+            this.btnPhieuMuon.TabIndex = 4;
+            this.btnPhieuMuon.Text = "            Phiếu \r\n            mượn\r\n            của tôi";
+            this.btnPhieuMuon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPhieuMuon.UseVisualStyleBackColor = false;
+            this.btnPhieuMuon.Click += new System.EventHandler(this.btnPhieuMuon_Click);
             // 
             // btnQLPhieuMuon
             // 
@@ -335,5 +359,6 @@
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton btnExit;
         private FontAwesome.Sharp.IconButton btnSach;
+        private FontAwesome.Sharp.IconButton btnPhieuMuon;
     }
 }

@@ -149,7 +149,7 @@
             // 
             this.btnDangKy.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangKy.Location = new System.Drawing.Point(113, 161);
+            this.btnDangKy.Location = new System.Drawing.Point(112, 160);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(79, 25);
@@ -162,7 +162,7 @@
             // 
             this.btnThoat.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(210, 161);
+            this.btnThoat.Location = new System.Drawing.Point(226, 160);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(79, 25);
@@ -219,16 +219,18 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(20, 198);
+            this.progressBar1.Location = new System.Drawing.Point(20, 190);
+            this.progressBar1.MarqueeAnimationSpeed = 33;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(366, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 9;
             // 
             // frmDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 231);
+            this.ClientSize = new System.Drawing.Size(409, 225);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangKy);

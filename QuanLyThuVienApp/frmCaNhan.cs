@@ -166,7 +166,7 @@ namespace QuanLyThuVienApp
             loadDuLieu();
 
             if (nguoiDung.QuyenHan == "admin") frmMainAdmin.text = "Chào mừng quản trị viên: " + txtHoVaTen.Text + " đã quay trở lại!";
-            else if (nguoiDung.BiKhoa == false) frmMainUser.text = "Chào mừng nhân viên: " + txtHoVaTen.Text + " đã quay trở lại!";
+            else if (nguoiDung.BiKhoa == false) frmMainUserNV.text = "Chào mừng nhân viên: " + txtHoVaTen.Text + " đã quay trở lại!";
 
             MessageBox.Show("Thay đổi tên thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -266,7 +266,7 @@ namespace QuanLyThuVienApp
                 nhanVien.ThoiGianNhanOTP = DateTime.Now;
                 db.SaveChanges();
 
-                frmXacThuc frm = new frmXacThuc(nhanVien.NguoiDungID, xacNhan =>
+                frmXacThucNV frm = new frmXacThucNV(nhanVien.NguoiDungID, xacNhan =>
                 {
                     if (xacNhan)
                     {

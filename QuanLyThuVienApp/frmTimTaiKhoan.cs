@@ -93,7 +93,7 @@ namespace QuanLyThuVienApp
                 });
                 HideLoading();
                 
-                frmXacThuc frm = new frmXacThuc(nv.NguoiDungID, xacNhan =>
+                frmXacThucNV frm = new frmXacThucNV(nv.NguoiDungID, xacNhan =>
                 {
                     if (xacNhan)
                     {
