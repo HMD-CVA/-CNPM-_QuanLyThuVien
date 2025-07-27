@@ -36,6 +36,7 @@
             this.txtMaXacThuc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new MetroFramework.Controls.MetroProgressSpinner();
             this.SuspendLayout();
             // 
             // label1
@@ -128,11 +129,23 @@
             this.lblTimer.Size = new System.Drawing.Size(53, 20);
             this.lblTimer.TabIndex = 10;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.BackColor = System.Drawing.Color.Silver;
+            this.progressBar1.Location = new System.Drawing.Point(265, 73);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(5);
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(23, 23);
+            this.progressBar1.TabIndex = 11;
+            this.progressBar1.UseSelectable = true;
+            // 
             // frmXacThucDG
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(351, 208);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMaXacThuc);
@@ -164,5 +177,6 @@
         private System.Windows.Forms.TextBox txtMaXacThuc;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox lblTimer;
+        private MetroFramework.Controls.MetroProgressSpinner progressBar1;
     }
 }

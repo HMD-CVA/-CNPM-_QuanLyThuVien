@@ -20,6 +20,21 @@ namespace QuanLyThuVienApp
         private DateTime TGNhan;
         private bool kiemTra = false;
         private readonly Action<bool> callback;
+
+        private void ShowLoading()
+        {
+            progressBar1.Visible = true;
+            progressBar1.BringToFront();
+            this.UseWaitCursor = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            progressBar1.Visible = false;
+            this.UseWaitCursor = false;
+        }
+
         private void startTimer(int seconds)
         {
             lblTimer.Text = seconds.ToString() + "s";
@@ -62,6 +77,7 @@ namespace QuanLyThuVienApp
 
         private void frmXacNhanOTP_Load(object sender, EventArgs e)
         {
+            progressBar1.Visible = false;
             countdownTimer = new Timer();
             countdownTimer.Interval = 1000; // 1 giây
             countdownTimer.Tick += CountdownTimer_Tick;
@@ -75,13 +91,20 @@ namespace QuanLyThuVienApp
             this.Close();
         }
         
-        private void btnGuiLai_Click(object sender, EventArgs e)
+        private async void btnGuiLai_Click(object sender, EventArgs e)
         {
             Random random = new Random();
             string newOTP = random.Next(100000, 999999).ToString();
 
             OTP = newOTP;
-            GuiEmail.guiEmail(email, "Mã xác thực của bạn là " + OTP);
+
+            ShowLoading();
+            await Task.Run(() =>
+            {
+                GuiEmail.guiEmail(email, "Mã xác thực của bạn là " + OTP);
+            });
+            HideLoading();
+
             TGNhan = DateTime.Now;
 
             startTimer(30);
