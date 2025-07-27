@@ -11,17 +11,17 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmCaNhan : Form
+    public partial class frmThongTinNV : Form
     {
         public static string tenDN;
         public static string quyenHan;
 
-        public frmCaNhan()
+        public frmThongTinNV()
         {
             InitializeComponent();
         }
 
-        public frmCaNhan(string _tenDN, string _quyenHan)
+        public frmThongTinNV(string _tenDN, string _quyenHan)
         {
             tenDN = _tenDN;
             quyenHan = _quyenHan;
@@ -394,7 +394,7 @@ namespace QuanLyThuVienApp
 
         private void btnLuuSDT_Click(object sender, EventArgs e)
         {
-            if (txtNgaySinh.Text == "")
+            if (txtSDT.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

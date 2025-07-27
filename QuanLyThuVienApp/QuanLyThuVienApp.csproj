@@ -155,11 +155,17 @@
     <Compile Include="DocGia.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
-    <Compile Include="frmCaNhan.cs">
+    <Compile Include="frmTTDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCaNhan.Designer.cs">
-      <DependentUpon>frmCaNhan.cs</DependentUpon>
+    <Compile Include="frmTTDocGia.Designer.cs">
+      <DependentUpon>frmTTDocGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThongTinNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongTinNV.Designer.cs">
+      <DependentUpon>frmThongTinNV.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDangKy.cs">
       <SubType>Form</SubType>
@@ -344,8 +350,11 @@
     <Compile Include="TaiLieu.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmCaNhan.resx">
-      <DependentUpon>frmCaNhan.cs</DependentUpon>
+    <EmbeddedResource Include="frmTTDocGia.resx">
+      <DependentUpon>frmTTDocGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongTinNV.resx">
+      <DependentUpon>frmThongTinNV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDangKy.resx">
       <DependentUpon>frmDangKy.cs</DependentUpon>

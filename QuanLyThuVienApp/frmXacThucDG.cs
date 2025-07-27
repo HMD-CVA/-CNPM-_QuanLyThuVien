@@ -12,7 +12,7 @@ namespace QuanLyThuVienApp
 {
     public partial class frmXacThucDG : MetroFramework.Forms.MetroForm
     {
-        public static bool ktXacThuc = false;
+        public  bool ktXacThuc = false;
         private Timer countdownTimer;
         private int remainingSeconds = 30;
         private string email;

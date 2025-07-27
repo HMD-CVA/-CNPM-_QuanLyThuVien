@@ -65,7 +65,7 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmCaNhan frm = new frmCaNhan(tenDN, quyenHan);
+            frmThongTinNV frm = new frmThongTinNV(tenDN, quyenHan);
             frm.MdiParent = this;
             frm.Show();
         }
@@ -135,7 +135,7 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmCaNhan frm = new frmCaNhan();
+            frmThongTinNV frm = new frmThongTinNV();
             frm.MdiParent = this;
             frm.Show();
         }

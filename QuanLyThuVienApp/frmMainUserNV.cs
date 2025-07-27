@@ -62,7 +62,7 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmCaNhan frm = new frmCaNhan(tenDN, quyenHan);
+            frmThongTinNV frm = new frmThongTinNV(tenDN, quyenHan);
             frm.MdiParent = this;
             frm.Show();
         }
@@ -78,7 +78,7 @@ namespace QuanLyThuVienApp
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            frmDangNhap frm = new frmDangNhap();
+            frmHomes frm = new frmHomes();
             this.Hide();
             frm.ShowDialog();
             this.Close();

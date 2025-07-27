@@ -14,6 +14,7 @@ namespace QuanLyThuVienApp
 {
     public partial class frmMuonTaiLieu : Form
     {
+        private string emailDG;
         private int maNV;
         public frmMuonTaiLieu()
         {
@@ -27,9 +28,9 @@ namespace QuanLyThuVienApp
 
         private void frmMuonSach_Load(object sender, EventArgs e)
         {
-            loadDuLieuDG();
             loadDuLieu();
             themNutDGV();
+            btnTTDG.Hide();
         }
 
         private void themNutDGV()
@@ -61,19 +62,6 @@ namespace QuanLyThuVienApp
 
             // Đảm bảo nút luôn ở cuối cùng
             dgvSach.Columns["btnDangKy"].DisplayIndex = dgvSach.Columns.Count - 1;
-        }
-
-        private void loadDuLieuDG()
-        {
-            //QLTVEntities db = new QLTVEntities();
-            //dgvDocGia.DataSource = db.DocGias.Select(p => new
-            //{
-            //    MaDocGia = "DG" + p.MaDocGia,
-            //    p.HoTen,
-            //    p.SDT,
-            //    p.Email,
-            //    BiKhoa = (p.BiKhoa == true) ? "Bị khoá" : "Hoạt động"
-            //}).ToList();
         }
 
         private void loadDuLieu()
@@ -220,7 +208,7 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            string emailDG = txtEmail.Text.Trim();
+            emailDG = txtEmail.Text.Trim();
 
             if (string.IsNullOrEmpty(emailDG))
             {
@@ -250,6 +238,17 @@ namespace QuanLyThuVienApp
                     }
                 }
             }
+            else
+            {
+                btnTTDG.Show();
+                if (dg.BiKhoa == true)
+                {
+                    MessageBox.Show("Email của độc giả đã bị khoá!\nVui lòng mở khoá để có thể mượn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            btnTTDG.Show();
             DialogResult result = MessageBox.Show(
                "Bạn có muốn tạo phiếu mượn này không?",
                "Thông báo!",
@@ -267,6 +266,7 @@ namespace QuanLyThuVienApp
             phieuMuon.HanTra = (phieuMuon.NgayMuon ?? DateTime.Now).AddDays(7);
             phieuMuon.DaTra = false;
             phieuMuon.NgayTra = null;
+            phieuMuon.NgayTao = DateTime.Now;
             db.PhieuMuons.Add(phieuMuon);
             db.SaveChanges();
 
@@ -331,11 +331,6 @@ namespace QuanLyThuVienApp
             this.Close();
 
         }
-        
-        private void frmDangKy_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            loadDuLieuDG();
-        }
         private bool isEmail(string inputEmail)
         {
             inputEmail = inputEmail ?? string.Empty;
@@ -345,6 +340,17 @@ namespace QuanLyThuVienApp
             Regex re = new Regex(strRegex);
             if (re.IsMatch(inputEmail)) return (true);
             else return (false);
+        }
+
+        private void btnTTDG_Click(object sender, EventArgs e)
+        {
+            QLTVEntities db = new QLTVEntities();
+            DocGia dg = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
+
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmTTDocGia frm = new frmTTDocGia(dg.MaDocGia);
+            frm.ShowDialog();
         }
     }
 }

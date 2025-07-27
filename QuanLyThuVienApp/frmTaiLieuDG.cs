@@ -279,6 +279,7 @@ namespace QuanLyThuVienApp
                         }
                     }
                 }
+                else return;
             }
             MessageBox.Show("Đã xoá thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             string inKQ = string.Empty;

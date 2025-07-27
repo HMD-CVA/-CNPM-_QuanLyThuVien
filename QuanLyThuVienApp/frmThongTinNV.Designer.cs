@@ -1,6 +1,6 @@
 ﻿namespace QuanLyThuVienApp
 {
-    partial class frmCaNhan
+    partial class frmThongTinNV
     {
         /// <summary>
         /// Required designer variable.

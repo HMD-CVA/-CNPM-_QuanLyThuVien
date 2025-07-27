@@ -80,6 +80,7 @@
           <Property Name="HanTra" Type="date" />
           <Property Name="DaTra" Type="bit" />
           <Property Name="NgayTra" Type="date" />
+          <Property Name="NgayTao" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TacGia">
           <Key>
@@ -333,6 +334,7 @@
           <NavigationProperty Name="ChiTietPhieuMuons" Relationship="Self.FK__ChiTietPhi__MaPM__70DDC3D8" FromRole="PhieuMuon" ToRole="ChiTietPhieuMuon" />
           <NavigationProperty Name="DocGia" Relationship="Self.FK__PhieuMuon__MaDG__6A30C649" FromRole="PhieuMuon" ToRole="DocGia" />
           <NavigationProperty Name="NhanVien" Relationship="Self.FK__PhieuMuon__MaNV__6B24EA82" FromRole="PhieuMuon" ToRole="NhanVien" />
+          <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="TacGia">
           <Key>
@@ -580,6 +582,7 @@
           <EntitySetMapping Name="PhieuMuons">
             <EntityTypeMapping TypeName="DB_QLTVModel.PhieuMuon">
               <MappingFragment StoreEntitySet="PhieuMuon">
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
                 <ScalarProperty Name="MaPhieu" ColumnName="MaPhieu" />
                 <ScalarProperty Name="MaDG" ColumnName="MaDG" />
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
