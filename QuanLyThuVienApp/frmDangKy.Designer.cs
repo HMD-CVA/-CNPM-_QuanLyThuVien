@@ -46,34 +46,34 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SkyBlue;
-            this.label1.Location = new System.Drawing.Point(119, 30);
+            this.label1.Location = new System.Drawing.Point(119, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "ĐĂNG KÝ TÀI KHOẢN";
+            this.label1.Size = new System.Drawing.Size(171, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "ĐĂNG KÝ THÔNG TIN";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 120);
+            this.label2.Location = new System.Drawing.Point(20, 105);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 17);
+            this.label2.Size = new System.Drawing.Size(46, 17);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Email";
+            this.label2.Text = "Email:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 91);
+            this.label3.Location = new System.Drawing.Point(20, 76);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 17);
+            this.label3.Size = new System.Drawing.Size(95, 17);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Số điện thoại";
+            this.label3.Text = "Số điện thoại:";
             // 
             // txtEmail
             // 
@@ -92,7 +92,7 @@
             this.txtEmail.CustomButton.Visible = false;
             this.txtEmail.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtEmail.Lines = new string[0];
-            this.txtEmail.Location = new System.Drawing.Point(127, 118);
+            this.txtEmail.Location = new System.Drawing.Point(130, 103);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.MaxLength = 32767;
             this.txtEmail.Name = "txtEmail";
@@ -104,7 +104,7 @@
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.ShortcutsEnabled = true;
             this.txtEmail.Size = new System.Drawing.Size(259, 25);
-            this.txtEmail.TabIndex = 0;
+            this.txtEmail.TabIndex = 2;
             this.txtEmail.UseSelectable = true;
             this.txtEmail.WaterMark = "Nhập email";
             this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -127,7 +127,7 @@
             this.txtSDT.CustomButton.Visible = false;
             this.txtSDT.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSDT.Lines = new string[0];
-            this.txtSDT.Location = new System.Drawing.Point(127, 89);
+            this.txtSDT.Location = new System.Drawing.Point(130, 74);
             this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
             this.txtSDT.MaxLength = 32767;
             this.txtSDT.Name = "txtSDT";
@@ -149,11 +149,11 @@
             // 
             this.btnDangKy.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangKy.Location = new System.Drawing.Point(112, 160);
+            this.btnDangKy.Location = new System.Drawing.Point(117, 147);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(79, 25);
-            this.btnDangKy.TabIndex = 5;
+            this.btnDangKy.TabIndex = 3;
             this.btnDangKy.Text = "Đăng ký";
             this.btnDangKy.UseVisualStyleBackColor = false;
             this.btnDangKy.Click += new System.EventHandler(this.btnDangKy_Click);
@@ -162,11 +162,11 @@
             // 
             this.btnThoat.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(226, 160);
+            this.btnThoat.Location = new System.Drawing.Point(212, 147);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(79, 25);
-            this.btnThoat.TabIndex = 6;
+            this.btnThoat.TabIndex = 4;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
@@ -175,12 +175,12 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(17, 62);
+            this.label6.Location = new System.Drawing.Point(20, 47);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 17);
+            this.label6.Size = new System.Drawing.Size(73, 17);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Họ và tên";
+            this.label6.Text = "Họ và tên:";
             // 
             // txtHoTen
             // 
@@ -199,7 +199,7 @@
             this.txtHoTen.CustomButton.Visible = false;
             this.txtHoTen.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtHoTen.Lines = new string[0];
-            this.txtHoTen.Location = new System.Drawing.Point(127, 60);
+            this.txtHoTen.Location = new System.Drawing.Point(130, 45);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTen.MaxLength = 32767;
             this.txtHoTen.Name = "txtHoTen";
@@ -211,7 +211,7 @@
             this.txtHoTen.SelectionStart = 0;
             this.txtHoTen.ShortcutsEnabled = true;
             this.txtHoTen.Size = new System.Drawing.Size(259, 25);
-            this.txtHoTen.TabIndex = 2;
+            this.txtHoTen.TabIndex = 0;
             this.txtHoTen.UseSelectable = true;
             this.txtHoTen.WaterMark = "Nhập họ và tên";
             this.txtHoTen.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -219,7 +219,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(20, 190);
+            this.progressBar1.Location = new System.Drawing.Point(21, 190);
             this.progressBar1.MarqueeAnimationSpeed = 33;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(366, 23);

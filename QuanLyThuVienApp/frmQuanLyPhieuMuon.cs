@@ -533,7 +533,7 @@ namespace QuanLyThuVienApp
             frm.Show();
         }
 
-        private void btnHoaDonPhat_Click(object sender, EventArgs e)
+        private void btnINHoaDon_Click(object sender, EventArgs e)
         {
             if (dgvPhieuMuon.Rows.Count == 0) return;
             if (dgvPhieuMuon.CurrentRow == null) return;
@@ -602,7 +602,7 @@ namespace QuanLyThuVienApp
             frmTTDocGia frm = new frmTTDocGia(maDG);
             frm.MdiParent = frmMainUser;
             frm.Dock = DockStyle.Fill;
-            frm.ShowDialog();
+            frm.Show();
         }
     }
 }

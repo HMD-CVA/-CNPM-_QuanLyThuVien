@@ -155,11 +155,11 @@
     <Compile Include="DocGia.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
-    <Compile Include="frmQuanLyBanDoc.cs">
+    <Compile Include="frmQuanLyDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmQuanLyBanDoc.Designer.cs">
-      <DependentUpon>frmQuanLyBanDoc.cs</DependentUpon>
+    <Compile Include="frmQuanLyDocGia.Designer.cs">
+      <DependentUpon>frmQuanLyDocGia.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTTDocGia.cs">
       <SubType>Form</SubType>
@@ -356,8 +356,8 @@
     <Compile Include="TaiLieu.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmQuanLyBanDoc.resx">
-      <DependentUpon>frmQuanLyBanDoc.cs</DependentUpon>
+    <EmbeddedResource Include="frmQuanLyDocGia.resx">
+      <DependentUpon>frmQuanLyDocGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTTDocGia.resx">
       <DependentUpon>frmTTDocGia.cs</DependentUpon>

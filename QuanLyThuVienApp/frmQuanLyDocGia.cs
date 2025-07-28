@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmQuanLyBanDoc : Form
+    public partial class frmQuanLyDocGia : Form
     {
         private string maDG;
         public static int OTP;
@@ -32,7 +32,7 @@ namespace QuanLyThuVienApp
             this.UseWaitCursor = false;
         }
 
-        public frmQuanLyBanDoc()
+        public frmQuanLyDocGia()
         {
             InitializeComponent();
         }

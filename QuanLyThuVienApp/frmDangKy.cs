@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.WebRequestMethods;
 
 namespace QuanLyThuVienApp
 {
@@ -21,11 +15,10 @@ namespace QuanLyThuVienApp
         {
             progressBar1.Visible = true;
             progressBar1.MarqueeAnimationSpeed = 30;
-            progressBar1.BringToFront();
+            //progressBar1.BringToFront();
             this.UseWaitCursor = true;
-            Application.DoEvents();
+            //Application.DoEvents();
         }
-
         private void HideLoading()
         {
             progressBar1.Visible = false;
@@ -48,28 +41,14 @@ namespace QuanLyThuVienApp
 
         private void frmDangKy_Load(object sender, EventArgs e)
         {
-            txtHoTen.Focus();
             progressBar1.Visible = false;
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            
             this.Close();   
         }
 
-        private bool isEmail(string inputEmail)
-        {
-            inputEmail = inputEmail ?? string.Empty;
-            string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
-                  @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
-                  @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
-            Regex re = new Regex(strRegex);
-            if (re.IsMatch(inputEmail))
-                return (true);
-            else
-                return (false);
-        }
         private bool KiemTraSoDienThoai(string sdt)
         {
             sdt = sdt.Trim();
@@ -79,41 +58,39 @@ namespace QuanLyThuVienApp
 
         private async void btnDangKy_Click(object sender, EventArgs e)
         {
-            if (txtSDT.Text == "" || txtHoTen.Text == "")
+            string hoTen = txtHoTen.Text.Trim();
+            string sdt = txtSDT.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(hoTen) || string.IsNullOrWhiteSpace(sdt))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (!KiemTraSoDienThoai(txtSDT.Text))
+            if (!KiemTraSoDienThoai(sdt))
             {
                 MessageBox.Show("Số điện thoại không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSDT.Focus();
                 return;
             }
 
-            QLTVEntities db = new QLTVEntities();        
+            if (MessageBox.Show("Bạn có chắc thông tin này đã chính xác?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;   
 
-            DialogResult result = MessageBox.Show(
-                "Bạn có chắc thông tin này đã chính xác?",
-                "Thông báo!",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.No) return;
-
-            string OTP = string.Empty;
+            string OTP = new Random().Next(100000, 999999).ToString();
             ShowLoading();
-            Application.DoEvents();
-            await Task.Run(() =>
-            {
-                Random random = new Random();
-                OTP = random.Next(100000, 999999).ToString();
-                GuiEmail.guiEmail(emailDG, "Mã xác thực của bạn là: " + OTP);
-                
-            });
+            await Task.Run(() => GuiEmail.guiEmail(emailDG, "Mã xác thực của bạn là: " + OTP));
             HideLoading();
+
+            //ShowLoading();
+            ////Application.DoEvents();
+            //await Task.Run(() =>
+            //{
+            //    Random random = new Random();
+            //    OTP = random.Next(100000, 999999).ToString();
+            //    GuiEmail.guiEmail(emailDG, "Mã xác thực của bạn là: " + OTP);
+                
+            //});
+            //HideLoading();
 
 
             // Ẩn frmB và mở frmC
@@ -125,6 +102,7 @@ namespace QuanLyThuVienApp
                 if (dialogResult == DialogResult.OK)
                 {
                     // Nếu xác thực thành công
+                    QLTVEntities db = new QLTVEntities();
                     DocGia DG = new DocGia();
                     DG.HoTen = txtHoTen.Text.Trim();
                     DG.Email = emailDG;
