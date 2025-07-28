@@ -157,7 +157,7 @@
             this.txtTenDangNhap.MaxLength = 32767;
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.PasswordChar = '\0';
-            this.txtTenDangNhap.PromptText = "Nhập tên đăng nhập hoặc email";
+            this.txtTenDangNhap.PromptText = "Nhập tên đăng nhập";
             this.txtTenDangNhap.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtTenDangNhap.SelectedText = "";
             this.txtTenDangNhap.SelectionLength = 0;
@@ -166,7 +166,7 @@
             this.txtTenDangNhap.Size = new System.Drawing.Size(212, 25);
             this.txtTenDangNhap.TabIndex = 0;
             this.txtTenDangNhap.UseSelectable = true;
-            this.txtTenDangNhap.WaterMark = "Nhập tên đăng nhập hoặc email";
+            this.txtTenDangNhap.WaterMark = "Nhập tên đăng nhập";
             this.txtTenDangNhap.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtTenDangNhap.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
