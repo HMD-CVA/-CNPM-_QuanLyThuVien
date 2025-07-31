@@ -113,9 +113,10 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            //frmLichSuMuon frm = new frmLichSuMuon();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmLichSuMuon frm = new frmLichSuMuon();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)

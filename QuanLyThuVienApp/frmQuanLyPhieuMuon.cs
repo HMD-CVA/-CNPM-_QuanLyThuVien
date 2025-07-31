@@ -242,7 +242,7 @@ namespace QuanLyThuVienApp
                     btnChoMuon.Enabled = true;
                     if (daTra == "Đã huỷ")
                     {
-                        lab_Huy.Text = "Phiếu mượn này đã bị huỷ do hết thời gian chờ!";
+                        lab_Huy.Text = "Phiếu mượn này đã bị huỷ!";
                         loadPhieuMuon();
                         ChonLaiPhieu(maPhieuGhiNho);
                         return;
@@ -260,7 +260,7 @@ namespace QuanLyThuVienApp
 
                     if (daTra == "Đã huỷ")
                     {
-                        lab_Huy.Text = "Phiếu mượn này đã bị huỷ do hết thời gian chờ!";
+                        lab_Huy.Text = "Phiếu mượn này đã bị huỷ!";
                         loadPhieuMuon();
                         ChonLaiPhieu(maPhieuGhiNho);
                         return;
@@ -472,13 +472,6 @@ namespace QuanLyThuVienApp
         {
             if (dgvPhieuMuon.Rows.Count == 0) return;
             if (dgvPhieuMuon.CurrentRow == null) return;
-            
-            DataGridViewRow row = dgvPhieuMuon.CurrentRow;
-
-            int maPhieu = int.Parse(row.Cells["MaPhieu"].Value.ToString().Substring(2));
-
-            QLTVEntities db = new QLTVEntities();
-            PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
 
             DialogResult result = MessageBox.Show(
                 "Bạn có muốn hủy phiếu đăng ký mượn sách này không?",
@@ -489,16 +482,24 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
-            //QLTVEntities db = new QLTVEntities();
-            //int tongSach = 0;
-            //foreach (DataGridViewRow row in dgvPhieuMuon.Rows)
-            //{
-            //    int idSach = int.Parse(row.Cells["MaSach"].Value.ToString().Substring(1));
-            //    int soLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
-            //    tongSach += soLuong;
-            //    Sach sach = db.Saches.Where(p => p.ID == idSach).FirstOrDefault();
-            //    sach.SoSachMuon -= soLuong;
-            //}
+            DataGridViewRow row = dgvPhieuMuon.CurrentRow;
+
+            int maPhieu = int.Parse(row.Cells["MaPhieu"].Value.ToString().Substring(2));
+
+            QLTVEntities db = new QLTVEntities();
+            PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
+            phieuMuon.NgayMuon = null;
+            phieuMuon.NgayTao = DateTime.Now.AddDays(-1);
+
+            int tongTL = 0;
+            foreach (DataGridViewRow Irow in dgvChiTietPM.Rows)
+            {
+                int maTL = int.Parse(Irow.Cells["MaTaiLieu"].Value.ToString().Substring(2));
+                int soLuong = int.Parse(Irow.Cells["SoLuong"].Value.ToString());
+                tongTL += soLuong;
+                TaiLieu TL = db.TaiLieux.Where(p => p.MaTaiLieu == maTL).FirstOrDefault();
+                TL.SoTaiLieuMuon -= soLuong;
+            }
 
             //int maPhieu = int.Parse(dgvPhieuMuon.Rows[0].Cells["MaPhieu2"].Value.ToString());
             //int IDBanDoc = int.Parse(dgvPhieuMuon.Rows[0].Cells["IDBanDoc"].Value.ToString());
@@ -512,10 +513,11 @@ namespace QuanLyThuVienApp
             //PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
             //db.PhieuMuons.Remove(phieuMuon);
 
-            //db.SaveChanges();
+            db.SaveChanges();
             btnLamMoi.PerformClick();
 
             MessageBox.Show("Hủy phiếu đăng ký thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            loadPhieuMuon();
         }
 
         private void btnMuonMoi_Click(object sender, EventArgs e)
@@ -588,6 +590,18 @@ namespace QuanLyThuVienApp
             phieuMuon.MaNV = maNV;
             phieuMuon.NgayMuon = DateTime.Now;
             phieuMuon.HanTra = DateTime.Now.AddDays(7);
+
+            //DataGridViewRow row = dgvChiTietPM.CurrentRow;
+
+            //int tongTL = 0;
+            //foreach (DataGridViewRow Irow in dgvChiTietPM.Rows)
+            //{
+            //    int maTL = int.Parse(Irow.Cells["MaTaiLieu"].Value.ToString().Substring(2));
+            //    int soLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
+            //    tongTL += soLuong;
+            //    TaiLieu TL = db.TaiLieux.Where(p => p.MaTaiLieu == maTL).FirstOrDefault();
+            //    TL.SoTaiLieuMuon += soLuong;
+            //}
 
             db.SaveChanges();
             btnLamMoi.PerformClick();

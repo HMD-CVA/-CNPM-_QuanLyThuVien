@@ -55,7 +55,7 @@ namespace QuanLyThuVienApp
             //int soLuongSachCon = int.Parse(dgvSachMuon.Rows[RowIndex].Cells["SoLuong"].Value.ToString()) - int.Parse(dgvSachMuon.Rows[RowIndex].Cells["SoTaiLieuMuon"].Value.ToString());
             if (listTL.Count == 0) { return; }
 
-            txtMaSach.Text = dgvSachMuon.Rows[RowIndex].Cells["MaTaiLieu"].Value.ToString();
+            txtMaTL.Text = dgvSachMuon.Rows[RowIndex].Cells["MaTaiLieu"].Value.ToString();
             txtTenSach.Text = dgvSachMuon.Rows[RowIndex].Cells["TenTaiLieu"].Value.ToString();
             txtTacGia.Text = dgvSachMuon.Rows[RowIndex].Cells["TenTG"].Value.ToString();
             txtNXB.Text = dgvSachMuon.Rows[RowIndex].Cells["TenNXB"].Value.ToString();
@@ -140,7 +140,7 @@ namespace QuanLyThuVienApp
         {
             frmTaiLieuDG.taiLieusMuon.Clear();
             listTL.Clear();
-            dgvSachMuon.Rows.Clear();
+            dgvSachMuon.DataSource = listTL;
         }
         private bool isEmail(string inputEmail)
         {
@@ -268,6 +268,80 @@ namespace QuanLyThuVienApp
             //    MessageBox.Show("Số lượng không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    e.Cancel = true;
             //}
+        }
+
+        private void btnXoaSLM_Click(object sender, EventArgs e)
+        {
+
+            string maSachFull = txtMaTL.Text;
+            int maSach = int.Parse(maSachFull.Substring(2));
+
+            int soLuongHienTai = 0;
+
+            foreach (var i in listTL)
+            {
+                if (i.Item1 == maSach)
+                {
+                    soLuongHienTai = i.Item2;
+                    break;
+                }
+            }
+
+            QLTVEntities db = new QLTVEntities();
+            soLuongHienTai = db.TaiLieux.Where(p => p.MaTaiLieu == maSach).Select(p => p.SoLuong).FirstOrDefault().GetValueOrDefault() - 
+                             db.TaiLieux.Where(p => p.MaTaiLieu == maSach).Select(p => p.SoTaiLieuMuon).FirstOrDefault().GetValueOrDefault();
+
+            using (var nhapSoLuongForm = new frmNhapSLMuonXoa(soLuongHienTai)) // false = chế độ xóa
+            {
+                if (nhapSoLuongForm.ShowDialog() == DialogResult.OK)
+                {
+                    int soLuong = nhapSoLuongForm.SoLuong;
+
+                    //int soLuongConLai = soLuongHienTai - soLuongMuonXoa;
+
+                    //if (soLuongConLai < 1)
+                    //{
+                    //    btnSUB.Enabled = false;
+                    //}
+                    //else
+                    //{
+                    //    row.Cells["SoLuong2"].Value = soLuongConLai;
+                    //}
+
+                    for (int i = 0; i < listTL.Count; i++)
+                    {
+                        if (listTL[i].Item1 == maSach)
+                        {
+
+                            if (soLuong <= 0)
+                            {
+                                listTL.RemoveAt(i);
+                            }
+                            else listTL[i] = (listTL[i].Item1, soLuong);
+                            break;
+                        }
+                    }
+                }
+                else return;
+            }
+            MessageBox.Show("Đã điều chỉnh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //string inKQ = string.Empty;
+            //for (int i = 0; i < taiLieusMuon.Count; i++)
+            //{
+            //    inKQ += taiLieusMuon[i].Item1.ToString() + " " + taiLieusMuon[i].Item2.ToString() + "\n";
+            //}
+            //MessageBox.Show(inKQ, "Thông ", MessageBoxButtons.OK);
+            loadDuLieu();
+            for (int i = 0; i < dgvSachMuon.Rows.Count; i++)
+            {
+                var ma = dgvSachMuon.Rows[i].Cells["MaTaiLieu"].Value?.ToString();
+                if (ma == "TL" + maSach.ToString())
+                {
+                    frmTaiLieuDG.taiLieusMuon = listTL;
+                    HienThiDuLieu(i);
+                    return;
+                }
+            }
         }
     }
 }
