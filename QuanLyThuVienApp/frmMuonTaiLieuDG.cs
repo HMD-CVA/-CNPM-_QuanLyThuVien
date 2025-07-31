@@ -140,7 +140,7 @@ namespace QuanLyThuVienApp
         {
             frmTaiLieuDG.taiLieusMuon.Clear();
             listTL.Clear();
-            dgvSachMuon.DataSource = listTL;
+            loadDuLieu();
         }
         private bool isEmail(string inputEmail)
         {
@@ -272,6 +272,7 @@ namespace QuanLyThuVienApp
 
         private void btnXoaSLM_Click(object sender, EventArgs e)
         {
+            if (dgvSachMuon.RowCount < 1) return;
 
             string maSachFull = txtMaTL.Text;
             int maSach = int.Parse(maSachFull.Substring(2));
