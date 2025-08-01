@@ -12,35 +12,11 @@ namespace QuanLyThuVienApp
 {
     public partial class frmHomes : MetroFramework.Forms.MetroForm
     {
-        public static string quyenHan = "user";
-        public static string tenDN;
-        public static string text;
+        public static string strHello = "Chào mừng độc giả đã đến với thư viện!" ;
 
         public frmHomes()
         {
             InitializeComponent();
-        }
-
-        public frmHomes(string _tenDangNhap, bool? _biKhoa)
-        {
-            InitializeComponent();
-
-            if (_biKhoa == true)
-            {
-                text = "Tài khoản của bạn đang bị khóa, vui lòng đến thư viện để được xử lý!";
-                tslbThongTin.ForeColor = Color.Red;
-                btnMuonSach.Enabled = false;
-                btnSach.Enabled = false;
-            }
-            else if( _biKhoa == false)
-            {
-                QLTVEntities db = new QLTVEntities();
-                NguoiDung ngD = db.NguoiDungs.Where(p => p.TenDangNhap == _tenDangNhap).FirstOrDefault();
-                NhanVien nguoiDung = db.NhanViens.Where(p => p.NguoiDungID == ngD.ID).FirstOrDefault();
-                text = "Chào mừng nhân viên: " + nguoiDung.HoTen + " đã quay trở lại!";
-            }
-                
-            tenDN = _tenDangNhap;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -53,7 +29,7 @@ namespace QuanLyThuVienApp
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            tslbThongTin.Text = text;
+            tslbThongTin.Text = strHello;
             tslbTimer.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss  ");
         }
         

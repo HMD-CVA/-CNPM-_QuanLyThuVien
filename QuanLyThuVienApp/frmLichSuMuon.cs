@@ -20,7 +20,7 @@ namespace QuanLyThuVienApp
 
         private void frmLichSuMuon_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Vui lòng nhập đầy đủ thông tin phiếu mượn của bạn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //MessageBox.Show("Vui lòng nhập đầy đủ thông tin phiếu mượn của bạn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             //loadDuLieu();
         }
 

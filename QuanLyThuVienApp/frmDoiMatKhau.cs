@@ -36,9 +36,13 @@ namespace QuanLyThuVienApp
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            if(txtMKCu.Text == "" || txtMKMoi1.Text == "" || txtMKMoi2.Text == "")
+            string mkCu = txtMKCu.Text.Trim();
+            string mkMoi1 = txtMKMoi1.Text.Trim();
+            string mkMoi2 = txtMKMoi2.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(mkCu) || string.IsNullOrWhiteSpace(mkMoi1) || string.IsNullOrWhiteSpace(mkMoi2))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -51,7 +55,7 @@ namespace QuanLyThuVienApp
 
             if (!matKhauCu.SequenceEqual(nguoiDung.MatKhau))
             {
-                MessageBox.Show("Mật khẩu cũ sai!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mật khẩu cũ không đúng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -61,15 +65,15 @@ namespace QuanLyThuVienApp
             //    return;
             //}
 
-            if (txtMKMoi1.Text == txtMKCu.Text)
+            if (mkCu == mkMoi1)
             {
-                MessageBox.Show("Không đặt lại mật khẩu cũ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mật khẩu mới không được trùng mật khẩu cũ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (txtMKMoi1.Text != txtMKMoi2.Text)
+            if (mkMoi1 != mkMoi2)
             {
-                MessageBox.Show("Xác nhận lại mật khẩu mới sai!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mật khẩu mới không khớp với xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

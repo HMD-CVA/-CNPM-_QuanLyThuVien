@@ -37,15 +37,18 @@ namespace QuanLyThuVienApp
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            if (txtMK1.Text == "" || txtMK2.Text == "")
+            string matKhauMoi = txtMK1.Text.Trim();
+            string xacNhanMK = txtMK2.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(matKhauMoi) || string.IsNullOrWhiteSpace(xacNhanMK))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (txtMK1.Text != txtMK2.Text)
+            if (matKhauMoi != xacNhanMK)
             {
-                MessageBox.Show("Xác nhận mật khẩu sai!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xác nhận mật khẩu không trùng khớp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

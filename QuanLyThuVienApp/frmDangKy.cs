@@ -15,9 +15,7 @@ namespace QuanLyThuVienApp
         {
             progressBar1.Visible = true;
             progressBar1.MarqueeAnimationSpeed = 30;
-            //progressBar1.BringToFront();
             this.UseWaitCursor = true;
-            //Application.DoEvents();
         }
         private void HideLoading()
         {
@@ -81,19 +79,6 @@ namespace QuanLyThuVienApp
             await Task.Run(() => GuiEmail.guiEmail(emailDG, "Mã xác thực của bạn là: " + OTP));
             HideLoading();
 
-            //ShowLoading();
-            ////Application.DoEvents();
-            //await Task.Run(() =>
-            //{
-            //    Random random = new Random();
-            //    OTP = random.Next(100000, 999999).ToString();
-            //    GuiEmail.guiEmail(emailDG, "Mã xác thực của bạn là: " + OTP);
-                
-            //});
-            //HideLoading();
-
-
-            // Ẩn frmB và mở frmC
             this.Hide();
             using (frmXacThucDG frm = new frmXacThucDG(emailDG, OTP, DateTime.Now))
             {

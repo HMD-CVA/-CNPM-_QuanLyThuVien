@@ -59,7 +59,7 @@ namespace QuanLyThuVienApp
                 byte[] hashBytes = mD5.ComputeHash(inputBytes);
                 if (hashBytes.SequenceEqual(nguoiDung.MatKhau))
                 {
-                    if  (nhanVien.TrangThaiXacThuc == false) // nhanVien.TrangThaiXacThuc == null ||
+                    if  (nhanVien.TrangThaiXacThuc == false)
                     {
                         ShowLoading();
                         await Task.Run(() =>
