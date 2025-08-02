@@ -65,8 +65,8 @@ namespace QuanLyThuVienApp
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string luaChon = cbTimKiem.Text;
-            if (luaChon == "")
+            string luaChon = cbTimKiem.Text.Trim();
+            if (string.IsNullOrWhiteSpace(luaChon))
             {
                 MessageBox.Show("Vui lòng chọn lựa chọn để tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cbTimKiem.Focus();
@@ -124,11 +124,6 @@ namespace QuanLyThuVienApp
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
             if (txtTimKiem.Text == string.Empty) loadDuLieu();
-        }
-
-        private void d(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

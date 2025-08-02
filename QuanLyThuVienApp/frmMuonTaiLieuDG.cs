@@ -52,8 +52,10 @@ namespace QuanLyThuVienApp
         }
         private void HienThiDuLieu(int RowIndex)
         {
-            //int soLuongSachCon = int.Parse(dgvSachMuon.Rows[RowIndex].Cells["SoLuong"].Value.ToString()) - int.Parse(dgvSachMuon.Rows[RowIndex].Cells["SoTaiLieuMuon"].Value.ToString());
-            if (listTL.Count == 0) { return; }
+            if (listTL.Count == 0) 
+            { 
+                return; 
+            }
 
             txtMaTL.Text = dgvSachMuon.Rows[RowIndex].Cells["MaTaiLieu"].Value.ToString();
             txtTenSach.Text = dgvSachMuon.Rows[RowIndex].Cells["TenTaiLieu"].Value.ToString();
@@ -90,47 +92,6 @@ namespace QuanLyThuVienApp
                 dgvSachMuon.Rows.Add(maSach, tenSach, 1);
             }
         }
-
-        //private void dgvSachMuon_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if(e.RowIndex == -1) return;
-
-        //    if (e.ColumnIndex == 2)
-        //        dgvSachMuon.BeginEdit(true);
-        //    else if (e.ColumnIndex == 3)
-        //        dgvSachMuon.Rows.RemoveAt(e.RowIndex);
-        //}
-
-        //private void btnTimKiem_Click(object sender, EventArgs e)
-        //{
-        //    string luaChon = cbTimKiem.Text;
-        //    if (luaChon == "") return;
-
-        //    QLTVEntities db = new QLTVEntities();
-        //    List<Sach> sach = new List<Sach>();
-
-        //    if (luaChon == "Mã sách")
-        //        sach = db.Saches.Where(p => ("S" + p.ID.ToString()).Contains(txtTimKiem.Text)).ToList();
-        //    else if (luaChon == "Tên sách")
-        //        sach = db.Saches.Where(p => p.TenSach.Contains(txtTimKiem.Text)).ToList();
-        //    else if (luaChon == "Tác giả")
-        //        sach = db.Saches.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();
-        //    else if (luaChon == "Nhà xuất bản")
-        //        sach = db.Saches.Where(p => p.NhaXuatBan.TenNXB.Contains(txtTimKiem.Text)).ToList();
-        //    else if (luaChon == "Thể loại")
-        //        sach = db.Saches.Where(p => p.TheLoai.TenTheLoai.Contains(txtTimKiem.Text)).ToList();
-
-        //    dgvSachMuon.DataSource = sach.Select(p => new
-        //    {
-        //        MaSach = "S" + p.ID,
-        //        p.TenSach,
-        //        p.TacGia.TenTG,
-        //        p.NhaXuatBan.TenNXB,
-        //        p.TheLoai.TenTheLoai,
-        //        CoSan = p.SoLuong - p.SoSachMuon
-        //    }).ToList();
-        //}
-
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             loadDuLieu();
@@ -208,7 +169,7 @@ namespace QuanLyThuVienApp
             DocGia DG = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
             PhieuMuon phieuMuon = new PhieuMuon();
             phieuMuon.MaDG = DG.MaDocGia;
-            phieuMuon.MaNV = null; // ???????????????
+            phieuMuon.MaNV = null;
             phieuMuon.NgayMuon = null;
             phieuMuon.HanTra = null;
             phieuMuon.DaTra = false;
@@ -248,28 +209,6 @@ namespace QuanLyThuVienApp
                 " nếu quá thời gian thì phiếu mượn sẽ tự động bị huỷ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void dgvSachMuon_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            //if (e.ColumnIndex != 2) return;
-            //string soLuong = e.FormattedValue.ToString();
-            //if (int.TryParse(soLuong, out int result) && result > 0)
-            //{
-            //    QLTVEntities db = new QLTVEntities();
-            //    int maSach = int.Parse(dgvSachMuon.Rows[e.RowIndex].Cells["MaSach2"].Value.ToString().Substring(1));
-            //    Sach sach = db.Saches.Where(p => p.ID == maSach).SingleOrDefault();
-            //    if (sach != null && (sach.SoLuong - sach.SoSachMuon) < result)
-            //    {
-            //        MessageBox.Show("Không đủ số lượng sách!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        e.Cancel = true;
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Số lượng không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    e.Cancel = true;
-            //}
-        }
-
         private void btnXoaSLM_Click(object sender, EventArgs e)
         {
             if (dgvSachMuon.RowCount < 1) return;
@@ -298,17 +237,6 @@ namespace QuanLyThuVienApp
                 {
                     int soLuong = nhapSoLuongForm.SoLuong;
 
-                    //int soLuongConLai = soLuongHienTai - soLuongMuonXoa;
-
-                    //if (soLuongConLai < 1)
-                    //{
-                    //    btnSUB.Enabled = false;
-                    //}
-                    //else
-                    //{
-                    //    row.Cells["SoLuong2"].Value = soLuongConLai;
-                    //}
-
                     for (int i = 0; i < listTL.Count; i++)
                     {
                         if (listTL[i].Item1 == maSach)
@@ -326,12 +254,7 @@ namespace QuanLyThuVienApp
                 else return;
             }
             MessageBox.Show("Đã điều chỉnh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //string inKQ = string.Empty;
-            //for (int i = 0; i < taiLieusMuon.Count; i++)
-            //{
-            //    inKQ += taiLieusMuon[i].Item1.ToString() + " " + taiLieusMuon[i].Item2.ToString() + "\n";
-            //}
-            //MessageBox.Show(inKQ, "Thông ", MessageBoxButtons.OK);
+           
             loadDuLieu();
             for (int i = 0; i < dgvSachMuon.Rows.Count; i++)
             {

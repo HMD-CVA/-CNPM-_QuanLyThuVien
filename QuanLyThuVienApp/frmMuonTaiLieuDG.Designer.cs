@@ -122,7 +122,6 @@
             this.dgvSachMuon.Size = new System.Drawing.Size(903, 269);
             this.dgvSachMuon.TabIndex = 9;
             this.dgvSachMuon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSachMuon_CellClick);
-            this.dgvSachMuon.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSachMuon_CellValidating);
             // 
             // MaTaiLieu
             // 

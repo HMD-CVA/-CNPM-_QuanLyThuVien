@@ -157,13 +157,18 @@ namespace QuanLyThuVienApp
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string luaChon = cbTimKiem.Text;
-            if (string.IsNullOrWhiteSpace(luaChon)) return;
+            if (string.IsNullOrWhiteSpace(luaChon))
+            {
+                MessageBox.Show("Vui lòng chọn lựa chọn để tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbTimKiem.Focus();
+                return;
+            }
 
             QLTVEntities db = new QLTVEntities();
             List<TaiLieu> sach = new List<TaiLieu>();
 
             if (luaChon == "Mã tài liệu")
-                sach = db.TaiLieux.Where(p => ("S" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
+                sach = db.TaiLieux.Where(p => ("TL" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
             else if (luaChon == "Tên tài liệu")
                 sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
             else if (luaChon == "Tác giả")
@@ -191,6 +196,9 @@ namespace QuanLyThuVienApp
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+            cbTimKiem.Text = string.Empty;
+            txtTimKiem.Text = string.Empty;
+            dgvSachMuon.Rows.Clear();
             loadDuLieu();
             themNutDGV();
         }
@@ -291,35 +299,11 @@ namespace QuanLyThuVienApp
             db.SaveChanges();
 
             // Tạm tắt event CellValidating để clear dgv
-            dgvSachMuon.CellValidating -= dgvSachMuon_CellValidating;
             dgvSachMuon.Rows.Clear();
-            dgvSachMuon.CellValidating += dgvSachMuon_CellValidating;
 
             loadDuLieu();
             MessageBox.Show("Tạo phiếu mượn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             txtEmail.Text = string.Empty;
-        }
-
-        private void dgvSachMuon_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            //if (e.ColumnIndex != 2) return;
-            //string soLuong = e.FormattedValue.ToString();
-            //if (int.TryParse(soLuong, out int result) && result > 0)
-            //{
-            //    QLTVEntities db = new QLTVEntities();
-            //    int maSach = int.Parse(dgvSachMuon.Rows[e.RowIndex].Cells["MaSach2"].Value.ToString().Substring(1));
-            //    Sach sach = db.Saches.Where(p => p.ID == maSach).SingleOrDefault();
-            //    if (sach != null && (sach.SoLuong - sach.SoSachMuon) < result)
-            //    {
-            //        MessageBox.Show("Không đủ số lượng sách!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        e.Cancel = true;
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Số lượng không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    e.Cancel = true;
-            //}
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -351,6 +335,11 @@ namespace QuanLyThuVienApp
                 form.Close();
             frmTTDocGia frm = new frmTTDocGia(dg.MaDocGia);
             frm.ShowDialog();
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTimKiem.Text)) loadDuLieu();
         }
     }
 }
