@@ -63,7 +63,6 @@ namespace QuanLyThuVienApp
             txtNXB.Text = dgvSachMuon.Rows[RowIndex].Cells["TenNXB"].Value.ToString();
             txtTheLoai.Text = dgvSachMuon.Rows[RowIndex].Cells["TenDanhMuc"].Value.ToString();
             txtMoTa.Text = dgvSachMuon.Rows[RowIndex].Cells["MoTa"].Value.ToString();
-            
         }
         private void dgvSachMuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {

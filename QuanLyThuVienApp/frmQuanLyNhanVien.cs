@@ -45,28 +45,29 @@ namespace QuanLyThuVienApp
             {
                 QLTVEntities db = new QLTVEntities();
                 var data = db.NhanViens.Where(p => p.NguoiDung.QuyenHan == "user")
-                    .Select(p => new
-                    {
-                        MaNV = "NV" + p.NguoiDungID,
-                        p.NguoiDung.TenDangNhap,
-                        p.HoTen,
-                        p.Email,
-                        p.NgayDangKi,
-                        TrangThai = (p.TrangThaiXacThuc == false) ? "Chờ kích hoạt" : (p.NguoiDung.BiKhoa == true) ? "Tạm khóa" : "Hoạt động"
-                    }).ToList();
+                .Select(p => new
+                {
+                    MaNV = "NV" + p.NguoiDungID,
+                    p.NguoiDung.TenDangNhap,
+                    p.HoTen,
+                    p.Email,
+                    p.NgayDangKi,
+                    TrangThai =  (p.NguoiDung.BiKhoa == true) ? "Tạm khóa"  : (p.TrangThaiXacThuc == false) ? "Chờ kích hoạt" : "Hoạt động"
+                }).ToList();
+
                 Invoke(new Action(() => {
                     dgvNhanVien.DataSource = data;
-                    if (dgvNhanVien.Rows.Count > 0)
-                    {       
-                        txtID.Text = dgvNhanVien.Rows[0].Cells["MaNV"].Value.ToString();
-                        txtSuaEmail.Text = dgvNhanVien.Rows[0].Cells["Email"].Value.ToString();
-                        txtSuaTen.Text = dgvNhanVien.Rows[0].Cells["HoTen"].Value.ToString();
-                    }
+                    if (dgvNhanVien.Rows.Count > 0) HienThiDuLieu(0);
                 }));
             });
             HideLoading();
         }
-
+        private void HienThiDuLieu(int index)
+        {
+            txtID.Text = dgvNhanVien.Rows[index].Cells["MaNV"].Value.ToString();
+            txtSuaEmail.Text = dgvNhanVien.Rows[index].Cells["Email"].Value.ToString();
+            txtSuaTen.Text = dgvNhanVien.Rows[index].Cells["HoTen"].Value.ToString();
+        }
         private bool isEmail(string inputEmail)
         {
             inputEmail = inputEmail ?? string.Empty;
@@ -88,14 +89,17 @@ namespace QuanLyThuVienApp
 
         private async void btnDangKy_Click(object sender, EventArgs e)
         {
-            if (txtEmail.Text == "" || txtTen.Text == "")
+            string email = txtEmail.Text.Trim();
+            string hoTen = txtTen.Text.Trim();
+
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(hoTen))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            string email = txtEmail.Text.Trim();
-            string hoTen = txtTen.Text.Trim();
+            
             if (!isEmail(email))
             {
                 MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -110,6 +114,7 @@ namespace QuanLyThuVienApp
                 MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             DialogResult result = MessageBox.Show(
                 "Bạn có muốn đăng ký tài khoản mới không?",
                 "Thông báo!",
@@ -190,18 +195,8 @@ namespace QuanLyThuVienApp
                 TrangThai = nv.NguoiDung.BiKhoa == true ? "Tạm khóa" : nv.TrangThaiXacThuc == false ? "Chưa kích hoạt" : "Hoạt động"
             }).ToList();
 
-            if (dgvNhanVien.Rows.Count > 0)
-            {
-                txtID.Text = dgvNhanVien.Rows[0].Cells["MaNV"].Value.ToString();
-                txtSuaEmail.Text = dgvNhanVien.Rows[0].Cells["Email"].Value.ToString();
-                txtSuaTen.Text = dgvNhanVien.Rows[0].Cells["HoTen"].Value.ToString();
-            }
-            else
-            {
-                txtID.Clear();
-                txtSuaEmail.Clear();
-                txtSuaTen.Clear();
-            }
+            if (dgvNhanVien.Rows.Count > 0) HienThiDuLieu(0);
+            else ClearFormInputs();
         }
 
         private async void btnXoaTK_Click(object sender, EventArgs e)
@@ -225,6 +220,13 @@ namespace QuanLyThuVienApp
             if (nd_Check.BiKhoa == true)
             {
                 MessageBox.Show("Tài khoản này hiện đang bị khóa, không thể xoá!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            PhieuMuon nv_pm = db.PhieuMuons.Where(p => p.MaNV == nguoiDungID && p.DaTra == false).FirstOrDefault();
+            if (nv_pm != null)
+            {
+                MessageBox.Show("Tài khoản này hiện đang phụ trách phiếu mượn chưa trả, không thể xoá!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -345,20 +347,14 @@ namespace QuanLyThuVienApp
         }
         private void dgvBanDoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == -1) return;
-
-            if (dgvNhanVien.Rows.Count > 0)
-            {
-                txtID.Text = dgvNhanVien.Rows[e.RowIndex].Cells["MaNV"].Value.ToString();
-                txtSuaEmail.Text = dgvNhanVien.Rows[e.RowIndex].Cells["Email"].Value.ToString();
-                txtSuaTen.Text = dgvNhanVien.Rows[e.RowIndex].Cells["HoTen"].Value.ToString();
-            }
-            else
-            {
-                txtID.Clear();
-                txtEmail.Clear();
-                txtSuaTen.Clear();
-            }
+            if (e.RowIndex >= 0 && dgvNhanVien.Rows.Count > 0) HienThiDuLieu(e.RowIndex);
+            else ClearFormInputs();
+        }
+        private void ClearFormInputs()
+        {
+            txtID.Clear();
+            txtSuaEmail.Clear();
+            txtSuaTen.Clear();
         }
     }
 }

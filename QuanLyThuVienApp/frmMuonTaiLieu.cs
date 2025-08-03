@@ -28,6 +28,13 @@ namespace QuanLyThuVienApp
 
         private void frmMuonSach_Load(object sender, EventArgs e)
         {
+            QLTVEntities db = new QLTVEntities();
+            cbbSDM.DataSource = db.DanhMucTaiLieux.Select(p => p.TenDanhMuc).ToList();
+            cbbSNXB.DataSource = db.NhaXuatBans.Select(p => p.TenNXB).ToList();
+            cbbSTG.DataSource = db.TacGias.Select(p => p.TenTG).ToList();
+            cbbSNXB.SelectedIndex = -1;
+            cbbSDM.SelectedIndex = -1;
+            cbbSTG.SelectedIndex = -1;
             loadDuLieu();
             themNutDGV();
             btnTTDG.Hide();
@@ -36,7 +43,7 @@ namespace QuanLyThuVienApp
         private void themNutDGV()
         {
             // Kiểm tra nếu chưa có thì mới thêm
-            if (!dgvSach.Columns.Contains("btnDangKy"))
+            if (!dgvTaiLieu.Columns.Contains("btnDangKy"))
             {
                 DataGridViewButtonColumn nutDangKy = new DataGridViewButtonColumn();
                 nutDangKy.HeaderText = "";
@@ -45,10 +52,10 @@ namespace QuanLyThuVienApp
                 nutDangKy.Width = 78;
                 nutDangKy.UseColumnTextForButtonValue = true;
 
-                dgvSach.Columns.Add(nutDangKy);
+                dgvTaiLieu.Columns.Add(nutDangKy);
             }
 
-            if (!dgvSachMuon.Columns.Contains("btnXoa"))
+            if (!dgvTLMuon.Columns.Contains("btnXoa"))
             {
                 DataGridViewButtonColumn nutXoa = new DataGridViewButtonColumn();
                 nutXoa.HeaderText = "";
@@ -57,17 +64,17 @@ namespace QuanLyThuVienApp
                 nutXoa.Width = 45;
                 nutXoa.UseColumnTextForButtonValue = true;
 
-                dgvSachMuon.Columns.Add(nutXoa);
+                dgvTLMuon.Columns.Add(nutXoa);
             }
 
             // Đảm bảo nút luôn ở cuối cùng
-            dgvSach.Columns["btnDangKy"].DisplayIndex = dgvSach.Columns.Count - 1;
+            dgvTaiLieu.Columns["btnDangKy"].DisplayIndex = dgvTaiLieu.Columns.Count - 1;
         }
 
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
-            dgvSach.DataSource = db.TaiLieux.Select(p => new {
+            dgvTaiLieu.DataSource = db.TaiLieux.Select(p => new {
                 MaTaiLieu = "TL" + p.MaTaiLieu,
                 p.TenTaiLieu,
                 p.DanhMucTaiLieu.TenDanhMuc,
@@ -83,17 +90,17 @@ namespace QuanLyThuVienApp
         private void dgvSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            if (dgvSach.Columns[e.ColumnIndex].Name != "btnDangKy") return;
+            if (dgvTaiLieu.Columns[e.ColumnIndex].Name != "btnDangKy") return;
 
-            int soLuongConLai = int.Parse(dgvSach.Rows[e.RowIndex].Cells["CoSan"].Value.ToString());
+            int soLuongConLai = int.Parse(dgvTaiLieu.Rows[e.RowIndex].Cells["CoSan"].Value.ToString());
             if (soLuongConLai == 0)
             {
                 MessageBox.Show("Đã hết sách!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            string maSach = dgvSach.Rows[e.RowIndex].Cells["MaTaiLieu"].Value.ToString();
-            string tenSach = dgvSach.Rows[e.RowIndex].Cells["TenTaiLieu"].Value.ToString();
+            string maSach = dgvTaiLieu.Rows[e.RowIndex].Cells["MaTaiLieu"].Value.ToString();
+            string tenSach = dgvTaiLieu.Rows[e.RowIndex].Cells["TenTaiLieu"].Value.ToString();
 
             using (frmNhapSLMuonXoa formNhap = new frmNhapSLMuonXoa(soLuongConLai, true))
             {
@@ -102,7 +109,7 @@ namespace QuanLyThuVienApp
                     int soLuongMuon = formNhap.SoLuong;
 
                     // Kiểm tra nếu sách đã có trong danh sách mượn => cộng thêm
-                    foreach (DataGridViewRow row in dgvSachMuon.Rows)
+                    foreach (DataGridViewRow row in dgvTLMuon.Rows)
                     {
                         if (row.Cells["MaSach2"].Value.ToString() == maSach)
                         {
@@ -121,7 +128,7 @@ namespace QuanLyThuVienApp
                     }
 
                     // Nếu chưa có => thêm mới
-                    dgvSachMuon.Rows.Add(maSach, tenSach, soLuongMuon);
+                    dgvTLMuon.Rows.Add(maSach, tenSach, soLuongMuon);
                 }
             }
         }
@@ -129,9 +136,9 @@ namespace QuanLyThuVienApp
         private void dgvSachMuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
-            if (dgvSachMuon.Columns[e.ColumnIndex].Name != "btnXoa") return;
+            if (dgvTLMuon.Columns[e.ColumnIndex].Name != "btnXoa") return;
 
-            DataGridViewRow row = dgvSachMuon.Rows[e.RowIndex];
+            DataGridViewRow row = dgvTLMuon.Rows[e.RowIndex];
             int soLuongHienTai = int.Parse(row.Cells["SoLuong2"].Value.ToString());
 
             using (var nhapSoLuongForm = new frmNhapSLMuonXoa(soLuongHienTai, false)) // false = chế độ xóa
@@ -144,7 +151,7 @@ namespace QuanLyThuVienApp
 
                     if (soLuongConLai < 1)
                     {
-                        dgvSachMuon.Rows.RemoveAt(e.RowIndex);
+                        dgvTLMuon.Rows.RemoveAt(e.RowIndex);
                     }
                     else
                     {
@@ -156,61 +163,66 @@ namespace QuanLyThuVienApp
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string luaChon = cbTimKiem.Text;
-            if (string.IsNullOrWhiteSpace(luaChon))
+            string maTL = txtSMaTL.Text.Trim();
+            string tenTL = txtSTenTL.Text.Trim();
+            string tacGia = string.IsNullOrEmpty(cbbSTG.Text.Trim()) ? string.Empty : cbbSTG.SelectedItem != null ? cbbSTG.SelectedItem.ToString().Trim() : string.Empty;
+            string nxb = string.IsNullOrEmpty(cbbSNXB.Text.Trim()) ? string.Empty : cbbSNXB.SelectedItem != null ? cbbSNXB.SelectedItem.ToString().Trim() : string.Empty;
+            string theLoai = string.IsNullOrEmpty(cbbSDM.Text.Trim()) ? string.Empty : cbbSDM.SelectedItem != null ? cbbSDM.SelectedItem.ToString().Trim() : string.Empty;
+
+            if (string.IsNullOrEmpty(maTL) && string.IsNullOrEmpty(tenTL) && string.IsNullOrEmpty(tacGia) && string.IsNullOrEmpty(nxb) && string.IsNullOrEmpty(theLoai))
             {
-                MessageBox.Show("Vui lòng chọn lựa chọn để tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cbTimKiem.Focus();
+                MessageBox.Show("Vui lòng nhập thông tin để tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            QLTVEntities db = new QLTVEntities();
-            List<TaiLieu> sach = new List<TaiLieu>();
+            string cacheKey = $"TL_{maTL}_{tenTL}_{tacGia}_{nxb}_{theLoai}";
 
-            if (luaChon == "Mã tài liệu")
-                sach = db.TaiLieux.Where(p => ("TL" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Tên tài liệu")
-                sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Tác giả")
-                sach = db.TaiLieux.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Nhà xuất bản")
-                sach = db.TaiLieux.Where(p => p.NhaXuatBan.TenNXB.Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Danh mục")
-                sach = db.TaiLieux.Where(p => p.DanhMucTaiLieu.TenDanhMuc.Contains(txtTimKiem.Text)).ToList();
+            var result = SearchTool.SearchWithCache(cacheKey, () =>
+            {
+                using (QLTVEntities db = new QLTVEntities())
+                {
+                    var query = SearchTool.FilterTaiLieu(db, maTL, tenTL, tacGia, nxb, theLoai);
 
-            dgvSach.DataSource = sach.Select(p => new {
-                MaTaiLieu = "TL" + p.MaTaiLieu,
-                p.TenTaiLieu,
-                p.DanhMucTaiLieu.TenDanhMuc,
-                p.TacGia.TenTG,
-                p.NhaXuatBan.TenNXB,
-                p.TaiBan,
-                CoSan = p.SoLuong - p.SoTaiLieuMuon,
-                p.SoLuong,
-                p.SoTaiLieuMuon,
-                p.MoTa
-            }).ToList();
+                    return query.Select(p => new
+                    {
+                        MaTaiLieu = "TL" + p.MaTaiLieu,
+                        p.TenTaiLieu,
+                        p.TacGia.TenTG,
+                        p.NhaXuatBan.TenNXB,
+                        p.DanhMucTaiLieu.TenDanhMuc,
+                        p.TaiBan,
+                        p.SoLuong,
+                        p.SoTaiLieuMuon,
+                        CoSan = p.SoLuong - p.SoTaiLieuMuon,
+                        p.MoTa
+                    }).ToList();
+                }
+            });
 
+            dgvTaiLieu.DataSource = result;
             themNutDGV();
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            cbTimKiem.Text = string.Empty;
-            txtTimKiem.Text = string.Empty;
-            dgvSachMuon.Rows.Clear();
+            txtSMaTL.Text = string.Empty;
+            txtSTenTL.Text = string.Empty;
+            cbbSNXB.SelectedIndex = -1;
+            cbbSDM.SelectedIndex = -1;
+            cbbSTG.SelectedIndex = -1;
+            dgvTLMuon.Rows.Clear();
             loadDuLieu();
             themNutDGV();
         }
 
         private void btnXoaHet_Click(object sender, EventArgs e)
         {
-            dgvSachMuon.Rows.Clear();
+            dgvTLMuon.Rows.Clear();
         }
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            if (dgvSachMuon.Rows.Count == 0)
+            if (dgvTLMuon.Rows.Count == 0)
             {
                 MessageBox.Show("Hãy đăng ký tài liệu để mượn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -278,7 +290,7 @@ namespace QuanLyThuVienApp
             db.PhieuMuons.Add(phieuMuon);
             db.SaveChanges();
 
-            foreach (DataGridViewRow row in dgvSachMuon.Rows)
+            foreach (DataGridViewRow row in dgvTLMuon.Rows)
             {
                 if (row.IsNewRow) continue; // Bỏ qua dòng trống cuối
 
@@ -299,7 +311,7 @@ namespace QuanLyThuVienApp
             db.SaveChanges();
 
             // Tạm tắt event CellValidating để clear dgv
-            dgvSachMuon.Rows.Clear();
+            dgvTLMuon.Rows.Clear();
 
             loadDuLieu();
             MessageBox.Show("Tạo phiếu mượn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -335,11 +347,6 @@ namespace QuanLyThuVienApp
                 form.Close();
             frmTTDocGia frm = new frmTTDocGia(dg.MaDocGia);
             frm.ShowDialog();
-        }
-
-        private void txtTimKiem_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtTimKiem.Text)) loadDuLieu();
         }
     }
 }

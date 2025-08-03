@@ -79,6 +79,7 @@ namespace QuanLyThuVienApp
         private void btnThoat_Click(object sender, EventArgs e)
         {
             if (kiemTra) callback(false);
+            countdownTimer.Stop();
             this.Close();
         }
         
@@ -111,7 +112,7 @@ namespace QuanLyThuVienApp
             }
 
             QLTVEntities db = new QLTVEntities();
-            NhanVien nguoiDung = db.NhanViens.Where(p => p.NguoiDungID == ID).SingleOrDefault();
+            NhanVien nguoiDung = db.NhanViens.Where(p => p.MaNV == ID).SingleOrDefault();
 
             if (nguoiDung == null) return;
 
@@ -122,7 +123,7 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            if (remainingSeconds < 0 || (DateTime.Now - nguoiDung.ThoiGianNhanOTP.Value).TotalSeconds > 30)
+            if (remainingSeconds < 0 || (DateTime.Now - nguoiDung.ThoiGianNhanOTP.Value).TotalSeconds > 45)
             {
                 countdownTimer.Stop();
                 MessageBox.Show("Mã xác thực đã hết hạn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -14,7 +14,7 @@ namespace QuanLyThuVienApp
     {
         public  bool ktXacThuc = false;
         private Timer countdownTimer;
-        private int remainingSeconds = 30;
+        private int remainingSeconds = 45;
         private string email;
         private string OTP;
         private DateTime TGNhan;
@@ -126,7 +126,7 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            if (remainingSeconds < 0 || (DateTime.Now - TGNhan).TotalSeconds > 30)
+            if (remainingSeconds < 0 || (DateTime.Now - TGNhan).TotalSeconds > 45)
             {
                 MessageBox.Show(this, "Mã xác thực đã hết hạn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMaXacThuc.Focus();

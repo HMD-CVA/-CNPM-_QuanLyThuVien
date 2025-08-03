@@ -103,12 +103,16 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -154,6 +158,12 @@
     </Compile>
     <Compile Include="DocGia.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
+    </Compile>
+    <Compile Include="frmAL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAL.Designer.cs">
+      <DependentUpon>frmAL.cs</DependentUpon>
     </Compile>
     <Compile Include="frmQuanLyDocGia.cs">
       <SubType>Form</SubType>
@@ -350,12 +360,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchTool.cs" />
     <Compile Include="TacGia.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
     <Compile Include="TaiLieu.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAL.resx">
+      <DependentUpon>frmAL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyDocGia.resx">
       <DependentUpon>frmQuanLyDocGia.cs</DependentUpon>
     </EmbeddedResource>
