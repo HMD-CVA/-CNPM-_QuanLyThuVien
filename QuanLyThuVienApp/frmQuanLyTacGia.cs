@@ -17,7 +17,7 @@ namespace QuanLyThuVienApp
         {
             InitializeComponent();
         }
-
+        //cccccccccccccccccccccccccccccccc
         private void frmTacGia_Load(object sender, EventArgs e)
         {
             loadDuLieu();
