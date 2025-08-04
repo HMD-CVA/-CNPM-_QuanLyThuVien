@@ -48,17 +48,17 @@
             this.btnTim = new FontAwesome.Sharp.IconButton();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvTheLoai = new System.Windows.Forms.DataGridView();
-            this.MaDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ViTri = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuongTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMoTa = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtShowMoTa = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.MaDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViTri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuongTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTheLoai)).BeginInit();
             this.SuspendLayout();
             // 
@@ -301,50 +301,6 @@
             this.dgvTheLoai.TabIndex = 35;
             this.dgvTheLoai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTheLoai_CellClick);
             // 
-            // MaDanhMuc
-            // 
-            this.MaDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MaDanhMuc.DataPropertyName = "MaDanhMuc";
-            this.MaDanhMuc.HeaderText = "Mã";
-            this.MaDanhMuc.MinimumWidth = 6;
-            this.MaDanhMuc.Name = "MaDanhMuc";
-            this.MaDanhMuc.ReadOnly = true;
-            this.MaDanhMuc.Width = 51;
-            // 
-            // TenDanhMuc
-            // 
-            this.TenDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
-            this.TenDanhMuc.HeaderText = "Tên Danh Mục";
-            this.TenDanhMuc.MinimumWidth = 6;
-            this.TenDanhMuc.Name = "TenDanhMuc";
-            this.TenDanhMuc.ReadOnly = true;
-            // 
-            // ViTri
-            // 
-            this.ViTri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ViTri.DataPropertyName = "ViTri";
-            this.ViTri.HeaderText = "Vị Trí";
-            this.ViTri.MinimumWidth = 6;
-            this.ViTri.Name = "ViTri";
-            this.ViTri.ReadOnly = true;
-            this.ViTri.Width = 59;
-            // 
-            // SoLuongTL
-            // 
-            this.SoLuongTL.DataPropertyName = "SoLuongTL";
-            this.SoLuongTL.HeaderText = "Số lượng tài liệu";
-            this.SoLuongTL.Name = "SoLuongTL";
-            this.SoLuongTL.ReadOnly = true;
-            // 
-            // MoTa
-            // 
-            this.MoTa.DataPropertyName = "MoTa";
-            this.MoTa.HeaderText = "Mô tả";
-            this.MoTa.Name = "MoTa";
-            this.MoTa.ReadOnly = true;
-            this.MoTa.Visible = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -411,6 +367,52 @@
             this.label9.Size = new System.Drawing.Size(43, 17);
             this.label9.TabIndex = 56;
             this.label9.Text = "Mô tả";
+            // 
+            // MaDanhMuc
+            // 
+            this.MaDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.MaDanhMuc.DataPropertyName = "MaDanhMuc";
+            this.MaDanhMuc.HeaderText = "Mã";
+            this.MaDanhMuc.MinimumWidth = 6;
+            this.MaDanhMuc.Name = "MaDanhMuc";
+            this.MaDanhMuc.ReadOnly = true;
+            this.MaDanhMuc.Width = 51;
+            // 
+            // TenDanhMuc
+            // 
+            this.TenDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
+            this.TenDanhMuc.HeaderText = "Danh Mục";
+            this.TenDanhMuc.MinimumWidth = 6;
+            this.TenDanhMuc.Name = "TenDanhMuc";
+            this.TenDanhMuc.ReadOnly = true;
+            // 
+            // ViTri
+            // 
+            this.ViTri.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ViTri.DataPropertyName = "ViTri";
+            this.ViTri.HeaderText = "Vị Trí";
+            this.ViTri.MinimumWidth = 6;
+            this.ViTri.Name = "ViTri";
+            this.ViTri.ReadOnly = true;
+            this.ViTri.Width = 63;
+            // 
+            // SoLuongTL
+            // 
+            this.SoLuongTL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SoLuongTL.DataPropertyName = "SoLuongTL";
+            this.SoLuongTL.HeaderText = "Số lượng";
+            this.SoLuongTL.Name = "SoLuongTL";
+            this.SoLuongTL.ReadOnly = true;
+            this.SoLuongTL.Width = 85;
+            // 
+            // MoTa
+            // 
+            this.MoTa.DataPropertyName = "MoTa";
+            this.MoTa.HeaderText = "Mô tả";
+            this.MoTa.Name = "MoTa";
+            this.MoTa.ReadOnly = true;
+            this.MoTa.Visible = false;
             // 
             // frmQuanLyDanhMuc
             // 
