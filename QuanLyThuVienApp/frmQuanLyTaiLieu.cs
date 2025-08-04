@@ -429,9 +429,9 @@ namespace QuanLyThuVienApp
             txtDangMuon.Clear();
             txtMoTa.Clear();
             txtTaiBan.Clear();
-            cbTacGia.SelectedIndex = 0;
-            cbNXB.SelectedIndex = 0;
-            cbTheLoai.SelectedIndex = 0;
+            cbTacGia.SelectedIndex = -1;
+            cbNXB.SelectedIndex = -1;
+            cbTheLoai.SelectedIndex = -1;
         }
 
         private void radioSuaXoa_CheckedChanged(object sender, EventArgs e)
