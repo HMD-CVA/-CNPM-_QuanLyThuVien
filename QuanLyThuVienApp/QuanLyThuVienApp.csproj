@@ -165,6 +165,12 @@
     <Compile Include="frmAL.Designer.cs">
       <DependentUpon>frmAL.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGuiEmailQuaHan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGuiEmailQuaHan.Designer.cs">
+      <DependentUpon>frmGuiEmailQuaHan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmQuanLyDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -369,6 +375,9 @@
     </Compile>
     <EmbeddedResource Include="frmAL.resx">
       <DependentUpon>frmAL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGuiEmailQuaHan.resx">
+      <DependentUpon>frmGuiEmailQuaHan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyDocGia.resx">
       <DependentUpon>frmQuanLyDocGia.cs</DependentUpon>

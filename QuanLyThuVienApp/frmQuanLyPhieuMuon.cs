@@ -56,17 +56,6 @@ namespace QuanLyThuVienApp
         }
         private void optionPhieuMuon(List<PhieuMuon> phieuMuons)
         {
-            //btnHoaDonPhat.Show();
-            //btnTraSach.Show();
-            //btnGiaHan.Show();
-            ////btnMuonMoi.Hide();
-            //btnHuyPhieu.Hide();
-            ////btnChoMuon.Hide();
-
-            //lbTienPhat1.Show();
-            //lbTienPhat2.Show();
-
-
             dgvPhieuMuon.DataSource = phieuMuons.Where(p => p.DaTra == false)
             .OrderByDescending(p => p.MaPhieu)
             .Select(p => new
@@ -79,36 +68,9 @@ namespace QuanLyThuVienApp
                 DaTra = (p.DaTra == true) ? "Đã trả" : "Chưa trả",
                 NgayTra = (p.DaTra == true) ? p.NgayTra : null
             }).ToList();
-
-            //dgvChiTietPM.Columns["MaPhieu"].HeaderText = "Mã phiếu";
-            //dgvChiTietPM.Columns["IDBanDoc"].HeaderText = "Mã bạn đọc";
-            //dgvChiTietPM.Columns["TenBanDoc"].HeaderText = "Tên bạn đọc";
-            //dgvChiTietPM.Columns["NgayMuon"].HeaderText = "Ngày mượn";
-            //dgvChiTietPM.Columns["HanTra"].HeaderText = "Hạn trả";
-            //dgvChiTietPM.Columns["NgayMuon"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            //dgvChiTietPM.Columns["HanTra"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-            //if (dgvChiTietPM.Rows.Count > 0)
-            //{
-            //    DateTime hanTra = (DateTime)dgvChiTietPM.Rows[0].Cells["HanTra"].Value;
-            //    int soNgay = (DateTime.Now.Date - hanTra.Date).Days;
-            //    if (soNgay > 0) lbTienPhat2.Text = soNgay.ToString() + "000 VNĐ";
-            //}
-            //else lbTienPhat2.Text = "0 VNĐ";
         }
         private void optionPhieuTre(List<PhieuMuon> phieuMuons)
         {
-            //btnHoaDonPhat.Show();
-            //btnTraSach.Show();
-            //btnGiaHan.Show();
-            ////btnMuonMoi.Hide();
-            //btnHuyPhieu.Hide();
-            ////btnChoMuon.Hide();
-
-            //lbTienPhat1.Show();
-            //lbTienPhat2.Show();
-
-
             dgvPhieuMuon.DataSource = phieuMuons
             .Where(p =>
                 p.HanTra.HasValue &&
@@ -129,17 +91,6 @@ namespace QuanLyThuVienApp
         }
         private void optionPhieuTra(List<PhieuMuon> phieuMuons)
         {
-            //btnHoaDonPhat.Hide();
-            //btnTraSach.Hide();
-            //btnGiaHan.Hide();
-            ////btnMuonMoi.Hide();
-            //btnHuyPhieu.Hide();
-            ////btnChoMuon.Hide();
-
-            //lbTienPhat1.Hide();
-            //lbTienPhat2.Hide();
-
-
             dgvPhieuMuon.DataSource = phieuMuons
             .Where(p => p.DaTra == true)
             .OrderByDescending(p => p.MaPhieu)
@@ -284,14 +235,6 @@ namespace QuanLyThuVienApp
         }
         private void rdbAll_CheckedChanged(object sender, EventArgs e)
         {
-            //btnHoaDonPhat.Hide();
-            //btnTraSach.Hide();
-            //btnGiaHan.Hide();
-            ////btnMuonMoi.Hide();
-            ////btnChoMuon.Hide();
-
-            //lbTienPhat1.Hide();
-            //lbTienPhat2.Hide();
             loadChiTietPM(0);
             loadPhieuMuon();
         }
@@ -304,9 +247,6 @@ namespace QuanLyThuVienApp
         private void dgvPhieuMuon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0 || e.RowIndex >= dgvPhieuMuon.Rows.Count) return;
-            //dgvPhieuMuon.Columns["NgayMuon"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            //dgvPhieuMuon.Columns["HanTra"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            //dgvPhieuMuon.Columns["NgayTra"].DefaultCellStyle.Format = "dd/MM/yyyy";
             if (dgvPhieuMuon.Columns[e.ColumnIndex].Name == "DaTra")
             {
                 string daTraValue = dgvPhieuMuon.Rows[e.RowIndex].Cells["DaTra"].Value?.ToString();
@@ -373,8 +313,6 @@ namespace QuanLyThuVienApp
                      NgayTra = (p.DaTra == true) ? p.NgayTra : null
                  }).ToList();
             }
-            //else return;
-            //loadPhieuMuon();
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -395,13 +333,6 @@ namespace QuanLyThuVienApp
                 MessageBox.Show("Hãy chọn 1 phiếu mượn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            //DialogResult result = MessageBox.Show(
-            //    "Xác nhận đã thanh toán " + lbTienPhat2.Text + " tiền phạt!", 
-            //    "Thông báo!",                  
-            //    MessageBoxButtons.YesNo,              
-            //    MessageBoxIcon.Question               
-            //);
 
             DialogResult result = MessageBox.Show(
                 "Bạn có xác nhận độc giả này đã trả đủ sách không ?", "Thông báo!",
@@ -428,16 +359,6 @@ namespace QuanLyThuVienApp
                 TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == idSach).FirstOrDefault();
                 tl.SoTaiLieuMuon -= soLuong;
             }
-
-
-            //int IDBanDoc = int.Parse(dgvPhieuMuon.Rows[0].Cells["IDBanDoc"].Value.ToString());
-
-            //NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == IDBanDoc).FirstOrDefault();
-            //nguoiDung.SoSachMuon -= tongSach;
-
-            //PhieuMuon phieuMuon = db.PhieuMuons.Where(p=>p.MaPhieu == maPhieu).FirstOrDefault();
-            //phieuMuon.TrangThai = 2;
-            //phieuMuon.NgayTra = DateTime.Now;
 
             db.SaveChanges();
             btnLamMoi.PerformClick();
@@ -502,18 +423,6 @@ namespace QuanLyThuVienApp
                 TL.SoTaiLieuMuon -= soLuong;
             }
 
-            //int maPhieu = int.Parse(dgvPhieuMuon.Rows[0].Cells["MaPhieu2"].Value.ToString());
-            //int IDBanDoc = int.Parse(dgvPhieuMuon.Rows[0].Cells["IDBanDoc"].Value.ToString());
-
-            //NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == IDBanDoc).FirstOrDefault();
-            //nguoiDung.SoSachMuon -= tongSach;
-
-            //List<ChiTietPhieuMuon> chiTietPhieuMuons = db.ChiTietPhieuMuons.Where(p => p.MaPhieu == maPhieu).ToList();
-            //db.ChiTietPhieuMuons.RemoveRange(chiTietPhieuMuons);
-
-            //PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
-            //db.PhieuMuons.Remove(phieuMuon);
-
             db.SaveChanges();
             btnLamMoi.PerformClick();
 
@@ -544,18 +453,9 @@ namespace QuanLyThuVienApp
             
             int maPhieu = int.Parse(row.Cells["MaPhieu"].Value.ToString().Substring(2));
 
-
-            //DateTime hanTra = (DateTime)dgvPhieuMuon.Rows[0].Cells["HanTra"].Value;
-            //int soNgay = (DateTime.Now.Date - hanTra.Date).Days;
-            //int id = int.Parse(dgvPhieuMuon.Rows[0].Cells["HoTenDG"].Value.ToString());
-            //string strHanTra = hanTra.ToString("dd/MM/yyyy");
-
-            //if (soNgay <= 0) soNgay = 0;
-
             frmReportPrintPhieuMuon frm = new frmReportPrintPhieuMuon(maPhieu);
             frm.Owner = this;
-            frm.ShowDialog();
-            
+            frm.ShowDialog();            
         }
 
         private void btnChoMuon_Click(object sender, EventArgs e)
@@ -591,18 +491,6 @@ namespace QuanLyThuVienApp
             phieuMuon.MaNV = maNV;
             phieuMuon.NgayMuon = DateTime.Now;
             phieuMuon.HanTra = DateTime.Now.AddDays(7);
-
-            //DataGridViewRow row = dgvChiTietPM.CurrentRow;
-
-            //int tongTL = 0;
-            //foreach (DataGridViewRow Irow in dgvChiTietPM.Rows)
-            //{
-            //    int maTL = int.Parse(Irow.Cells["MaTaiLieu"].Value.ToString().Substring(2));
-            //    int soLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
-            //    tongTL += soLuong;
-            //    TaiLieu TL = db.TaiLieux.Where(p => p.MaTaiLieu == maTL).FirstOrDefault();
-            //    TL.SoTaiLieuMuon += soLuong;
-            //}
 
             db.SaveChanges();
             btnLamMoi.PerformClick();
