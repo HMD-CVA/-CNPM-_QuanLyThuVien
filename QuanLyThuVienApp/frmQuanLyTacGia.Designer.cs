@@ -90,7 +90,7 @@
             // txtMoTaTG
             // 
             this.txtMoTaTG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMoTaTG.Location = new System.Drawing.Point(402, 145);
+            this.txtMoTaTG.Location = new System.Drawing.Point(572, 111);
             this.txtMoTaTG.Margin = new System.Windows.Forms.Padding(2);
             this.txtMoTaTG.Multiline = true;
             this.txtMoTaTG.Name = "txtMoTaTG";
@@ -161,7 +161,7 @@
             // 
             this.btnThem.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(470, 205);
+            this.btnThem.Location = new System.Drawing.Point(639, 166);
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(61, 25);
@@ -203,7 +203,7 @@
             // txtTenTG
             // 
             this.txtTenTG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenTG.Location = new System.Drawing.Point(402, 108);
+            this.txtTenTG.Location = new System.Drawing.Point(572, 67);
             this.txtTenTG.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenTG.Name = "txtTenTG";
             this.txtTenTG.Size = new System.Drawing.Size(200, 23);
@@ -222,7 +222,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(446, 111);
+            this.label7.Location = new System.Drawing.Point(473, 110);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 17);
@@ -233,7 +233,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(446, 74);
+            this.label3.Location = new System.Drawing.Point(473, 73);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 17);
