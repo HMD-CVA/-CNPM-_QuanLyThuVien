@@ -75,7 +75,7 @@
             this.groupBox1.Size = new System.Drawing.Size(405, 319);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh tài liệu thành viên";
+            this.groupBox1.Text = "Danh sách nhà phát triển";
             // 
             // textBox7
             // 
@@ -196,7 +196,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label10);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmInfor";
             this.Padding = new System.Windows.Forms.Padding(0, 24, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

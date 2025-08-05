@@ -30,50 +30,31 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangKy));
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtEmail = new MetroFramework.Controls.MetroTextBox();
             this.txtSDT = new MetroFramework.Controls.MetroTextBox();
             this.btnDangKy = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtHoTen = new MetroFramework.Controls.MetroTextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.SkyBlue;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label1.Location = new System.Drawing.Point(119, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 20);
+            this.label1.Size = new System.Drawing.Size(188, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "ĐĂNG KÝ THÔNG TIN";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 105);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Email:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(20, 76);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 17);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Số điện thoại:";
             // 
             // txtEmail
             // 
@@ -92,7 +73,7 @@
             this.txtEmail.CustomButton.Visible = false;
             this.txtEmail.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtEmail.Lines = new string[0];
-            this.txtEmail.Location = new System.Drawing.Point(130, 103);
+            this.txtEmail.Location = new System.Drawing.Point(123, 122);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.MaxLength = 32767;
             this.txtEmail.Name = "txtEmail";
@@ -127,7 +108,7 @@
             this.txtSDT.CustomButton.Visible = false;
             this.txtSDT.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSDT.Lines = new string[0];
-            this.txtSDT.Location = new System.Drawing.Point(130, 74);
+            this.txtSDT.Location = new System.Drawing.Point(123, 85);
             this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
             this.txtSDT.MaxLength = 32767;
             this.txtSDT.Name = "txtSDT";
@@ -149,7 +130,7 @@
             // 
             this.btnDangKy.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangKy.Location = new System.Drawing.Point(117, 147);
+            this.btnDangKy.Location = new System.Drawing.Point(123, 159);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(79, 25);
@@ -162,7 +143,7 @@
             // 
             this.btnThoat.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(212, 147);
+            this.btnThoat.Location = new System.Drawing.Point(303, 159);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(79, 25);
@@ -170,17 +151,6 @@
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(20, 47);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 17);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Họ và tên:";
             // 
             // txtHoTen
             // 
@@ -199,7 +169,7 @@
             this.txtHoTen.CustomButton.Visible = false;
             this.txtHoTen.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtHoTen.Lines = new string[0];
-            this.txtHoTen.Location = new System.Drawing.Point(130, 45);
+            this.txtHoTen.Location = new System.Drawing.Point(123, 48);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoTen.MaxLength = 32767;
             this.txtHoTen.Name = "txtHoTen";
@@ -219,18 +189,68 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(21, 190);
+            this.progressBar1.Location = new System.Drawing.Point(11, 189);
             this.progressBar1.MarqueeAnimationSpeed = 33;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(366, 23);
+            this.progressBar1.Size = new System.Drawing.Size(371, 23);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::QuanLyThuVienApp.Properties.Resources.Logo_Trường_Đại_học_Sư_phạm_Thành_phố_Hồ_Chí_Minh_svg;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Image = global::QuanLyThuVienApp.Properties.Resources.dangki_removebg_preview1;
+            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.Location = new System.Drawing.Point(8, 56);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(93, 17);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "     Họ và tên:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Image = global::QuanLyThuVienApp.Properties.Resources._3374f84310d608d74314b06797d29822_removebg_preview1;
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(8, 93);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(115, 17);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "     Số điện thoại:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Image = global::QuanLyThuVienApp.Properties.Resources.images_removebg_preview;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(8, 130);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "     Email:";
             // 
             // frmDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(409, 225);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangKy);
@@ -251,6 +271,7 @@
             this.Resizable = false;
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmDangKy_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +289,6 @@
         private System.Windows.Forms.Label label6;
         private MetroFramework.Controls.MetroTextBox txtHoTen;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

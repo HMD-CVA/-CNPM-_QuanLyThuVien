@@ -40,11 +40,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.SkyBlue;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label1.Location = new System.Drawing.Point(121, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(156, 20);
+            this.label1.Size = new System.Drawing.Size(172, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "ĐẶT LẠI MẬT KHẨU";
             // 
@@ -52,7 +52,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(53, 82);
+            this.label2.Location = new System.Drawing.Point(23, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 16);
             this.label2.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(53, 123);
+            this.label3.Location = new System.Drawing.Point(23, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 16);
             this.label3.TabIndex = 1;
@@ -71,25 +71,25 @@
             // txtMK1
             // 
             this.txtMK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMK1.Location = new System.Drawing.Point(191, 82);
+            this.txtMK1.Location = new System.Drawing.Point(162, 82);
             this.txtMK1.Name = "txtMK1";
             this.txtMK1.PasswordChar = '*';
-            this.txtMK1.Size = new System.Drawing.Size(154, 22);
+            this.txtMK1.Size = new System.Drawing.Size(221, 22);
             this.txtMK1.TabIndex = 0;
             // 
             // txtMK2
             // 
             this.txtMK2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMK2.Location = new System.Drawing.Point(191, 123);
+            this.txtMK2.Location = new System.Drawing.Point(162, 123);
             this.txtMK2.Name = "txtMK2";
             this.txtMK2.PasswordChar = '*';
-            this.txtMK2.Size = new System.Drawing.Size(154, 22);
+            this.txtMK2.Size = new System.Drawing.Size(221, 22);
             this.txtMK2.TabIndex = 1;
             // 
             // btnXacNhan
             // 
             this.btnXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXacNhan.Location = new System.Drawing.Point(113, 171);
+            this.btnXacNhan.Location = new System.Drawing.Point(162, 171);
             this.btnXacNhan.Name = "btnXacNhan";
             this.btnXacNhan.Size = new System.Drawing.Size(75, 25);
             this.btnXacNhan.TabIndex = 2;
@@ -100,7 +100,7 @@
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(217, 171);
+            this.btnThoat.Location = new System.Drawing.Point(308, 171);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 25);
             this.btnThoat.TabIndex = 3;

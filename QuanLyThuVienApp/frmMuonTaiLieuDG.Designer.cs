@@ -277,7 +277,7 @@
             this.btnDangKy.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnDangKy.IconSize = 19;
             this.btnDangKy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangKy.Location = new System.Drawing.Point(817, 142);
+            this.btnDangKy.Location = new System.Drawing.Point(827, 143);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(87, 25);
@@ -535,7 +535,7 @@
             this.btnXoaSLM.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnXoaSLM.IconSize = 19;
             this.btnXoaSLM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoaSLM.Location = new System.Drawing.Point(734, 143);
+            this.btnXoaSLM.Location = new System.Drawing.Point(735, 143);
             this.btnXoaSLM.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaSLM.Name = "btnXoaSLM";
             this.btnXoaSLM.Size = new System.Drawing.Size(87, 25);

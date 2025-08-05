@@ -39,17 +39,17 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(185, 65);
+            this.numericUpDown1.Location = new System.Drawing.Point(181, 65);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(56, 23);
+            this.numericUpDown1.Size = new System.Drawing.Size(67, 23);
             this.numericUpDown1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(57, 67);
+            this.label1.Location = new System.Drawing.Point(66, 67);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 17);
@@ -60,7 +60,7 @@
             // 
             this.btnGiaHan.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnGiaHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGiaHan.Location = new System.Drawing.Point(61, 114);
+            this.btnGiaHan.Location = new System.Drawing.Point(67, 114);
             this.btnGiaHan.Margin = new System.Windows.Forms.Padding(2);
             this.btnGiaHan.Name = "btnGiaHan";
             this.btnGiaHan.Size = new System.Drawing.Size(81, 25);
@@ -73,7 +73,7 @@
             // 
             this.btnThoat.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(161, 114);
+            this.btnThoat.Location = new System.Drawing.Point(167, 114);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(81, 25);
@@ -85,11 +85,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.SkyBlue;
-            this.label2.Location = new System.Drawing.Point(54, 24);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Location = new System.Drawing.Point(43, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 20);
+            this.label2.Size = new System.Drawing.Size(219, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "GIA HẠN MƯỢN TÀI LIỆU";
             // 

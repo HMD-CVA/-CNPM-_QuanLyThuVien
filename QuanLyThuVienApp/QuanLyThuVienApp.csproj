@@ -477,6 +477,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
     <EntityDeploy Include="DB_QLTV.edmx">
@@ -529,6 +530,29 @@
       <DependentUpon>DB_QLTV.edmx</DependentUpon>
       <LastGenOutput>DB_QLTV.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\png-transparent-computer-icons-hamburger-button-menu-symbol-exquisite-option-button-rectangle-black-interface.png" />
+    <None Include="Resources\png-transparent-hamburger-button-computer-icons-menu-option-button-start-menu-menu-line-thumbnail-removebg-preview.png" />
+    <None Include="Resources\3668255-middle-removebg-preview.png" />
+    <None Include="Resources\png-clipart-black-n-white-clock-icon-logo-thumbnail-removebg-preview.png" />
+    <None Include="Resources\document--v2.png" />
+    <None Include="Resources\pngtree-checklist-icon-in-trendy-style-isolated-background-png-image_1718591-removebg-preview.png" />
+    <None Include="Resources\book-removebg-preview.png" />
+    <None Include="Resources\log_out-removebg-preview.png" />
+    <None Include="Resources\istockphoto-1369278773-612x612-removebg-preview.png" />
+    <None Include="Resources\Support.png" />
+    <None Include="Resources\person.png" />
+    <None Include="Resources\Menhu-removebg-preview.png" />
+    <None Include="Resources\202-2021817_password-icon-png-forgot-password-icon-transparent-png-removebg-preview.png" />
+    <None Include="Resources\black-key-symbol-icon-6-removebg-preview.png" />
+    <None Include="Resources\dangki-removebg-preview2.png" />
+    <None Include="Resources\Logo_Trường_Đại_học_Sư_phạm_Thành_phố_Hồ_Chí_Minh.svg.png" />
+    <None Include="Resources\images-removebg-preview.png" />
+    <None Include="Resources\pngtree-email-icon-design-png-image_2413695-removebg-preview1.png" />
+    <None Include="Resources\pngtree-email-icon-design-png-image_2413695-removebg-preview.png" />
+    <None Include="Resources\3374f84310d608d74314b06797d29822-removebg-preview1.png" />
+    <None Include="Resources\dangki-removebg-preview1.png" />
+    <None Include="Resources\dangki-removebg-preview.png" />
+    <None Include="Resources\3374f84310d608d74314b06797d29822-removebg-preview.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

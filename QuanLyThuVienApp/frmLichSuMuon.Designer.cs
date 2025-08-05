@@ -463,7 +463,7 @@
             // 
             this.groupBox1.Controls.Add(this.dgvChiTiet);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(5, 0);
+            this.groupBox1.Location = new System.Drawing.Point(237, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox1.Size = new System.Drawing.Size(680, 214);
@@ -483,7 +483,7 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txtEmail);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(691, 0);
+            this.groupBox3.Location = new System.Drawing.Point(5, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(226, 209);
             this.groupBox3.TabIndex = 3;

@@ -39,23 +39,23 @@
             // 
             this.labNhap.AutoSize = true;
             this.labNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labNhap.Location = new System.Drawing.Point(12, 24);
+            this.labNhap.Location = new System.Drawing.Point(12, 46);
             this.labNhap.Name = "labNhap";
-            this.labNhap.Size = new System.Drawing.Size(46, 18);
+            this.labNhap.Size = new System.Drawing.Size(166, 18);
             this.labNhap.TabIndex = 0;
-            this.labNhap.Text = "label1";
+            this.labNhap.Text = "Nhập số lượn muốn xóa";
             // 
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(95, 49);
+            this.numericUpDown1.Location = new System.Drawing.Point(193, 44);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 24);
             this.numericUpDown1.TabIndex = 1;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(64, 88);
+            this.btnOK.Location = new System.Drawing.Point(60, 88);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 2;
@@ -65,7 +65,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(167, 88);
+            this.btnHuy.Location = new System.Drawing.Point(183, 88);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(75, 23);
             this.btnHuy.TabIndex = 3;
