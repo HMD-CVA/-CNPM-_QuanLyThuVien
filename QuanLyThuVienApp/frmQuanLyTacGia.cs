@@ -17,7 +17,6 @@ namespace QuanLyThuVienApp
         {
             InitializeComponent();
         }
-        //cccccccccccccccccccccccccccccccc
         private void frmTacGia_Load(object sender, EventArgs e)
         {
             loadDuLieu();
@@ -92,6 +91,8 @@ namespace QuanLyThuVienApp
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+            txtTim.Text = string.Empty;
+            cbTim.SelectedIndex = -1;
             loadDuLieu();
         }
 

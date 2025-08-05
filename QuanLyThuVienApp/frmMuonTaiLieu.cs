@@ -345,7 +345,7 @@ namespace QuanLyThuVienApp
 
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmTTDocGia frm = new frmTTDocGia(dg.MaDocGia);
+            frmThongTinDocGia frm = new frmThongTinDocGia(dg.MaDocGia);
             frm.ShowDialog();
         }
     }

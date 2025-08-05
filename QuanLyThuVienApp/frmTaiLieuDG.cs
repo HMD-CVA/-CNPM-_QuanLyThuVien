@@ -22,14 +22,21 @@ namespace QuanLyThuVienApp
 
         private void frmSach_Load(object sender, EventArgs e)
         {
+            QLTVEntities db = new QLTVEntities();
+            cbbSDM.DataSource = db.DanhMucTaiLieux.Select(p => p.TenDanhMuc).ToList();
+            cbbSNXB.DataSource = db.NhaXuatBans.Select(p => p.TenNXB).ToList();
+            cbbSTG.DataSource = db.TacGias.Select(p => p.TenTG).ToList();
+
+            reset();
+
             btnSUB.Enabled = false;
             loadDuLieu();
-            themNutDGV();
+            //themNutDGV();
         }
         private void themNutDGV()
         {
             // Kiểm tra nếu chưa có thì mới thêm
-            if (!dgvSach.Columns.Contains("btnDangKy"))
+            if (!dgvTaiLieu.Columns.Contains("btnDangKy"))
             {
                 DataGridViewButtonColumn nutDangKy = new DataGridViewButtonColumn();
                 nutDangKy.HeaderText = "";
@@ -38,28 +45,15 @@ namespace QuanLyThuVienApp
                 nutDangKy.Width = 78;
                 nutDangKy.UseColumnTextForButtonValue = true;
 
-                dgvSach.Columns.Add(nutDangKy);
+                dgvTaiLieu.Columns.Add(nutDangKy);
             }
-
-            //if (!dgvSachMuon.Columns.Contains("btnXoa"))
-            //{
-            //    DataGridViewButtonColumn nutXoa = new DataGridViewButtonColumn();
-            //    nutXoa.HeaderText = "";
-            //    nutXoa.Text = "Xóa";
-            //    nutXoa.Name = "btnXoa";
-            //    nutXoa.Width = 45;
-            //    nutXoa.UseColumnTextForButtonValue = true;
-
-            //    dgvSachMuon.Columns.Add(nutXoa);
-            //}
-
             // Đảm bảo nút luôn ở cuối cùng
-            dgvSach.Columns["btnDangKy"].DisplayIndex = dgvSach.Columns.Count - 1;
+            dgvTaiLieu.Columns["btnDangKy"].DisplayIndex = dgvTaiLieu.Columns.Count - 1;
         }
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
-            dgvSach.DataSource = db.TaiLieux.Select(p => new {
+            dgvTaiLieu.DataSource = db.TaiLieux.Select(p => new {
                 MaTaiLieu = "TL" + p.MaTaiLieu, 
                 p.TenTaiLieu,
                 p.DanhMucTaiLieu.TenDanhMuc,
@@ -71,27 +65,23 @@ namespace QuanLyThuVienApp
                 p.MoTa,
                 CoSan = p.SoLuong - p.SoTaiLieuMuon
             }).ToList();
-
-            if (dgvSach.Rows.Count > 0)
-            {
-                HienThiDuLieu(0);
-            }
+            themNutDGV();
         }
         private void HienThiDuLieu(int RowIndex)
         {
-            int soLuongSachCon = int.Parse(dgvSach.Rows[RowIndex].Cells["SoLuong"].Value.ToString()) - int.Parse(dgvSach.Rows[RowIndex].Cells["SoTaiLieuMuon"].Value.ToString());
+            int soLuongSachCon = int.Parse(dgvTaiLieu.Rows[RowIndex].Cells["SoLuong"].Value.ToString()) - int.Parse(dgvTaiLieu.Rows[RowIndex].Cells["SoTaiLieuMuon"].Value.ToString());
 
-            txtMaSach.Text = dgvSach.Rows[RowIndex].Cells["MaTaiLieu"].Value.ToString();
-            txtTenSach.Text = dgvSach.Rows[RowIndex].Cells["TenTaiLieu"].Value.ToString();
-            txtTacGia.Text = dgvSach.Rows[RowIndex].Cells["TenTG"].Value.ToString();
-            txtNXB.Text = dgvSach.Rows[RowIndex].Cells["TenNXB"].Value.ToString();
-            txtTheLoai.Text = dgvSach.Rows[RowIndex].Cells["TenDanhMuc"].Value.ToString();
-            txtMoTa.Text = dgvSach.Rows[RowIndex].Cells["MoTa"].Value.ToString();
+            txtMaTaiLieu.Text = dgvTaiLieu.Rows[RowIndex].Cells["MaTaiLieu"].Value.ToString();
+            txtTenTaiLieu.Text = dgvTaiLieu.Rows[RowIndex].Cells["TenTaiLieu"].Value.ToString();
+            txtTacGia.Text = dgvTaiLieu.Rows[RowIndex].Cells["TenTG"].Value.ToString();
+            txtNXB.Text = dgvTaiLieu.Rows[RowIndex].Cells["TenNXB"].Value.ToString();
+            txtDanhMuc.Text = dgvTaiLieu.Rows[RowIndex].Cells["TenDanhMuc"].Value.ToString();
+            txtMoTa.Text = dgvTaiLieu.Rows[RowIndex].Cells["MoTa"].Value.ToString();
             txtTLConLai.Text = string.Empty;
 
             for (int i = 0; i < taiLieusMuon.Count; i++)
             {
-                if (taiLieusMuon[i].Item1.ToString() == dgvSach.Rows[RowIndex].Cells["MaTaiLieu"].Value.ToString().Substring(2))
+                if (taiLieusMuon[i].Item1.ToString() == dgvTaiLieu.Rows[RowIndex].Cells["MaTaiLieu"].Value.ToString().Substring(2))
                 {
                     txtDaDK.Text = taiLieusMuon[i].Item2.ToString();
                     
@@ -112,16 +102,16 @@ namespace QuanLyThuVienApp
 
             HienThiDuLieu(e.RowIndex); 
 
-            string maSachFull = dgvSach.Rows[e.RowIndex].Cells["MaTaiLieu"].Value.ToString();           
+            string maSachFull = dgvTaiLieu.Rows[e.RowIndex].Cells["MaTaiLieu"].Value.ToString();           
 
             int maSach = int.Parse(maSachFull.Substring(2));
-            int tongSach = int.Parse(dgvSach.Rows[e.RowIndex].Cells["CoSan"].Value.ToString());
+            int tongSach = int.Parse(dgvTaiLieu.Rows[e.RowIndex].Cells["CoSan"].Value.ToString());
             int soLuongConLai =
             !string.IsNullOrEmpty(txtDaDK.Text)
             ? int.Parse(txtTLConLai.Text)
-            : Convert.ToInt32(dgvSach.Rows[e.RowIndex].Cells["CoSan"].Value ?? 0);
+            : Convert.ToInt32(dgvTaiLieu.Rows[e.RowIndex].Cells["CoSan"].Value ?? 0);
 
-            if (dgvSach.Columns[e.ColumnIndex].Name != "btnDangKy") return;
+            if (dgvTaiLieu.Columns[e.ColumnIndex].Name != "btnDangKy") return;
 
             if (soLuongConLai == 0)
             {
@@ -160,12 +150,6 @@ namespace QuanLyThuVienApp
                     taiLieusMuon.Add((maSach, soLuongMuon));
                 }
                 MessageBox.Show("Đã đăng ký mượn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                string inKQ = string.Empty;
-                for (int i = 0; i < taiLieusMuon.Count; i++)
-                {
-                    inKQ += taiLieusMuon[i].Item1.ToString() + " " + taiLieusMuon[i].Item2.ToString() + "\n";
-                }
-                MessageBox.Show(inKQ, "Thông ", MessageBoxButtons.OK);
             }
             
             HienThiDuLieu(e.RowIndex);
@@ -173,75 +157,138 @@ namespace QuanLyThuVienApp
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string luaChon = cbTimKiem.Text;
-            if (luaChon == "")
+
+            string maTL = txtSMaTL.Text.Trim();
+            string tenTL = txtSTenTL.Text.Trim();
+            string tacGia = string.IsNullOrEmpty(cbbSTG.Text.Trim()) ? string.Empty : cbbSTG.SelectedItem != null ? cbbSTG.SelectedItem.ToString().Trim() : string.Empty;
+            string nxb = string.IsNullOrEmpty(cbbSNXB.Text.Trim()) ? string.Empty : cbbSNXB.SelectedItem != null ? cbbSNXB.SelectedItem.ToString().Trim() : string.Empty;
+            string theLoai = string.IsNullOrEmpty(cbbSDM.Text.Trim()) ? string.Empty : cbbSDM.SelectedItem != null ? cbbSDM.SelectedItem.ToString().Trim() : string.Empty;
+
+
+            if (string.IsNullOrEmpty(maTL) && string.IsNullOrEmpty(tenTL) && string.IsNullOrEmpty(tacGia) && string.IsNullOrEmpty(nxb) && string.IsNullOrEmpty(theLoai))
             {
-                MessageBox.Show("Vui lòng chọn lựa chọn để tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cbTimKiem.Focus();
+                MessageBox.Show("Vui lòng nhập thông tin để tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            QLTVEntities db = new QLTVEntities();
-            List<TaiLieu> sach = new List<TaiLieu>();
+            string cacheKey = $"TL_{maTL}_{tenTL}_{tacGia}_{nxb}_{theLoai}";
 
-            if (luaChon == "Mã tài liệu")
-                sach = db.TaiLieux.Where(p => ("S" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Tên tài liệu")
-                sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Tác giả")
-                sach = db.TaiLieux.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Nhà xuất bản")
-                sach = db.TaiLieux.Where(p => p.NhaXuatBan.TenNXB.Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Danh mục")
-                sach = db.TaiLieux.Where(p => p.DanhMucTaiLieu.TenDanhMuc.Contains(txtTimKiem.Text)).ToList();
-
-            dgvSach.DataSource = sach.Select(p => new
+            var result = SearchTool.SearchWithCache(cacheKey, () =>
             {
-                MaTaiLieu = "TL" + p.MaTaiLieu,
-                p.TenTaiLieu,
-                p.TacGia.TenTG,
-                p.NhaXuatBan.TenNXB,
-                p.DanhMucTaiLieu.TenDanhMuc,
-                p.TaiBan,
-                p.SoLuong,
-                p.SoTaiLieuMuon,
-                p.MoTa
-            }).ToList();
+                using (QLTVEntities db = new QLTVEntities())
+                {
+                    var query = SearchTool.FilterTaiLieu(db, maTL, tenTL, tacGia, nxb, theLoai);
 
-            if (dgvSach.Rows.Count > 0)
+                    return query.Select(p => new
+                    {
+                        MaTaiLieu = "TL" + p.MaTaiLieu,
+                        p.TenTaiLieu,
+                        p.DanhMucTaiLieu.TenDanhMuc,
+                        p.TacGia.TenTG,
+                        p.NhaXuatBan.TenNXB,
+                        p.TaiBan,
+                        p.SoLuong,
+                        p.SoTaiLieuMuon,
+                        p.MoTa,
+                        CoSan = p.SoLuong - p.SoTaiLieuMuon
+                    }).ToList();
+                }
+            });
+
+            dgvTaiLieu.DataSource = result;
+
+            if (dgvTaiLieu.Rows.Count > 0)
             {
                 HienThiDuLieu(0);
             }
-            else
-            {
-                txtMaSach.Clear();
-                txtTenSach.Clear();
-                txtTacGia.Clear();
-                txtNXB.Clear();
-                txtTheLoai.Clear();
-                txtMoTa.Clear();
-            }
+
+            //string luaChon = cbTimKiem.Text;
+            //if (luaChon == "")
+            //{
+            //    MessageBox.Show("Vui lòng chọn lựa chọn để tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    cbTimKiem.Focus();
+            //    return;
+            //}
+
+            //QLTVEntities db = new QLTVEntities();
+            //List<TaiLieu> sach = new List<TaiLieu>();
+
+            //if (luaChon == "Mã tài liệu")
+            //    sach = db.TaiLieux.Where(p => ("S" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
+            //else if (luaChon == "Tên tài liệu")
+            //    sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
+            //else if (luaChon == "Tác giả")
+            //    sach = db.TaiLieux.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();
+            //else if (luaChon == "Nhà xuất bản")
+            //    sach = db.TaiLieux.Where(p => p.NhaXuatBan.TenNXB.Contains(txtTimKiem.Text)).ToList();
+            //else if (luaChon == "Danh mục")
+            //    sach = db.TaiLieux.Where(p => p.DanhMucTaiLieu.TenDanhMuc.Contains(txtTimKiem.Text)).ToList();
+
+            //dgvSach.DataSource = sach.Select(p => new
+            //{
+            //    MaTaiLieu = "TL" + p.MaTaiLieu,
+            //    p.TenTaiLieu,
+            //    p.TacGia.TenTG,
+            //    p.NhaXuatBan.TenNXB,
+            //    p.DanhMucTaiLieu.TenDanhMuc,
+            //    p.TaiBan,
+            //    p.SoLuong,
+            //    p.SoTaiLieuMuon,
+            //    p.MoTa
+            //}).ToList();
+
+            //if (dgvSach.Rows.Count > 0)
+            //{
+            //    HienThiDuLieu(0);
+            //}
+            //else
+            //{
+            //    txtMaSach.Clear();
+            //    txtTenSach.Clear();
+            //    txtTacGia.Clear();
+            //    txtNXB.Clear();
+            //    txtTheLoai.Clear();
+            //    txtMoTa.Clear();
+            //}
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+            txtSMaTL.Text = string.Empty;
+            txtSTenTL.Text = string.Empty;
+            reset();
             loadDuLieu();
+            //themNutDGV();
         }
 
-        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        private void reset()
         {
-            if (txtTimKiem.Text == string.Empty) loadDuLieu();
+            txtMaTaiLieu.Clear();
+            txtTenTaiLieu.Clear();
+            txtTacGia.Clear();
+            txtNXB.Clear();
+            txtDanhMuc.Clear();
+            txtDaDK.Clear();
+            txtMoTa.Clear();
+
+            cbbSNXB.SelectedIndex = -1;
+            cbbSDM.SelectedIndex = -1;
+            cbbSTG.SelectedIndex = -1;
         }
+        //private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (txtTimKiem.Text == string.Empty) loadDuLieu();
+        //}
 
         private void btnSUB_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtMaSach.Text.Trim()))
+            if (string.IsNullOrEmpty(txtMaTaiLieu.Text.Trim()))
             {
                 btnSUB.Enabled = false;
                 return;
             }
 
-            string maSachFull = txtMaSach.Text;
+            string maSachFull = txtMaTaiLieu.Text;
             int maSach = int.Parse(maSachFull.Substring(2));
 
             int soLuongHienTai = int.Parse(txtDaDK.Text.ToString());
@@ -288,9 +335,9 @@ namespace QuanLyThuVienApp
                 inKQ += taiLieusMuon[i].Item1.ToString() + " " + taiLieusMuon[i].Item2.ToString() + "\n";
             }
             MessageBox.Show(inKQ, "Thông ", MessageBoxButtons.OK);
-            for (int i = 0; i < dgvSach.Rows.Count; i++)
+            for (int i = 0; i < dgvTaiLieu.Rows.Count; i++)
             {
-                var ma = dgvSach.Rows[i].Cells["MaTaiLieu"].Value?.ToString();
+                var ma = dgvTaiLieu.Rows[i].Cells["MaTaiLieu"].Value?.ToString();
                 if (ma == "TL" + maSach.ToString())
                 {
                     HienThiDuLieu(i);

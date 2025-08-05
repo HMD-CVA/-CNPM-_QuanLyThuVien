@@ -11,16 +11,16 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmTTDocGia : Form
+    public partial class frmThongTinDocGia : Form
     {
         public static int? maDG;
 
-        public frmTTDocGia()
+        public frmThongTinDocGia()
         {
             InitializeComponent();
         }
 
-        public frmTTDocGia(int? _maDG)
+        public frmThongTinDocGia(int? _maDG)
         {
             maDG = _maDG;
             InitializeComponent();
@@ -283,7 +283,7 @@ namespace QuanLyThuVienApp
 
             if (DG == null) return;
 
-            if (DG.BiKhoa == false)
+            if (DG.BiKhoa == true)
             {
                 DialogResult result = MessageBox.Show(
                    "Bạn có muốn mở khoá này không?",

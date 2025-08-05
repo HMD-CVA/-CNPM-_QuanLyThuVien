@@ -408,7 +408,7 @@
             // 
             // MaNV
             // 
-            this.MaNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MaNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.MaNV.DataPropertyName = "MaNV";
             this.MaNV.HeaderText = "Mã";
             this.MaNV.MinimumWidth = 6;

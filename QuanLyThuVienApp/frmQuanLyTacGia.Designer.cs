@@ -352,9 +352,9 @@
             this.label1.Location = new System.Drawing.Point(302, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 20);
+            this.label1.Size = new System.Drawing.Size(189, 20);
             this.label1.TabIndex = 34;
-            this.label1.Text = "DANH tài liệu TÁC GIẢ";
+            this.label1.Text = "DANH SÁCH TÁC GIẢ";
             // 
             // frmQuanLyTacGia
             // 

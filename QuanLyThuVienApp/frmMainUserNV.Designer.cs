@@ -43,8 +43,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnThongKe = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnQLDocGia = new FontAwesome.Sharp.IconButton();
             this.btnQLPhieuMuon = new FontAwesome.Sharp.IconButton();
             this.btnLichSuMuon = new FontAwesome.Sharp.IconButton();
+            this.btnGuiMail = new FontAwesome.Sharp.IconButton();
             this.metroPanel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -210,7 +212,7 @@
             this.btnThongKe.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnThongKe.IconSize = 40;
             this.btnThongKe.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnThongKe.Location = new System.Drawing.Point(0, 134);
+            this.btnThongKe.Location = new System.Drawing.Point(0, 268);
             this.btnThongKe.Margin = new System.Windows.Forms.Padding(2);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -225,6 +227,8 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.AliceBlue;
             this.panel2.Controls.Add(this.btnThongKe);
+            this.panel2.Controls.Add(this.btnGuiMail);
+            this.panel2.Controls.Add(this.btnQLDocGia);
             this.panel2.Controls.Add(this.btnQLPhieuMuon);
             this.panel2.Controls.Add(this.btnLichSuMuon);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -234,6 +238,28 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(127, 481);
             this.panel2.TabIndex = 4;
+            // 
+            // btnQLDocGia
+            // 
+            this.btnQLDocGia.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnQLDocGia.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnQLDocGia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQLDocGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLDocGia.IconChar = FontAwesome.Sharp.IconChar.Person;
+            this.btnQLDocGia.IconColor = System.Drawing.Color.Black;
+            this.btnQLDocGia.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnQLDocGia.IconSize = 40;
+            this.btnQLDocGia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLDocGia.Location = new System.Drawing.Point(0, 134);
+            this.btnQLDocGia.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQLDocGia.Name = "btnQLDocGia";
+            this.btnQLDocGia.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.btnQLDocGia.Size = new System.Drawing.Size(127, 67);
+            this.btnQLDocGia.TabIndex = 4;
+            this.btnQLDocGia.Text = "            Quản lý\r\n            độc giả\r\n";
+            this.btnQLDocGia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLDocGia.UseVisualStyleBackColor = false;
+            this.btnQLDocGia.Click += new System.EventHandler(this.btnQLDocGia_Click);
             // 
             // btnQLPhieuMuon
             // 
@@ -279,7 +305,29 @@
             this.btnLichSuMuon.UseVisualStyleBackColor = false;
             this.btnLichSuMuon.Click += new System.EventHandler(this.btnLichSuMuon_Click);
             // 
-            // frmMainUser
+            // btnGuiMail
+            // 
+            this.btnGuiMail.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuiMail.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnGuiMail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGuiMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuiMail.IconChar = FontAwesome.Sharp.IconChar.Google;
+            this.btnGuiMail.IconColor = System.Drawing.Color.Black;
+            this.btnGuiMail.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuiMail.IconSize = 40;
+            this.btnGuiMail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuiMail.Location = new System.Drawing.Point(0, 201);
+            this.btnGuiMail.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuiMail.Name = "btnGuiMail";
+            this.btnGuiMail.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.btnGuiMail.Size = new System.Drawing.Size(127, 67);
+            this.btnGuiMail.TabIndex = 5;
+            this.btnGuiMail.Text = "            Gửi \r\n            Email\r\n  ";
+            this.btnGuiMail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuiMail.UseVisualStyleBackColor = false;
+            this.btnGuiMail.Click += new System.EventHandler(this.btnGuiEmail_Click);
+            // 
+            // frmMainUserNV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -294,7 +342,7 @@
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "frmMainUser";
+            this.Name = "frmMainUserNV";
             this.Padding = new System.Windows.Forms.Padding(8, 30, 8, 8);
             this.Resizable = false;
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
@@ -327,6 +375,8 @@
         private FontAwesome.Sharp.IconButton btnQLPhieuMuon;
         private FontAwesome.Sharp.IconButton btnThongKe;
         private FontAwesome.Sharp.IconButton btnLichSuMuon;
+        private FontAwesome.Sharp.IconButton btnQLDocGia;
+        private FontAwesome.Sharp.IconButton btnGuiMail;
     }
 }
 

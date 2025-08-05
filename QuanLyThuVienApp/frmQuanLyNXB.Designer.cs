@@ -340,7 +340,7 @@
             // 
             // SoLuongTL
             // 
-            this.SoLuongTL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.SoLuongTL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.SoLuongTL.DataPropertyName = "SoLuongTL";
             this.SoLuongTL.HeaderText = "Số lượng tài liệu";
             this.SoLuongTL.MinimumWidth = 6;
@@ -356,7 +356,7 @@
             this.MoTa.ReadOnly = true;
             this.MoTa.Visible = false;
             // 
-            // frmNXB
+            // frmQuanLyNXB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -385,7 +385,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmNXB";
+            this.Name = "frmQuanLyNXB";
             this.Padding = new System.Windows.Forms.Padding(15, 30, 15, 16);
             this.Resizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

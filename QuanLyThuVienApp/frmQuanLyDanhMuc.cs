@@ -75,7 +75,7 @@ namespace QuanLyThuVienApp
 
             dgvTheLoai.DataSource = theLoais.Select(p => new
             {
-                MaTheLoai = "DM" + p.MaDanhMuc,
+                MaDanhMuc = "DM" + p.MaDanhMuc,
                 p.TenDanhMuc,
                 p.ViTri,
                 p.SoLuongTL,
@@ -97,6 +97,8 @@ namespace QuanLyThuVienApp
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+            txtTim.Text = string.Empty;
+            cbTim.SelectedIndex = -1;
             loadDuLieu();
         }
 

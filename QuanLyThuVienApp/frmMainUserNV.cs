@@ -119,5 +119,23 @@ namespace QuanLyThuVienApp
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void btnQLDocGia_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmQuanLyDocGia frm = new frmQuanLyDocGia();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void btnGuiEmail_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmGuiEmailQuaHan frm = new frmGuiEmailQuaHan();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

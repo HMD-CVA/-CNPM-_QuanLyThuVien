@@ -502,7 +502,7 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmTTDocGia frm = new frmTTDocGia(maDG);
+            frmThongTinDocGia frm = new frmThongTinDocGia(maDG);
             frm.MdiParent = frmMainUser;
             frm.Dock = DockStyle.Fill;
             frm.Show();

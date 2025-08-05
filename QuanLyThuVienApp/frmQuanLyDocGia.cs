@@ -200,7 +200,7 @@ namespace QuanLyThuVienApp
 
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmTTDocGia frm = new frmTTDocGia(int.Parse(maDG));
+            frmThongTinDocGia frm = new frmThongTinDocGia(int.Parse(maDG));
            
             frm.FormClosed += (s, args) => {
                 loadDuLieu();

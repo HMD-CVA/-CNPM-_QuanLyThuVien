@@ -177,11 +177,11 @@
     <Compile Include="frmQuanLyDocGia.Designer.cs">
       <DependentUpon>frmQuanLyDocGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTTDocGia.cs">
+    <Compile Include="frmThongTinDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTTDocGia.Designer.cs">
-      <DependentUpon>frmTTDocGia.cs</DependentUpon>
+    <Compile Include="frmThongTinDocGia.Designer.cs">
+      <DependentUpon>frmThongTinDocGia.cs</DependentUpon>
     </Compile>
     <Compile Include="frmThongTinNV.cs">
       <SubType>Form</SubType>
@@ -382,8 +382,8 @@
     <EmbeddedResource Include="frmQuanLyDocGia.resx">
       <DependentUpon>frmQuanLyDocGia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTTDocGia.resx">
-      <DependentUpon>frmTTDocGia.cs</DependentUpon>
+    <EmbeddedResource Include="frmThongTinDocGia.resx">
+      <DependentUpon>frmThongTinDocGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongTinNV.resx">
       <DependentUpon>frmThongTinNV.cs</DependentUpon>

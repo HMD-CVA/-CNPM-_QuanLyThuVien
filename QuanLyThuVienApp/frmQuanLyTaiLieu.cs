@@ -20,6 +20,16 @@ namespace QuanLyThuVienApp
 
         private void frmQuanLySach_Load(object sender, EventArgs e)
         {
+            cbNXB.SelectedIndex = -1;
+            cbTheLoai.SelectedIndex = -1;
+            cbTacGia.SelectedIndex = -1;
+
+            loadDuLieu();
+            radioSuaXoa.Checked = true;
+        }
+
+        private void loadDuLieu()
+        {
             QLTVEntities db = new QLTVEntities();
 
             cbTacGia.DisplayMember = "TenTG";
@@ -34,18 +44,6 @@ namespace QuanLyThuVienApp
             cbTheLoai.ValueMember = "MaDanhMuc";
             cbTheLoai.DataSource = db.DanhMucTaiLieux.ToList();
 
-
-            cbNXB.SelectedIndex = -1;
-            cbTheLoai.SelectedIndex = -1;
-            cbTacGia.SelectedIndex = -1;
-
-            loadDuLieu();
-            radioSuaXoa.Checked = true;
-        }
-
-        private void loadDuLieu()
-        {
-            QLTVEntities db = new QLTVEntities();
             dgvSach.DataSource = db.TaiLieux.Select(p => new {
                 MaTaiLieu = "TL" + p.MaTaiLieu,
                 p.TenTaiLieu,
@@ -140,37 +138,6 @@ namespace QuanLyThuVienApp
             });
 
             dgvSach.DataSource = result;
-
-
-            //string luaChon = cbTimKiem.Text;
-            //if (luaChon == "") return;
-
-            //QLTVEntities db = new QLTVEntities();
-            //List<TaiLieu> sach = new List<TaiLieu>();
-
-            //if (luaChon == "Mã tài liệu")
-            //    sach = db.TaiLieux.Where(p => ("TL" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Tên tài liệu")
-            //    sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Tác giả")
-            //    sach = db.TaiLieux.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Nhà xuất bản")
-            //    sach = db.TaiLieux.Where(p => p.NhaXuatBan.TenNXB.Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Thể loại")
-            //    sach = db.TaiLieux.Where(p => p.DanhMucTaiLieu.TenDanhMuc.Contains(txtTimKiem.Text)).ToList();
-
-            //dgvSach.DataSource = sach.Select(p => new
-            //{
-            //    MaSach = "TL" + p.MaTaiLieu,
-            //    p.TenTaiLieu,
-            //    p.DanhMucTaiLieu.TenDanhMuc,
-            //    p.TacGia.TenTG,
-            //    p.NhaXuatBan.TenNXB,
-            //    p.TaiBan,
-            //    //p.MoTa,
-            //    p.SoLuong,
-            //    p.SoTaiLieuMuon,
-            //}).ToList();
 
             if (radioThem.Checked) return;
 
@@ -384,13 +351,6 @@ namespace QuanLyThuVienApp
 
             QLTVEntities db = new QLTVEntities();
 
-            //ChiTietPhieuMuon chiTietPhieuMuon = db.ChiTietPhieuMuons.Where(p => "S" + p.IDSach == txtMaSach.Text).FirstOrDefault();
-            //if (chiTietPhieuMuon != null)
-            //{
-            //    MessageBox.Show("Không thể xóa tài liệu đã phát sinh dữ liệu!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
             TaiLieu sach = db.TaiLieux.Where(p => "TL" + p.MaTaiLieu == txtMaSach.Text).FirstOrDefault();
 
             if (sach.SoTaiLieuMuon != 0)
@@ -454,20 +414,26 @@ namespace QuanLyThuVienApp
         private void btnThemTG_Click(object sender, EventArgs e)
         {
             frmQuanLyTacGia frm = new frmQuanLyTacGia();
+            frm.FormClosed += (s, args) => {
+                loadDuLieu();
+            };
             frm.ShowDialog();
-            loadDuLieu();
         }
         private void btnThemNXB_Click(object sender, EventArgs e)
         {
             frmQuanLyNXB frm = new frmQuanLyNXB();
+            frm.FormClosed += (s, args) => {
+                loadDuLieu();
+            };
             frm.ShowDialog();
-            loadDuLieu();
         }
         private void btnThemTheLoai_Click(object sender, EventArgs e)
         {
             frmQuanLyDanhMuc frm = new frmQuanLyDanhMuc();
+            frm.FormClosed += (s, args) => {
+                loadDuLieu();
+            };
             frm.ShowDialog();
-            loadDuLieu();
         }
     }
 }
