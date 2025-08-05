@@ -140,6 +140,7 @@ namespace QuanLyThuVienApp
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             loadDuLieu();
+            ResetBTN();
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -148,41 +149,27 @@ namespace QuanLyThuVienApp
             if (luaChon == "") return;
 
             QLTVEntities db = new QLTVEntities();
-            List<NguoiDung> nguoiDungs = new List<NguoiDung>();
+            List<DocGia> docGias = new List<DocGia>();
 
-            //if (luaChon == "Mã bạn đọc")
-            //    nguoiDungs = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.TrangThaiXacThuc == true
-            //    && p.BiKhoa == false && ("BD" + p.ID.ToString()).Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Tên bạn đọc")
-            //    nguoiDungs = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.TrangThaiXacThuc == true
-            //    && p.BiKhoa == false && p.HoTen.Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Email")
-            //    nguoiDungs = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.TrangThaiXacThuc == true
-            //    && p.BiKhoa == false && p.Email.Contains(txtTimKiem.Text)).ToList();
-            //else return;
+            if (luaChon == "Mã độc giả")
+                docGias = db.DocGias.Where(p => ("DG" + p.MaDocGia.ToString()).Contains(txtTimKiem.Text)).ToList();
+            else if (luaChon == "Tên độc giả")
+                docGias = db.DocGias.Where(p => p.HoTen.Contains(txtTimKiem.Text)).ToList();
+            else if (luaChon == "Email")
+                docGias = db.DocGias.Where(p => p.Email.Contains(txtTimKiem.Text)).ToList();
+            else return;
 
-            //dgvBanDoc.DataSource = nguoiDungs.Select(p => new
-            //{
-            //    MaBanDoc = "BD" + p.ID,
-            //    p.HoTen,
-            //    p.Email,
-            //    p.NgayDangKi,
-            //    p.SoSachMuon
-            //}).ToList();
-
-            if (dgvBanDoc.Rows.Count > 0)
+            dgvBanDoc.DataSource = docGias.Select(p => new
             {
-                txtID.Text = dgvBanDoc.Rows[0].Cells["MaBanDoc"].Value.ToString();
-                txtSuaEmail.Text = dgvBanDoc.Rows[0].Cells["Email"].Value.ToString();
-                txtSuaTen.Text = dgvBanDoc.Rows[0].Cells["HoTen"].Value.ToString();
-            }
-            else
-            {
-                txtID.Clear();
-                txtSuaEmail.Clear();
-                txtSuaTen.Clear();
-            }
+                MaDocGia = "DG" + p.MaDocGia,
+                p.HoTen,
+                p.Email,
+                p.SDT,
+                BiKhoa = (p.BiKhoa == true) ? "Bị khoá" : "Đang hoạt động",
+                SoLuong = db.PhieuMuons.Where(pm => pm.MaDG == p.MaDocGia).ToList().Count,
+            }).ToList();
 
+            HienThiDuLieu(0);
         }
 
         private void btnSuaEmail_Click(object sender, EventArgs e)
@@ -208,25 +195,29 @@ namespace QuanLyThuVienApp
             frm.ShowDialog();
         }
 
+        private void HienThiDuLieu(int index)
+        {
+            if (dgvBanDoc.Rows.Count > 0)
+            {
+                txtID.Text = dgvBanDoc.Rows[index].Cells["MaDocGia"].Value.ToString();
+                txtSuaEmail.Text = dgvBanDoc.Rows[index].Cells["Email"].Value.ToString();
+                txtSuaTen.Text = dgvBanDoc.Rows[index].Cells["HoTen"].Value.ToString();
+                txtSuaSDT.Text = dgvBanDoc.Rows[index].Cells["SDT"].Value.ToString();
+            }
+            else ResetBTN();
+        }
+        private  void ResetBTN()
+        {
+            txtID.Clear();
+            txtSuaSDT.Clear();
+            txtSuaTen.Clear();
+            txtSuaEmail.Clear();
+        }
         private void dgvBanDoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-
-            if (dgvBanDoc.Rows.Count > 0)
-            {
-                maDG = dgvBanDoc.Rows[e.RowIndex].Cells["MaDocGia"].Value.ToString().Substring(2);
-                txtID.Text = dgvBanDoc.Rows[e.RowIndex].Cells["MaDocGia"].Value.ToString();
-                txtSuaEmail.Text = dgvBanDoc.Rows[e.RowIndex].Cells["Email"].Value.ToString();
-                txtSuaTen.Text = dgvBanDoc.Rows[e.RowIndex].Cells["HoTen"].Value.ToString();
-                txtSuaSDT.Text = dgvBanDoc.Rows[e.RowIndex].Cells["SDT"].Value.ToString();
-            }
-            else
-            {
-                txtID.Clear();
-                txtSuaSDT.Clear();
-                txtSuaTen.Clear();
-                txtSuaEmail.Clear();
-            }
+            maDG = dgvBanDoc.Rows[e.RowIndex].Cells["MaDocGia"].Value.ToString().Substring(2);
+            HienThiDuLieu(e.RowIndex);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

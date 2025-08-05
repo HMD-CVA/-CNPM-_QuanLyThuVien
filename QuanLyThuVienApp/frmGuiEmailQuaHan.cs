@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
@@ -9,19 +10,33 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Entity;
+using static System.Net.WebRequestMethods;
 
 
 namespace QuanLyThuVienApp
 {
     public partial class frmGuiEmailQuaHan : Form
     {
+        private void ShowLoading()
+        {
+            progressBar1.Visible = true;
+            progressBar1.BringToFront();
+            this.UseWaitCursor = true;
+            Application.DoEvents();
+        }
+
+        private void HideLoading()
+        {
+            progressBar1.Visible = false;
+            this.UseWaitCursor = false;
+        }
         public frmGuiEmailQuaHan()
         {
             InitializeComponent();
         }
         private void frmQuanLyBanDoc_Load(object sender, EventArgs e)
         {
+            progressBar1.Visible = false;
             loadDuLieu();
         }
         private void loadDuLieu()
@@ -61,6 +76,7 @@ namespace QuanLyThuVienApp
             txtEmail.Clear();
             txtTen.Clear();
             txtHanTra.Clear();
+            txtTimKiem.Clear();
             loadDuLieu();
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -147,7 +163,19 @@ namespace QuanLyThuVienApp
             txtTen.Text = dgvQuaHan.Rows[index].Cells["TenDocGia"].Value.ToString();
             txtHanTra.Text = ((DateTime)dgvQuaHan.Rows[index].Cells["HanTra"].Value).ToString("dd/MM/yyyy");
         }
-        private void dgvBanDoc_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async Task guiEmail(string email, string tenDocGia, string maPhieu, string hanTra)
+        {
+            string subject = "THƯ NHẮC NHỞ TRẢ TÀI LIỆU THƯ VIỆN";
+            string body = $"Kính gửi {tenDocGia},\n\n" +
+                            $"Phiếu mượn {maPhieu} của bạn đã quá hạn vào ngày {hanTra}.\n" +
+                            $"Vui lòng trả tài liệu trong thời gian sớm nhất.\n\n" +
+                            $"Xin cảm ơn!";
+            await Task.Run(() =>
+            {
+                GuiEmail.guiEmail(email, subject + "\n" + body);
+            });
+        }
+        private async void dgvBanDoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
 
@@ -164,23 +192,33 @@ namespace QuanLyThuVienApp
                 string maPhieu = dgvQuaHan.Rows[e.RowIndex].Cells["MaPhieu"].Value?.ToString();
                 string hanTra = dgvQuaHan.Rows[e.RowIndex].Cells["HanTra"].Value?.ToString();
 
+                // (Optional) Đánh dấu đã gửi mail tại đây.
+                QLTVEntities db = new QLTVEntities();
+                int maPhieus = int.Parse(maPhieu.Substring(2));  // Bỏ "MP" phía trước
+
+                var phieu = db.PhieuMuons.FirstOrDefault(p => p.MaPhieu == maPhieus);
+                if (phieu.DaGuiMail != null && (DateTime.Now - phieu.DaGuiMail.Value).TotalSeconds <= 15)
+                {
+                    MessageBox.Show("Hệ thống đã ghi nhận việc gửi email tới độc giả này cách đây chưa đầy 3 ngày.\nĐể tránh gửi lặp, vui lòng thử lại sau.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
                 if (string.IsNullOrEmpty(email))
                 {
                     MessageBox.Show("Không có email để gửi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                string subject = "THƯ NHẮC NHỞ TRẢ TÀI LIỆU THƯ VIỆN";
-                string body =   $"Kính gửi {tenDocGia},\n\n" +
-                                $"Phiếu mượn {maPhieu} của bạn đã quá hạn vào ngày {hanTra}.\n" +
-                                $"Vui lòng trả tài liệu trong thời gian sớm nhất.\n\n" +
-                                $"Xin cảm ơn!";
-
                 try
                 {
-                    GuiEmail.guiEmail(email, subject + "\n" + body);
-                    MessageBox.Show($"Đã gửi email tới {email}.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // (Optional) Đánh dấu đã gửi mail tại đây.
+                    ShowLoading();
+                        await guiEmail(email, tenDocGia, maPhieu, hanTra);
+                    HideLoading();
+
+                    phieu.DaGuiMail = DateTime.Now;
+                    db.SaveChanges();
+                    MessageBox.Show($"Đã gửi email tới {email} thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -195,10 +233,47 @@ namespace QuanLyThuVienApp
                 txtHanTra.Clear();
             }
         }
-
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private async void btnGuiEmailAll_Click(object sender, EventArgs e)
+        {
+            ShowLoading();
+
+            QLTVEntities db = new QLTVEntities();
+            foreach (DataGridViewRow row in dgvQuaHan.Rows)
+            {
+                if (row.Cells["EmailDG"].Value != null)
+                {
+                    string email = row.Cells["EmailDG"].Value.ToString();
+                    string tenDocGia = row.Cells["TenDocGia"].Value.ToString();
+                    string maPhieu = row.Cells["MaPhieu"].Value.ToString();
+                    string hanTra = row.Cells["HanTra"].Value.ToString();
+
+                    // Kiểm tra nếu đã gửi trong vòng 3 ngày thì bỏ qua
+                    int maPhieuInt = int.Parse(maPhieu.Substring(2)); // Bỏ 'MP'
+                    var phieu = db.PhieuMuons.FirstOrDefault(p => p.MaPhieu == maPhieuInt);
+
+                    if (phieu != null && phieu.DaGuiMail.HasValue && (DateTime.Now - phieu.DaGuiMail.Value).TotalSeconds <= 15)
+                    {
+                        continue; // Bỏ qua gửi mail
+                    }
+
+                    // Gửi email
+                    await guiEmail(email, tenDocGia, maPhieu, hanTra);
+
+                    // Đánh dấu đã gửi mail (Optional)
+                    if (phieu != null)
+                    {
+                        phieu.DaGuiMail = DateTime.Now;
+                        db.SaveChanges();
+                    }
+                }
+            }
+            HideLoading();
+            MessageBox.Show($"Đã gửi email tới tất cả độc giả thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvQuaHan = new System.Windows.Forms.DataGridView();
             this.MaPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,19 +48,16 @@
             this.txtTen = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnThoat = new FontAwesome.Sharp.IconButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnGuiChoose = new System.Windows.Forms.RadioButton();
-            this.btnGuiAll = new System.Windows.Forms.RadioButton();
-            this.btnGuiEmail = new FontAwesome.Sharp.IconButton();
+            this.btnGuiEmailAll = new FontAwesome.Sharp.IconButton();
             this.txtHanTra = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtMaPhieu = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuaHan)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -79,28 +76,28 @@
             this.dgvQuaHan.AllowUserToDeleteRows = false;
             this.dgvQuaHan.AllowUserToResizeRows = false;
             this.dgvQuaHan.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvQuaHan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvQuaHan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvQuaHan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvQuaHan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaPhieu,
             this.TenDocGia,
             this.EmailDG,
             this.HanTra});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvQuaHan.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvQuaHan.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvQuaHan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvQuaHan.Location = new System.Drawing.Point(0, 0);
             this.dgvQuaHan.Margin = new System.Windows.Forms.Padding(2);
@@ -147,8 +144,8 @@
             // 
             this.HanTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.HanTra.DataPropertyName = "HanTra";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            this.HanTra.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            this.HanTra.DefaultCellStyle = dataGridViewCellStyle5;
             this.HanTra.HeaderText = "Hạn trả";
             this.HanTra.MinimumWidth = 6;
             this.HanTra.Name = "HanTra";
@@ -164,7 +161,7 @@
             this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnLamMoi.IconSize = 19;
             this.btnLamMoi.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLamMoi.Location = new System.Drawing.Point(717, 103);
+            this.btnLamMoi.Location = new System.Drawing.Point(718, 80);
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(85, 25);
@@ -183,7 +180,7 @@
             this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnTimKiem.IconSize = 19;
             this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnTimKiem.Location = new System.Drawing.Point(809, 103);
+            this.btnTimKiem.Location = new System.Drawing.Point(810, 80);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(85, 25);
@@ -203,7 +200,7 @@
             "Họ tên độc giả",
             "Email",
             "Hạn trả"});
-            this.cbTimKiem.Location = new System.Drawing.Point(796, 26);
+            this.cbTimKiem.Location = new System.Drawing.Point(797, 3);
             this.cbTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.cbTimKiem.Name = "cbTimKiem";
             this.cbTimKiem.Size = new System.Drawing.Size(114, 25);
@@ -213,7 +210,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(699, 30);
+            this.label1.Location = new System.Drawing.Point(700, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 17);
@@ -223,7 +220,7 @@
             // txtTimKiem
             // 
             this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(702, 62);
+            this.txtTimKiem.Location = new System.Drawing.Point(703, 39);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(208, 23);
@@ -268,8 +265,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnThoat);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.btnGuiEmail);
+            this.groupBox1.Controls.Add(this.btnGuiEmailAll);
             this.groupBox1.Controls.Add(this.txtHanTra);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtMaPhieu);
@@ -283,7 +279,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(684, 138);
+            this.groupBox1.Size = new System.Drawing.Size(685, 138);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin phiếu mượn";
@@ -297,7 +293,7 @@
             this.btnThoat.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnThoat.IconSize = 19;
             this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnThoat.Location = new System.Drawing.Point(540, 102);
+            this.btnThoat.Location = new System.Drawing.Point(585, 42);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(95, 25);
@@ -306,55 +302,24 @@
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
-            // groupBox2
+            // btnGuiEmailAll
             // 
-            this.groupBox2.Controls.Add(this.btnGuiChoose);
-            this.groupBox2.Controls.Add(this.btnGuiAll);
-            this.groupBox2.Location = new System.Drawing.Point(516, 11);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(163, 59);
-            this.groupBox2.TabIndex = 29;
-            this.groupBox2.TabStop = false;
-            // 
-            // btnGuiChoose
-            // 
-            this.btnGuiChoose.AutoSize = true;
-            this.btnGuiChoose.Location = new System.Drawing.Point(6, 35);
-            this.btnGuiChoose.Name = "btnGuiChoose";
-            this.btnGuiChoose.Size = new System.Drawing.Size(136, 22);
-            this.btnGuiChoose.TabIndex = 1;
-            this.btnGuiChoose.TabStop = true;
-            this.btnGuiChoose.Text = "Phiếu đang chọn";
-            this.btnGuiChoose.UseVisualStyleBackColor = true;
-            // 
-            // btnGuiAll
-            // 
-            this.btnGuiAll.AutoSize = true;
-            this.btnGuiAll.Location = new System.Drawing.Point(6, 13);
-            this.btnGuiAll.Name = "btnGuiAll";
-            this.btnGuiAll.Size = new System.Drawing.Size(67, 22);
-            this.btnGuiAll.TabIndex = 0;
-            this.btnGuiAll.TabStop = true;
-            this.btnGuiAll.Text = "Tất cả";
-            this.btnGuiAll.UseVisualStyleBackColor = true;
-            // 
-            // btnGuiEmail
-            // 
-            this.btnGuiEmail.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnGuiEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuiEmail.IconChar = FontAwesome.Sharp.IconChar.Binoculars;
-            this.btnGuiEmail.IconColor = System.Drawing.Color.Black;
-            this.btnGuiEmail.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnGuiEmail.IconSize = 19;
-            this.btnGuiEmail.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuiEmail.Location = new System.Drawing.Point(540, 73);
-            this.btnGuiEmail.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuiEmail.Name = "btnGuiEmail";
-            this.btnGuiEmail.Size = new System.Drawing.Size(95, 25);
-            this.btnGuiEmail.TabIndex = 28;
-            this.btnGuiEmail.Text = "Gửi Email";
-            this.btnGuiEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuiEmail.UseVisualStyleBackColor = false;
+            this.btnGuiEmailAll.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnGuiEmailAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuiEmailAll.IconChar = FontAwesome.Sharp.IconChar.Binoculars;
+            this.btnGuiEmailAll.IconColor = System.Drawing.Color.Black;
+            this.btnGuiEmailAll.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnGuiEmailAll.IconSize = 19;
+            this.btnGuiEmailAll.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnGuiEmailAll.Location = new System.Drawing.Point(585, 13);
+            this.btnGuiEmailAll.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuiEmailAll.Name = "btnGuiEmailAll";
+            this.btnGuiEmailAll.Size = new System.Drawing.Size(95, 25);
+            this.btnGuiEmailAll.TabIndex = 28;
+            this.btnGuiEmailAll.Text = "Gửi Email cho tất cả";
+            this.btnGuiEmailAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuiEmailAll.UseVisualStyleBackColor = false;
+            this.btnGuiEmailAll.Click += new System.EventHandler(this.btnGuiEmailAll_Click);
             // 
             // txtHanTra
             // 
@@ -392,12 +357,22 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Mã phiếu";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(703, 114);
+            this.progressBar1.MarqueeAnimationSpeed = 33;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(208, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 28;
+            // 
             // frmGuiEmailQuaHan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(915, 475);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.btnTimKiem);
@@ -416,8 +391,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuaHan)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,15 +413,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtMaPhieu;
         private System.Windows.Forms.Label label4;
-        private FontAwesome.Sharp.IconButton btnGuiEmail;
+        private FontAwesome.Sharp.IconButton btnGuiEmailAll;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private FontAwesome.Sharp.IconButton btnThoat;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton btnGuiChoose;
-        private System.Windows.Forms.RadioButton btnGuiAll;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaPhieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenDocGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmailDG;
         private System.Windows.Forms.DataGridViewTextBoxColumn HanTra;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
