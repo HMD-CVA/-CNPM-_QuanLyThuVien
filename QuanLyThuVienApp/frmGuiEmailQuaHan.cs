@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 
 namespace QuanLyThuVienApp
@@ -243,37 +244,77 @@ namespace QuanLyThuVienApp
             ShowLoading();
 
             QLTVEntities db = new QLTVEntities();
-            foreach (DataGridViewRow row in dgvQuaHan.Rows)
+
+            // Bước 1: Gom nhóm theo Email
+            var emailGroups = dgvQuaHan.Rows
+                .Cast<DataGridViewRow>()
+                .Where(row => row.Cells["EmailDG"].Value != null)
+                .GroupBy(row => row.Cells["EmailDG"].Value.ToString())
+                .ToList();
+
+            foreach (var group in emailGroups)
             {
-                if (row.Cells["EmailDG"].Value != null)
+                string email = group.Key;
+                string tenDocGia = group.First().Cells["TenDocGia"].Value.ToString();
+
+                // Bước 2: Gom các mã phiếu chưa gửi mail (theo điều kiện 15s)
+                List<(string MaPhieu, string HanTra)> danhSachTreHan = new List<(string, string)>();
+
+                foreach (var row in group)
                 {
-                    string email = row.Cells["EmailDG"].Value.ToString();
-                    string tenDocGia = row.Cells["TenDocGia"].Value.ToString();
                     string maPhieu = row.Cells["MaPhieu"].Value.ToString();
                     string hanTra = row.Cells["HanTra"].Value.ToString();
 
-                    // Kiểm tra nếu đã gửi trong vòng 3 ngày thì bỏ qua
                     int maPhieuInt = int.Parse(maPhieu.Substring(2)); // Bỏ 'MP'
                     var phieu = db.PhieuMuons.FirstOrDefault(p => p.MaPhieu == maPhieuInt);
 
                     if (phieu != null && phieu.DaGuiMail.HasValue && (DateTime.Now - phieu.DaGuiMail.Value).TotalSeconds <= 15)
                     {
-                        continue; // Bỏ qua gửi mail
+                        continue; // Bỏ qua gửi mail cho phiếu này
                     }
 
-                    // Gửi email
-                    await guiEmail(email, tenDocGia, maPhieu, hanTra);
+                    danhSachTreHan.Add((maPhieu, hanTra));
+                }
 
-                    // Đánh dấu đã gửi mail (Optional)
-                    if (phieu != null)
+                if (danhSachTreHan.Count > 0)
+                {
+                    // Bước 3: Tạo nội dung Email liệt kê tất cả Mã Phiếu trễ hạn
+                    string noiDung = $"Xin chào {tenDocGia},\n\n";
+                    noiDung += "Bạn đang có các phiếu mượn quá hạn sau:\n";
+
+                    foreach (var item in danhSachTreHan)
                     {
-                        phieu.DaGuiMail = DateTime.Now;
-                        db.SaveChanges();
+                        noiDung += $"- Mã Phiếu: {item.MaPhieu} | Hạn trả: {item.HanTra}\n";
                     }
+
+                    noiDung += "\nVui lòng sớm trả tài liệu để tránh phát sinh phí phạt.\n\nThư viện.";
+
+                    string subject = "Thông báo trễ hạn";
+                    string body = noiDung; // Đã format đầy đủ danh sách phiếu mượn trễ hạn
+
+                    // Gửi Email 1 lần
+                    await Task.Run(() =>
+                    {
+                        GuiEmail.guiEmail(email, subject + "\n" + body);
+                    });
+
+                    // Cập nhật DaGuiMail cho các phiếu đã gửi
+                    foreach (var item in danhSachTreHan)
+                    {
+                        int maPhieuInt = int.Parse(item.MaPhieu.Substring(2));
+                        var phieu = db.PhieuMuons.FirstOrDefault(p => p.MaPhieu == maPhieuInt);
+                        if (phieu != null)
+                        {
+                            phieu.DaGuiMail = DateTime.Now;
+                        }
+                    }
+                    db.SaveChanges();
                 }
             }
+
             HideLoading();
             MessageBox.Show($"Đã gửi email tới tất cả độc giả thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
     }
 }
