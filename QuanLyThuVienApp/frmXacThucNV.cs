@@ -12,7 +12,6 @@ namespace QuanLyThuVienApp
 {
     public partial class frmXacThucNV : MetroFramework.Forms.MetroForm
     {
-        string nv = "NhanViens";
         private Timer countdownTimer;
         private int remainingSeconds = 45;
         private int ID;

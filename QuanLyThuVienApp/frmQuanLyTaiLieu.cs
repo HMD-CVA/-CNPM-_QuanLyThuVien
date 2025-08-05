@@ -157,6 +157,18 @@ namespace QuanLyThuVienApp
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            string tenTG = cbTacGia.Text.ToString();
+            string tenNXB = cbNXB.Text.ToString();
+            string tenTheLoai = cbTheLoai.Text.ToString();
+            string moTa = txtMoTa.Text.ToString();
+            string taiBan = txtTaiBan.Text.ToString();
+
+            if (txtTenSach.Text == "" || tenTG == "" || tenNXB == "" || tenTheLoai == "" || txtSoLuong.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DialogResult result = MessageBox.Show(
                 "Bạn có muốn thêm tài liệu mới không?",
                 "Thông báo!",
@@ -166,11 +178,7 @@ namespace QuanLyThuVienApp
 
             if (result == DialogResult.No) return;
 
-            string tenTG = cbTacGia.Text.ToString();
-            string tenNXB = cbNXB.Text.ToString();
-            string tenTheLoai = cbTheLoai.Text.ToString();
-            string moTa = txtMoTa.Text.ToString();
-            string taiBan = txtTaiBan.Text.ToString();
+            
             if (moTa == string.Empty)
             {
                 moTa = "Không có mô tả";
@@ -179,12 +187,7 @@ namespace QuanLyThuVienApp
             {
                 taiBan = "-1";//Take Care
             } 
-            if (txtTenSach.Text == "" || tenTG == "" || tenNXB == "" || tenTheLoai == "" || txtSoLuong.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
+           
             if (!int.TryParse(txtSoLuong.Text, out int val) || val <= 0)
             {
                 MessageBox.Show("Số lượng không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -216,7 +219,31 @@ namespace QuanLyThuVienApp
                 MessageBox.Show("Thể loại không tồn tại!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cbTheLoai.Focus();
                 return;
-            }            
+            }
+
+            int maTG = int.Parse(cbTacGia.SelectedValue.ToString());
+            int maNXB = int.Parse(cbNXB.SelectedValue.ToString());
+            int maDanhMuc = int.Parse(cbTheLoai.SelectedValue.ToString());
+            int taiBanInt = int.Parse(taiBan);
+
+            // Kiểm tra sách đã tồn tại hay chưa (trùng tất cả thông tin trừ mô tả)
+            var sachTonTai = db.TaiLieux.FirstOrDefault(s =>
+                s.TenTaiLieu == txtTenSach.Text &&
+                s.MaTG == maTG &&
+                s.MaNXB == maNXB &&
+                s.MaDanhMuc == maDanhMuc &&
+                s.TaiBan == taiBanInt
+            );
+
+            if (sachTonTai != null)
+            {
+                // Sách đã tồn tại → Cộng dồn số lượng
+                sachTonTai.SoLuong += val;
+                db.SaveChanges();
+                loadDuLieu();
+                MessageBox.Show("Tài liệu đã tồn tại. Đã cộng dồn số lượng thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
             TaiLieu sach = new TaiLieu();
             sach.TenTaiLieu = txtTenSach.Text;
@@ -243,26 +270,26 @@ namespace QuanLyThuVienApp
         {
             if (txtMaSach.Text == "") return;
 
-                DialogResult result = MessageBox.Show(
-                    "Bạn có muốn sửa thông tin tài liệu không?",
-                    "Thông báo!",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.No) return;
-
             string tenTG = cbTacGia.Text.ToString();
             string tenNXB = cbNXB.Text.ToString();
             string tenTheLoai = cbTheLoai.Text.ToString();
 
-            if (txtTenSach.Text == "" || tenTG == "" || tenNXB == "" || tenTheLoai == "" || txtSoLuong.Text == "")
+            if (txtTenSach.Text == "" || tenTG == "" || tenNXB == "" || tenTheLoai == "" || txtSoLuong.Text == "" || txtMoTa.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if(!int.TryParse(txtSoLuong.Text, out int val))
+            DialogResult result = MessageBox.Show(
+                "Bạn có muốn sửa thông tin tài liệu không?",
+                "Thông báo!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No) return;
+
+            if (!int.TryParse(txtSoLuong.Text, out int val))
             {
                 MessageBox.Show("Số lượng không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSoLuong.Focus();
@@ -300,7 +327,7 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            int maSach = int.Parse(txtMaSach.Text.Substring(1));
+            int maSach = int.Parse(txtMaSach.Text.Substring(2));
             TaiLieu sach = db.TaiLieux.Where(p => p.MaTaiLieu == maSach).FirstOrDefault();
            
             if (theLoaiMoi.MaDanhMuc != sach.MaDanhMuc)
@@ -326,10 +353,11 @@ namespace QuanLyThuVienApp
                 nhaXuatBanCu.SoLuongTL -= 1;
             }
             sach.MaNXB = int.Parse(cbNXB.SelectedValue.ToString());
-            sach.TenTaiLieu = txtTenSach.Text;   
+            sach.TenTaiLieu = txtTenSach.Text.Trim();   
             sach.SoLuong = int.Parse(txtSoLuong.Text);
             sach.MoTa = txtMoTa.Text.ToString();
             sach.TaiBan = int.Parse(txtTaiBan.Text.ToString());
+            sach.MoTa = txtMoTa.Text.Trim();
 
             db.SaveChanges();
             loadDuLieu();

@@ -507,7 +507,6 @@
             this.txtMoTa.Margin = new System.Windows.Forms.Padding(2);
             this.txtMoTa.Multiline = true;
             this.txtMoTa.Name = "txtMoTa";
-            this.txtMoTa.ReadOnly = true;
             this.txtMoTa.Size = new System.Drawing.Size(411, 188);
             this.txtMoTa.TabIndex = 26;
             // 
