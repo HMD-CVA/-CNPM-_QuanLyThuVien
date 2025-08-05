@@ -72,7 +72,7 @@ namespace QuanLyThuVienApp
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            frmDangNhap frm = new frmDangNhap();
+            frmHomes frm = new frmHomes();
             this.Hide();
             frm.ShowDialog();
             this.Close();

@@ -39,6 +39,9 @@ namespace QuanLyThuVienApp
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
+            frmHomes frm = new frmHomes();
+            this.Hide();
+            frm.ShowDialog();
             this.Close();
         }
 

@@ -18,11 +18,7 @@ namespace QuanLyThuVienApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
             Application.Run(new frmHomes());
-=======
-            Application.Run(new frmQuanLyTaiLieu());
->>>>>>> c82a537993e552c46bef102643c295e7b803de19
         }
     }
 }
