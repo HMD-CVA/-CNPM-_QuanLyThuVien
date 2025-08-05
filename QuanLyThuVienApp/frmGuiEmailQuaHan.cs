@@ -198,7 +198,7 @@ namespace QuanLyThuVienApp
                 int maPhieus = int.Parse(maPhieu.Substring(2));  // Bỏ "MP" phía trước
 
                 var phieu = db.PhieuMuons.FirstOrDefault(p => p.MaPhieu == maPhieus);
-                if (phieu.DaGuiMail != null && (DateTime.Now - phieu.DaGuiMail.Value).TotalSeconds <= 15)
+                if (phieu.DaGuiMail != null && (DateTime.Now - phieu.DaGuiMail.Value).TotalDays <= 3)
                 {
                     MessageBox.Show("Hệ thống đã ghi nhận việc gửi email tới độc giả này cách đây chưa đầy 3 ngày.\nĐể tránh gửi lặp, vui lòng thử lại sau.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -241,11 +241,13 @@ namespace QuanLyThuVienApp
 
         private async void btnGuiEmailAll_Click(object sender, EventArgs e)
         {
+            bool ok = true;
+
             ShowLoading();
 
             QLTVEntities db = new QLTVEntities();
 
-            // Bước 1: Gom nhóm theo Email
+            //Gom nhóm theo Email
             var emailGroups = dgvQuaHan.Rows
                 .Cast<DataGridViewRow>()
                 .Where(row => row.Cells["EmailDG"].Value != null)
@@ -257,7 +259,7 @@ namespace QuanLyThuVienApp
                 string email = group.Key;
                 string tenDocGia = group.First().Cells["TenDocGia"].Value.ToString();
 
-                // Bước 2: Gom các mã phiếu chưa gửi mail (theo điều kiện 15s)
+                //Gom các mã phiếu chưa gửi mail (theo điều kiện 3 days)
                 List<(string MaPhieu, string HanTra)> danhSachTreHan = new List<(string, string)>();
 
                 foreach (var row in group)
@@ -268,8 +270,9 @@ namespace QuanLyThuVienApp
                     int maPhieuInt = int.Parse(maPhieu.Substring(2)); // Bỏ 'MP'
                     var phieu = db.PhieuMuons.FirstOrDefault(p => p.MaPhieu == maPhieuInt);
 
-                    if (phieu != null && phieu.DaGuiMail.HasValue && (DateTime.Now - phieu.DaGuiMail.Value).TotalSeconds <= 15)
+                    if (phieu != null && phieu.DaGuiMail.HasValue && (DateTime.Now - phieu.DaGuiMail.Value).TotalDays <= 3)
                     {
+                        ok = false;
                         continue; // Bỏ qua gửi mail cho phiếu này
                     }
 
@@ -278,7 +281,6 @@ namespace QuanLyThuVienApp
 
                 if (danhSachTreHan.Count > 0)
                 {
-                    // Bước 3: Tạo nội dung Email liệt kê tất cả Mã Phiếu trễ hạn
                     string noiDung = $"Xin chào {tenDocGia},\n\n";
                     noiDung += "Bạn đang có các phiếu mượn quá hạn sau:\n";
 
@@ -313,8 +315,8 @@ namespace QuanLyThuVienApp
             }
 
             HideLoading();
-            MessageBox.Show($"Đã gửi email tới tất cả độc giả thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (ok) MessageBox.Show($"Đã gửi email tới tất cả độc giả thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Hệ thống chỉ gửi email nhắc nhở tới những độc giả có phiếu mượn trễ hạn mà lần gửi gần nhất đã cách đây hơn 3 ngày.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
     }
 }
