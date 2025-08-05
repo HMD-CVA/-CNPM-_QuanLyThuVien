@@ -16,19 +16,14 @@ namespace QuanLyThuVienApp
 {
     public partial class frmGuiEmailQuaHan : Form
     {
-        public static int OTP;
-        public static DateTime thoiGian;
-
         public frmGuiEmailQuaHan()
         {
             InitializeComponent();
         }
-
         private void frmQuanLyBanDoc_Load(object sender, EventArgs e)
         {
             loadDuLieu();
         }
-
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
@@ -59,9 +54,7 @@ namespace QuanLyThuVienApp
                 btnGui.UseColumnTextForButtonValue = true;
                 dgvQuaHan.Columns.Add(btnGui);
             }
-        }
-
-        
+        }    
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             txtMaPhieu.Clear();
@@ -70,7 +63,6 @@ namespace QuanLyThuVienApp
             txtHanTra.Clear();
             loadDuLieu();
         }
-
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string luaChon = cbTimKiem.Text;
@@ -161,7 +153,39 @@ namespace QuanLyThuVienApp
 
             if (dgvQuaHan.Rows.Count > 0)
             {
-               HienThiDuLieu(e.RowIndex);
+                if (e.RowIndex >= 0 && dgvQuaHan.Columns[e.ColumnIndex].Name != "btnGuiMail")
+                {
+                    HienThiDuLieu(e.RowIndex);
+                    return;
+                }
+               
+                string email = dgvQuaHan.Rows[e.RowIndex].Cells["EmailDG"].Value?.ToString();
+                string tenDocGia = dgvQuaHan.Rows[e.RowIndex].Cells["TenDocGia"].Value?.ToString();
+                string maPhieu = dgvQuaHan.Rows[e.RowIndex].Cells["MaPhieu"].Value?.ToString();
+                string hanTra = dgvQuaHan.Rows[e.RowIndex].Cells["HanTra"].Value?.ToString();
+
+                if (string.IsNullOrEmpty(email))
+                {
+                    MessageBox.Show("Không có email để gửi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string subject = "THƯ NHẮC NHỞ TRẢ TÀI LIỆU THƯ VIỆN";
+                string body =   $"Kính gửi {tenDocGia},\n\n" +
+                                $"Phiếu mượn {maPhieu} của bạn đã quá hạn vào ngày {hanTra}.\n" +
+                                $"Vui lòng trả tài liệu trong thời gian sớm nhất.\n\n" +
+                                $"Xin cảm ơn!";
+
+                try
+                {
+                    GuiEmail.guiEmail(email, subject + "\n" + body);
+                    MessageBox.Show($"Đã gửi email tới {email}.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // (Optional) Đánh dấu đã gửi mail tại đây.
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Gửi email thất bại.\nChi tiết: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -170,6 +194,11 @@ namespace QuanLyThuVienApp
                 txtTen.Clear();
                 txtHanTra.Clear();
             }
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
