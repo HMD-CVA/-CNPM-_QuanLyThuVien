@@ -172,19 +172,19 @@ namespace QuanLyThuVienApp
             int tienPhat = frm.TienPhat;
             int soNgayTre = frm.SoNgayTre;
             string subject = "THƯ NHẮC NHỞ TRẢ TÀI LIỆU THƯ VIỆN";
-            string body = $"Xin chào {tenDocGia},\n\n" +
+            string body =   $"\nXin chào {tenDocGia},\n\n" +
                             $"Phiếu mượn {maPhieu} của bạn đã quá hạn vào ngày {hanTra}.\n" +
-                            $"Hiện tại tiền phạt của bạn là: {tienPhat}\n";
+                            $"Hiện tại tiền phạt của bạn là: {tienPhat} VNĐ\n";
             if (30 - tienPhat >= 0)
             {
                 body += $"Vui lòng trả tài liệu trong thời gian sớm nhất để tránh phát sinh thêm tiền phạt.\n\n" +
-                        $"Xin cảm ơn!\n\n\n" +
+                        $"Xin cảm ơn!\n\n" +
                         $"Chú ý: Nếu trong vòng {30 - soNgayTre} bạn không trả tài liệu thì sẽ bị khoá Email và không thể mượn tài liệu nữa!";
             }
             else
             {
                 body += $"Bạn đã bị khoá Email do trễ hạn quá 30 ngày kể từ lúc mượn!\n\n" +
-                        $"Vui lòng liên hệ thủ thư để hoàn tất việc trả tài liệu và nộp phí phạt.\nEmail sẽ được mở khoá ngay sau khi thủ tục hoàn tất!\n\n\n" +
+                        $"Vui lòng liên hệ thủ thư để hoàn tất việc trả tài liệu và nộp phí phạt.\nEmail sẽ được mở khoá ngay sau khi thủ tục hoàn tất!\n\n" +
                         $"Xin cảm ơn!";
             }
             await Task.Run(() =>
@@ -308,7 +308,7 @@ namespace QuanLyThuVienApp
                         frmQuanLyPhieuMuonTreHan frm = new frmQuanLyPhieuMuonTreHan(maPhieus);
                         int tienPhat = frm.TienPhat;
                         int soNgayTre = frm.SoNgayTre;
-                        noiDung += $"- Mã Phiếu: {item.MaPhieu} | Hạn trả: {item.HanTra} | Tiền phạt: {tienPhat}"; 
+                        noiDung += $"- Mã Phiếu: {item.MaPhieu} | Hạn trả: {item.HanTra} | Tiền phạt: {tienPhat} VNĐ"; 
                         if (30 - soNgayTre >= 0)
                         {
                             noiDung += $" | Số ngày còn lại: {30 - soNgayTre}\n";
@@ -323,15 +323,15 @@ namespace QuanLyThuVienApp
 
                     if (string.IsNullOrEmpty(cacPhieuQuaHan))
                     {
-                        noiDung += $"\nTổng chi phí là: {tongCP}" +
+                        noiDung += $"\nTổng chi phí là: {tongCP} VNĐ" +
                                    $"\nVui lòng sớm trả tài liệu sớm hơn \"Số ngày còn lại\"\n" +
                                     "Chú ý: Nếu không trả tài liệu thì sẽ bị khoá Email và không thể mượn tài liệu nữa!";
                     }
                     else
                     {
-                        noiDung += $"\nTổng chi phí là: {tongCP}" +
+                        noiDung += $"\nTổng chi phí là: {tongCP} VNĐ" +
                                    $"\nBạn đã bị khoá Email do đã quá hạn trả 30 ngày cho phiếu mượn: {cacPhieuQuaHan}\n\n" +
-                                   "Vui lòng liên hệ thủ thư để hoàn tất việc trả tài liệu và nộp phí phạt.\nEmail sẽ được mở khoá ngay sau khi thủ tục hoàn tất!\n\n\n" +
+                                   "Vui lòng liên hệ thủ thư để hoàn tất việc trả tài liệu và nộp phí phạt.\nEmail sẽ được mở khoá ngay sau khi thủ tục hoàn tất!\n\n" +
                                    "Xin cảm ơn!";
                     }
                     
