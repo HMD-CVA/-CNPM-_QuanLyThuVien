@@ -32,9 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnTimKiem = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLamMoi = new FontAwesome.Sharp.IconButton();
             this.cbTimKiem = new System.Windows.Forms.ComboBox();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -61,59 +59,23 @@
             this.DaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThoat = new FontAwesome.Sharp.IconButton();
+            this.btnTimKiem = new FontAwesome.Sharp.IconButton();
+            this.btnLamMoi = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietPM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuon)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.btnTimKiem.IconColor = System.Drawing.Color.Black;
-            this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnTimKiem.IconSize = 19;
-            this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnTimKiem.Location = new System.Drawing.Point(817, 232);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(86, 25);
-            this.btnTimKiem.TabIndex = 33;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTimKiem.UseVisualStyleBackColor = false;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(706, 156);
+            this.label1.Location = new System.Drawing.Point(692, 74);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 17);
             this.label1.TabIndex = 30;
             this.label1.Text = "Tìm kiếm theo";
-            // 
-            // btnLamMoi
-            // 
-            this.btnLamMoi.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateBackward;
-            this.btnLamMoi.IconColor = System.Drawing.Color.Black;
-            this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnLamMoi.IconSize = 19;
-            this.btnLamMoi.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLamMoi.Location = new System.Drawing.Point(719, 232);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(86, 25);
-            this.btnLamMoi.TabIndex = 32;
-            this.btnLamMoi.Text = "Làm mới";
-            this.btnLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLamMoi.UseVisualStyleBackColor = false;
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // cbTimKiem
             // 
@@ -124,7 +86,7 @@
             "Mã phiếu",
             "Mã bạn đọc",
             "Tên bạn đọc"});
-            this.cbTimKiem.Location = new System.Drawing.Point(807, 153);
+            this.cbTimKiem.Location = new System.Drawing.Point(793, 71);
             this.cbTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.cbTimKiem.Name = "cbTimKiem";
             this.cbTimKiem.Size = new System.Drawing.Size(108, 25);
@@ -133,7 +95,7 @@
             // txtTimKiem
             // 
             this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(709, 195);
+            this.txtTimKiem.Location = new System.Drawing.Point(695, 113);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(206, 23);
@@ -200,6 +162,7 @@
             this.MaChiTiet.Name = "MaChiTiet";
             this.MaChiTiet.ReadOnly = true;
             this.MaChiTiet.Visible = false;
+            this.MaChiTiet.Width = 32;
             // 
             // MaTaiLieu
             // 
@@ -455,6 +418,44 @@
             this.btnThoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnTimKiem.IconColor = System.Drawing.Color.Black;
+            this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnTimKiem.IconSize = 19;
+            this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnTimKiem.Location = new System.Drawing.Point(803, 150);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(86, 25);
+            this.btnTimKiem.TabIndex = 33;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLamMoi.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateBackward;
+            this.btnLamMoi.IconColor = System.Drawing.Color.Black;
+            this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnLamMoi.IconSize = 19;
+            this.btnLamMoi.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnLamMoi.Location = new System.Drawing.Point(705, 150);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(86, 25);
+            this.btnLamMoi.TabIndex = 32;
+            this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLamMoi.UseVisualStyleBackColor = false;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // frmQuanLyPhieuMuonTreHan
             // 

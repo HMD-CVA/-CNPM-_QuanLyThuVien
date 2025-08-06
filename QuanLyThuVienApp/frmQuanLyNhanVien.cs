@@ -35,6 +35,7 @@ namespace QuanLyThuVienApp
 
         private void frmQuanLyBanDoc_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             loadDuLieu();
         }
 

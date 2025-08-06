@@ -33,6 +33,7 @@ namespace QuanLyThuVienApp
 
         private void frmQuanLyPhieuMuon_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             loadPhieuMuon();
             OffButton();
             rdbAll.Checked = true; 
@@ -56,7 +57,8 @@ namespace QuanLyThuVienApp
         }
         private void optionPhieuMuon(List<PhieuMuon> phieuMuons)
         {
-            dgvPhieuMuon.DataSource = phieuMuons.Where(p => p.DaTra == false)
+            dgvPhieuMuon.DataSource = phieuMuons
+            .Where(p => p.DaTra == false && p.HanTra.Value.Date >= DateTime.Now.Date)
             .OrderByDescending(p => p.MaPhieu)
             .Select(p => new
             {
@@ -65,17 +67,14 @@ namespace QuanLyThuVienApp
                 HoTenNV = (p.MaNV == null) ? "" : p.NhanVien.HoTen,
                 p.NgayMuon,
                 p.HanTra,
-                DaTra = (p.DaTra == true) ? "Đã trả" : "Chưa trả",
-                NgayTra = (p.DaTra == true) ? p.NgayTra : null
+                DaTra = "Chưa trả",
+                NgayTra = (DateTime?)null
             }).ToList();
         }
         private void optionPhieuTre(List<PhieuMuon> phieuMuons)
         {
             dgvPhieuMuon.DataSource = phieuMuons
-            .Where(p =>
-                p.HanTra.HasValue &&
-                ((p.NgayTra == null && p.HanTra.Value.Date < DateTime.Now.Date) || (p.NgayTra != null && p.HanTra.Value.Date < p.NgayTra.Value.Date))
-            )
+            .Where(p => p.DaTra == false && (p.NgayTra == null && p.HanTra.Value.Date < DateTime.Now.Date))
             .OrderByDescending(p => p.MaPhieu)
             .Select(p => new
             {
@@ -101,8 +100,8 @@ namespace QuanLyThuVienApp
                 HoTenNV = (p.MaNV == null) ? "" : p.NhanVien.HoTen, 
                 p.NgayMuon,
                 p.HanTra,
-                DaTra = (p.HanTra.Value.Date < DateTime.Now.Date) ? "Trễ hạn" : "Đã trả",
-                NgayTra = (p.DaTra == true) ? p.NgayTra : null
+                DaTra =  "Đã trả",
+                p.NgayTra 
             }).ToList();
         }
         private void ChonLaiPhieu(int maPhieu)
@@ -139,11 +138,9 @@ namespace QuanLyThuVienApp
                 p.HanTra,
                 DaTra = (
                     (p.NgayMuon == null && (DateTime.Now - p.NgayTao).TotalMinutes > 15) ? "Đã huỷ" :
-                    p.NgayMuon == null ? "Chờ duyệt" :
-                    (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value.Date < DateTime.Now.Date) ||
-                    (p.NgayTra != null && p.HanTra.HasValue && p.HanTra.Value.Date < p.NgayTra.Value.Date)
-                        ? "Trễ hạn"
-                        : (p.DaTra == true ? "Đã trả" : "Chưa trả")
+                     p.NgayMuon == null ? "Chờ duyệt" :
+                     p.DaTra == true ? "Đã trả" :
+                    (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value.Date < DateTime.Now.Date) ? "Trễ hạn":  "Chưa trả"
                 ),
                 NgayTra = (p.DaTra == true) ? p.NgayTra : null
             }).ToList();

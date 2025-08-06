@@ -7,7 +7,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>f34e0b49-fec2-4889-83fd-1b44a72964cf</rd:DataSourceID>
+      <rd:DataSourceID>ab4b17d1-c61b-4a33-b38b-9333fdee8889</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -36,7 +36,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DB_QLTVDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\ROG\Desktop\-CNPM-_QuanLyThuVien\QuanLyThuVienApp\DB_QLTVDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\ROG\Downloads\-CNPM-_QuanLyThuVien\QuanLyThuVienApp\DB_QLTVDataSet.xsd</rd:SchemaPath>
         <rd:TableName>ChiTietPhieuMuon</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -55,7 +55,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>PHIẾU MƯỢN</Value>
+                    <Value>HÓA ĐƠN</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -69,10 +69,46 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>0.3175cm</Top>
-            <Left>0.25894cm</Left>
+            <Top>0.14111cm</Top>
+            <Left>7.24641cm</Left>
             <Height>0.6cm</Height>
-            <Width>17.59481cm</Width>
+            <Width>2.60583cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>ĐÓNG PHẠT TRỄ HẠN TRẢ SÁCH</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox5</rd:DefaultName>
+            <Top>0.9175cm</Top>
+            <Left>5.31495cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.34188cm</Width>
+            <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -90,7 +126,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Họ tên độc giả: " + Parameters!HoTenDocGia.Value</Value>
+                    <Value>="Người bị phạt: " + Parameters!NguoiBiPhat.Value</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <TextDecoration>None</TextDecoration>
@@ -101,45 +137,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>2.24579cm</Top>
-            <Left>0.25894cm</Left>
+            <Top>2.03412cm</Top>
+            <Left>0.57954cm</Left>
             <Height>0.6cm</Height>
             <Width>7.89751cm</Width>
-            <ZIndex>1</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox7">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>="Ngày mượn: " + Parameters!NgayMuon.Value</Value>
-                    <Style>
-                      <FontSize>12pt</FontSize>
-                      <TextDecoration>None</TextDecoration>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Right</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>2.24579cm</Top>
-            <Left>10.75cm</Left>
-            <Height>0.6cm</Height>
-            <Width>7.10375cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -151,7 +152,7 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox8">
+          <Textbox Name="Textbox7">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -170,11 +171,11 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>3.02217cm</Top>
-            <Left>10.75cm</Left>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>2.03412cm</Top>
+            <Left>9.75995cm</Left>
             <Height>0.6cm</Height>
-            <Width>7.10375cm</Width>
+            <Width>7.20958cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -186,28 +187,30 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox9">
+          <Textbox Name="Textbox8">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Số điện thoại: " +  Parameters!SDT.Value</Value>
+                    <Value>="Số ngày quá hạn: " + Parameters!SoNgay.Value.ToString() + " ngày"</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <TextDecoration>None</TextDecoration>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Top>3.79856cm</Top>
-            <Left>0.25894cm</Left>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>3.43641cm</Top>
+            <Left>9.75995cm</Left>
             <Height>0.6cm</Height>
-            <Width>7.89751cm</Width>
+            <Width>7.20958cm</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -237,8 +240,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>3.02217cm</Top>
-            <Left>0.25894cm</Left>
+            <Top>3.43641cm</Top>
+            <Left>0.57954cm</Left>
             <Height>0.6cm</Height>
             <Width>7.89751cm</Width>
             <ZIndex>5</ZIndex>
@@ -256,10 +259,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>15.0402cm</Width>
+                  <Width>12.97277cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5546cm</Width>
+                  <Width>3.41722cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -268,7 +271,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox15">
+                        <Textbox Name="Textbox13">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -286,7 +289,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox15</rd:DefaultName>
+                          <rd:DefaultName>Textbox13</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -302,7 +305,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox19">
+                        <Textbox Name="Textbox15">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -320,7 +323,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox19</rd:DefaultName>
+                          <rd:DefaultName>Textbox15</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -422,10 +425,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>4.70641cm</Top>
-            <Left>0.25894cm</Left>
+            <Top>5.73828cm</Top>
+            <Left>0.57954cm</Left>
             <Height>1.2cm</Height>
-            <Width>17.5948cm</Width>
+            <Width>16.38999cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -433,17 +436,16 @@
               </Border>
             </Style>
           </Tablix>
-          <Textbox Name="Textbox11">
+          <Textbox Name="Textbox12">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Trạng thái: " + Parameters!TrangThai.Value</Value>
+                    <Value>="Số tiền phạt: " + Parameters!SoTien.Value.ToString() + " VNĐ"</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
                       <TextDecoration>None</TextDecoration>
                     </Style>
                   </TextRun>
@@ -454,10 +456,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>10.42429cm</Top>
-            <Left>10.64417cm</Left>
+            <Top>4.78578cm</Top>
+            <Left>9.75995cm</Left>
             <Height>0.6cm</Height>
-            <Width>7.52708cm</Width>
+            <Width>7.20958cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -469,85 +471,14 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox5">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>= "Mã phiếu: " + Parameters!MaPhieu.Value</Value>
-                    <Style />
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox5</rd:DefaultName>
-            <Top>1.09389cm</Top>
-            <Left>0.25894cm</Left>
-            <Height>0.6cm</Height>
-            <Width>17.59481cm</Width>
-            <ZIndex>8</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox12">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>="Ngày trả: " + Parameters!NgayTra.Value</Value>
-                    <Style>
-                      <FontSize>12pt</FontSize>
-                      <TextDecoration>None</TextDecoration>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Right</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox8</rd:DefaultName>
-            <Top>3.79856cm</Top>
-            <Left>10.75cm</Left>
-            <Height>0.6cm</Height>
-            <Width>7.10375cm</Width>
-            <ZIndex>9</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
         </ReportItems>
-        <Height>4.34027in</Height>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
+        <Height>4.42371in</Height>
+        <Style />
       </Body>
-      <Width>7.15404in</Width>
+      <Width>6.92709in</Width>
       <Page>
         <PageHeader>
-          <Height>0.97896cm</Height>
+          <Height>1.40229cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -572,9 +503,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Left>0.25894cm</Left>
+              <Top>0.19086in</Top>
+              <Left>1.74308cm</Left>
               <Height>0.9175cm</Height>
-              <Width>17.59481cm</Width>
+              <Width>13.93cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -618,9 +550,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>0cm</Top>
-              <Left>10.64417cm</Left>
+              <Left>10.38523cm</Left>
               <Height>0.6cm</Height>
-              <Width>7.52708cm</Width>
+              <Width>7.20958cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -638,7 +570,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Thời gian in: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</Value>
+                      <Value>="Ngày in: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</Value>
                       <Style>
                         <FontSize>12pt</FontSize>
                         <TextDecoration>None</TextDecoration>
@@ -652,7 +584,7 @@
               <Top>0cm</Top>
               <Left>0cm</Left>
               <Height>0.6cm</Height>
-              <Width>7.81247cm</Width>
+              <Width>7.55353cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -687,6 +619,10 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="NguoiBiPhat">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
     <ReportParameter Name="HanTra">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
@@ -695,27 +631,11 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="HoTenDocGia">
-      <DataType>String</DataType>
+    <ReportParameter Name="SoNgay">
+      <DataType>Integer</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="SDT">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="NgayMuon">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="TrangThai">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="MaPhieu">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="NgayTra">
+    <ReportParameter Name="SoTien">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -723,12 +643,17 @@
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>3</NumberOfRows>
+      <NumberOfRows>2</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>NguoiIn</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>NguoiBiPhat</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>
@@ -741,34 +666,14 @@
           <ParameterName>Email</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>HoTenDocGia</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>3</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>SDT</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>2</RowIndex>
-          <ParameterName>NgayMuon</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
-          <RowIndex>2</RowIndex>
-          <ParameterName>TrangThai</ParameterName>
+          <RowIndex>1</RowIndex>
+          <ParameterName>SoNgay</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>
-          <RowIndex>2</RowIndex>
-          <ParameterName>MaPhieu</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>3</ColumnIndex>
-          <RowIndex>2</RowIndex>
-          <ParameterName>NgayTra</ParameterName>
+          <RowIndex>1</RowIndex>
+          <ParameterName>SoTien</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

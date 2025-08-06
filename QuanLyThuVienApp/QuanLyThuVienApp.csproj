@@ -183,6 +183,12 @@
     <Compile Include="frmQuanLyPhieuMuonTreHan.Designer.cs">
       <DependentUpon>frmQuanLyPhieuMuonTreHan.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReportHoaDonPhat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportHoaDonPhat.Designer.cs">
+      <DependentUpon>frmReportHoaDonPhat.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmThongTinDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +364,7 @@
       <DependentUpon>frmXacThucNV.cs</DependentUpon>
     </Compile>
     <Compile Include="GuiEmail.cs" />
+    <Compile Include="LibraryHelper.cs" />
     <Compile Include="NguoiDung.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
@@ -390,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyPhieuMuonTreHan.resx">
       <DependentUpon>frmQuanLyPhieuMuonTreHan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportHoaDonPhat.resx">
+      <DependentUpon>frmReportHoaDonPhat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongTinDocGia.resx">
       <DependentUpon>frmThongTinDocGia.cs</DependentUpon>
@@ -520,6 +530,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="rpHoaDonPhat.rdlc" />
     <EmbeddedResource Include="rpPrintPhieuMuon.rdlc" />
   </ItemGroup>
   <ItemGroup>

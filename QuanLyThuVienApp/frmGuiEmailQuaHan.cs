@@ -37,6 +37,7 @@ namespace QuanLyThuVienApp
         }
         private void frmQuanLyBanDoc_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             progressBar1.Visible = false;
             loadDuLieu();
         }
@@ -166,11 +167,26 @@ namespace QuanLyThuVienApp
         }
         private async Task guiEmail(string email, string tenDocGia, string maPhieu, string hanTra)
         {
+            int maPhieus = int.Parse(maPhieu.Substring(2));
+            frmQuanLyPhieuMuonTreHan frm = new frmQuanLyPhieuMuonTreHan(maPhieus);
+            int tienPhat = frm.TienPhat;
+            int soNgayTre = frm.SoNgayTre;
             string subject = "THƯ NHẮC NHỞ TRẢ TÀI LIỆU THƯ VIỆN";
-            string body = $"Kính gửi {tenDocGia},\n\n" +
+            string body = $"Xin chào {tenDocGia},\n\n" +
                             $"Phiếu mượn {maPhieu} của bạn đã quá hạn vào ngày {hanTra}.\n" +
-                            $"Vui lòng trả tài liệu trong thời gian sớm nhất.\n\n" +
-                            $"Xin cảm ơn!";
+                            $"Hiện tại tiền phạt của bạn là: {tienPhat}\n";
+            if (30 - tienPhat >= 0)
+            {
+                body += $"Vui lòng trả tài liệu trong thời gian sớm nhất để tránh phát sinh thêm tiền phạt.\n\n" +
+                        $"Xin cảm ơn!\n\n\n" +
+                        $"Chú ý: Nếu trong vòng {30 - soNgayTre} bạn không trả tài liệu thì sẽ bị khoá Email và không thể mượn tài liệu nữa!";
+            }
+            else
+            {
+                body += $"Bạn đã bị khoá Email!\n\n" +
+                        $"Vui lòng liên hệ thủ thư để hoàn tất việc trả tài liệu và nộp phí phạt.\nEmail sẽ được mở khoá ngay sau khi thủ tục hoàn tất!\n\n\n" +
+                        $"Xin cảm ơn!";
+            }
             await Task.Run(() =>
             {
                 GuiEmail.guiEmail(email, subject + "\n" + body);
@@ -281,19 +297,48 @@ namespace QuanLyThuVienApp
 
                 if (danhSachTreHan.Count > 0)
                 {
-                    string noiDung = $"Xin chào {tenDocGia},\n\n";
-                    noiDung += "Bạn đang có các phiếu mượn quá hạn sau:\n";
+                    string noiDung = $"Xin chào {tenDocGia},\n\nBạn đang có các phiếu mượn quá hạn sau:\n";
+
+                    int tongCP = 0;
+                    string cacPhieuQuaHan = string.Empty;
 
                     foreach (var item in danhSachTreHan)
                     {
-                        noiDung += $"- Mã Phiếu: {item.MaPhieu} | Hạn trả: {item.HanTra}\n";
+                        int maPhieus = int.Parse(item.MaPhieu.Substring(2));
+                        frmQuanLyPhieuMuonTreHan frm = new frmQuanLyPhieuMuonTreHan(maPhieus);
+                        int tienPhat = frm.TienPhat;
+                        int soNgayTre = frm.SoNgayTre;
+                        noiDung += $"- Mã Phiếu: {item.MaPhieu} | Hạn trả: {item.HanTra} | Tiền phạt: {tienPhat}"; 
+                        if (30 - soNgayTre >= 0)
+                        {
+                            noiDung += $" | Số ngày còn lại: {30 - soNgayTre}\n";
+                        }
+                        else
+                        {
+                            noiDung += $" | Số ngày còn lại: {0}\n";
+                            cacPhieuQuaHan += item.MaPhieu + " ";
+                        }
+                        tongCP += tienPhat;
                     }
 
-                    noiDung += "\nVui lòng sớm trả tài liệu để tránh phát sinh phí phạt.\n\nThư viện.";
+                    if (string.IsNullOrEmpty(cacPhieuQuaHan))
+                    {
+                        noiDung += $"\nTổng chi phí là: {tongCP}" +
+                                   $"\nVui lòng sớm trả tài liệu sớm hơn \"Số ngày còn lại\"\n" +
+                                    "Chú ý: Nếu không trả tài liệu thì sẽ bị khoá Email và không thể mượn tài liệu nữa!";
+                    }
+                    else
+                    {
+                        noiDung += $"\nTổng chi phí là: {tongCP}" +
+                                   $"\nBạn đã bị khoá Email do đã quá hạn trả 30 ngày cho phiếu mượn: {cacPhieuQuaHan}\n\n" +
+                                   "Vui lòng liên hệ thủ thư để hoàn tất việc trả tài liệu và nộp phí phạt.\nEmail sẽ được mở khoá ngay sau khi thủ tục hoàn tất!\n\n\n" +
+                                   "Xin cảm ơn!";
+                    }
+                    
+                    string subject = "THƯ NHẮC NHỞ TRẢ TÀI LIỆU THƯ VIỆN";
+                    string body = noiDung;
 
-                    string subject = "Thông báo trễ hạn";
-                    string body = noiDung; // Đã format đầy đủ danh sách phiếu mượn trễ hạn
-
+                    
                     // Gửi Email 1 lần
                     await Task.Run(() =>
                     {

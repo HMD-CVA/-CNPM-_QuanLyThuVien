@@ -30,6 +30,7 @@ namespace QuanLyThuVienApp
 
         private void frmCaNhan_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             loadDuLieu();
             btnLuuTenDN.Hide();
             btnHuyTenDN.Hide();

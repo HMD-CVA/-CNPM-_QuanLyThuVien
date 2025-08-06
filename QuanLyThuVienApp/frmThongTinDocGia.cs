@@ -29,6 +29,7 @@ namespace QuanLyThuVienApp
 
         private void frmCaNhan_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             loadDuLieu();
 
             btnLuuTen.Hide();
@@ -270,6 +271,17 @@ namespace QuanLyThuVienApp
                 );
 
                 if (result == DialogResult.No) return;
+
+                PhieuMuon phieuMuonTreHan = db.PhieuMuons
+                    .Where(p => p.MaDG == DG.MaDocGia && p.DaTra == false && p.HanTra.HasValue &&
+                                System.Data.Entity.DbFunctions.DiffDays(p.HanTra, DateTime.Now) > 30)
+                    .FirstOrDefault();
+
+                if (phieuMuonTreHan != null)
+                {
+                    MessageBox.Show("Độc giả này có phiếu mượn quá hạn 30 ngày chưa trả!\nKhông thể mở khoá", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
             else
             {
@@ -285,43 +297,6 @@ namespace QuanLyThuVienApp
             DG.BiKhoa = !DG.BiKhoa;
             db.SaveChanges();
             loadDuLieu();
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            QLTVEntities db = new QLTVEntities();
-            PhieuMuon phieuMuons= db.PhieuMuons.Where(p => p.MaDG == maDG && p.DaTra == false).FirstOrDefault();
-
-            if (phieuMuons != null)
-            {
-                MessageBox.Show("Độc giả đang có phiếu mượn chưa trả!\nKhông thể xoá!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            DialogResult result = MessageBox.Show(
-                "Bạn có muốn xoá độc giả này không?\nChú ý: Toàn bộ thông tin phiếu mượn của độc giả này cũng sẽ bị xoá hết!!!",
-                "Thông báo!",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-            if (result == DialogResult.No) return;
-
-            var danhSachPhieuMuon = db.PhieuMuons.Where(p => p.MaDG == maDG).ToList();
-
-            foreach (var pm in danhSachPhieuMuon)
-            {
-                var chiTiet = db.ChiTietPhieuMuons.Where(ct => ct.MaPM == pm.MaPhieu).ToList();
-                if (chiTiet.Count > 0)
-                    db.ChiTietPhieuMuons.RemoveRange(chiTiet);
-            }
-            db.SaveChanges();
-
-            if (danhSachPhieuMuon.Count > 0)
-            {
-                db.PhieuMuons.RemoveRange(danhSachPhieuMuon);
-                db.SaveChanges();
-            }
-            MessageBox.Show("Xoá độc giả thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

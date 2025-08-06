@@ -28,6 +28,7 @@ namespace QuanLyThuVienApp
 
         private void frmMuonSach_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             QLTVEntities db = new QLTVEntities();
             cbbSDM.DataSource = db.DanhMucTaiLieux.Select(p => p.TenDanhMuc).ToList();
             cbbSNXB.DataSource = db.NhaXuatBans.Select(p => p.TenNXB).ToList();

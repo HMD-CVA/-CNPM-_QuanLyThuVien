@@ -256,8 +256,7 @@
             this.btnGuiMail.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.btnGuiMail.Size = new System.Drawing.Size(127, 67);
             this.btnGuiMail.TabIndex = 5;
-            this.btnGuiMail.Text = "            Quản lý \r\n            \r\n  ";
-            this.btnGuiMail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuiMail.Text = "\r\nGửi \r\nEmail\r\n\r\n  ";
             this.btnGuiMail.UseVisualStyleBackColor = false;
             this.btnGuiMail.Click += new System.EventHandler(this.btnGuiEmail_Click);
             // 

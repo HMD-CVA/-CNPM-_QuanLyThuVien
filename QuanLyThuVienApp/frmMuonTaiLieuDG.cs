@@ -21,6 +21,7 @@ namespace QuanLyThuVienApp
      
         private void frmMuonSach_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             listTL = frmTaiLieuDG.taiLieusMuon;
             loadDuLieu();
         }
