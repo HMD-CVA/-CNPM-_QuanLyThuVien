@@ -507,5 +507,15 @@ namespace QuanLyThuVienApp
             frm.Dock = DockStyle.Fill;
             frm.Show();
         }
+
+        private void btnXLTreHan_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmQuanLyPhieuMuonTreHan frm = new frmQuanLyPhieuMuonTreHan();
+            frm.MdiParent = frmMainUser;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
     }
 }

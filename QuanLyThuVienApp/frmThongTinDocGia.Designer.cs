@@ -35,6 +35,9 @@
             this.txtHoVaTen = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBiKhoa = new System.Windows.Forms.Button();
+            this.txtTrangThai = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnHuySDT = new FontAwesome.Sharp.IconButton();
             this.btnLuuSDT = new FontAwesome.Sharp.IconButton();
@@ -47,10 +50,6 @@
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnDoiTen = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.txtTrangThai = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnBiKhoa = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,7 +137,6 @@
             this.groupBox1.Controls.Add(this.btnDoiTen);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.btnXoa);
             this.groupBox1.Controls.Add(this.txtHoVaTen);
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -152,14 +150,48 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin cá nhân";
             // 
+            // btnBiKhoa
+            // 
+            this.btnBiKhoa.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBiKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBiKhoa.Location = new System.Drawing.Point(359, 46);
+            this.btnBiKhoa.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBiKhoa.Name = "btnBiKhoa";
+            this.btnBiKhoa.Size = new System.Drawing.Size(176, 27);
+            this.btnBiKhoa.TabIndex = 27;
+            this.btnBiKhoa.Text = "Mở khoá";
+            this.btnBiKhoa.UseVisualStyleBackColor = false;
+            this.btnBiKhoa.Click += new System.EventHandler(this.btnBiKhoa_Click);
+            // 
+            // txtTrangThai
+            // 
+            this.txtTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTrangThai.Location = new System.Drawing.Point(139, 46);
+            this.txtTrangThai.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTrangThai.Name = "txtTrangThai";
+            this.txtTrangThai.ReadOnly = true;
+            this.txtTrangThai.Size = new System.Drawing.Size(147, 24);
+            this.txtTrangThai.TabIndex = 26;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(136, 26);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 18);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Trạng thái";
+            // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(168, 260);
+            this.btnExit.Location = new System.Drawing.Point(27, 260);
             this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(147, 27);
+            this.btnExit.Size = new System.Drawing.Size(259, 27);
             this.btnExit.TabIndex = 24;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -321,53 +353,7 @@
             this.btnDoiTen.UseVisualStyleBackColor = false;
             this.btnDoiTen.Click += new System.EventHandler(this.btnDoiTen_Click);
             // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(27, 260);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(126, 27);
-            this.btnXoa.TabIndex = 6;
-            this.btnXoa.Text = "Xoá độc giả";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            // 
-            // txtTrangThai
-            // 
-            this.txtTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTrangThai.Location = new System.Drawing.Point(139, 46);
-            this.txtTrangThai.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTrangThai.Name = "txtTrangThai";
-            this.txtTrangThai.ReadOnly = true;
-            this.txtTrangThai.Size = new System.Drawing.Size(147, 24);
-            this.txtTrangThai.TabIndex = 26;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(136, 26);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 18);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Trạng thái";
-            // 
-            // btnBiKhoa
-            // 
-            this.btnBiKhoa.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBiKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBiKhoa.Location = new System.Drawing.Point(290, 45);
-            this.btnBiKhoa.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBiKhoa.Name = "btnBiKhoa";
-            this.btnBiKhoa.Size = new System.Drawing.Size(126, 27);
-            this.btnBiKhoa.TabIndex = 27;
-            this.btnBiKhoa.Text = "Mở khoá";
-            this.btnBiKhoa.UseVisualStyleBackColor = false;
-            this.btnBiKhoa.Click += new System.EventHandler(this.btnBiKhoa_Click);
-            // 
-            // frmTTDocGia
+            // frmThongTinDocGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -376,7 +362,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "frmTTDocGia";
+            this.Name = "frmThongTinDocGia";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -400,7 +386,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnDoiTen;
         private System.Windows.Forms.Button btnDoiSDT;
         private FontAwesome.Sharp.IconButton btnHuySDT;

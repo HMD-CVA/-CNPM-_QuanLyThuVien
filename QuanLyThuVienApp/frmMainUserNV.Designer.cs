@@ -57,12 +57,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+<<<<<<< HEAD
             this.button2 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.btnHam = new System.Windows.Forms.PictureBox();
+=======
+            this.btnGuiMail = new FontAwesome.Sharp.IconButton();
+            this.btnQLDocGia = new FontAwesome.Sharp.IconButton();
+            this.btnQLPhieuMuon = new FontAwesome.Sharp.IconButton();
+            this.btnLichSuMuon = new FontAwesome.Sharp.IconButton();
+>>>>>>> 9b2166d70fbd27d9a94e1b176888f6e509e792ac
             this.metroPanel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.sidebar.SuspendLayout();
@@ -347,6 +354,28 @@
             this.panel10.Size = new System.Drawing.Size(233, 58);
             this.panel10.TabIndex = 11;
             // 
+            // btnGuiMail
+            // 
+            this.btnGuiMail.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuiMail.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnGuiMail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGuiMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuiMail.IconChar = FontAwesome.Sharp.IconChar.Google;
+            this.btnGuiMail.IconColor = System.Drawing.Color.Black;
+            this.btnGuiMail.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuiMail.IconSize = 40;
+            this.btnGuiMail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuiMail.Location = new System.Drawing.Point(0, 201);
+            this.btnGuiMail.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuiMail.Name = "btnGuiMail";
+            this.btnGuiMail.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.btnGuiMail.Size = new System.Drawing.Size(127, 67);
+            this.btnGuiMail.TabIndex = 5;
+            this.btnGuiMail.Text = "            Quản lý \r\n            \r\n  ";
+            this.btnGuiMail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuiMail.UseVisualStyleBackColor = false;
+            this.btnGuiMail.Click += new System.EventHandler(this.btnGuiEmail_Click);
+            // 
             // btnQLDocGia
             // 
             this.btnQLDocGia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -386,6 +415,7 @@
             this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThongKe.UseVisualStyleBackColor = false;
             // 
+<<<<<<< HEAD
             // panel1
             // 
             this.panel1.Controls.Add(this.button1);
@@ -492,6 +522,8 @@
             this.btnHam.TabIndex = 12;
             this.btnHam.TabStop = false;
             // 
+=======
+>>>>>>> 9b2166d70fbd27d9a94e1b176888f6e509e792ac
             // frmMainUserNV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

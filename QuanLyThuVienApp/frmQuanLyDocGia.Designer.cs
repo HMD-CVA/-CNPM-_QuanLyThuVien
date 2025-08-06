@@ -382,7 +382,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(122, 25);
             this.btnXoa.TabIndex = 10;
-            this.btnXoa.Text = "Xoá";
+            this.btnXoa.Text = "Xoá độc giả";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 

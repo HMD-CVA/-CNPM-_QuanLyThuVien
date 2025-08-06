@@ -75,7 +75,6 @@ namespace QuanLyThuVienApp
             btnLuuTen.Show();
             btnHuyTen.Show();
         }
-
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (txtHoVaTen.Text == "")
@@ -96,7 +95,6 @@ namespace QuanLyThuVienApp
          
             MessageBox.Show("Thay đổi tên thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void btnHuyTen_Click(object sender, EventArgs e)
         {
             QLTVEntities db = new QLTVEntities();
@@ -107,14 +105,12 @@ namespace QuanLyThuVienApp
             btnLuuTen.Hide();
             txtHoVaTen.ReadOnly = true;
         }
-
         private void btnDoiEmail_Click(object sender, EventArgs e)
         {
             btnLuuEmail.Show();
             btnHuyEmail.Show();
             txtEmail.ReadOnly = false;
         }
-
         private void btnHuyEmail_Click(object sender, EventArgs e)
         {
             QLTVEntities db = new QLTVEntities();
@@ -125,7 +121,6 @@ namespace QuanLyThuVienApp
             btnLuuEmail.Hide();
             txtEmail.ReadOnly = true;
         }
-
         private bool isEmail(string inputEmail)
         {
             inputEmail = inputEmail ?? string.Empty;
@@ -138,7 +133,6 @@ namespace QuanLyThuVienApp
             else
                 return (false);
         }
-
         private void btnLuuEmail_Click(object sender, EventArgs e)
         {
             if (txtEmail.Text == "")
@@ -194,21 +188,7 @@ namespace QuanLyThuVienApp
                 {
                     MessageBox.Show("Email chưa được xác minh!\nKhông thể đổi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
-                }
-                //frmXacThucDG frm = new frmXacThucDG(nhanVien.DGID, xacNhan =>
-                //{
-                //    if (xacNhan)
-                //    {
-                //        nhanVien.Email = txtEmail.Text;
-                //        db.SaveChanges();
-
-                //        txtEmail.ReadOnly = true;
-                //        btnLuuEmail.Hide();
-                //        btnHuyEmail.Hide();
-                //        loadDuLieu();
-                //    }
-                //});
-                //frm.ShowDialog();
+                }            
             }
             catch (Exception ex)
             {
@@ -231,7 +211,6 @@ namespace QuanLyThuVienApp
 
             return false;
         }
-
         private void btnLuuSDT_Click(object sender, EventArgs e)
         {
             if (txtSDT.Text == "")
@@ -260,7 +239,6 @@ namespace QuanLyThuVienApp
 
             MessageBox.Show("Thay đổi số điện thoại thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void btnHuySDT_Click(object sender, EventArgs e)
         {
             QLTVEntities db = new QLTVEntities();
@@ -270,7 +248,6 @@ namespace QuanLyThuVienApp
             btnLuuSDT.Hide();
             txtSDT.ReadOnly = true;
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -293,9 +270,6 @@ namespace QuanLyThuVienApp
                 );
 
                 if (result == DialogResult.No) return;
-
-                DG.BiKhoa = true;
-                db.SaveChanges();
             }
             else
             {
@@ -307,12 +281,47 @@ namespace QuanLyThuVienApp
                 );
 
                 if (result == DialogResult.No) return;
+            }
+            DG.BiKhoa = !DG.BiKhoa;
+            db.SaveChanges();
+            loadDuLieu();
+        }
 
-                DG.BiKhoa = false;
-                db.SaveChanges();
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            QLTVEntities db = new QLTVEntities();
+            PhieuMuon phieuMuons= db.PhieuMuons.Where(p => p.MaDG == maDG && p.DaTra == false).FirstOrDefault();
+
+            if (phieuMuons != null)
+            {
+                MessageBox.Show("Độc giả đang có phiếu mượn chưa trả!\nKhông thể xoá!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            loadDuLieu();
+            DialogResult result = MessageBox.Show(
+                "Bạn có muốn xoá độc giả này không?\nChú ý: Toàn bộ thông tin phiếu mượn của độc giả này cũng sẽ bị xoá hết!!!",
+                "Thông báo!",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+            if (result == DialogResult.No) return;
+
+            var danhSachPhieuMuon = db.PhieuMuons.Where(p => p.MaDG == maDG).ToList();
+
+            foreach (var pm in danhSachPhieuMuon)
+            {
+                var chiTiet = db.ChiTietPhieuMuons.Where(ct => ct.MaPM == pm.MaPhieu).ToList();
+                if (chiTiet.Count > 0)
+                    db.ChiTietPhieuMuons.RemoveRange(chiTiet);
+            }
+            db.SaveChanges();
+
+            if (danhSachPhieuMuon.Count > 0)
+            {
+                db.PhieuMuons.RemoveRange(danhSachPhieuMuon);
+                db.SaveChanges();
+            }
+            MessageBox.Show("Xoá độc giả thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
