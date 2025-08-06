@@ -33,46 +33,46 @@
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btnHam = new System.Windows.Forms.PictureBox();
             this.tslbTimer = new System.Windows.Forms.ToolStripLabel();
             this.tslbThongTin = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.menuContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.menuTransition = new System.Windows.Forms.Timer(this.components);
+            this.panel5 = new System.Windows.Forms.Panel();
             this.menu = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.btnSach = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.btnMuonSach = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.btnLichSuMuon = new System.Windows.Forms.Button();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.btnThongKe = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnCaNhan = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnTroGiup = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnInfor = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.btnDangXuat = new System.Windows.Forms.Button();
-            this.btnHam = new System.Windows.Forms.PictureBox();
+            this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.sidebarTransition = new System.Windows.Forms.Timer(this.components);
             this.metroPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.sidebar.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.menuContainer.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -111,6 +111,17 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 8;
             // 
+            // btnHam
+            // 
+            this.btnHam.Image = global::QuanLyThuVienApp.Properties.Resources.png_transparent_computer_icons_hamburger_button_menu_symbol_exquisite_option_button_rectangle_black_interface;
+            this.btnHam.Location = new System.Drawing.Point(0, 0);
+            this.btnHam.Name = "btnHam";
+            this.btnHam.Size = new System.Drawing.Size(67, 34);
+            this.btnHam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnHam.TabIndex = 7;
+            this.btnHam.TabStop = false;
+            this.btnHam.Click += new System.EventHandler(this.btnHam_Click);
+            // 
             // tslbTimer
             // 
             this.tslbTimer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -132,7 +143,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslbTimer,
             this.tslbThongTin});
-            this.toolStrip1.Location = new System.Drawing.Point(8, 690);
+            this.toolStrip1.Location = new System.Drawing.Point(8, 767);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1156, 25);
             this.toolStrip1.TabIndex = 2;
@@ -149,53 +160,8 @@
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.Location = new System.Drawing.Point(8, 64);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(236, 626);
+            this.sidebar.Size = new System.Drawing.Size(236, 703);
             this.sidebar.TabIndex = 6;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnCaNhan);
-            this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(3, 67);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(233, 58);
-            this.panel1.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnTroGiup);
-            this.panel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(3, 131);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(233, 58);
-            this.panel2.TabIndex = 9;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnInfor);
-            this.panel3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(3, 195);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(233, 58);
-            this.panel3.TabIndex = 9;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnDangXuat);
-            this.panel4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(3, 259);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(233, 58);
-            this.panel4.TabIndex = 9;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.menu);
-            this.panel5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(3, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(233, 58);
-            this.panel5.TabIndex = 9;
             // 
             // menuContainer
             // 
@@ -210,46 +176,14 @@
             this.menuContainer.Size = new System.Drawing.Size(233, 58);
             this.menuContainer.TabIndex = 10;
             // 
-            // panel6
+            // panel5
             // 
-            this.panel6.Controls.Add(this.btnSach);
-            this.panel6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel6.Location = new System.Drawing.Point(3, 67);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(233, 58);
-            this.panel6.TabIndex = 10;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.btnMuonSach);
-            this.panel7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel7.Location = new System.Drawing.Point(3, 131);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(233, 58);
-            this.panel7.TabIndex = 10;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.btnLichSuMuon);
-            this.panel8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel8.Location = new System.Drawing.Point(3, 195);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(233, 58);
-            this.panel8.TabIndex = 10;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.btnThongKe);
-            this.panel9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel9.Location = new System.Drawing.Point(3, 259);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(233, 58);
-            this.panel9.TabIndex = 10;
-            // 
-            // menuTransition
-            // 
-            this.menuTransition.Interval = 10;
-            this.menuTransition.Tick += new System.EventHandler(this.menuTransition_Tick);
+            this.panel5.Controls.Add(this.menu);
+            this.panel5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel5.Location = new System.Drawing.Point(3, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(233, 58);
+            this.panel5.TabIndex = 9;
             // 
             // menu
             // 
@@ -267,6 +201,15 @@
             this.menu.UseVisualStyleBackColor = false;
             this.menu.Click += new System.EventHandler(this.menu_Click);
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btnSach);
+            this.panel6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel6.Location = new System.Drawing.Point(3, 67);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(233, 58);
+            this.panel6.TabIndex = 10;
+            // 
             // btnSach
             // 
             this.btnSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -282,6 +225,15 @@
             this.btnSach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSach.UseVisualStyleBackColor = false;
             this.btnSach.Click += new System.EventHandler(this.btnSach_Click_1);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.btnMuonSach);
+            this.panel7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel7.Location = new System.Drawing.Point(3, 131);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(233, 58);
+            this.panel7.TabIndex = 10;
             // 
             // btnMuonSach
             // 
@@ -299,6 +251,15 @@
             this.btnMuonSach.UseVisualStyleBackColor = false;
             this.btnMuonSach.Click += new System.EventHandler(this.btnMuonSach_Click_1);
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.btnLichSuMuon);
+            this.panel8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel8.Location = new System.Drawing.Point(3, 195);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(233, 58);
+            this.panel8.TabIndex = 10;
+            // 
             // btnLichSuMuon
             // 
             this.btnLichSuMuon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -314,6 +275,15 @@
             this.btnLichSuMuon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLichSuMuon.UseVisualStyleBackColor = false;
             this.btnLichSuMuon.Click += new System.EventHandler(this.btnLichSuMuon_Click_1);
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.btnThongKe);
+            this.panel9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel9.Location = new System.Drawing.Point(3, 259);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(233, 58);
+            this.panel9.TabIndex = 10;
             // 
             // btnThongKe
             // 
@@ -331,6 +301,15 @@
             this.btnThongKe.UseVisualStyleBackColor = false;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click_1);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnCaNhan);
+            this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(3, 67);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(233, 58);
+            this.panel1.TabIndex = 7;
+            // 
             // btnCaNhan
             // 
             this.btnCaNhan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -346,6 +325,15 @@
             this.btnCaNhan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCaNhan.UseVisualStyleBackColor = false;
             this.btnCaNhan.Click += new System.EventHandler(this.btnCaNhan_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnTroGiup);
+            this.panel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(3, 131);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(233, 58);
+            this.panel2.TabIndex = 9;
             // 
             // btnTroGiup
             // 
@@ -363,6 +351,15 @@
             this.btnTroGiup.UseVisualStyleBackColor = false;
             this.btnTroGiup.Click += new System.EventHandler(this.btnTroGiup_Click_1);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnInfor);
+            this.panel3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Location = new System.Drawing.Point(3, 195);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(233, 58);
+            this.panel3.TabIndex = 9;
+            // 
             // btnInfor
             // 
             this.btnInfor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -378,6 +375,15 @@
             this.btnInfor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInfor.UseVisualStyleBackColor = false;
             this.btnInfor.Click += new System.EventHandler(this.btnInfor_Click_1);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnDangXuat);
+            this.panel4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel4.Location = new System.Drawing.Point(3, 259);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(233, 58);
+            this.panel4.TabIndex = 9;
             // 
             // btnDangXuat
             // 
@@ -395,16 +401,10 @@
             this.btnDangXuat.UseVisualStyleBackColor = false;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click_1);
             // 
-            // btnHam
+            // menuTransition
             // 
-            this.btnHam.Image = global::QuanLyThuVienApp.Properties.Resources.png_transparent_computer_icons_hamburger_button_menu_symbol_exquisite_option_button_rectangle_black_interface;
-            this.btnHam.Location = new System.Drawing.Point(0, 0);
-            this.btnHam.Name = "btnHam";
-            this.btnHam.Size = new System.Drawing.Size(67, 34);
-            this.btnHam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnHam.TabIndex = 7;
-            this.btnHam.TabStop = false;
-            this.btnHam.Click += new System.EventHandler(this.btnHam_Click);
+            this.menuTransition.Interval = 10;
+            this.menuTransition.Tick += new System.EventHandler(this.menuTransition_Tick);
             // 
             // sidebarTransition
             // 
@@ -415,7 +415,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 723);
+            this.ClientSize = new System.Drawing.Size(1172, 800);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.metroPanel1);
@@ -433,20 +433,20 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHam)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.sidebar.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.menuContainer.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnHam)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
