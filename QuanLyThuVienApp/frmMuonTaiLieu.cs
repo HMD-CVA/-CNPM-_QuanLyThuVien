@@ -246,17 +246,17 @@ namespace QuanLyThuVienApp
             DocGia dg = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
             if (dg == null)
             {
-                using (frmDangKy frm = new frmDangKy(emailDG))
-                {
-                    DialogResult resultB = frm.ShowDialog(this);
+                frmDangKy frm = new frmDangKy(emailDG);
+                
+                DialogResult resultB = frm.ShowDialog(this);
 
-                    if (!frm.checkDK)
-                    {
-                        MessageBox.Show("Đăng ký thất bại hoặc đã bị hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtEmail.Focus();
-                        return;
-                    }
+                if (!frm.checkDK)
+                {
+                    MessageBox.Show("Đăng ký thất bại hoặc đã bị hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtEmail.Focus();
+                    return;
                 }
+                frm.Dispose();
             }
             else
             {
