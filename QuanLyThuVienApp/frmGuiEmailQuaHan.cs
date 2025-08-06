@@ -183,7 +183,7 @@ namespace QuanLyThuVienApp
             }
             else
             {
-                body += $"Bạn đã bị khoá Email!\n\n" +
+                body += $"Bạn đã bị khoá Email do trễ hạn quá 30 ngày kể từ lúc mượn!\n\n" +
                         $"Vui lòng liên hệ thủ thư để hoàn tất việc trả tài liệu và nộp phí phạt.\nEmail sẽ được mở khoá ngay sau khi thủ tục hoàn tất!\n\n\n" +
                         $"Xin cảm ơn!";
             }
