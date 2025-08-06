@@ -43,10 +43,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnThongKe = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnGuiMail = new FontAwesome.Sharp.IconButton();
             this.btnQLDocGia = new FontAwesome.Sharp.IconButton();
             this.btnQLPhieuMuon = new FontAwesome.Sharp.IconButton();
             this.btnLichSuMuon = new FontAwesome.Sharp.IconButton();
-            this.btnGuiMail = new FontAwesome.Sharp.IconButton();
             this.metroPanel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -239,6 +239,28 @@
             this.panel2.Size = new System.Drawing.Size(127, 481);
             this.panel2.TabIndex = 4;
             // 
+            // btnGuiMail
+            // 
+            this.btnGuiMail.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGuiMail.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnGuiMail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGuiMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuiMail.IconChar = FontAwesome.Sharp.IconChar.Google;
+            this.btnGuiMail.IconColor = System.Drawing.Color.Black;
+            this.btnGuiMail.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuiMail.IconSize = 40;
+            this.btnGuiMail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuiMail.Location = new System.Drawing.Point(0, 201);
+            this.btnGuiMail.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuiMail.Name = "btnGuiMail";
+            this.btnGuiMail.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.btnGuiMail.Size = new System.Drawing.Size(127, 67);
+            this.btnGuiMail.TabIndex = 5;
+            this.btnGuiMail.Text = "            Quản lý \r\n            \r\n  ";
+            this.btnGuiMail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuiMail.UseVisualStyleBackColor = false;
+            this.btnGuiMail.Click += new System.EventHandler(this.btnGuiEmail_Click);
+            // 
             // btnQLDocGia
             // 
             this.btnQLDocGia.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -304,28 +326,6 @@
             this.btnLichSuMuon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLichSuMuon.UseVisualStyleBackColor = false;
             this.btnLichSuMuon.Click += new System.EventHandler(this.btnLichSuMuon_Click);
-            // 
-            // btnGuiMail
-            // 
-            this.btnGuiMail.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnGuiMail.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnGuiMail.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGuiMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuiMail.IconChar = FontAwesome.Sharp.IconChar.Google;
-            this.btnGuiMail.IconColor = System.Drawing.Color.Black;
-            this.btnGuiMail.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGuiMail.IconSize = 40;
-            this.btnGuiMail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuiMail.Location = new System.Drawing.Point(0, 201);
-            this.btnGuiMail.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuiMail.Name = "btnGuiMail";
-            this.btnGuiMail.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.btnGuiMail.Size = new System.Drawing.Size(127, 67);
-            this.btnGuiMail.TabIndex = 5;
-            this.btnGuiMail.Text = "            Gửi \r\n            Email\r\n  ";
-            this.btnGuiMail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuiMail.UseVisualStyleBackColor = false;
-            this.btnGuiMail.Click += new System.EventHandler(this.btnGuiEmail_Click);
             // 
             // frmMainUserNV
             // 

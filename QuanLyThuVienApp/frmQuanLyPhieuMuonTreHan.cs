@@ -275,5 +275,10 @@ namespace QuanLyThuVienApp
 
             return tienPhat;
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

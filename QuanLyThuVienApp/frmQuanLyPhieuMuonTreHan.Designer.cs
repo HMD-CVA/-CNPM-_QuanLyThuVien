@@ -60,6 +60,7 @@
             this.HanTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnThoat = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietPM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuon)).BeginInit();
@@ -436,12 +437,32 @@
             this.NgayTra.ReadOnly = true;
             this.NgayTra.Width = 83;
             // 
+            // btnThoat
+            // 
+            this.btnThoat.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateBackward;
+            this.btnThoat.IconColor = System.Drawing.Color.Black;
+            this.btnThoat.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnThoat.IconSize = 19;
+            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnThoat.Location = new System.Drawing.Point(579, 222);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(86, 25);
+            this.btnThoat.TabIndex = 44;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
             // frmQuanLyPhieuMuonTreHan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(915, 475);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.dgvPhieuMuon);
             this.Controls.Add(this.lbTienPhat2);
             this.Controls.Add(this.lbTienPhat1);
@@ -499,5 +520,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HanTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn DaTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayTra;
+        private FontAwesome.Sharp.IconButton btnThoat;
     }
 }

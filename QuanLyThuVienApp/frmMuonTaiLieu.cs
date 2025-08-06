@@ -247,9 +247,6 @@ namespace QuanLyThuVienApp
             if (dg == null)
             {
                 frmDangKy frm = new frmDangKy(emailDG);
-                
-                DialogResult resultB = frm.ShowDialog(this);
-
                 if (!frm.checkDK)
                 {
                     MessageBox.Show("Đăng ký thất bại hoặc đã bị hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
