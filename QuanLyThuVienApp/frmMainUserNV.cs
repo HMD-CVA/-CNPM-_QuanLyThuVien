@@ -28,9 +28,12 @@ namespace QuanLyThuVienApp
 
             if (_biKhoa == true)
             {
-                text = "Tài khoản của bạn đang bị khóa, vui lòng đến thư viện để được xử lý!";
-                tslbThongTin.ForeColor = Color.Red;
-                btnQLPhieuMuon.Enabled = false;
+                MessageBox.Show("Tài khoản của bạn đang bị khóa, vui lòng liên hệ ADMIN thư viện để được xử lý!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frmHomes frm = new frmHomes();
+                this.Hide();
+                frm.ShowDialog();
+                this.Close();
+                return;
             }
             else if( _biKhoa == false)
             {
@@ -111,7 +114,7 @@ namespace QuanLyThuVienApp
             frm.Show();
         }
 
-        private void btnLichSuMuon_Click(object sender, EventArgs e)
+        private void btnQLTaiLieu_Click(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();

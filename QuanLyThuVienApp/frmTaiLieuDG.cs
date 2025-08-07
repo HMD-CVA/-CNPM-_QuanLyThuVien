@@ -267,12 +267,7 @@ namespace QuanLyThuVienApp
                 else return;
             }
             MessageBox.Show("Đã xoá thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            string inKQ = string.Empty;
-            for (int i = 0; i < taiLieusMuon.Count; i++)
-            {
-                inKQ += taiLieusMuon[i].Item1.ToString() + " " + taiLieusMuon[i].Item2.ToString() + "\n";
-            }
-            MessageBox.Show(inKQ, "Thông ", MessageBoxButtons.OK);
+  
             for (int i = 0; i < dgvTaiLieu.Rows.Count; i++)
             {
                 var ma = dgvTaiLieu.Rows[i].Cells["MaTaiLieu"].Value?.ToString();

@@ -104,11 +104,12 @@ namespace QuanLyThuVienApp
             dt.TableName = "ChiTietPhieuMuon";
             dt.Columns.Add("MaPM", typeof(string));
             dt.Columns.Add("MaTL", typeof(string));
-            dt.Columns.Add("SoLuong", typeof(int));
+            dt.Columns.Add("SoLuongBD", typeof(int));
+            dt.Columns.Add("SoLuong", typeof(string));
 
             foreach (var item in ctPM)
             {
-                dt.Rows.Add(item.MaPM, item.TaiLieu.TenTaiLieu, item.SoLuong);
+                dt.Rows.Add(item.MaPM, item.TaiLieu.TenTaiLieu, item.SoLuongBD , item.SoLuong == 0 ? "Đã trả" : item.SoLuong.ToString());
             }
             ReportDataSource rds = new ReportDataSource("DataSet1", dt);
 

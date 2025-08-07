@@ -31,8 +31,8 @@ namespace QuanLyThuVienApp
         public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public virtual DbSet<TacGia> TacGias { get; set; }
         public virtual DbSet<TaiLieu> TaiLieux { get; set; }
-        public virtual DbSet<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
         public virtual DbSet<DocGia> DocGias { get; set; }
+        public virtual DbSet<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
         public virtual DbSet<PhieuMuon> PhieuMuons { get; set; }
     }
 }

@@ -46,7 +46,7 @@
             this.btnGuiMail = new FontAwesome.Sharp.IconButton();
             this.btnQLDocGia = new FontAwesome.Sharp.IconButton();
             this.btnQLPhieuMuon = new FontAwesome.Sharp.IconButton();
-            this.btnLichSuMuon = new FontAwesome.Sharp.IconButton();
+            this.btnQLTaiLieu = new FontAwesome.Sharp.IconButton();
             this.metroPanel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -230,7 +230,7 @@
             this.panel2.Controls.Add(this.btnGuiMail);
             this.panel2.Controls.Add(this.btnQLDocGia);
             this.panel2.Controls.Add(this.btnQLPhieuMuon);
-            this.panel2.Controls.Add(this.btnLichSuMuon);
+            this.panel2.Controls.Add(this.btnQLTaiLieu);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(8, 131);
@@ -304,27 +304,27 @@
             this.btnQLPhieuMuon.UseVisualStyleBackColor = false;
             this.btnQLPhieuMuon.Click += new System.EventHandler(this.btnMuonSach_Click);
             // 
-            // btnLichSuMuon
+            // btnQLTaiLieu
             // 
-            this.btnLichSuMuon.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnLichSuMuon.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnLichSuMuon.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLichSuMuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLichSuMuon.IconChar = FontAwesome.Sharp.IconChar.Book;
-            this.btnLichSuMuon.IconColor = System.Drawing.Color.Black;
-            this.btnLichSuMuon.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnLichSuMuon.IconSize = 40;
-            this.btnLichSuMuon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLichSuMuon.Location = new System.Drawing.Point(0, 0);
-            this.btnLichSuMuon.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLichSuMuon.Name = "btnLichSuMuon";
-            this.btnLichSuMuon.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.btnLichSuMuon.Size = new System.Drawing.Size(127, 67);
-            this.btnLichSuMuon.TabIndex = 3;
-            this.btnLichSuMuon.Text = "            Quản lý\r\n             tài liệu";
-            this.btnLichSuMuon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLichSuMuon.UseVisualStyleBackColor = false;
-            this.btnLichSuMuon.Click += new System.EventHandler(this.btnLichSuMuon_Click);
+            this.btnQLTaiLieu.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnQLTaiLieu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnQLTaiLieu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQLTaiLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLTaiLieu.IconChar = FontAwesome.Sharp.IconChar.Book;
+            this.btnQLTaiLieu.IconColor = System.Drawing.Color.Black;
+            this.btnQLTaiLieu.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnQLTaiLieu.IconSize = 40;
+            this.btnQLTaiLieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLTaiLieu.Location = new System.Drawing.Point(0, 0);
+            this.btnQLTaiLieu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQLTaiLieu.Name = "btnQLTaiLieu";
+            this.btnQLTaiLieu.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.btnQLTaiLieu.Size = new System.Drawing.Size(127, 67);
+            this.btnQLTaiLieu.TabIndex = 3;
+            this.btnQLTaiLieu.Text = "            Quản lý\r\n             tài liệu";
+            this.btnQLTaiLieu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLTaiLieu.UseVisualStyleBackColor = false;
+            this.btnQLTaiLieu.Click += new System.EventHandler(this.btnQLTaiLieu_Click);
             // 
             // frmMainUserNV
             // 
@@ -373,7 +373,7 @@
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconButton btnQLPhieuMuon;
         private FontAwesome.Sharp.IconButton btnThongKe;
-        private FontAwesome.Sharp.IconButton btnLichSuMuon;
+        private FontAwesome.Sharp.IconButton btnQLTaiLieu;
         private FontAwesome.Sharp.IconButton btnQLDocGia;
         private FontAwesome.Sharp.IconButton btnGuiMail;
     }

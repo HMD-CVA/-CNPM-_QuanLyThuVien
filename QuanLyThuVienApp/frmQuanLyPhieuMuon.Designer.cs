@@ -69,6 +69,7 @@
             this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenNXB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuongBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietPM)).BeginInit();
             this.panel1.SuspendLayout();
@@ -129,6 +130,7 @@
             this.TenDanhMuc,
             this.TenTG,
             this.TenNXB,
+            this.SoLuongBD,
             this.SoLuong});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -591,14 +593,23 @@
             this.TenNXB.ReadOnly = true;
             this.TenNXB.Width = 59;
             // 
+            // SoLuongBD
+            // 
+            this.SoLuongBD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SoLuongBD.DataPropertyName = "SoLuongBD";
+            this.SoLuongBD.HeaderText = "Số lượng";
+            this.SoLuongBD.Name = "SoLuongBD";
+            this.SoLuongBD.ReadOnly = true;
+            this.SoLuongBD.Width = 85;
+            // 
             // SoLuong
             // 
             this.SoLuong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.SoLuong.DataPropertyName = "SoLuong";
-            this.SoLuong.HeaderText = "Số lượng";
+            this.SoLuong.HeaderText = "Chưa trả";
             this.SoLuong.Name = "SoLuong";
             this.SoLuong.ReadOnly = true;
-            this.SoLuong.Width = 85;
+            this.SoLuong.Width = 81;
             // 
             // frmQuanLyPhieuMuon
             // 
@@ -679,6 +690,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenDanhMuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenTG;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNXB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongBD;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
     }
 }

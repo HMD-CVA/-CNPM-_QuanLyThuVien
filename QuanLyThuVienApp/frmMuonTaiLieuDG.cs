@@ -253,6 +253,7 @@ namespace QuanLyThuVienApp
                 chiTietPM.MaPM = phieuMuon.MaPhieu;
                 chiTietPM.MaTL = maTL;
                 chiTietPM.SoLuong = soLuong;
+                chiTietPM.SoLuongBD = soLuong;
                 db.ChiTietPhieuMuons.Add(chiTietPM);
 
                 TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == chiTietPM.MaTL).SingleOrDefault();

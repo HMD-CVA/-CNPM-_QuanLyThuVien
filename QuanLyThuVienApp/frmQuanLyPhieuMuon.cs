@@ -175,7 +175,9 @@ namespace QuanLyThuVienApp
                 p.TaiLieu.DanhMucTaiLieu.TenDanhMuc,
                 p.TaiLieu.TacGia.TenTG,
                 p.TaiLieu.NhaXuatBan.TenNXB,
-                SoLuong = (p.SoLuong == 0) ? "Đã trả" : p.SoLuong.ToString() 
+                p.SoLuongBD,
+                SoLuong = (p.SoLuong == 0) ? "Đã trả" : p.SoLuong.ToString(),
+
             }).ToList();
             AddButtonTraToCTPM();
         }
@@ -293,11 +295,6 @@ namespace QuanLyThuVienApp
                 MessageBox.Show("Đã trả hết tài liệu này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            //string maSachFull = txtMaTaiLieu.Text;
-            //int maSach = int.Parse(maSachFull.Substring(2));
-
-            //int soLuongHienTai = int.Parse(txtDaDK.Text.ToString());
             
             int soLuongXoa = 1;
 
@@ -326,6 +323,7 @@ namespace QuanLyThuVienApp
             {
                 pm.TongSLMuon = 0;
                 pm.DaTra = true;
+                pm.NgayTra = DateTime.Now;
             }
 
             db.SaveChanges();
@@ -430,14 +428,17 @@ namespace QuanLyThuVienApp
             PhieuMuon pm = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
             pm.DaTra = true;
             pm.NgayTra = DateTime.Now;
-            //int tongSach = 0;
+            pm.TongSLMuon = 0;
             foreach (DataGridViewRow row in dgvChiTietPM.Rows)
             {
-                int idSach = int.Parse(row.Cells["MaTaiLieu"].Value.ToString().Substring(2));
-                int soLuong = int.Parse(row.Cells["SoLuong"].Value.ToString());
-                //tongSach += soLuong;
-                TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == idSach).FirstOrDefault();
+                int maTL = int.Parse(row.Cells["MaTaiLieu"].Value.ToString().Substring(2));
+                int soLuong = row.Cells["SoLuong"].Value.ToString() == "Đã trả" ? 0 : int.Parse(row.Cells["SoLuong"].Value.ToString());;
+                
+                TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == maTL).FirstOrDefault();
                 tl.SoTaiLieuMuon -= soLuong;
+
+                ChiTietPhieuMuon ctPM = db.ChiTietPhieuMuons.Where(p => p.MaPM == maPhieu && p.MaTL == maTL).FirstOrDefault();
+                ctPM.SoLuong = 0;
             }
 
             db.SaveChanges();

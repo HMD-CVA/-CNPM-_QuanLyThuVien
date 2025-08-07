@@ -13,6 +13,7 @@
           <Property Name="MaPM" Type="int" />
           <Property Name="MaTL" Type="int" />
           <Property Name="SoLuong" Type="int" />
+          <Property Name="SoLuongBD" Type="int" />
         </EntityType>
         <EntityType Name="DanhMucTaiLieu">
           <Key>
@@ -400,8 +401,8 @@
             <End Role="TacGia" EntitySet="TacGias" />
             <End Role="TaiLieu" EntitySet="TaiLieux" />
           </AssociationSet>
-          <EntitySet Name="ChiTietPhieuMuons" EntityType="DB_QLTVModel.ChiTietPhieuMuon" />
           <EntitySet Name="DocGias" EntityType="DB_QLTVModel.DocGia" />
+          <EntitySet Name="ChiTietPhieuMuons" EntityType="DB_QLTVModel.ChiTietPhieuMuon" />
           <EntitySet Name="PhieuMuons" EntityType="DB_QLTVModel.PhieuMuon" />
           <AssociationSet Name="FK__ChiTietPhi__MaPM__3587F3E0" Association="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0">
             <End Role="PhieuMuon" EntitySet="PhieuMuons" />
@@ -419,18 +420,7 @@
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="PhieuMuon" EntitySet="PhieuMuons" />
           </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="ChiTietPhieuMuon">
-          <Key>
-            <PropertyRef Name="MaChiTiet" />
-          </Key>
-          <Property Name="MaChiTiet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaPM" Type="Int32" />
-          <Property Name="MaTL" Type="Int32" />
-          <Property Name="SoLuong" Type="Int32" />
-          <NavigationProperty Name="PhieuMuon" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" FromRole="ChiTietPhieuMuon" ToRole="PhieuMuon" />
-          <NavigationProperty Name="TaiLieu" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaTL__367C1819" FromRole="ChiTietPhieuMuon" ToRole="TaiLieu" />
-        </EntityType>
+          </EntityContainer>
         <EntityType Name="DocGia">
           <Key>
             <PropertyRef Name="MaDocGia" />
@@ -442,6 +432,18 @@
           <Property Name="LoaiDG" Type="Boolean" Nullable="false" />
           <Property Name="BiKhoa" Type="Boolean" />
           <NavigationProperty Name="PhieuMuons" Relationship="DB_QLTVModel.FK__PhieuMuon__MaDG__2CF2ADDF" FromRole="DocGia" ToRole="PhieuMuon" />
+        </EntityType>
+        <EntityType Name="ChiTietPhieuMuon">
+          <Key>
+            <PropertyRef Name="MaChiTiet" />
+          </Key>
+          <Property Name="MaChiTiet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaPM" Type="Int32" />
+          <Property Name="MaTL" Type="Int32" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="SoLuongBD" Type="Int32" />
+          <NavigationProperty Name="PhieuMuon" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" FromRole="ChiTietPhieuMuon" ToRole="PhieuMuon" />
+          <NavigationProperty Name="TaiLieu" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaTL__367C1819" FromRole="ChiTietPhieuMuon" ToRole="TaiLieu" />
         </EntityType>
         <EntityType Name="PhieuMuon">
           <Key>
@@ -509,7 +511,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -589,16 +591,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ChiTietPhieuMuons">
-            <EntityTypeMapping TypeName="DB_QLTVModel.ChiTietPhieuMuon">
-              <MappingFragment StoreEntitySet="ChiTietPhieuMuon">
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="MaTL" ColumnName="MaTL" />
-                <ScalarProperty Name="MaPM" ColumnName="MaPM" />
-                <ScalarProperty Name="MaChiTiet" ColumnName="MaChiTiet" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DocGias">
             <EntityTypeMapping TypeName="DB_QLTVModel.DocGia">
               <MappingFragment StoreEntitySet="DocGia">
@@ -608,6 +600,17 @@
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="MaSo" ColumnName="MaSo" />
                 <ScalarProperty Name="MaDocGia" ColumnName="MaDocGia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietPhieuMuons">
+            <EntityTypeMapping TypeName="DB_QLTVModel.ChiTietPhieuMuon">
+              <MappingFragment StoreEntitySet="ChiTietPhieuMuon">
+                <ScalarProperty Name="SoLuongBD" ColumnName="SoLuongBD" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="MaTL" ColumnName="MaTL" />
+                <ScalarProperty Name="MaPM" ColumnName="MaPM" />
+                <ScalarProperty Name="MaChiTiet" ColumnName="MaChiTiet" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

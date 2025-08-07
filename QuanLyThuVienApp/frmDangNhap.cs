@@ -47,58 +47,68 @@ namespace QuanLyThuVienApp
 
         private async void btnDangNhap_Click(object sender, EventArgs e)
         {
-            if(txtTenDangNhap.Text=="" || txtMatKhau.Text == "")
+            if (string.IsNullOrWhiteSpace(txtTenDangNhap.Text) || string.IsNullOrWhiteSpace(txtMatKhau.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             QLTVEntities db = new QLTVEntities();
             NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.TenDangNhap == txtTenDangNhap.Text).SingleOrDefault();
-            if (nguoiDung != null)
+
+            if (nguoiDung == null)
             {
-                NhanVien nhanVien = db.NhanViens.Where(p => p.NguoiDungID == nguoiDung.ID).SingleOrDefault();
-                MD5 mD5 = MD5.Create();
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(txtMatKhau.Text);
-                byte[] hashBytes = mD5.ComputeHash(inputBytes);
-                if (hashBytes.SequenceEqual(nguoiDung.MatKhau))
+                MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            NhanVien nhanVien = db.NhanViens.Where(p => p.NguoiDungID == nguoiDung.ID).SingleOrDefault();
+
+            MD5 mD5 = MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(txtMatKhau.Text);
+            byte[] hashBytes = mD5.ComputeHash(inputBytes);
+
+            if (!hashBytes.SequenceEqual(nguoiDung.MatKhau))
+            {
+                MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if  (nhanVien != null && nhanVien.TrangThaiXacThuc == false)
+            {
+                ShowLoading();
+                await Task.Run(() =>
                 {
-                    if  (nhanVien.TrangThaiXacThuc == false)
-                    {
-                        ShowLoading();
-                        await Task.Run(() =>
-                        {
-                            Random random = new Random();
-                            string OTP = random.Next(100000, 999999).ToString();
-                            GuiEmail.guiEmail(nhanVien.Email, "Mã xác thực của bạn là: " + OTP);
-                            nhanVien.MaOTP = OTP;
-                            nhanVien.ThoiGianNhanOTP = DateTime.Now;
-                            db.SaveChanges();
-                        });
-                        HideLoading();
-                        frmXacThucNV frmXacThuc = new frmXacThucNV(nhanVien.MaNV);
-                        this.Hide();
-                        frmXacThuc.ShowDialog();
-                        this.Show();
-                        return;
-                    }
-
-                    this.Hide();
-
-                    if (nguoiDung.QuyenHan == "user")
-                    {
-                        frmMainUserNV frm = new frmMainUserNV(nguoiDung.TenDangNhap.ToString(), nguoiDung.BiKhoa);                        
-                        frm.ShowDialog();     
-                    }
-                    else
-                    {
-                        frmMainAdmin frm = new frmMainAdmin(nguoiDung.TenDangNhap.ToString());                       
-                        frm.ShowDialog();
-                    }
-                    this.Close();
+                    Random random = new Random();
+                    string OTP = random.Next(100000, 999999).ToString();
+                    GuiEmail.guiEmail(nhanVien.Email, "Mã xác thực của bạn là: " + OTP);
+                    nhanVien.MaOTP = OTP;
+                    nhanVien.ThoiGianNhanOTP = DateTime.Now;
+                    db.SaveChanges();
+                });
+                HideLoading();
+                
+                this.Hide();
+                frmXacThucNV frmXacThuc = new frmXacThucNV(nhanVien.MaNV);
+                if (frmXacThuc.ShowDialog() != DialogResult.OK)
+                {
+                    this.Show();
                     return;
                 }
             }
-            MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            this.Hide();
+            if (nguoiDung.QuyenHan == "user")
+            {
+                frmMainUserNV frm = new frmMainUserNV(nguoiDung.TenDangNhap.ToString(), nguoiDung.BiKhoa);
+                frm.ShowDialog();
+            }
+            else
+            {
+                frmMainAdmin frm = new frmMainAdmin(nguoiDung.TenDangNhap.ToString());
+                frm.ShowDialog();
+            }
+            this.Close();
             return;
         }
 
