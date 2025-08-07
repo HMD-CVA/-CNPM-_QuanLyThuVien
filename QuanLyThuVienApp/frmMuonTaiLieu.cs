@@ -5,9 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Documents;
+using System.Windows.Forms;
 
 
 namespace QuanLyThuVienApp
@@ -16,6 +17,18 @@ namespace QuanLyThuVienApp
     {
         private string emailDG;
         private int maNV;
+        private void ShowLoading()
+        {
+            progressBar1.Visible = true;
+            //progressBar1.MarqueeAnimationSpeed = 30;
+            this.UseWaitCursor = true;
+        }
+        private void HideLoading()
+        {
+            progressBar1.Visible = false;
+            // progressBar1.MarqueeAnimationSpeed = 0;
+            this.UseWaitCursor = false;
+        }
         public frmMuonTaiLieu()
         {
             InitializeComponent();
@@ -28,6 +41,7 @@ namespace QuanLyThuVienApp
 
         private void frmMuonSach_Load(object sender, EventArgs e)
         {
+            progressBar1.Visible = false;
             LibraryHelper.KiemTraVaKhoaTaiKhoan();
             QLTVEntities db = new QLTVEntities();
             cbbSDM.DataSource = db.DanhMucTaiLieux.Select(p => p.TenDanhMuc).ToList();
@@ -96,7 +110,7 @@ namespace QuanLyThuVienApp
             int soLuongConLai = int.Parse(dgvTaiLieu.Rows[e.RowIndex].Cells["CoSan"].Value.ToString());
             if (soLuongConLai == 0)
             {
-                MessageBox.Show("Đã hết sách!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Đã hết sách!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -221,11 +235,11 @@ namespace QuanLyThuVienApp
             dgvTLMuon.Rows.Clear();
         }
 
-        private void btnDangKy_Click(object sender, EventArgs e)
+        private async void btnDangKy_Click(object sender, EventArgs e)
         {
             if (dgvTLMuon.Rows.Count == 0)
             {
-                MessageBox.Show("Hãy đăng ký tài liệu để mượn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hãy đăng ký tài liệu để mượn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -233,13 +247,13 @@ namespace QuanLyThuVienApp
 
             if (string.IsNullOrEmpty(emailDG))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (!isEmail(emailDG))
             {
-                MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Email không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -247,21 +261,76 @@ namespace QuanLyThuVienApp
             DocGia dg = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
             if (dg == null)
             {
-                frmDangKy frm = new frmDangKy(emailDG);
-                if (!frm.checkDK)
-                {
-                    MessageBox.Show("Đăng ký thất bại hoặc đã bị hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtEmail.Focus();
-                    return;
-                }
-                frm.Dispose();
+                MessageBox.Show("Vui lòng sử dụng Email được nhà trường cung cấp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEmail.Focus();
+                return;
             }
             else
             {
                 btnTTDG.Show();
                 if (dg.BiKhoa == true)
                 {
-                    MessageBox.Show("Email của độc giả đã bị khoá!\nVui lòng mở khoá để có thể mượn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Email của độc giả đã bị khoá!\nVui lòng mở khoá để có thể mượn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            int? slTaiLieuConLai = 0;
+            List<PhieuMuon> phieuMoi = db.PhieuMuons
+                .Where(p => p.MaDG == dg.MaDocGia && p.DaTra == false)
+                .OrderByDescending(p => p.MaPhieu)
+                .ToList();
+
+            slTaiLieuConLai = 0;
+            foreach (PhieuMuon ph in phieuMoi)
+            {
+                slTaiLieuConLai += ph.TongSLMuon;
+            }
+
+
+            int slTaiLieu = 0;
+            foreach (DataGridViewRow row in dgvTLMuon.Rows)
+            {
+                if (row.Cells["SoLuong2"].Value != null)
+                {
+                    slTaiLieu += Convert.ToInt32(row.Cells["SoLuong2"].Value);
+                }
+            }
+
+            if (dg.LoaiDG == false)
+            {
+                if (slTaiLieu > 5)
+                {
+                    MessageBox.Show("Sinh viên không được mượn vượt quá 5 tài liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else if (slTaiLieuConLai + slTaiLieu > 5)
+                {
+                    MessageBox.Show("Sinh viên chỉ được mượn tối đa 5 tài liệu.\nVui lòng hoàn trả bớt tài liệu trước khi tiếp tục mượn thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else
+            {
+                if (slTaiLieu > 10)
+                {
+                    MessageBox.Show("Giảng viên không được mượn vượt quá 10 tài liệu mỗi lần mượn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            string OTP = new Random().Next(100000, 999999).ToString();
+            ShowLoading();
+                await Task.Run(() => GuiEmail.guiEmail(emailDG, "Mã xác thực của bạn là: " + OTP));
+            HideLoading();
+
+            using (frmXacThucDG frm = new frmXacThucDG(emailDG, OTP, DateTime.Now))
+            {
+                var dialogResult = frm.ShowDialog();
+
+                if (dialogResult != DialogResult.OK)
+                {
+                    MessageBox.Show("Xác thực không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
@@ -269,22 +338,23 @@ namespace QuanLyThuVienApp
             btnTTDG.Show();
             DialogResult result = MessageBox.Show(
                "Bạn có muốn tạo phiếu mượn này không?",
-               "Thông báo!",
+               "Thông báo",
                MessageBoxButtons.YesNo,
                MessageBoxIcon.Question
             );
 
             if (result == DialogResult.No) return;
 
-            DocGia DG = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
             PhieuMuon phieuMuon = new PhieuMuon();
-            phieuMuon.MaDG = DG.MaDocGia;
-            phieuMuon.MaNV = maNV; // ???????????????
+            phieuMuon.MaDG = dg.MaDocGia;
+            phieuMuon.MaNV = maNV;
             phieuMuon.NgayMuon = DateTime.Now;
             phieuMuon.HanTra = (phieuMuon.NgayMuon ?? DateTime.Now).AddDays(7);
             phieuMuon.DaTra = false;
             phieuMuon.NgayTra = null;
             phieuMuon.NgayTao = DateTime.Now;
+            phieuMuon.DaGuiMail = null;
+            phieuMuon.TongSLMuon = slTaiLieu;
             db.PhieuMuons.Add(phieuMuon);
             db.SaveChanges();
 
@@ -312,7 +382,7 @@ namespace QuanLyThuVienApp
             dgvTLMuon.Rows.Clear();
 
             loadDuLieu();
-            MessageBox.Show("Tạo phiếu mượn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Tạo phiếu mượn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             txtEmail.Text = string.Empty;
         }
 

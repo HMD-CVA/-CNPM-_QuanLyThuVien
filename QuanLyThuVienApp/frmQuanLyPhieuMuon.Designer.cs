@@ -35,13 +35,6 @@
             this.btnTimKiem = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvChiTietPM = new System.Windows.Forms.DataGridView();
-            this.MaChiTiet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNXB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLamMoi = new FontAwesome.Sharp.IconButton();
             this.cbTimKiem = new System.Windows.Forms.ComboBox();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
@@ -69,6 +62,14 @@
             this.btnTTDG = new FontAwesome.Sharp.IconButton();
             this.btnHuyPhieu = new FontAwesome.Sharp.IconButton();
             this.btnXLTreHan = new FontAwesome.Sharp.IconButton();
+            this.MaChiTiet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaPM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNXB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietPM)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupPhieuTra.SuspendLayout();
@@ -122,6 +123,7 @@
             this.dgvChiTietPM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvChiTietPM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaChiTiet,
+            this.MaPM,
             this.MaTaiLieu,
             this.TenTaiLieu,
             this.TenDanhMuc,
@@ -147,69 +149,8 @@
             this.dgvChiTietPM.RowTemplate.Height = 24;
             this.dgvChiTietPM.Size = new System.Drawing.Size(915, 201);
             this.dgvChiTietPM.TabIndex = 1;
+            this.dgvChiTietPM.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChiTietPM_CellClick);
             this.dgvChiTietPM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhieuMuon_CellFormatting);
-            // 
-            // MaChiTiet
-            // 
-            this.MaChiTiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MaChiTiet.DataPropertyName = "MaChiTiet";
-            this.MaChiTiet.HeaderText = "Mã";
-            this.MaChiTiet.Name = "MaChiTiet";
-            this.MaChiTiet.ReadOnly = true;
-            this.MaChiTiet.Visible = false;
-            // 
-            // MaTaiLieu
-            // 
-            this.MaTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MaTaiLieu.DataPropertyName = "MaTaiLieu";
-            this.MaTaiLieu.HeaderText = "Mã";
-            this.MaTaiLieu.Name = "MaTaiLieu";
-            this.MaTaiLieu.ReadOnly = true;
-            this.MaTaiLieu.Width = 51;
-            // 
-            // TenTaiLieu
-            // 
-            this.TenTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TenTaiLieu.DataPropertyName = "TenTaiLieu";
-            this.TenTaiLieu.HeaderText = "Tên tài liệu";
-            this.TenTaiLieu.Name = "TenTaiLieu";
-            this.TenTaiLieu.ReadOnly = true;
-            // 
-            // TenDanhMuc
-            // 
-            this.TenDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
-            this.TenDanhMuc.HeaderText = "Danh mục";
-            this.TenDanhMuc.Name = "TenDanhMuc";
-            this.TenDanhMuc.ReadOnly = true;
-            this.TenDanhMuc.Width = 92;
-            // 
-            // TenTG
-            // 
-            this.TenTG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TenTG.DataPropertyName = "TenTG";
-            this.TenTG.HeaderText = "Tác giả";
-            this.TenTG.Name = "TenTG";
-            this.TenTG.ReadOnly = true;
-            this.TenTG.Width = 78;
-            // 
-            // TenNXB
-            // 
-            this.TenNXB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TenNXB.DataPropertyName = "TenNXB";
-            this.TenNXB.HeaderText = "NXB";
-            this.TenNXB.Name = "TenNXB";
-            this.TenNXB.ReadOnly = true;
-            this.TenNXB.Width = 59;
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SoLuong.DataPropertyName = "SoLuong";
-            this.SoLuong.HeaderText = "Số lượng";
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.ReadOnly = true;
-            this.SoLuong.Width = 85;
             // 
             // btnLamMoi
             // 
@@ -588,6 +529,77 @@
             this.btnXLTreHan.UseVisualStyleBackColor = false;
             this.btnXLTreHan.Click += new System.EventHandler(this.btnXLTreHan_Click);
             // 
+            // MaChiTiet
+            // 
+            this.MaChiTiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MaChiTiet.DataPropertyName = "MaChiTiet";
+            this.MaChiTiet.HeaderText = "Mã";
+            this.MaChiTiet.Name = "MaChiTiet";
+            this.MaChiTiet.ReadOnly = true;
+            this.MaChiTiet.Visible = false;
+            this.MaChiTiet.Width = 32;
+            // 
+            // MaPM
+            // 
+            this.MaPM.DataPropertyName = "MaPM";
+            this.MaPM.HeaderText = "Mã phiếu mượn";
+            this.MaPM.Name = "MaPM";
+            this.MaPM.ReadOnly = true;
+            this.MaPM.Visible = false;
+            // 
+            // MaTaiLieu
+            // 
+            this.MaTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MaTaiLieu.DataPropertyName = "MaTaiLieu";
+            this.MaTaiLieu.HeaderText = "Mã";
+            this.MaTaiLieu.Name = "MaTaiLieu";
+            this.MaTaiLieu.ReadOnly = true;
+            this.MaTaiLieu.Width = 51;
+            // 
+            // TenTaiLieu
+            // 
+            this.TenTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TenTaiLieu.DataPropertyName = "TenTaiLieu";
+            this.TenTaiLieu.HeaderText = "Tên tài liệu";
+            this.TenTaiLieu.Name = "TenTaiLieu";
+            this.TenTaiLieu.ReadOnly = true;
+            // 
+            // TenDanhMuc
+            // 
+            this.TenDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
+            this.TenDanhMuc.HeaderText = "Danh mục";
+            this.TenDanhMuc.Name = "TenDanhMuc";
+            this.TenDanhMuc.ReadOnly = true;
+            this.TenDanhMuc.Width = 92;
+            // 
+            // TenTG
+            // 
+            this.TenTG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TenTG.DataPropertyName = "TenTG";
+            this.TenTG.HeaderText = "Tác giả";
+            this.TenTG.Name = "TenTG";
+            this.TenTG.ReadOnly = true;
+            this.TenTG.Width = 78;
+            // 
+            // TenNXB
+            // 
+            this.TenNXB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TenNXB.DataPropertyName = "TenNXB";
+            this.TenNXB.HeaderText = "NXB";
+            this.TenNXB.Name = "TenNXB";
+            this.TenNXB.ReadOnly = true;
+            this.TenNXB.Width = 59;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SoLuong.DataPropertyName = "SoLuong";
+            this.SoLuong.HeaderText = "Số lượng";
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.ReadOnly = true;
+            this.SoLuong.Width = 85;
+            // 
             // frmQuanLyPhieuMuon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -646,13 +658,6 @@
         private System.Windows.Forms.Button btnGiaHan;
         private System.Windows.Forms.Button btnTraSach;
         private System.Windows.Forms.Button btnInPM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaChiTiet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaTaiLieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenTaiLieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenDanhMuc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenTG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenNXB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.RadioButton rdbAll;
         private System.Windows.Forms.RadioButton rdbTreHan;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaPhieu;
@@ -667,5 +672,13 @@
         private FontAwesome.Sharp.IconButton btnTTDG;
         private FontAwesome.Sharp.IconButton btnHuyPhieu;
         private FontAwesome.Sharp.IconButton btnXLTreHan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaChiTiet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaPM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaTaiLieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenTaiLieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenDanhMuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenTG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenNXB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
     }
 }

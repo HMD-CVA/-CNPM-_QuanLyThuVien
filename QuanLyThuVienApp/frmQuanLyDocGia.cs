@@ -48,9 +48,9 @@ namespace QuanLyThuVienApp
             dgvBanDoc.DataSource = db.DocGias.Select(p => new
             {
                 MaDocGia = "DG" + p.MaDocGia,
+                p.MaSo,
                 p.HoTen,
                 p.Email,
-                p.SDT,
                 BiKhoa = (p.BiKhoa == true) ? "Bị khoá" : "Đang hoạt động",
                 SoLuong = db.PhieuMuons.Where(pm => pm.MaDG == p.MaDocGia).ToList().Count,
             }).ToList();
@@ -127,7 +127,7 @@ namespace QuanLyThuVienApp
             dg = new DocGia();
             dg.HoTen = txtTen.Text.Trim();
             dg.Email = email;
-            dg.SDT = txtSDT.Text.Trim();
+            //dg.SDT = txtSDT.Text.Trim();
             dg.BiKhoa = false;
 
             db.DocGias.Add(dg);
@@ -162,9 +162,9 @@ namespace QuanLyThuVienApp
             dgvBanDoc.DataSource = docGias.Select(p => new
             {
                 MaDocGia = "DG" + p.MaDocGia,
+                p.MaSo,
                 p.HoTen,
                 p.Email,
-                p.SDT,
                 BiKhoa = (p.BiKhoa == true) ? "Bị khoá" : "Đang hoạt động",
                 SoLuong = db.PhieuMuons.Where(pm => pm.MaDG == p.MaDocGia).ToList().Count,
             }).ToList();

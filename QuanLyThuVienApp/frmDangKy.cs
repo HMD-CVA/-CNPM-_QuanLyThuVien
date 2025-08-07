@@ -57,20 +57,20 @@ namespace QuanLyThuVienApp
         private async void btnDangKy_Click(object sender, EventArgs e)
         {
             string hoTen = txtHoTen.Text.Trim();
-            string sdt = txtSDT.Text.Trim();
+            //string sdt = txtSDT.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(hoTen) || string.IsNullOrWhiteSpace(sdt))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(hoTen) || string.IsNullOrWhiteSpace(sdt))
+            //{
+            //    MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            if (!KiemTraSoDienThoai(sdt))
-            {
-                MessageBox.Show("Số điện thoại không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtSDT.Focus();
-                return;
-            }
+            //if (!KiemTraSoDienThoai(sdt))
+            //{
+            //    MessageBox.Show("Số điện thoại không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    //txtSDT.Focus();
+            //    return;
+            //}
 
             if (MessageBox.Show("Bạn có chắc thông tin này đã chính xác?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;   
 
@@ -90,8 +90,7 @@ namespace QuanLyThuVienApp
                     QLTVEntities db = new QLTVEntities();
                     DocGia DG = new DocGia();
                     DG.HoTen = txtHoTen.Text.Trim();
-                    DG.Email = emailDG;
-                    DG.SDT = txtSDT.Text.Trim();
+                    DG.Email = emailDG;                  
                     DG.BiKhoa = false;
                     db.DocGias.Add(DG);
                     db.SaveChanges();

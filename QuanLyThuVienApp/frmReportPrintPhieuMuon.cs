@@ -86,7 +86,7 @@ namespace QuanLyThuVienApp
             ReportParameter[] para = new ReportParameter[9];
             para[0] = new ReportParameter("NguoiIn", phieuMuon.NhanVien.HoTen);
             para[1] = new ReportParameter("HoTenDocGia", phieuMuon.DocGia.HoTen);
-            para[2] = new ReportParameter("SDT", phieuMuon.DocGia.SDT.ToString());
+            para[2] = new ReportParameter("SDT", phieuMuon.DocGia.MaSo.ToString());
             para[3] = new ReportParameter("Email", phieuMuon.DocGia.Email.ToString());
             para[4] = new ReportParameter("NgayMuon", phieuMuon.NgayMuon.Value.ToString("dd/MM/yyyy"));
             para[5] = new ReportParameter("HanTra", phieuMuon.HanTra.Value.ToString("dd/MM/yyyy"));

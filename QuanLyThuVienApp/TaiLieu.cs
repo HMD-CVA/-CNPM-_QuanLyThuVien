@@ -30,10 +30,10 @@ namespace QuanLyThuVienApp
         public Nullable<int> SoLuong { get; set; }
         public Nullable<int> SoTaiLieuMuon { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
         public virtual DanhMucTaiLieu DanhMucTaiLieu { get; set; }
         public virtual NhaXuatBan NhaXuatBan { get; set; }
         public virtual TacGia TacGia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
     }
 }

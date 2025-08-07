@@ -49,7 +49,7 @@ namespace QuanLyThuVienApp
         {
             if(txtTenDangNhap.Text=="" || txtMatKhau.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             QLTVEntities db = new QLTVEntities();
@@ -98,7 +98,7 @@ namespace QuanLyThuVienApp
                     return;
                 }
             }
-            MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 

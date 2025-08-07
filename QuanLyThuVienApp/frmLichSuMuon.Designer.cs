@@ -53,12 +53,12 @@
             this.btnTimKiem = new FontAwesome.Sharp.IconButton();
             this.label3 = new System.Windows.Forms.Label();
             this.txtEmail = new MetroFramework.Controls.MetroTextBox();
-            this.txtSDT = new MetroFramework.Controls.MetroTextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtMaPhieu = new MetroFramework.Controls.MetroTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtMS = new MetroFramework.Controls.MetroTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.metroPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuon)).BeginInit();
@@ -373,49 +373,6 @@
             this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // txtSDT
-            // 
-            // 
-            // 
-            // 
-            this.txtSDT.CustomButton.Image = null;
-            this.txtSDT.CustomButton.Location = new System.Drawing.Point(189, 1);
-            this.txtSDT.CustomButton.Name = "";
-            this.txtSDT.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtSDT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtSDT.CustomButton.TabIndex = 1;
-            this.txtSDT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtSDT.CustomButton.UseSelectable = true;
-            this.txtSDT.CustomButton.Visible = false;
-            this.txtSDT.Lines = new string[0];
-            this.txtSDT.Location = new System.Drawing.Point(6, 138);
-            this.txtSDT.MaxLength = 32767;
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.PasswordChar = '\0';
-            this.txtSDT.PromptText = "Nhập số điện thoại";
-            this.txtSDT.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtSDT.SelectedText = "";
-            this.txtSDT.SelectionLength = 0;
-            this.txtSDT.SelectionStart = 0;
-            this.txtSDT.ShortcutsEnabled = true;
-            this.txtSDT.Size = new System.Drawing.Size(211, 23);
-            this.txtSDT.TabIndex = 16;
-            this.txtSDT.UseSelectable = true;
-            this.txtSDT.WaterMark = "Nhập số điện thoại";
-            this.txtSDT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtSDT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(5, 118);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 17);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Số điện thoại";
-            // 
             // txtMaPhieu
             // 
             // 
@@ -477,7 +434,7 @@
             this.groupBox3.Controls.Add(this.cbLoc);
             this.groupBox3.Controls.Add(this.btnTimKiem);
             this.groupBox3.Controls.Add(this.btnLamMoi);
-            this.groupBox3.Controls.Add(this.txtSDT);
+            this.groupBox3.Controls.Add(this.txtMS);
             this.groupBox3.Controls.Add(this.txtMaPhieu);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
@@ -489,6 +446,49 @@
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tìm kiếm";
+            // 
+            // txtMS
+            // 
+            // 
+            // 
+            // 
+            this.txtMS.CustomButton.Image = null;
+            this.txtMS.CustomButton.Location = new System.Drawing.Point(189, 1);
+            this.txtMS.CustomButton.Name = "";
+            this.txtMS.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtMS.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtMS.CustomButton.TabIndex = 1;
+            this.txtMS.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtMS.CustomButton.UseSelectable = true;
+            this.txtMS.CustomButton.Visible = false;
+            this.txtMS.Lines = new string[0];
+            this.txtMS.Location = new System.Drawing.Point(6, 138);
+            this.txtMS.MaxLength = 32767;
+            this.txtMS.Name = "txtMS";
+            this.txtMS.PasswordChar = '\0';
+            this.txtMS.PromptText = "Nhập số mã số sinh viên/giảng viên";
+            this.txtMS.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtMS.SelectedText = "";
+            this.txtMS.SelectionLength = 0;
+            this.txtMS.SelectionStart = 0;
+            this.txtMS.ShortcutsEnabled = true;
+            this.txtMS.Size = new System.Drawing.Size(211, 23);
+            this.txtMS.TabIndex = 16;
+            this.txtMS.UseSelectable = true;
+            this.txtMS.WaterMark = "Nhập số mã số sinh viên/giảng viên";
+            this.txtMS.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtMS.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(5, 118);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(175, 17);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Mã số sinh viên/giảng viên";
             // 
             // frmLichSuMuon
             // 
@@ -526,8 +526,6 @@
         private FontAwesome.Sharp.IconButton btnTimKiem;
         private System.Windows.Forms.Label label3;
         private MetroFramework.Controls.MetroTextBox txtEmail;
-        private MetroFramework.Controls.MetroTextBox txtSDT;
-        private System.Windows.Forms.Label label4;
         private MetroFramework.Controls.MetroTextBox txtMaPhieu;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTaiLieu;
@@ -546,5 +544,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HanTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn DaTra;
+        private MetroFramework.Controls.MetroTextBox txtMS;
+        private System.Windows.Forms.Label label4;
     }
 }
