@@ -82,7 +82,7 @@ namespace QuanLyThuVienApp
                 p.TaiLieu.DanhMucTaiLieu.TenDanhMuc,
                 p.TaiLieu.TacGia.TenTG,
                 p.TaiLieu.NhaXuatBan.TenNXB,
-                p.SoLuong
+                p.SoLuongBD
             }).ToList();
         }
 

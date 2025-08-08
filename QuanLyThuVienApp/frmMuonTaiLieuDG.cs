@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -160,6 +161,19 @@ namespace QuanLyThuVienApp
                 MessageBox.Show("Email của bạn đã bị khoá!\nVui lòng liên hệ thủ thư để biết thêm chi tiết!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            PhieuMuon pm = db.PhieuMuons
+            .Where(p => p.MaDG == dg.MaDocGia &&
+                        p.DaTra == false &&
+                        p.NgayTra == null &&
+                        DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now))
+            .FirstOrDefault();
+            if (pm != null)
+            {
+                MessageBox.Show($"Bạn có phiếu mượn: {"MP" + pm.MaPhieu} trễ hạn chưa trả!\nVui lòng nhắc trả lại để có thể mượn tiếp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             int? slTaiLieuConLai = 0;
             List<PhieuMuon> phieuMoi = db.PhieuMuons
                 .Where(p => p.MaDG == dg.MaDocGia && p.DaTra == false)

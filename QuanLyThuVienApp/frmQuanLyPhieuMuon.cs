@@ -45,19 +45,11 @@ namespace QuanLyThuVienApp
         }
         private void OffButton()
         {
-            btnInPM.Enabled = false;
-            btnTraSach.Enabled = false;
+            btnTraTL.Enabled = false;
             btnGiaHan.Enabled = false;
             btnChoMuon.Enabled = false;
             btnTTDG.Enabled = false;
-        }
-        private void OnButton()
-        {
-            btnInPM.Enabled = true;
-            btnTraSach.Enabled = true;
-            btnGiaHan.Enabled = true;
-            btnChoMuon.Enabled = true;
-            btnTTDG.Enabled = true;
+            btnHuyPhieu.Enabled = false;
         }
         private void optionPhieuMuon(List<PhieuMuon> phieuMuons)
         {
@@ -163,7 +155,6 @@ namespace QuanLyThuVienApp
                 dgvChiTietPM.Columns.Add(btnColumn);
             }
         }
-
         private void loadChiTietPM(int maPhieu)
         {
             QLTVEntities db = new QLTVEntities();
@@ -178,8 +169,17 @@ namespace QuanLyThuVienApp
                 p.SoLuongBD,
                 SoLuong = (p.SoLuong == 0) ? "Đã trả" : p.SoLuong.ToString(),
 
+                p.PhieuMuon.DaTra,
+                p.PhieuMuon.NgayTra,
+                p.PhieuMuon.HanTra
+
             }).ToList();
+            dgvChiTietPM.Columns["DaTra"].Visible = false;
+            dgvChiTietPM.Columns["NgayTra"].Visible = false;
+            dgvChiTietPM.Columns["HanTra"].Visible = false;
+
             AddButtonTraToCTPM();
+            dgvChiTietPM.Columns["btnTra"].Visible = true;
         }
         private void dgvPhieuMuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -189,6 +189,26 @@ namespace QuanLyThuVienApp
             if (e.RowIndex < 0) return;
           
             string maPhieuStr = dgvPhieuMuon.Rows[e.RowIndex].Cells["MaPhieu"].Value.ToString();
+            string trangThaiStr = dgvPhieuMuon.Rows[e.RowIndex].Cells["DaTra"].Value.ToString();
+            if (trangThaiStr == "Chờ duyệt")
+            {
+                btnChoMuon.Enabled = true;
+                btnHuyPhieu.Enabled = true;
+            }
+            else if (trangThaiStr == "Chưa trả")
+            {
+                btnTraTL.Enabled = true;
+                btnGiaHan.Enabled = true;
+            }
+            else if (trangThaiStr == "Đã trả")
+            {
+                btnInPM.Enabled = true;
+            }
+            else if (trangThaiStr == "Trễ hạn")
+            {
+                btnGiaHan.Enabled = true;
+                btnTraTL.Enabled = true;
+            }
             if (maPhieuStr.StartsWith("MP"))
             {
                 string soMaPhieu = maPhieuStr.Substring(2);
@@ -205,7 +225,6 @@ namespace QuanLyThuVienApp
 
                 if (daTra != "Đã huỷ" && daTra != "Chờ duyệt")
                 {
-                    OnButton();
                     return;
                 }
 
@@ -266,20 +285,37 @@ namespace QuanLyThuVienApp
         }
         private void dgvPhieuMuon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //if (e.RowIndex < 0 || e.ColumnIndex < 0 || e.ColumnIndex >= dgvPhieuMuon.Columns.Count)
-            //    return;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0 || e.ColumnIndex >= dgvPhieuMuon.Columns.Count)
+                return;
 
-            //var colName = dgvPhieuMuon.Columns[e.ColumnIndex].Name;
+            var colName = dgvPhieuMuon.Columns[e.ColumnIndex].Name;
 
-            //if (colName == "DaTra" && dgvPhieuMuon.Columns.Contains("DaTra"))
-            //{
-            //    var cellValue = dgvPhieuMuon.Rows[e.RowIndex].Cells["DaTra"].Value?.ToString();
+            if (colName == "DaTra" && dgvPhieuMuon.Columns.Contains("DaTra"))
+            {
+                var cellValue = dgvPhieuMuon.Rows[e.RowIndex].Cells["DaTra"].Value?.ToString();
 
-            //    if (cellValue == "Trễ hạn")
-            //    {
-            //        dgvPhieuMuon.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
-            //    }
-            //}
+                if (cellValue == "Trễ hạn")
+                {
+                    dgvPhieuMuon.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                }
+            }
+        }
+        private void dgvChiTietPM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvChiTietPM.Columns[e.ColumnIndex].Name == "btnTra" && e.RowIndex >= 0)
+            {
+                var row = dgvChiTietPM.Rows[e.RowIndex];
+
+                bool daTra = Convert.ToBoolean(row.Cells["DaTra"].Value);
+                DateTime? ngayTra = row.Cells["NgayTra"].Value as DateTime?;
+                DateTime? hanTra = row.Cells["HanTra"].Value as DateTime?;
+
+                // Nếu chưa trả, chưa nhập ngày trả và quá hạn
+                if (!daTra && ngayTra == null && hanTra.HasValue && hanTra.Value.Date < DateTime.Now.Date)
+                { 
+                    dgvChiTietPM.Columns["btnTra"].Visible = false;
+                }
+            }
         }
         private void dgvChiTietPM_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -288,7 +324,6 @@ namespace QuanLyThuVienApp
             int maPhieu = int.Parse(dgvChiTietPM.Rows[e.RowIndex].Cells["MaPM"].Value.ToString());
             int maTL = int.Parse(dgvChiTietPM.Rows[e.RowIndex].Cells["MaTaiLieu"].Value.ToString().Substring(2));
             int maCT = int.Parse(dgvChiTietPM.Rows[e.RowIndex].Cells["MaChiTiet"].Value.ToString());
-            
 
             if (soLuong <= 0)
             {
@@ -309,8 +344,8 @@ namespace QuanLyThuVienApp
                     else return;
                 }
             }
+
             QLTVEntities db = new QLTVEntities();
-            
             ChiTietPhieuMuon ctPM = db.ChiTietPhieuMuons.Where(p => p.MaChiTiet == maCT && p.MaPM == maPhieu && p.MaTL == maTL).FirstOrDefault();
             ctPM.SoLuong -= soLuongXoa;
             
