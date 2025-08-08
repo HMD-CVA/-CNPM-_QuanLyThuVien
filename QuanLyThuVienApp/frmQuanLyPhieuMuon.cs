@@ -50,6 +50,7 @@ namespace QuanLyThuVienApp
             btnChoMuon.Enabled = false;
             btnTTDG.Enabled = false;
             btnHuyPhieu.Enabled = false;
+            btnInPM.Enabled = false;
         }
         private void optionPhieuMuon(List<PhieuMuon> phieuMuons)
         {
@@ -199,6 +200,7 @@ namespace QuanLyThuVienApp
             {
                 btnTraTL.Enabled = true;
                 btnGiaHan.Enabled = true;
+                btnInPM.Enabled = true;
             }
             else if (trangThaiStr == "Đã trả")
             {
@@ -208,6 +210,7 @@ namespace QuanLyThuVienApp
             {
                 btnGiaHan.Enabled = true;
                 btnTraTL.Enabled = true;
+                btnInPM.Enabled = true;
             }
             if (maPhieuStr.StartsWith("MP"))
             {

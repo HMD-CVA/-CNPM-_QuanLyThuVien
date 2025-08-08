@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvPhieuMuon = new System.Windows.Forms.DataGridView();
@@ -156,8 +156,8 @@
             // 
             this.NgayMuon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.NgayMuon.DataPropertyName = "NgayMuon";
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            this.NgayMuon.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
+            this.NgayMuon.DefaultCellStyle = dataGridViewCellStyle4;
             this.NgayMuon.HeaderText = "Ngày mượn";
             this.NgayMuon.MinimumWidth = 6;
             this.NgayMuon.Name = "NgayMuon";
@@ -167,8 +167,8 @@
             // 
             this.HanTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.HanTra.DataPropertyName = "HanTra";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            this.HanTra.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            this.HanTra.DefaultCellStyle = dataGridViewCellStyle5;
             this.HanTra.HeaderText = "Hạn trả";
             this.HanTra.MinimumWidth = 6;
             this.HanTra.Name = "HanTra";
@@ -179,8 +179,8 @@
             // 
             this.NgayTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.NgayTra.DataPropertyName = "NgayTra";
-            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
-            this.NgayTra.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Format = "dd/MM/yyyy";
+            this.NgayTra.DefaultCellStyle = dataGridViewCellStyle6;
             this.NgayTra.HeaderText = "Ngày trả";
             this.NgayTra.MinimumWidth = 6;
             this.NgayTra.Name = "NgayTra";
@@ -236,7 +236,7 @@
             this.cbLoc.Location = new System.Drawing.Point(5, 166);
             this.cbLoc.Margin = new System.Windows.Forms.Padding(2);
             this.cbLoc.Name = "cbLoc";
-            this.cbLoc.Size = new System.Drawing.Size(181, 25);
+            this.cbLoc.Size = new System.Drawing.Size(145, 25);
             this.cbLoc.TabIndex = 5;
             this.cbLoc.SelectedIndexChanged += new System.EventHandler(this.cbLoc_SelectedIndexChanged);
             // 
@@ -248,7 +248,7 @@
             this.btnLamMoi.IconColor = System.Drawing.Color.Black;
             this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnLamMoi.IconSize = 19;
-            this.btnLamMoi.Location = new System.Drawing.Point(191, 44);
+            this.btnLamMoi.Location = new System.Drawing.Point(191, 165);
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(25, 25);
@@ -265,7 +265,7 @@
             this.btnTimKiem.IconColor = System.Drawing.Color.Black;
             this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnTimKiem.IconSize = 19;
-            this.btnTimKiem.Location = new System.Drawing.Point(189, 166);
+            this.btnTimKiem.Location = new System.Drawing.Point(160, 166);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(27, 25);
@@ -342,7 +342,7 @@
             this.txtMaPhieu.SelectionLength = 0;
             this.txtMaPhieu.SelectionStart = 0;
             this.txtMaPhieu.ShortcutsEnabled = true;
-            this.txtMaPhieu.Size = new System.Drawing.Size(182, 23);
+            this.txtMaPhieu.Size = new System.Drawing.Size(211, 23);
             this.txtMaPhieu.TabIndex = 18;
             this.txtMaPhieu.UseSelectable = true;
             this.txtMaPhieu.WaterMark = "Nhập mã phiếu mượn";

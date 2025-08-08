@@ -78,6 +78,7 @@
             this.txtMatKhau.MaxLength = 32767;
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
+            this.txtMatKhau.PromptText = "Nhập mật khẩu";
             this.txtMatKhau.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtMatKhau.SelectedText = "";
             this.txtMatKhau.SelectionLength = 0;
@@ -112,6 +113,7 @@
             this.txtTenDangNhap.MaxLength = 32767;
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.PasswordChar = '\0';
+            this.txtTenDangNhap.PromptText = "Nhập tên đăng nhập";
             this.txtTenDangNhap.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtTenDangNhap.SelectedText = "";
             this.txtTenDangNhap.SelectionLength = 0;
@@ -183,6 +185,7 @@
             // btnThoat
             // 
             this.btnThoat.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnThoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.IconChar = FontAwesome.Sharp.IconChar.Remove;
             this.btnThoat.IconColor = System.Drawing.Color.Black;
@@ -203,7 +206,7 @@
             // 
             this.btnDangNhap.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangNhap.IconChar = FontAwesome.Sharp.IconChar.DoorOpen;
+            this.btnDangNhap.IconChar = FontAwesome.Sharp.IconChar.SignIn;
             this.btnDangNhap.IconColor = System.Drawing.Color.Black;
             this.btnDangNhap.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnDangNhap.IconSize = 19;
@@ -222,7 +225,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnThoat;
             this.ClientSize = new System.Drawing.Size(395, 265);
+            this.ControlBox = false;
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.pictureBox3);

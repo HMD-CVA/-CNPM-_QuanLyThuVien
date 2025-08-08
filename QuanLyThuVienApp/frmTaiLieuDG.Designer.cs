@@ -32,6 +32,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvTaiLieu = new System.Windows.Forms.DataGridView();
+            this.MaTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNXB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TaiBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoTaiLieuMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CoSan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -63,16 +73,6 @@
             this.txtSMaTL = new System.Windows.Forms.TextBox();
             this.btnLamMoi = new FontAwesome.Sharp.IconButton();
             this.btnTimKiem = new FontAwesome.Sharp.IconButton();
-            this.MaTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNXB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TaiBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTaiLieuMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CoSan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiLieu)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -135,6 +135,103 @@
             this.dgvTaiLieu.Size = new System.Drawing.Size(915, 275);
             this.dgvTaiLieu.TabIndex = 0;
             this.dgvTaiLieu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSach_CellClick);
+            // 
+            // MaTaiLieu
+            // 
+            this.MaTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MaTaiLieu.DataPropertyName = "MaTaiLieu";
+            this.MaTaiLieu.HeaderText = "Mã";
+            this.MaTaiLieu.MinimumWidth = 6;
+            this.MaTaiLieu.Name = "MaTaiLieu";
+            this.MaTaiLieu.ReadOnly = true;
+            this.MaTaiLieu.Width = 51;
+            // 
+            // TenTaiLieu
+            // 
+            this.TenTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TenTaiLieu.DataPropertyName = "TenTaiLieu";
+            this.TenTaiLieu.HeaderText = "Tên tài liệu";
+            this.TenTaiLieu.MinimumWidth = 6;
+            this.TenTaiLieu.Name = "TenTaiLieu";
+            this.TenTaiLieu.ReadOnly = true;
+            // 
+            // TenDanhMuc
+            // 
+            this.TenDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
+            this.TenDanhMuc.HeaderText = "Danh Mục";
+            this.TenDanhMuc.MinimumWidth = 6;
+            this.TenDanhMuc.Name = "TenDanhMuc";
+            this.TenDanhMuc.ReadOnly = true;
+            this.TenDanhMuc.Width = 85;
+            // 
+            // TenTG
+            // 
+            this.TenTG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TenTG.DataPropertyName = "TenTG";
+            this.TenTG.HeaderText = "Tác giả";
+            this.TenTG.MinimumWidth = 6;
+            this.TenTG.Name = "TenTG";
+            this.TenTG.ReadOnly = true;
+            this.TenTG.Width = 72;
+            // 
+            // TenNXB
+            // 
+            this.TenNXB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TenNXB.DataPropertyName = "TenNXB";
+            this.TenNXB.HeaderText = "Nhà xuất bản";
+            this.TenNXB.MinimumWidth = 6;
+            this.TenNXB.Name = "TenNXB";
+            this.TenNXB.ReadOnly = true;
+            this.TenNXB.Width = 101;
+            // 
+            // TaiBan
+            // 
+            this.TaiBan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TaiBan.DataPropertyName = "TaiBan";
+            this.TaiBan.HeaderText = "Tái bản";
+            this.TaiBan.Name = "TaiBan";
+            this.TaiBan.ReadOnly = true;
+            this.TaiBan.Width = 72;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SoLuong.DataPropertyName = "SoLuong";
+            this.SoLuong.HeaderText = "Số lượng";
+            this.SoLuong.MinimumWidth = 6;
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.ReadOnly = true;
+            this.SoLuong.Visible = false;
+            // 
+            // SoTaiLieuMuon
+            // 
+            this.SoTaiLieuMuon.DataPropertyName = "SoTaiLieuMuon";
+            this.SoTaiLieuMuon.HeaderText = "Số Tài Liệu Mượn";
+            this.SoTaiLieuMuon.MinimumWidth = 6;
+            this.SoTaiLieuMuon.Name = "SoTaiLieuMuon";
+            this.SoTaiLieuMuon.ReadOnly = true;
+            this.SoTaiLieuMuon.Visible = false;
+            this.SoTaiLieuMuon.Width = 125;
+            // 
+            // MoTa
+            // 
+            this.MoTa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MoTa.DataPropertyName = "MoTa";
+            this.MoTa.HeaderText = "Mô Tả";
+            this.MoTa.MinimumWidth = 6;
+            this.MoTa.Name = "MoTa";
+            this.MoTa.ReadOnly = true;
+            this.MoTa.Visible = false;
+            // 
+            // CoSan
+            // 
+            this.CoSan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.CoSan.DataPropertyName = "CoSan";
+            this.CoSan.HeaderText = "Có sẵn";
+            this.CoSan.Name = "CoSan";
+            this.CoSan.ReadOnly = true;
+            this.CoSan.Width = 69;
             // 
             // label2
             // 
@@ -271,7 +368,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnSUB);
+            this.groupBox1.Controls.Add(this.txtTLConLai);
             this.groupBox1.Controls.Add(this.txtDaDK);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtMaTaiLieu);
             this.groupBox1.Controls.Add(this.txtMoTa);
@@ -332,7 +431,7 @@
             // txtTLConLai
             // 
             this.txtTLConLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTLConLai.Location = new System.Drawing.Point(803, 171);
+            this.txtTLConLai.Location = new System.Drawing.Point(69, 165);
             this.txtTLConLai.Name = "txtTLConLai";
             this.txtTLConLai.Size = new System.Drawing.Size(106, 24);
             this.txtTLConLai.TabIndex = 33;
@@ -341,7 +440,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(739, 177);
+            this.label6.Location = new System.Drawing.Point(6, 171);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 18);
             this.label6.TabIndex = 32;
@@ -364,14 +463,14 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(576, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(333, 165);
+            this.groupBox2.Size = new System.Drawing.Size(333, 195);
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm";
             // 
             // txtSTenTL
             // 
-            this.txtSTenTL.Location = new System.Drawing.Point(8, 75);
+            this.txtSTenTL.Location = new System.Drawing.Point(8, 95);
             this.txtSTenTL.Name = "txtSTenTL";
             this.txtSTenTL.Size = new System.Drawing.Size(161, 24);
             this.txtSTenTL.TabIndex = 22;
@@ -381,7 +480,7 @@
             this.cbbSTG.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbbSTG.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbSTG.FormattingEnabled = true;
-            this.cbbSTG.Location = new System.Drawing.Point(183, 122);
+            this.cbbSTG.Location = new System.Drawing.Point(183, 142);
             this.cbbSTG.Name = "cbbSTG";
             this.cbbSTG.Size = new System.Drawing.Size(147, 26);
             this.cbbSTG.TabIndex = 21;
@@ -391,7 +490,7 @@
             this.cbbSNXB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbbSNXB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbSNXB.FormattingEnabled = true;
-            this.cbbSNXB.Location = new System.Drawing.Point(183, 75);
+            this.cbbSNXB.Location = new System.Drawing.Point(183, 95);
             this.cbbSNXB.Name = "cbbSNXB";
             this.cbbSNXB.Size = new System.Drawing.Size(147, 26);
             this.cbbSNXB.TabIndex = 20;
@@ -401,7 +500,7 @@
             this.cbbSDM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbbSDM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbSDM.FormattingEnabled = true;
-            this.cbbSDM.Location = new System.Drawing.Point(8, 122);
+            this.cbbSDM.Location = new System.Drawing.Point(8, 142);
             this.cbbSDM.Name = "cbbSDM";
             this.cbbSDM.Size = new System.Drawing.Size(161, 26);
             this.cbbSDM.TabIndex = 19;
@@ -410,7 +509,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 54);
+            this.label1.Location = new System.Drawing.Point(5, 74);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 17);
@@ -421,7 +520,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 24);
+            this.label10.Location = new System.Drawing.Point(3, 44);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(72, 17);
@@ -432,7 +531,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(180, 104);
+            this.label11.Location = new System.Drawing.Point(180, 124);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(55, 17);
@@ -443,7 +542,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(180, 55);
+            this.label12.Location = new System.Drawing.Point(180, 75);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(92, 17);
@@ -454,7 +553,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(5, 102);
+            this.label13.Location = new System.Drawing.Point(5, 122);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(72, 17);
@@ -465,7 +564,7 @@
             // 
             this.txtSMaTL.BackColor = System.Drawing.Color.White;
             this.txtSMaTL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSMaTL.Location = new System.Drawing.Point(79, 21);
+            this.txtSMaTL.Location = new System.Drawing.Point(79, 41);
             this.txtSMaTL.Margin = new System.Windows.Forms.Padding(2);
             this.txtSMaTL.Name = "txtSMaTL";
             this.txtSMaTL.Size = new System.Drawing.Size(90, 23);
@@ -479,7 +578,7 @@
             this.btnLamMoi.IconColor = System.Drawing.Color.Black;
             this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnLamMoi.IconSize = 19;
-            this.btnLamMoi.Location = new System.Drawing.Point(261, 21);
+            this.btnLamMoi.Location = new System.Drawing.Point(261, 41);
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(67, 23);
@@ -495,7 +594,7 @@
             this.btnTimKiem.IconColor = System.Drawing.Color.Black;
             this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnTimKiem.IconSize = 19;
-            this.btnTimKiem.Location = new System.Drawing.Point(183, 21);
+            this.btnTimKiem.Location = new System.Drawing.Point(183, 41);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(76, 23);
@@ -504,105 +603,6 @@
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // MaTaiLieu
-            // 
-            this.MaTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MaTaiLieu.DataPropertyName = "MaTaiLieu";
-            this.MaTaiLieu.HeaderText = "Mã";
-            this.MaTaiLieu.MinimumWidth = 6;
-            this.MaTaiLieu.Name = "MaTaiLieu";
-            this.MaTaiLieu.ReadOnly = true;
-            this.MaTaiLieu.Width = 51;
-            // 
-            // TenTaiLieu
-            // 
-            this.TenTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TenTaiLieu.DataPropertyName = "TenTaiLieu";
-            this.TenTaiLieu.HeaderText = "Tên tài liệu";
-            this.TenTaiLieu.MinimumWidth = 6;
-            this.TenTaiLieu.Name = "TenTaiLieu";
-            this.TenTaiLieu.ReadOnly = true;
-            // 
-            // TenDanhMuc
-            // 
-            this.TenDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
-            this.TenDanhMuc.HeaderText = "Danh Mục";
-            this.TenDanhMuc.MinimumWidth = 6;
-            this.TenDanhMuc.Name = "TenDanhMuc";
-            this.TenDanhMuc.ReadOnly = true;
-            this.TenDanhMuc.Width = 92;
-            // 
-            // TenTG
-            // 
-            this.TenTG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TenTG.DataPropertyName = "TenTG";
-            this.TenTG.HeaderText = "Tác giả";
-            this.TenTG.MinimumWidth = 6;
-            this.TenTG.Name = "TenTG";
-            this.TenTG.ReadOnly = true;
-            this.TenTG.Width = 78;
-            // 
-            // TenNXB
-            // 
-            this.TenNXB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TenNXB.DataPropertyName = "TenNXB";
-            this.TenNXB.HeaderText = "Nhà xuất bản";
-            this.TenNXB.MinimumWidth = 6;
-            this.TenNXB.Name = "TenNXB";
-            this.TenNXB.ReadOnly = true;
-            this.TenNXB.Width = 110;
-            // 
-            // TaiBan
-            // 
-            this.TaiBan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TaiBan.DataPropertyName = "TaiBan";
-            this.TaiBan.HeaderText = "Tái bản";
-            this.TaiBan.Name = "TaiBan";
-            this.TaiBan.ReadOnly = true;
-            this.TaiBan.Width = 78;
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SoLuong.DataPropertyName = "SoLuong";
-            this.SoLuong.HeaderText = "Số lượng";
-            this.SoLuong.MinimumWidth = 6;
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.ReadOnly = true;
-            this.SoLuong.Visible = false;
-            this.SoLuong.Width = 85;
-            // 
-            // SoTaiLieuMuon
-            // 
-            this.SoTaiLieuMuon.DataPropertyName = "SoTaiLieuMuon";
-            this.SoTaiLieuMuon.HeaderText = "Số Tài Liệu Mượn";
-            this.SoTaiLieuMuon.MinimumWidth = 6;
-            this.SoTaiLieuMuon.Name = "SoTaiLieuMuon";
-            this.SoTaiLieuMuon.ReadOnly = true;
-            this.SoTaiLieuMuon.Visible = false;
-            this.SoTaiLieuMuon.Width = 125;
-            // 
-            // MoTa
-            // 
-            this.MoTa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MoTa.DataPropertyName = "MoTa";
-            this.MoTa.HeaderText = "Mô Tả";
-            this.MoTa.MinimumWidth = 6;
-            this.MoTa.Name = "MoTa";
-            this.MoTa.ReadOnly = true;
-            this.MoTa.Visible = false;
-            this.MoTa.Width = 71;
-            // 
-            // CoSan
-            // 
-            this.CoSan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.CoSan.DataPropertyName = "CoSan";
-            this.CoSan.HeaderText = "Có sẵn";
-            this.CoSan.Name = "CoSan";
-            this.CoSan.ReadOnly = true;
-            this.CoSan.Width = 74;
-            // 
             // frmTaiLieuDG
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -610,8 +610,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(915, 475);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.txtTLConLai);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -627,7 +625,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

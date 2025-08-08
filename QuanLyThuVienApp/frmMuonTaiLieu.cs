@@ -17,17 +17,15 @@ namespace QuanLyThuVienApp
     public partial class frmMuonTaiLieu : Form
     {
         private string emailDG;
-        private int maNV;
+        private int maNV, maDG;
         private void ShowLoading()
         {
             progressBar1.Visible = true;
-            //progressBar1.MarqueeAnimationSpeed = 30;
             this.UseWaitCursor = true;
         }
         private void HideLoading()
         {
             progressBar1.Visible = false;
-            // progressBar1.MarqueeAnimationSpeed = 0;
             this.UseWaitCursor = false;
         }
         public frmMuonTaiLieu()
@@ -123,26 +121,22 @@ namespace QuanLyThuVienApp
                 if (formNhap.ShowDialog() == DialogResult.OK)
                 {
                     int soLuongMuon = formNhap.SoLuong;
-
                     // Kiểm tra nếu sách đã có trong danh sách mượn => cộng thêm
                     foreach (DataGridViewRow row in dgvTLMuon.Rows)
                     {
                         if (row.Cells["MaSach2"].Value.ToString() == maSach)
                         {
                             int daMuon = int.Parse(row.Cells["SoLuong2"].Value.ToString());
-
                             // Kiểm tra tổng không vượt quá còn lại
                             if (daMuon + soLuongMuon > soLuongConLai)
                             {
                                 MessageBox.Show($"Tổng số lượng mượn vượt quá số sách còn lại ({soLuongConLai})!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return;
                             }
-
                             row.Cells["SoLuong2"].Value = daMuon + soLuongMuon;
                             return;
                         }
                     }
-
                     // Nếu chưa có => thêm mới
                     dgvTLMuon.Rows.Add(maSach, tenSach, soLuongMuon);
                 }
@@ -244,7 +238,7 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            emailDG = txtEmail.Text.Trim();
+            //emailDG = txtEmail.Text.Trim();
 
             if (string.IsNullOrEmpty(emailDG))
             {
@@ -423,13 +417,29 @@ namespace QuanLyThuVienApp
 
         private void btnTTDG_Click(object sender, EventArgs e)
         {
-            QLTVEntities db = new QLTVEntities();
-            DocGia dg = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
+            //QLTVEntities db = new QLTVEntities();
+            //DocGia dg = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
 
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmThongTinDocGia frm = new frmThongTinDocGia(dg.MaDocGia);
+            frmThongTinDocGia frm = new frmThongTinDocGia(maDG);
             frm.ShowDialog();
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            emailDG = txtEmail.Text.Trim();
+            QLTVEntities db = new QLTVEntities();
+            DocGia dg = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
+            if (dg == null)
+            {
+                btnTTDG.Hide();
+            }
+            else
+            {
+                maDG = dg.MaDocGia;
+                btnTTDG.Show();
+            }
         }
     }
 }

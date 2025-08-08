@@ -259,7 +259,7 @@ namespace QuanLyThuVienApp
             }
             SoNgayTre = soNgayTre;
 
-            int tienPhat = 0;
+            int tienPhat = 1000 * phieuMuon.TongSLMuon.GetValueOrDefault(); // Mỗi quyển trễ là 1000
 
             if (soNgayTre >= 30)
             {

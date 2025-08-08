@@ -45,19 +45,21 @@ namespace QuanLyThuVienApp
         {
             QLTVEntities db = new QLTVEntities();
             var dsQuaHan = db.PhieuMuons
-                .Where(p => p.DaTra == false && p.HanTra.HasValue &&
-                       (
-                           (p.NgayTra == null && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now)) ||
-                           (p.NgayTra != null && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(p.NgayTra))
-                       )
-                )
-                .Select(p => new
-                {
-                    MaPhieu = "MP" + p.MaPhieu,
-                    TenDocGia = p.DocGia.HoTen,
-                    EmailDG = p.DocGia.Email,
-                    HanTra = p.HanTra.Value
-                }).ToList();
+            .Where(p => p.DaTra == false && p.HanTra.HasValue &&
+                    (
+                        (p.NgayTra == null && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now)) ||
+                        (p.NgayTra != null && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(p.NgayTra))
+                    )
+            )
+            .ToList()
+            .Select(p => new
+            {
+                MaPhieu = "MP" + p.MaPhieu,
+                TenDocGia = p.DocGia.HoTen,
+                EmailDG = p.DocGia.Email,
+                HanTra = p.HanTra.Value,
+                SoNgayTre = (DateTime.Now.Date - p.HanTra.Value.Date).Days
+            }).ToList();
 
             dgvQuaHan.DataSource = dsQuaHan;
 
@@ -74,6 +76,7 @@ namespace QuanLyThuVienApp
         }    
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+            txtSoNgayTre.Clear();
             txtMaPhieu.Clear();
             txtEmail.Clear();
             txtTen.Clear();
@@ -164,6 +167,7 @@ namespace QuanLyThuVienApp
             txtEmail.Text = dgvQuaHan.Rows[index].Cells["EmailDG"].Value.ToString();
             txtTen.Text = dgvQuaHan.Rows[index].Cells["TenDocGia"].Value.ToString();
             txtHanTra.Text = ((DateTime)dgvQuaHan.Rows[index].Cells["HanTra"].Value).ToString("dd/MM/yyyy");
+            txtSoNgayTre.Text = dgvQuaHan.Rows[index].Cells["SoNgayTre"].Value.ToString();
         }
         private async Task guiEmail(string email, string tenDocGia, string maPhieu, string hanTra)
         {
@@ -175,11 +179,11 @@ namespace QuanLyThuVienApp
             string body =   $"\nXin chào {tenDocGia},\n\n" +
                             $"Phiếu mượn {maPhieu} của bạn đã quá hạn vào ngày {hanTra}.\n" +
                             $"Hiện tại tiền phạt của bạn là: {tienPhat} VNĐ\n";
-            if (30 - tienPhat >= 0)
+            if (30 - soNgayTre >= 0)
             {
                 body += $"Vui lòng trả tài liệu trong thời gian sớm nhất để tránh phát sinh thêm tiền phạt.\n\n" +
                         $"Xin cảm ơn!\n\n" +
-                        $"Chú ý: Nếu trong vòng {30 - soNgayTre} bạn không trả tài liệu thì sẽ bị khoá Email và không thể mượn tài liệu nữa!";
+                        $"Chú ý: Nếu trong vòng {30 - soNgayTre} ngày tiếp theo bạn không trả tài liệu thì sẽ bị khoá Email và không thể mượn tài liệu nữa!";
             }
             else
             {
@@ -311,7 +315,7 @@ namespace QuanLyThuVienApp
                         noiDung += $"- Mã Phiếu: {item.MaPhieu} | Hạn trả: {item.HanTra} | Tiền phạt: {tienPhat} VNĐ"; 
                         if (30 - soNgayTre >= 0)
                         {
-                            noiDung += $" | Số ngày còn lại: {30 - soNgayTre}\n";
+                            noiDung += $" | Số ngày còn lại: {30 - soNgayTre} ngày\n";
                         }
                         else
                         {
@@ -325,7 +329,7 @@ namespace QuanLyThuVienApp
                     {
                         noiDung += $"\nTổng chi phí là: {tongCP} VNĐ" +
                                    $"\nVui lòng sớm trả tài liệu sớm hơn \"Số ngày còn lại\"\n" +
-                                    "Chú ý: Nếu không trả tài liệu thì sẽ bị khoá Email và không thể mượn tài liệu nữa!";
+                                    "Chú ý: Nếu không trả tài liệu sớm hơn \"Số ngày còn lại\" tài liệu thì bạn sẽ bị khoá Email và không thể mượn tài liệu nữa!";
                     }
                     else
                     {
