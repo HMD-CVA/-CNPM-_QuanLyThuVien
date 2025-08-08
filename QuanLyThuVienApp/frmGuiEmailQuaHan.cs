@@ -254,11 +254,6 @@ namespace QuanLyThuVienApp
                 txtHanTra.Clear();
             }
         }
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private async void btnGuiEmailAll_Click(object sender, EventArgs e)
         {
             bool ok = true;
