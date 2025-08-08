@@ -281,7 +281,7 @@ namespace QuanLyThuVienApp
             txtEmail.Text = string.Empty;
 
             loadDuLieu();
-            MessageBox.Show("Đăng ký mượn thành công!\nVui lòng đến gặp thủ thư trong vòng 15' để nhận được phiếu mượn," +
+            MessageBox.Show("Đăng ký mượn thành công!\nVui lòng đến gặp thủ thư trong vòng 15 phút để nhận được phiếu mượn," +
                 " nếu quá thời gian thì phiếu mượn sẽ tự động bị huỷ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

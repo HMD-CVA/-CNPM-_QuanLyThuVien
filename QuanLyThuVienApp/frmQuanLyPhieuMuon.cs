@@ -233,16 +233,17 @@ namespace QuanLyThuVienApp
 
                 if (daTra == "Chờ duyệt")
                 {
+                    loadPhieuMuon();
+                    ChonLaiPhieu(maPhieuGhiNho);
                     btnChoMuon.Enabled = true;
-                    if (daTra == "Đã huỷ")
-                    {
-                        lab_Huy.Text = "Phiếu mượn này đã bị huỷ!";
-                        loadPhieuMuon();
-                        ChonLaiPhieu(maPhieuGhiNho);
-                        return;
-                    }
                     return;
                 }
+                else if (daTra == "Đã huỷ")
+                {
+                    lab_Huy.Text = "Phiếu mượn này đã bị huỷ!";
+                    return;
+                }
+
                 if (dgvPhieuMuon.Rows[e.RowIndex].Cells["NgayMuon"].Value == null && daTra != "Đã huỷ")
                 {
                     btnChoMuon.Show();
