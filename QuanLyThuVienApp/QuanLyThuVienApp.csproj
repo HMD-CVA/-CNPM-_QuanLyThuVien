@@ -159,11 +159,11 @@
     <Compile Include="DocGia.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
-    <Compile Include="frmAL.cs">
+    <Compile Include="frmAI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAL.Designer.cs">
-      <DependentUpon>frmAL.cs</DependentUpon>
+    <Compile Include="frmAI.Designer.cs">
+      <DependentUpon>frmAI.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGuiEmailQuaHan.cs">
       <SubType>Form</SubType>
@@ -380,8 +380,8 @@
     <Compile Include="TaiLieu.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmAL.resx">
-      <DependentUpon>frmAL.cs</DependentUpon>
+    <EmbeddedResource Include="frmAI.resx">
+      <DependentUpon>frmAI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGuiEmailQuaHan.resx">
       <DependentUpon>frmGuiEmailQuaHan.cs</DependentUpon>
