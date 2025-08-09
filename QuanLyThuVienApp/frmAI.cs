@@ -117,9 +117,7 @@ namespace QuanLyThuVienApp
 
         private async Task<(bool isNeedSQL, string content)> GenerateSQLFromAI(string userInput)
         {
-            
             string groqEndpoint = "https://api.groq.com/openai/v1/chat/completions";
-
             string groqApiKeyEncoded = "Z3NrX1NYTFJvWnh1cWdRenVVZUVRTHdFV0dkeWIzRlljRHlMc1ZoWENaMDQzamVXRVFTUFRPOWR=";
             string groqApiKey = Encoding.UTF8.GetString(Convert.FromBase64String(groqApiKeyEncoded));
 
@@ -222,8 +220,9 @@ namespace QuanLyThuVienApp
             if (string.IsNullOrWhiteSpace(sqlResult))
                 return "Không có dữ liệu phù hợp để trả lời.";
 
-            string groqApiKey = "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";
             string groqEndpoint = "https://api.groq.com/openai/v1/chat/completions";
+            string groqApiKeyEncoded = "Z3NrX1NYTFJvWnh1cWdRenVVZUVRTHdFV0dkeWIzRlljRHlMc1ZoWENaMDQzamVXRVFTUFRPOWR=";
+            string groqApiKey = Encoding.UTF8.GetString(Convert.FromBase64String(groqApiKeyEncoded));
 
             var payload = new
             {
@@ -285,8 +284,9 @@ namespace QuanLyThuVienApp
 
         private async Task<string> GenerateNaturalReply(string userInput)
         {
-            string groqApiKey = "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";
             string groqEndpoint = "https://api.groq.com/openai/v1/chat/completions";
+            string groqApiKeyEncoded = "Z3NrX1NYTFJvWnh1cWdRenVVZUVRTHdFV0dkeWIzRlljRHlMc1ZoWENaMDQzamVXRVFTUFRPOWR=";
+            string groqApiKey = Encoding.UTF8.GetString(Convert.FromBase64String(groqApiKeyEncoded));
 
             var prompt = new
             {
