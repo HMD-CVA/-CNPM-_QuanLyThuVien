@@ -55,7 +55,7 @@ namespace QuanLyThuVienApp
         private void optionPhieuMuon(List<PhieuMuon> phieuMuons)
         {
             dgvPhieuMuon.DataSource = phieuMuons
-            .Where(p => p.DaTra == false && p.HanTra.Value.Date >= DateTime.Now.Date)
+            .Where(p => p.DaTra == false && p.HanTra.HasValue && p.HanTra.Value.Date >= DateTime.Now.Date)
             .OrderByDescending(p => p.MaPhieu)
             .Select(p => new
             {
@@ -71,7 +71,7 @@ namespace QuanLyThuVienApp
         private void optionPhieuTre(List<PhieuMuon> phieuMuons)
         {
             dgvPhieuMuon.DataSource = phieuMuons
-            .Where(p => p.DaTra == false && (p.NgayTra == null && p.HanTra.Value.Date < DateTime.Now.Date))
+            .Where(p => p.DaTra == false && (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value.Date < DateTime.Now.Date))
             .OrderByDescending(p => p.MaPhieu)
             .Select(p => new
             {
@@ -134,7 +134,7 @@ namespace QuanLyThuVienApp
                 p.NgayMuon,
                 p.HanTra,
                 DaTra = (
-                    (p.NgayMuon == null && (DateTime.Now - p.NgayTao).TotalMinutes > 15) ? "Đã huỷ" :
+                    (p.NgayMuon == null && (DateTime.Now - p.NgayTao).TotalSeconds > 15) ? "Đã huỷ" :
                      p.NgayMuon == null ? "Chờ duyệt" :
                      p.DaTra == true ? "Đã trả" :
                     (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value.Date < DateTime.Now.Date) ? "Trễ hạn":  "Chưa trả"
@@ -586,6 +586,15 @@ namespace QuanLyThuVienApp
             DataGridViewRow selectedRow = dgvPhieuMuon.SelectedRows[0];
 
             string trangThai = selectedRow.Cells["DaTra"].Value?.ToString();
+            string maPhieus = selectedRow.Cells["MaPhieu"].Value?.ToString().Substring(2);
+            int maPhieuGhiNho = int.Parse(maPhieus);
+
+            if (trangThai == "Chờ duyệt")
+            {
+                loadPhieuMuon();
+                ChonLaiPhieu(maPhieuGhiNho);
+                trangThai = dgvPhieuMuon.SelectedRows[0].Cells["DaTra"].Value?.ToString();
+            }
 
             if (trangThai == "Đã huỷ")
             {
@@ -606,11 +615,14 @@ namespace QuanLyThuVienApp
 
             int maPhieu = int.Parse(dgvPhieuMuon.SelectedRows[0].Cells["MaPhieu"].Value.ToString().Substring(2));
             QLTVEntities db = new QLTVEntities();
+
+            DocGia dg = db.DocGias.Where(p => p.MaDocGia == maDG).FirstOrDefault();
+
             PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
 
             phieuMuon.MaNV = maNV;
             phieuMuon.NgayMuon = DateTime.Now;
-            phieuMuon.HanTra = DateTime.Now.AddDays(7);
+            phieuMuon.HanTra = dg.LoaiDG == false ? (phieuMuon.NgayMuon ?? DateTime.Now).AddDays(7) : (phieuMuon.NgayMuon ?? DateTime.Now).AddDays(14);
 
             db.SaveChanges();
             btnLamMoi.PerformClick();

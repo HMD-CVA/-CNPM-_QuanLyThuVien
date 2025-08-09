@@ -357,7 +357,7 @@ namespace QuanLyThuVienApp
             phieuMuon.MaDG = dg.MaDocGia;
             phieuMuon.MaNV = maNV;
             phieuMuon.NgayMuon = DateTime.Now;
-            phieuMuon.HanTra = (phieuMuon.NgayMuon ?? DateTime.Now).AddDays(7);
+            phieuMuon.HanTra = dg.LoaiDG == false ? (phieuMuon.NgayMuon ?? DateTime.Now).AddDays(7) : (phieuMuon.NgayMuon ?? DateTime.Now).AddDays(14);
             phieuMuon.DaTra = false;
             phieuMuon.NgayTra = null;
             phieuMuon.NgayTao = DateTime.Now;

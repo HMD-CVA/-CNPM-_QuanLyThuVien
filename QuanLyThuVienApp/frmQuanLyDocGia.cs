@@ -17,6 +17,7 @@ namespace QuanLyThuVienApp
         private string maDG;
         public static int OTP;
         public static DateTime thoiGian;
+        public bool loaiDG = false;
 
         public frmQuanLyDocGia()
         {
@@ -25,13 +26,16 @@ namespace QuanLyThuVienApp
 
         private void frmQuanLyBanDoc_Load(object sender, EventArgs e)
         {
+            rbSinhVien.Checked = true;
             loadDuLieu();
         }
 
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
-            dgvBanDoc.DataSource = db.DocGias.Select(p => new
+            dgvBanDoc.DataSource = db.DocGias
+            .Where (p => p.LoaiDG == loaiDG)
+            .Select(p => new
             {
                 MaDocGia = "DG" + p.MaDocGia,
                 p.MaSo,
@@ -86,7 +90,6 @@ namespace QuanLyThuVienApp
                 txtEmail.Text = dgvBanDoc.Rows[index].Cells["Email"].Value.ToString();
                 txtHoVaTen.Text = dgvBanDoc.Rows[index].Cells["HoTen"].Value.ToString();
                 txtMaSo.Text = dgvBanDoc.Rows[index].Cells["MaSo"].Value.ToString();
-                txtLoaiDG.Text = dgvBanDoc.Rows[index].Cells["LoaiDG"].Value.ToString();
                 txtTrangThai.Text = dgvBanDoc.Rows[index].Cells["BiKhoa"].Value.ToString();
             }
             else ResetBTN();
@@ -97,7 +100,6 @@ namespace QuanLyThuVienApp
             txtEmail.Clear();
             txtHoVaTen.Clear();
             txtMaSo.Clear();
-            txtLoaiDG.Clear();
             txtTrangThai.Clear();
         }
         private void dgvBanDoc_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -150,6 +152,18 @@ namespace QuanLyThuVienApp
             DG.BiKhoa = !DG.BiKhoa;
             db.SaveChanges();
             loadDuLieu();
+        }
+
+        private void rbGiangVien_CheckedChanged(object sender, EventArgs e)
+        {
+            loaiDG = true;
+            loadDuLieu();
+        }
+
+        private void rbSinhVien_CheckedChanged(object sender, EventArgs e)
+        {
+            loaiDG = false;
+            loadDuLieu() ;
         }
     }
 }
