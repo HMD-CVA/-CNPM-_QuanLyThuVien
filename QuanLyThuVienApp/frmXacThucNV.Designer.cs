@@ -62,7 +62,7 @@
             this.btnXacThuc.Name = "btnXacThuc";
             this.btnXacThuc.Size = new System.Drawing.Size(89, 25);
             this.btnXacThuc.TabIndex = 1;
-            this.btnXacThuc.Text = "   Xác thực";
+            this.btnXacThuc.Text = "    Xác thực";
             this.btnXacThuc.UseVisualStyleBackColor = false;
             this.btnXacThuc.Click += new System.EventHandler(this.btnXacThuc_Click);
             // 
@@ -92,7 +92,7 @@
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(89, 25);
             this.btnThoat.TabIndex = 3;
-            this.btnThoat.Text = "Thoát";
+            this.btnThoat.Text = "   Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 

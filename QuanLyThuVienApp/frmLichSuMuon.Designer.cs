@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvPhieuMuon = new System.Windows.Forms.DataGridView();
@@ -42,6 +42,12 @@
             this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvChiTiet = new System.Windows.Forms.DataGridView();
+            this.MaTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNXB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuongBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbLoc = new System.Windows.Forms.ComboBox();
             this.btnLamMoi = new FontAwesome.Sharp.IconButton();
             this.btnTimKiem = new FontAwesome.Sharp.IconButton();
@@ -51,16 +57,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-
             this.txtMS = new MetroFramework.Controls.MetroTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.MaTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNXB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuongBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTiet)).BeginInit();
@@ -155,37 +153,36 @@
             // 
             this.NgayMuon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.NgayMuon.DataPropertyName = "NgayMuon";
-            dataGridViewCellStyle4.Format = "dd/MM/yyyy";
-            this.NgayMuon.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            this.NgayMuon.DefaultCellStyle = dataGridViewCellStyle1;
             this.NgayMuon.HeaderText = "Ngày mượn";
             this.NgayMuon.MinimumWidth = 6;
             this.NgayMuon.Name = "NgayMuon";
             this.NgayMuon.ReadOnly = true;
-            this.NgayMuon.Width = 109;
             // 
             // HanTra
             // 
             this.HanTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.HanTra.DataPropertyName = "HanTra";
-            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
-            this.HanTra.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            this.HanTra.DefaultCellStyle = dataGridViewCellStyle2;
             this.HanTra.HeaderText = "Hạn trả";
             this.HanTra.MinimumWidth = 6;
             this.HanTra.Name = "HanTra";
             this.HanTra.ReadOnly = true;
-            this.HanTra.Width = 81;
+            this.HanTra.Width = 60;
             // 
             // NgayTra
             // 
             this.NgayTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.NgayTra.DataPropertyName = "NgayTra";
-            dataGridViewCellStyle6.Format = "dd/MM/yyyy";
-            this.NgayTra.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Format = "dd/MM/yyyy";
+            this.NgayTra.DefaultCellStyle = dataGridViewCellStyle3;
             this.NgayTra.HeaderText = "Ngày trả";
             this.NgayTra.MinimumWidth = 6;
             this.NgayTra.Name = "NgayTra";
             this.NgayTra.ReadOnly = true;
-            this.NgayTra.Width = 88;
+            this.NgayTra.Width = 81;
             // 
             // DaTra
             // 
@@ -195,7 +192,7 @@
             this.DaTra.MinimumWidth = 6;
             this.DaTra.Name = "DaTra";
             this.DaTra.ReadOnly = true;
-            this.DaTra.Width = 98;
+            this.DaTra.Width = 90;
             // 
             // dgvChiTiet
             // 
@@ -222,222 +219,6 @@
             this.dgvChiTiet.RowTemplate.Height = 24;
             this.dgvChiTiet.Size = new System.Drawing.Size(798, 198);
             this.dgvChiTiet.TabIndex = 2;
-            // 
-            // cbLoc
-            // 
-            this.cbLoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbLoc.FormattingEnabled = true;
-            this.cbLoc.Items.AddRange(new object[] {
-            "Tất cả",
-            "Chưa trả",
-            "Đã trả",
-            "Trễ hạn"});
-            this.cbLoc.Location = new System.Drawing.Point(11, 177);
-            this.cbLoc.Margin = new System.Windows.Forms.Padding(2);
-            this.cbLoc.Name = "cbLoc";
-
-            this.cbLoc.Size = new System.Drawing.Size(145, 25);
-            this.cbLoc.TabIndex = 5;
-            this.cbLoc.SelectedIndexChanged += new System.EventHandler(this.cbLoc_SelectedIndexChanged);
-            // 
-            // btnLamMoi
-            // 
-            this.btnLamMoi.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateBackward;
-            this.btnLamMoi.IconColor = System.Drawing.Color.Black;
-            this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnLamMoi.IconSize = 19;
-
-            this.btnLamMoi.Location = new System.Drawing.Point(191, 165);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(25, 25);
-            this.btnLamMoi.TabIndex = 11;
-            this.btnLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLamMoi.UseVisualStyleBackColor = false;
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.btnTimKiem.IconColor = System.Drawing.Color.Black;
-            this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnTimKiem.IconSize = 19;
-
-            this.btnTimKiem.Location = new System.Drawing.Point(160, 166);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(27, 25);
-            this.btnTimKiem.TabIndex = 12;
-            this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTimKiem.UseVisualStyleBackColor = false;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, 72);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 17);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Email";
-            // 
-            // txtEmail
-            // 
-            // 
-            // 
-            // 
-            this.txtEmail.CustomButton.Image = null;
-            this.txtEmail.CustomButton.Location = new System.Drawing.Point(302, 1);
-            this.txtEmail.CustomButton.Name = "";
-            this.txtEmail.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtEmail.CustomButton.TabIndex = 1;
-            this.txtEmail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtEmail.CustomButton.UseSelectable = true;
-            this.txtEmail.CustomButton.Visible = false;
-            this.txtEmail.Lines = new string[0];
-            this.txtEmail.Location = new System.Drawing.Point(5, 92);
-            this.txtEmail.MaxLength = 32767;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.PasswordChar = '\0';
-            this.txtEmail.PromptText = "Nhập email";
-            this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtEmail.SelectedText = "";
-            this.txtEmail.SelectionLength = 0;
-            this.txtEmail.SelectionStart = 0;
-            this.txtEmail.ShortcutsEnabled = true;
-            this.txtEmail.Size = new System.Drawing.Size(324, 23);
-            this.txtEmail.TabIndex = 14;
-            this.txtEmail.UseSelectable = true;
-            this.txtEmail.WaterMark = "Nhập email";
-            this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-
-            // txtMaPhieu
-            // 
-            // 
-            // 
-            // 
-            this.txtMaPhieu.CustomButton.Image = null;
-            this.txtMaPhieu.CustomButton.Location = new System.Drawing.Point(302, 1);
-            this.txtMaPhieu.CustomButton.Name = "";
-            this.txtMaPhieu.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtMaPhieu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtMaPhieu.CustomButton.TabIndex = 1;
-            this.txtMaPhieu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtMaPhieu.CustomButton.UseSelectable = true;
-            this.txtMaPhieu.CustomButton.Visible = false;
-            this.txtMaPhieu.Lines = new string[0];
-            this.txtMaPhieu.Location = new System.Drawing.Point(5, 46);
-            this.txtMaPhieu.MaxLength = 32767;
-            this.txtMaPhieu.Name = "txtMaPhieu";
-            this.txtMaPhieu.PasswordChar = '\0';
-            this.txtMaPhieu.PromptText = "Nhập mã phiếu mượn";
-            this.txtMaPhieu.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtMaPhieu.SelectedText = "";
-            this.txtMaPhieu.SelectionLength = 0;
-            this.txtMaPhieu.SelectionStart = 0;
-            this.txtMaPhieu.ShortcutsEnabled = true;
-
-            this.txtMaPhieu.Size = new System.Drawing.Size(211, 23);
-            this.txtMaPhieu.TabIndex = 18;
-            this.txtMaPhieu.UseSelectable = true;
-            this.txtMaPhieu.WaterMark = "Nhập mã phiếu mượn";
-            this.txtMaPhieu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtMaPhieu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(5, 26);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 17);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Mã phiếu mượn";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgvChiTiet);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(403, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(808, 225);
-            this.groupBox1.TabIndex = 19;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Phiếu mượn";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.cbLoc);
-            this.groupBox3.Controls.Add(this.btnTimKiem);
-            this.groupBox3.Controls.Add(this.btnLamMoi);
-            this.groupBox3.Controls.Add(this.txtMS);
-            this.groupBox3.Controls.Add(this.txtMaPhieu);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.txtEmail);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(379, 238);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tìm kiếm";
-            // 
-            // txtMS
-            // 
-            // 
-            // 
-            // 
-            this.txtMS.CustomButton.Image = null;
-            this.txtMS.CustomButton.Location = new System.Drawing.Point(189, 1);
-            this.txtMS.CustomButton.Name = "";
-            this.txtMS.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtMS.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtMS.CustomButton.TabIndex = 1;
-            this.txtMS.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtMS.CustomButton.UseSelectable = true;
-            this.txtMS.CustomButton.Visible = false;
-            this.txtMS.Lines = new string[0];
-            this.txtMS.Location = new System.Drawing.Point(6, 138);
-            this.txtMS.MaxLength = 32767;
-            this.txtMS.Name = "txtMS";
-            this.txtMS.PasswordChar = '\0';
-            this.txtMS.PromptText = "Nhập số mã số sinh viên/giảng viên";
-            this.txtMS.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtMS.SelectedText = "";
-            this.txtMS.SelectionLength = 0;
-            this.txtMS.SelectionStart = 0;
-            this.txtMS.ShortcutsEnabled = true;
-            this.txtMS.Size = new System.Drawing.Size(211, 23);
-            this.txtMS.TabIndex = 16;
-            this.txtMS.UseSelectable = true;
-            this.txtMS.WaterMark = "Nhập số mã số sinh viên/giảng viên";
-            this.txtMS.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtMS.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(5, 118);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(175, 17);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Mã số sinh viên/giảng viên";
             // 
             // MaTaiLieu
             // 
@@ -494,6 +275,217 @@
             this.SoLuongBD.Name = "SoLuongBD";
             this.SoLuongBD.ReadOnly = true;
             this.SoLuongBD.Width = 92;
+            // 
+            // cbLoc
+            // 
+            this.cbLoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLoc.FormattingEnabled = true;
+            this.cbLoc.Items.AddRange(new object[] {
+            "Tất cả",
+            "Chưa trả",
+            "Đã trả",
+            "Trễ hạn"});
+            this.cbLoc.Location = new System.Drawing.Point(11, 177);
+            this.cbLoc.Margin = new System.Windows.Forms.Padding(2);
+            this.cbLoc.Name = "cbLoc";
+            this.cbLoc.Size = new System.Drawing.Size(254, 25);
+            this.cbLoc.TabIndex = 5;
+            this.cbLoc.SelectedIndexChanged += new System.EventHandler(this.cbLoc_SelectedIndexChanged);
+            // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLamMoi.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateBackward;
+            this.btnLamMoi.IconColor = System.Drawing.Color.Black;
+            this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnLamMoi.IconSize = 19;
+            this.btnLamMoi.Location = new System.Drawing.Point(300, 175);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(25, 25);
+            this.btnLamMoi.TabIndex = 11;
+            this.btnLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLamMoi.UseVisualStyleBackColor = false;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnTimKiem.IconColor = System.Drawing.Color.Black;
+            this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnTimKiem.IconSize = 19;
+            this.btnTimKiem.Location = new System.Drawing.Point(269, 176);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(27, 25);
+            this.btnTimKiem.TabIndex = 12;
+            this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(5, 72);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 17);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Email";
+            // 
+            // txtEmail
+            // 
+            // 
+            // 
+            // 
+            this.txtEmail.CustomButton.Image = null;
+            this.txtEmail.CustomButton.Location = new System.Drawing.Point(302, 1);
+            this.txtEmail.CustomButton.Name = "";
+            this.txtEmail.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtEmail.CustomButton.TabIndex = 1;
+            this.txtEmail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtEmail.CustomButton.UseSelectable = true;
+            this.txtEmail.CustomButton.Visible = false;
+            this.txtEmail.Lines = new string[0];
+            this.txtEmail.Location = new System.Drawing.Point(5, 92);
+            this.txtEmail.MaxLength = 32767;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.PasswordChar = '\0';
+            this.txtEmail.PromptText = "Nhập email";
+            this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtEmail.SelectedText = "";
+            this.txtEmail.SelectionLength = 0;
+            this.txtEmail.SelectionStart = 0;
+            this.txtEmail.ShortcutsEnabled = true;
+            this.txtEmail.Size = new System.Drawing.Size(324, 23);
+            this.txtEmail.TabIndex = 14;
+            this.txtEmail.UseSelectable = true;
+            this.txtEmail.WaterMark = "Nhập email";
+            this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // txtMaPhieu
+            // 
+            // 
+            // 
+            // 
+            this.txtMaPhieu.CustomButton.Image = null;
+            this.txtMaPhieu.CustomButton.Location = new System.Drawing.Point(302, 1);
+            this.txtMaPhieu.CustomButton.Name = "";
+            this.txtMaPhieu.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtMaPhieu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtMaPhieu.CustomButton.TabIndex = 1;
+            this.txtMaPhieu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtMaPhieu.CustomButton.UseSelectable = true;
+            this.txtMaPhieu.CustomButton.Visible = false;
+            this.txtMaPhieu.Lines = new string[0];
+            this.txtMaPhieu.Location = new System.Drawing.Point(5, 46);
+            this.txtMaPhieu.MaxLength = 32767;
+            this.txtMaPhieu.Name = "txtMaPhieu";
+            this.txtMaPhieu.PasswordChar = '\0';
+            this.txtMaPhieu.PromptText = "Nhập mã phiếu mượn";
+            this.txtMaPhieu.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtMaPhieu.SelectedText = "";
+            this.txtMaPhieu.SelectionLength = 0;
+            this.txtMaPhieu.SelectionStart = 0;
+            this.txtMaPhieu.ShortcutsEnabled = true;
+            this.txtMaPhieu.Size = new System.Drawing.Size(324, 23);
+            this.txtMaPhieu.TabIndex = 18;
+            this.txtMaPhieu.UseSelectable = true;
+            this.txtMaPhieu.WaterMark = "Nhập mã phiếu mượn";
+            this.txtMaPhieu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtMaPhieu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(5, 26);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 17);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Mã phiếu mượn";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgvChiTiet);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(403, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox1.Size = new System.Drawing.Size(808, 225);
+            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Phiếu mượn";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.cbLoc);
+            this.groupBox3.Controls.Add(this.btnTimKiem);
+            this.groupBox3.Controls.Add(this.btnLamMoi);
+            this.groupBox3.Controls.Add(this.txtMS);
+            this.groupBox3.Controls.Add(this.txtMaPhieu);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.txtEmail);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(379, 238);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tìm kiếm";
+            // 
+            // txtMS
+            // 
+            // 
+            // 
+            // 
+            this.txtMS.CustomButton.Image = null;
+            this.txtMS.CustomButton.Location = new System.Drawing.Point(301, 1);
+            this.txtMS.CustomButton.Name = "";
+            this.txtMS.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtMS.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtMS.CustomButton.TabIndex = 1;
+            this.txtMS.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtMS.CustomButton.UseSelectable = true;
+            this.txtMS.CustomButton.Visible = false;
+            this.txtMS.Lines = new string[0];
+            this.txtMS.Location = new System.Drawing.Point(6, 138);
+            this.txtMS.MaxLength = 32767;
+            this.txtMS.Name = "txtMS";
+            this.txtMS.PasswordChar = '\0';
+            this.txtMS.PromptText = "Nhập số mã số sinh viên/giảng viên";
+            this.txtMS.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtMS.SelectedText = "";
+            this.txtMS.SelectionLength = 0;
+            this.txtMS.SelectionStart = 0;
+            this.txtMS.ShortcutsEnabled = true;
+            this.txtMS.Size = new System.Drawing.Size(323, 23);
+            this.txtMS.TabIndex = 16;
+            this.txtMS.UseSelectable = true;
+            this.txtMS.WaterMark = "Nhập số mã số sinh viên/giảng viên";
+            this.txtMS.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtMS.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(5, 118);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(175, 17);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Mã số sinh viên/giảng viên";
             // 
             // frmLichSuMuon
             // 

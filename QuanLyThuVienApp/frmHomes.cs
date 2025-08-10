@@ -264,7 +264,7 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmAL frm = new frmAL();
+            frmAI frm = new frmAI();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();

@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-
             this.dgvTaiLieu = new System.Windows.Forms.DataGridView();
             this.MaTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -123,8 +122,7 @@
             this.dgvTaiLieu.RowHeadersVisible = false;
             this.dgvTaiLieu.RowHeadersWidth = 51;
             this.dgvTaiLieu.RowTemplate.Height = 24;
-
-            this.dgvTaiLieu.Size = new System.Drawing.Size(909, 205);
+            this.dgvTaiLieu.Size = new System.Drawing.Size(1219, 468);
             this.dgvTaiLieu.TabIndex = 0;
             this.dgvTaiLieu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSach_CellClick);
             // 
@@ -224,11 +222,10 @@
             // 
             this.panel1.Controls.Add(this.dgvTaiLieu);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-
-            this.panel1.Location = new System.Drawing.Point(0, 238);
+            this.panel1.Location = new System.Drawing.Point(0, 256);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(909, 205);
+            this.panel1.Size = new System.Drawing.Size(1219, 468);
             this.panel1.TabIndex = 8;
             // 
             // dgvTLMuon
@@ -238,13 +235,11 @@
             this.dgvTLMuon.AllowUserToResizeColumns = false;
             this.dgvTLMuon.AllowUserToResizeRows = false;
             this.dgvTLMuon.BackgroundColor = System.Drawing.Color.White;
-
             this.dgvTLMuon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTLMuon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaSach2,
             this.TenSach2,
             this.SoLuong2});
-
             this.dgvTLMuon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTLMuon.Location = new System.Drawing.Point(5, 22);
             this.dgvTLMuon.Margin = new System.Windows.Forms.Padding(2);
@@ -254,8 +249,7 @@
             this.dgvTLMuon.RowHeadersVisible = false;
             this.dgvTLMuon.RowHeadersWidth = 51;
             this.dgvTLMuon.RowTemplate.Height = 24;
-
-            this.dgvTLMuon.Size = new System.Drawing.Size(538, 176);
+            this.dgvTLMuon.Size = new System.Drawing.Size(836, 191);
             this.dgvTLMuon.TabIndex = 9;
             this.dgvTLMuon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSachMuon_CellClick);
             // 
@@ -290,7 +284,6 @@
             this.SoLuong2.ReadOnly = true;
             this.SoLuong2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.SoLuong2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-
             this.SoLuong2.Width = 73;
             // 
             // btnDangKy
@@ -302,8 +295,7 @@
             this.btnDangKy.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnDangKy.IconSize = 19;
             this.btnDangKy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
-            this.btnDangKy.Location = new System.Drawing.Point(590, 209);
+            this.btnDangKy.Location = new System.Drawing.Point(732, 227);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(115, 25);
@@ -322,8 +314,7 @@
             this.btnXoaHet.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnXoaHet.IconSize = 19;
             this.btnXoaHet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
-            this.btnXoaHet.Location = new System.Drawing.Point(366, 209);
+            this.btnXoaHet.Location = new System.Drawing.Point(497, 227);
             this.btnXoaHet.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaHet.Name = "btnXoaHet";
             this.btnXoaHet.Size = new System.Drawing.Size(115, 25);
@@ -347,7 +338,6 @@
             this.grbDocGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbDocGia.Location = new System.Drawing.Point(0, 0);
             this.grbDocGia.Name = "grbDocGia";
-
             this.grbDocGia.Size = new System.Drawing.Size(348, 79);
             this.grbDocGia.TabIndex = 20;
             this.grbDocGia.TabStop = false;
@@ -432,8 +422,7 @@
             this.btnClose.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnClose.IconSize = 19;
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
-            this.btnClose.Location = new System.Drawing.Point(832, 209);
+            this.btnClose.Location = new System.Drawing.Point(967, 227);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(115, 25);
@@ -460,8 +449,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(7, 82);
             this.groupBox2.Name = "groupBox2";
-
-            this.groupBox2.Size = new System.Drawing.Size(348, 155);
+            this.groupBox2.Size = new System.Drawing.Size(348, 169);
             this.groupBox2.TabIndex = 49;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm";
@@ -608,7 +596,7 @@
             this.groupBox1.Location = new System.Drawing.Point(361, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(548, 203);
+            this.groupBox1.Size = new System.Drawing.Size(846, 218);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách đăng ký mượn";
@@ -618,14 +606,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-
-            this.ClientSize = new System.Drawing.Size(909, 443);
+            this.ClientSize = new System.Drawing.Size(1219, 724);
+            this.Controls.Add(this.btnXoaHet);
+            this.Controls.Add(this.btnDangKy);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.grbDocGia);
-            this.Controls.Add(this.btnXoaHet);
-            this.Controls.Add(this.btnDangKy);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);

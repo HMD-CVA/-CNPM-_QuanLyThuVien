@@ -541,6 +541,7 @@
       <DependentUpon>DB_QLTV.edmx</DependentUpon>
       <LastGenOutput>DB_QLTV.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\png-transparent-computer-icons-send-miscellaneous-angle-rectangle-thumbnail-removebg-preview.png" />
     <None Include="Resources\depositphotos_372944490-stock-illustration-set-of-hand-drawn-book-removebg-preview.png" />
     <None Include="Resources\depositphotos_368205172-stock-illustration-seamless-pattern-of-hand-drawn-removebg-preview.png" />
     <None Include="Resources\images__7_-removebg-preview.png" />

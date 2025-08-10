@@ -85,6 +85,7 @@
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
           <Property Name="DaGuiMail" Type="datetime" />
           <Property Name="TongSLMuon" Type="int" />
+          <Property Name="TongSLMuonBD" Type="int" />
         </EntityType>
         <EntityType Name="TacGia">
           <Key>
@@ -109,7 +110,7 @@
           <Property Name="SoLuong" Type="int" />
           <Property Name="SoTaiLieuMuon" Type="int" />
         </EntityType>
-        <Association Name="FK__ChiTietPhi__MaPM__3587F3E0">
+        <Association Name="FK__ChiTietPhi__MaPM__29221CFB">
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="0..1" />
           <End Role="ChiTietPhieuMuon" Type="Self.ChiTietPhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -121,7 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietPhi__MaTL__367C1819">
+        <Association Name="FK__ChiTietPhi__MaTL__2A164134">
           <End Role="TaiLieu" Type="Self.TaiLieu" Multiplicity="0..1" />
           <End Role="ChiTietPhieuMuon" Type="Self.ChiTietPhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -133,7 +134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NhanVien__NguoiD__52593CB8">
+        <Association Name="FK__NhanVien__NguoiD__08B54D69">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
           <ReferentialConstraint>
@@ -145,7 +146,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuMuon__MaDG__2CF2ADDF">
+        <Association Name="FK__PhieuMuon__MaDG__208CD6FA">
           <End Role="DocGia" Type="Self.DocGia" Multiplicity="0..1" />
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -157,7 +158,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuMuon__MaNV__2DE6D218">
+        <Association Name="FK__PhieuMuon__MaNV__2180FB33">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -169,7 +170,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TaiLieu__MaDanhM__5DCAEF64">
+        <Association Name="FK__TaiLieu__MaDanhM__14270015">
           <End Role="DanhMucTaiLieu" Type="Self.DanhMucTaiLieu" Multiplicity="0..1" />
           <End Role="TaiLieu" Type="Self.TaiLieu" Multiplicity="*" />
           <ReferentialConstraint>
@@ -181,7 +182,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TaiLieu__MaNXB__5FB337D6">
+        <Association Name="FK__TaiLieu__MaNXB__160F4887">
           <End Role="NhaXuatBan" Type="Self.NhaXuatBan" Multiplicity="0..1" />
           <End Role="TaiLieu" Type="Self.TaiLieu" Multiplicity="*" />
           <ReferentialConstraint>
@@ -193,7 +194,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TaiLieu__MaTG__5EBF139D">
+        <Association Name="FK__TaiLieu__MaTG__151B244E">
           <End Role="TacGia" Type="Self.TacGia" Multiplicity="0..1" />
           <End Role="TaiLieu" Type="Self.TaiLieu" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,35 +216,35 @@
           <EntitySet Name="PhieuMuon" EntityType="Self.PhieuMuon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TacGia" EntityType="Self.TacGia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiLieu" EntityType="Self.TaiLieu" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ChiTietPhi__MaPM__3587F3E0" Association="Self.FK__ChiTietPhi__MaPM__3587F3E0">
+          <AssociationSet Name="FK__ChiTietPhi__MaPM__29221CFB" Association="Self.FK__ChiTietPhi__MaPM__29221CFB">
             <End Role="PhieuMuon" EntitySet="PhieuMuon" />
             <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPhi__MaTL__367C1819" Association="Self.FK__ChiTietPhi__MaTL__367C1819">
+          <AssociationSet Name="FK__ChiTietPhi__MaTL__2A164134" Association="Self.FK__ChiTietPhi__MaTL__2A164134">
             <End Role="TaiLieu" EntitySet="TaiLieu" />
             <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
           </AssociationSet>
-          <AssociationSet Name="FK__NhanVien__NguoiD__52593CB8" Association="Self.FK__NhanVien__NguoiD__52593CB8">
+          <AssociationSet Name="FK__NhanVien__NguoiD__08B54D69" Association="Self.FK__NhanVien__NguoiD__08B54D69">
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="NhanVien" EntitySet="NhanVien" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuMuon__MaDG__2CF2ADDF" Association="Self.FK__PhieuMuon__MaDG__2CF2ADDF">
+          <AssociationSet Name="FK__PhieuMuon__MaDG__208CD6FA" Association="Self.FK__PhieuMuon__MaDG__208CD6FA">
             <End Role="DocGia" EntitySet="DocGia" />
             <End Role="PhieuMuon" EntitySet="PhieuMuon" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuMuon__MaNV__2DE6D218" Association="Self.FK__PhieuMuon__MaNV__2DE6D218">
+          <AssociationSet Name="FK__PhieuMuon__MaNV__2180FB33" Association="Self.FK__PhieuMuon__MaNV__2180FB33">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="PhieuMuon" EntitySet="PhieuMuon" />
           </AssociationSet>
-          <AssociationSet Name="FK__TaiLieu__MaDanhM__5DCAEF64" Association="Self.FK__TaiLieu__MaDanhM__5DCAEF64">
+          <AssociationSet Name="FK__TaiLieu__MaDanhM__14270015" Association="Self.FK__TaiLieu__MaDanhM__14270015">
             <End Role="DanhMucTaiLieu" EntitySet="DanhMucTaiLieu" />
             <End Role="TaiLieu" EntitySet="TaiLieu" />
           </AssociationSet>
-          <AssociationSet Name="FK__TaiLieu__MaNXB__5FB337D6" Association="Self.FK__TaiLieu__MaNXB__5FB337D6">
+          <AssociationSet Name="FK__TaiLieu__MaNXB__160F4887" Association="Self.FK__TaiLieu__MaNXB__160F4887">
             <End Role="NhaXuatBan" EntitySet="NhaXuatBan" />
             <End Role="TaiLieu" EntitySet="TaiLieu" />
           </AssociationSet>
-          <AssociationSet Name="FK__TaiLieu__MaTG__5EBF139D" Association="Self.FK__TaiLieu__MaTG__5EBF139D">
+          <AssociationSet Name="FK__TaiLieu__MaTG__151B244E" Association="Self.FK__TaiLieu__MaTG__151B244E">
             <End Role="TacGia" EntitySet="TacGia" />
             <End Role="TaiLieu" EntitySet="TaiLieu" />
           </AssociationSet>
@@ -462,6 +463,7 @@
           <NavigationProperty Name="ChiTietPhieuMuons" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" FromRole="PhieuMuon" ToRole="ChiTietPhieuMuon" />
           <NavigationProperty Name="DocGia" Relationship="DB_QLTVModel.FK__PhieuMuon__MaDG__2CF2ADDF" FromRole="PhieuMuon" ToRole="DocGia" />
           <NavigationProperty Name="NhanVien" Relationship="DB_QLTVModel.FK__PhieuMuon__MaNV__2DE6D218" FromRole="PhieuMuon" ToRole="NhanVien" />
+          <Property Name="TongSLMuonBD" Type="Int32" />
         </EntityType>
         <Association Name="FK__ChiTietPhi__MaPM__3587F3E0">
           <End Type="DB_QLTVModel.PhieuMuon" Role="PhieuMuon" Multiplicity="0..1" />
@@ -617,6 +619,7 @@
           <EntitySetMapping Name="PhieuMuons">
             <EntityTypeMapping TypeName="DB_QLTVModel.PhieuMuon">
               <MappingFragment StoreEntitySet="PhieuMuon">
+                <ScalarProperty Name="TongSLMuonBD" ColumnName="TongSLMuonBD" />
                 <ScalarProperty Name="TongSLMuon" ColumnName="TongSLMuon" />
                 <ScalarProperty Name="DaGuiMail" ColumnName="DaGuiMail" />
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />

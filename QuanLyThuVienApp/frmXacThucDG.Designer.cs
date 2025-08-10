@@ -42,13 +42,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.SkyBlue;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label1.Location = new System.Drawing.Point(104, 33);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 20);
+            this.label1.Size = new System.Drawing.Size(157, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "XÁC THỰC EMAIL";
             // 
@@ -58,12 +57,12 @@
             this.btnXacThuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXacThuc.Image = global::QuanLyThuVienApp.Properties.Resources.pngtree_tick_vector_icon_png_image_696437_removebg_preview;
             this.btnXacThuc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXacThuc.Location = new System.Drawing.Point(6, 122);
+            this.btnXacThuc.Location = new System.Drawing.Point(29, 116);
             this.btnXacThuc.Margin = new System.Windows.Forms.Padding(2);
             this.btnXacThuc.Name = "btnXacThuc";
-            this.btnXacThuc.Size = new System.Drawing.Size(110, 25);
+            this.btnXacThuc.Size = new System.Drawing.Size(89, 25);
             this.btnXacThuc.TabIndex = 1;
-            this.btnXacThuc.Text = "Xác thực";
+            this.btnXacThuc.Text = "   Xác thực";
             this.btnXacThuc.UseVisualStyleBackColor = false;
             this.btnXacThuc.Click += new System.EventHandler(this.btnXacThuc_Click);
             // 
@@ -73,12 +72,12 @@
             this.btnGuiLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuiLai.Image = global::QuanLyThuVienApp.Properties.Resources.abc;
             this.btnGuiLai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuiLai.Location = new System.Drawing.Point(116, 122);
+            this.btnGuiLai.Location = new System.Drawing.Point(134, 116);
             this.btnGuiLai.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuiLai.Name = "btnGuiLai";
-            this.btnGuiLai.Size = new System.Drawing.Size(110, 25);
+            this.btnGuiLai.Size = new System.Drawing.Size(89, 25);
             this.btnGuiLai.TabIndex = 2;
-            this.btnGuiLai.Text = "Gửi lại";
+            this.btnGuiLai.Text = "   Gửi lại";
             this.btnGuiLai.UseVisualStyleBackColor = false;
             this.btnGuiLai.Click += new System.EventHandler(this.btnGuiLai_Click);
             // 
@@ -88,12 +87,12 @@
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.Image = global::QuanLyThuVienApp.Properties.Resources._1;
             this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThoat.Location = new System.Drawing.Point(226, 122);
+            this.btnThoat.Location = new System.Drawing.Point(239, 116);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(110, 25);
+            this.btnThoat.Size = new System.Drawing.Size(89, 25);
             this.btnThoat.TabIndex = 3;
-            this.btnThoat.Text = "Thoát";
+            this.btnThoat.Text = "   Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
@@ -112,17 +111,17 @@
             // txtMaXacThuc
             // 
             this.txtMaXacThuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaXacThuc.Location = new System.Drawing.Point(130, 73);
+            this.txtMaXacThuc.Location = new System.Drawing.Point(131, 75);
             this.txtMaXacThuc.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaXacThuc.Name = "txtMaXacThuc";
-            this.txtMaXacThuc.Size = new System.Drawing.Size(88, 23);
+            this.txtMaXacThuc.Size = new System.Drawing.Size(126, 23);
             this.txtMaXacThuc.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 76);
+            this.label2.Location = new System.Drawing.Point(44, 81);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 17);
@@ -131,17 +130,16 @@
             // 
             // lblTimer
             // 
-
             this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimer.Location = new System.Drawing.Point(223, 72);
+            this.lblTimer.Location = new System.Drawing.Point(262, 74);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(53, 24);
+            this.lblTimer.Size = new System.Drawing.Size(33, 24);
             this.lblTimer.TabIndex = 10;
             // 
             // progressBar1
             // 
             this.progressBar1.BackColor = System.Drawing.Color.Silver;
-            this.progressBar1.Location = new System.Drawing.Point(284, 72);
+            this.progressBar1.Location = new System.Drawing.Point(307, 75);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(5);
             this.progressBar1.Maximum = 100;
             this.progressBar1.Name = "progressBar1";

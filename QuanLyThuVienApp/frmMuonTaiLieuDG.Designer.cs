@@ -64,8 +64,8 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.txtEmail = new MetroFramework.Controls.MetroTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnXoaSLM = new FontAwesome.Sharp.IconButton();
             this.progressBar1 = new MetroFramework.Controls.MetroProgressSpinner();
+            this.btnXoaSLM = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSachMuon)).BeginInit();
@@ -278,7 +278,7 @@
             this.btnDangKy.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnDangKy.IconSize = 19;
             this.btnDangKy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangKy.Location = new System.Drawing.Point(1120, 150);
+            this.btnDangKy.Location = new System.Drawing.Point(1118, 160);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(87, 25);
@@ -297,7 +297,7 @@
             this.btnXoaHet.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnXoaHet.IconSize = 19;
             this.btnXoaHet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoaHet.Location = new System.Drawing.Point(912, 150);
+            this.btnXoaHet.Location = new System.Drawing.Point(910, 160);
             this.btnXoaHet.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaHet.Name = "btnXoaHet";
             this.btnXoaHet.Size = new System.Drawing.Size(87, 25);
@@ -491,7 +491,7 @@
             // 
             // 
             this.txtEmail.CustomButton.Image = null;
-            this.txtEmail.CustomButton.Location = new System.Drawing.Point(274, 1);
+            this.txtEmail.CustomButton.Location = new System.Drawing.Point(240, 1);
             this.txtEmail.CustomButton.Name = "";
             this.txtEmail.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -500,7 +500,7 @@
             this.txtEmail.CustomButton.UseSelectable = true;
             this.txtEmail.CustomButton.Visible = false;
             this.txtEmail.Lines = new string[0];
-            this.txtEmail.Location = new System.Drawing.Point(912, 121);
+            this.txtEmail.Location = new System.Drawing.Point(912, 132);
             this.txtEmail.MaxLength = 32767;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
@@ -510,7 +510,7 @@
             this.txtEmail.SelectionLength = 0;
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.ShortcutsEnabled = true;
-            this.txtEmail.Size = new System.Drawing.Size(296, 23);
+            this.txtEmail.Size = new System.Drawing.Size(262, 23);
             this.txtEmail.TabIndex = 22;
             this.txtEmail.UseSelectable = true;
             this.txtEmail.WaterMark = "Nhập vào email để xác thực";
@@ -521,34 +521,15 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(909, 100);
+            this.label1.Location = new System.Drawing.Point(909, 111);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Email";
             // 
-            // btnXoaSLM
-            // 
-            this.btnXoaSLM.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnXoaSLM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaSLM.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnXoaSLM.IconColor = System.Drawing.Color.Black;
-            this.btnXoaSLM.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            this.btnXoaSLM.IconSize = 19;
-            this.btnXoaSLM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoaSLM.Location = new System.Drawing.Point(1016, 150);
-            this.btnXoaSLM.Margin = new System.Windows.Forms.Padding(2);
-            this.btnXoaSLM.Name = "btnXoaSLM";
-            this.btnXoaSLM.Size = new System.Drawing.Size(87, 25);
-            this.btnXoaSLM.TabIndex = 31;
-            this.btnXoaSLM.Text = "Sửa SLM";
-            this.btnXoaSLM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXoaSLM.UseVisualStyleBackColor = false;
-            this.btnXoaSLM.Click += new System.EventHandler(this.btnXoaSLM_Click);
-            // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(874, 84);
+            this.progressBar1.Location = new System.Drawing.Point(1180, 125);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(0);
             this.progressBar1.Maximum = 100;
             this.progressBar1.Name = "progressBar1";
@@ -556,16 +537,28 @@
             this.progressBar1.TabIndex = 32;
             this.progressBar1.UseSelectable = true;
             // 
+            // btnXoaSLM
+            // 
+            this.btnXoaSLM.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnXoaSLM.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoaSLM.Image = global::QuanLyThuVienApp.Properties.Resources.png_clipart_computer_icons_symbol_others_miscellaneous_repair_removebg_preview;
+            this.btnXoaSLM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoaSLM.Location = new System.Drawing.Point(1008, 160);
+            this.btnXoaSLM.Name = "btnXoaSLM";
+            this.btnXoaSLM.Size = new System.Drawing.Size(99, 25);
+            this.btnXoaSLM.TabIndex = 33;
+            this.btnXoaSLM.Text = "    Sửa SLM";
+            this.btnXoaSLM.UseVisualStyleBackColor = false;
+            this.btnXoaSLM.Click += new System.EventHandler(this.btnXoaSLM_Click);
+            // 
             // frmMuonTaiLieuDG
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1219, 724);
-
-            this.ClientSize = new System.Drawing.Size(915, 475);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnXoaSLM);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.groupBox1);
@@ -630,7 +623,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MoTa;
         private MetroFramework.Controls.MetroTextBox txtEmail;
         private System.Windows.Forms.Label label1;
-        private FontAwesome.Sharp.IconButton btnXoaSLM;
         private MetroFramework.Controls.MetroProgressSpinner progressBar1;
+        private System.Windows.Forms.Button btnXoaSLM;
     }
 }

@@ -490,6 +490,17 @@ namespace QuanLyThuVienApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap png_transparent_computer_icons_send_miscellaneous_angle_rectangle_thumbnail_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("png-transparent-computer-icons-send-miscellaneous-angle-rectangle-thumbnail-remov" +
+                        "ebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap png_transparent_hamburger_button_computer_icons_menu_option_button_start_menu_menu_line_thumbnail_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("png-transparent-hamburger-button-computer-icons-menu-option-button-start-menu-men" +

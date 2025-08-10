@@ -57,8 +57,6 @@
             this.btnInfor = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnChatbox = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnDangXuat = new System.Windows.Forms.Button();
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.sidebarTransition = new System.Windows.Forms.Timer(this.components);
             this.metroPanel1.SuspendLayout();
@@ -75,7 +73,6 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel10.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -160,7 +157,6 @@
             this.sidebar.Controls.Add(this.panel2);
             this.sidebar.Controls.Add(this.panel3);
             this.sidebar.Controls.Add(this.panel10);
-            this.sidebar.Controls.Add(this.panel4);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.Location = new System.Drawing.Point(8, 64);
             this.sidebar.Name = "sidebar";
@@ -405,31 +401,6 @@
             this.btnChatbox.UseVisualStyleBackColor = false;
             this.btnChatbox.Click += new System.EventHandler(this.btnChatbox_Click);
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnDangXuat);
-            this.panel4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(3, 323);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(233, 58);
-            this.panel4.TabIndex = 9;
-            // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.btnDangXuat.ForeColor = System.Drawing.Color.White;
-            this.btnDangXuat.Image = global::QuanLyThuVienApp.Properties.Resources.log_out_removebg_preview;
-            this.btnDangXuat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangXuat.Location = new System.Drawing.Point(-52, -14);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
-            this.btnDangXuat.Size = new System.Drawing.Size(319, 87);
-            this.btnDangXuat.TabIndex = 8;
-            this.btnDangXuat.Text = "                       Đăng xuất";
-            this.btnDangXuat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangXuat.UseVisualStyleBackColor = false;
-            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click_1);
-            // 
             // menuTransition
             // 
             this.menuTransition.Interval = 10;
@@ -476,7 +447,6 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -497,8 +467,6 @@
         private System.Windows.Forms.Button btnTroGiup;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnInfor;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnDangXuat;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button menu;
         private System.Windows.Forms.FlowLayoutPanel menuContainer;

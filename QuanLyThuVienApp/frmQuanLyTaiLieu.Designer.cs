@@ -321,12 +321,14 @@
             // 
             this.btnThem.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.Image = global::QuanLyThuVienApp.Properties.Resources._992651_removebg_preview;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThem.Location = new System.Drawing.Point(139, 21);
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(97, 25);
+            this.btnThem.Size = new System.Drawing.Size(113, 25);
             this.btnThem.TabIndex = 16;
-            this.btnThem.Text = "Thêm tài liệu";
+            this.btnThem.Text = "    Thêm tài liệu";
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -334,12 +336,14 @@
             // 
             this.btnSua.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.Image = global::QuanLyThuVienApp.Properties.Resources.png_clipart_computer_icons_symbol_others_miscellaneous_repair_removebg_preview;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSua.Location = new System.Drawing.Point(139, 7);
             this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(97, 25);
+            this.btnSua.Size = new System.Drawing.Size(113, 25);
             this.btnSua.TabIndex = 16;
-            this.btnSua.Text = "Sửa tài liệu";
+            this.btnSua.Text = "   Sửa tài liệu";
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
@@ -347,12 +351,14 @@
             // 
             this.btnXoa.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Image = global::QuanLyThuVienApp.Properties.Resources._1;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoa.Location = new System.Drawing.Point(139, 38);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(97, 25);
+            this.btnXoa.Size = new System.Drawing.Size(113, 25);
             this.btnXoa.TabIndex = 16;
-            this.btnXoa.Text = "Xóa tài liệu";
+            this.btnXoa.Text = "  Xóa tài liệu";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
@@ -464,7 +470,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(241, 69);
+            this.groupBox1.Size = new System.Drawing.Size(256, 69);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             // 

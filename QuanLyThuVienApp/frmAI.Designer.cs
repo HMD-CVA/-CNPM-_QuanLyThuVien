@@ -30,11 +30,11 @@
         {
             this.richTextBoxChat = new System.Windows.Forms.RichTextBox();
             this.textBoxInput = new System.Windows.Forms.TextBox();
-            this.buttonSend = new System.Windows.Forms.Button();
-            this.buttonClearChat = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonClearChat = new System.Windows.Forms.Button();
+            this.buttonSend = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,40 +42,21 @@
             // 
             this.richTextBoxChat.Location = new System.Drawing.Point(50, 117);
             this.richTextBoxChat.Name = "richTextBoxChat";
-            this.richTextBoxChat.Size = new System.Drawing.Size(698, 310);
+            this.richTextBoxChat.Size = new System.Drawing.Size(1055, 537);
             this.richTextBoxChat.TabIndex = 0;
             this.richTextBoxChat.Text = "";
             // 
             // textBoxInput
             // 
-            this.textBoxInput.Location = new System.Drawing.Point(124, 76);
+            this.textBoxInput.Location = new System.Drawing.Point(127, 88);
             this.textBoxInput.Name = "textBoxInput";
-            this.textBoxInput.Size = new System.Drawing.Size(426, 20);
+            this.textBoxInput.Size = new System.Drawing.Size(759, 20);
             this.textBoxInput.TabIndex = 1;
-            // 
-            // buttonSend
-            // 
-            this.buttonSend.Location = new System.Drawing.Point(673, 76);
-            this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(75, 23);
-            this.buttonSend.TabIndex = 2;
-            this.buttonSend.Text = "Gửi";
-            this.buttonSend.UseVisualStyleBackColor = true;
-            // 
-            // buttonClearChat
-            // 
-            this.buttonClearChat.Location = new System.Drawing.Point(578, 76);
-            this.buttonClearChat.Name = "buttonClearChat";
-            this.buttonClearChat.Size = new System.Drawing.Size(75, 23);
-            this.buttonClearChat.TabIndex = 3;
-            this.buttonClearChat.Text = "Làm Mới";
-            this.buttonClearChat.UseVisualStyleBackColor = true;
-            this.buttonClearChat.Click += new System.EventHandler(this.buttonClearChat_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 76);
+            this.label1.Location = new System.Drawing.Point(50, 91);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 4;
@@ -85,7 +66,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(349, 26);
+            this.label2.Location = new System.Drawing.Point(523, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 24);
             this.label2.TabIndex = 5;
@@ -100,6 +81,29 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
+            // 
+            // buttonClearChat
+            // 
+            this.buttonClearChat.Image = global::QuanLyThuVienApp.Properties.Resources.abc;
+            this.buttonClearChat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonClearChat.Location = new System.Drawing.Point(905, 88);
+            this.buttonClearChat.Name = "buttonClearChat";
+            this.buttonClearChat.Size = new System.Drawing.Size(97, 23);
+            this.buttonClearChat.TabIndex = 3;
+            this.buttonClearChat.Text = "       Làm Mới";
+            this.buttonClearChat.UseVisualStyleBackColor = true;
+            this.buttonClearChat.Click += new System.EventHandler(this.buttonClearChat_Click);
+            // 
+            // buttonSend
+            // 
+            this.buttonSend.Image = global::QuanLyThuVienApp.Properties.Resources.png_transparent_computer_icons_send_miscellaneous_angle_rectangle_thumbnail_removebg_preview;
+            this.buttonSend.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSend.Location = new System.Drawing.Point(1008, 88);
+            this.buttonSend.Name = "buttonSend";
+            this.buttonSend.Size = new System.Drawing.Size(97, 23);
+            this.buttonSend.TabIndex = 2;
+            this.buttonSend.Text = "  Gửi";
+            this.buttonSend.UseVisualStyleBackColor = true;
             // 
             // frmAI
             // 
