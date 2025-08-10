@@ -183,6 +183,7 @@ namespace QuanLyThuVienApp
                 form.Close();
             frmTroGiup frm = new frmTroGiup();
             frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
         }
 
@@ -201,6 +202,7 @@ namespace QuanLyThuVienApp
                 form.Close();
             frmInfor frm = new frmInfor();
             frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
         }
 
@@ -223,6 +225,7 @@ namespace QuanLyThuVienApp
                 form.Close();
             frmTaiLieuDG frm = new frmTaiLieuDG();
             frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
         }
 
@@ -254,6 +257,16 @@ namespace QuanLyThuVienApp
             //frmCColumn_SachTheoTheLoai frm = new frmCColumn_SachTheoTheLoai();
             //frm.MdiParent = this;
             //frm.Show();
+        }
+
+        private void btnChatbox_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmAL frm = new frmAL();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
         }
     }
 }

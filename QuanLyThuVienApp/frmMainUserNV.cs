@@ -30,7 +30,7 @@ namespace QuanLyThuVienApp
             {
                 text = "Tài khoản của bạn đang bị khóa, vui lòng đến thư viện để được xử lý!";
                 tslbThongTin.ForeColor = Color.Red;
-                btnQLPhieuMuon.Enabled = false;
+                //btnQLPhieuMuon.Enabled = false;
             }
             else if( _biKhoa == false)
             {
@@ -58,25 +58,174 @@ namespace QuanLyThuVienApp
             tslbTimer.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss  ");
         }
         
-        private void btnThongTin_Click(object sender, EventArgs e)
+        //private void btnThongTin_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmThongTinNV frm = new frmThongTinNV(tenDN, quyenHan);
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnGioiThieu_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmInfor frm = new frmInfor();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnDangXuat_Click(object sender, EventArgs e)
+        //{
+        //    frmHomes frm = new frmHomes();
+        //    this.Hide();
+        //    frm.ShowDialog();
+        //    this.Close();
+        //}
+
+        //private void btnMuonSach_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmQuanLyPhieuMuon frm = new frmQuanLyPhieuMuon(maNV, this);
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnThongKe_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    //frmCColumn_SachTheoTheLoai frm = new frmCColumn_SachTheoTheLoai();
+        //    //frm.MdiParent = this;
+        //    //frm.Show();
+        //}
+
+        //private void btnTroGiup_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmTroGiup frm = new frmTroGiup();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnLichSuMuon_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmQuanLyTaiLieu frm = new frmQuanLyTaiLieu();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnQLDocGia_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmQuanLyDocGia frm = new frmQuanLyDocGia();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnGuiEmail_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmGuiEmailQuaHan frm = new frmGuiEmailQuaHan();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        bool menuExpand = false;
+        private void menuTransition_Tick(object sender, EventArgs e)
+        {
+            if (menuExpand == false)
+            {
+                menuContainer.Height += 10;
+                if (menuContainer.Height >= 391)
+                {
+                    menuTransition.Stop();
+                    menuExpand = true;
+                }
+            }
+            else
+            {
+                menuContainer.Height -= 10;
+                if (menuContainer.Height <= 58)
+                {
+                    menuTransition.Stop();
+                    menuExpand = false;
+                }
+            }
+        }
+
+        private void menu_Click(object sender, EventArgs e)
+        {
+            menuTransition.Start();
+        }
+
+        bool sidebarExpand = true;
+
+        private void sidebarTransition_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if (sidebar.Width <= 67)
+                {
+                    sidebarExpand = false;
+                    sidebarTransition.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width >= 236)
+                {
+                    sidebarExpand = true;
+                    sidebarTransition.Stop();
+                }
+            }
+        }
+
+        private void btnHam_Click(object sender, EventArgs e)
+        {
+            sidebarTransition.Start();
+        }
+
+        private void btnCaNhan_Click(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
             frmThongTinNV frm = new frmThongTinNV(tenDN, quyenHan);
             frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
         }
 
-        private void btnGioiThieu_Click(object sender, EventArgs e)
+        private void btnTroGiup_Click_1(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmTroGiup frm = new frmTroGiup();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void btnInfor_Click(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
             frmInfor frm = new frmInfor();
             frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
         }
 
-        private void btnDangXuat_Click(object sender, EventArgs e)
+        private void btnDangXuat_Click_1(object sender, EventArgs e)
         {
             frmHomes frm = new frmHomes();
             this.Hide();
@@ -84,58 +233,53 @@ namespace QuanLyThuVienApp
             this.Close();
         }
 
-        private void btnMuonSach_Click(object sender, EventArgs e)
+        private void btnQLSach_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmQuanLyTaiLieu frm = new frmQuanLyTaiLieu();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void btnPhieuMuon_Click(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
             frmQuanLyPhieuMuon frm = new frmQuanLyPhieuMuon(maNV, this);
             frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
         }
 
-        private void btnThongKe_Click(object sender, EventArgs e)
+        private void btnQLDocGia_Click_1(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmQuanLyDocGia frm = new frmQuanLyDocGia();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void btnGuiEmail_Click_1(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmGuiEmailQuaHan frm = new frmGuiEmailQuaHan();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void btnThongKe_Click_1(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
             //frmCColumn_SachTheoTheLoai frm = new frmCColumn_SachTheoTheLoai();
             //frm.MdiParent = this;
             //frm.Show();
-        }
-
-        private void btnTroGiup_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmTroGiup frm = new frmTroGiup();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void btnLichSuMuon_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmQuanLyTaiLieu frm = new frmQuanLyTaiLieu();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void btnQLDocGia_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmQuanLyDocGia frm = new frmQuanLyDocGia();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void btnGuiEmail_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmGuiEmailQuaHan frm = new frmGuiEmailQuaHan();
-            frm.MdiParent = this;
-            frm.Show();
         }
     }
 }

@@ -63,10 +63,30 @@ namespace QuanLyThuVienApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1 {
+            get {
+                object obj = ResourceManager.GetObject("1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _202_2021817_password_icon_png_forgot_password_icon_transparent_png_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("202-2021817_password-icon-png-forgot-password-icon-transparent-png-removebg-previ" +
                         "ew", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _3022251_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("3022251-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -114,9 +134,49 @@ namespace QuanLyThuVienApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _61457_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("61457-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _6e85433773df189370918acb9dc95e68_t_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("6e85433773df189370918acb9dc95e68_t-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _893_8933259_registration_tickets_icon_white_transparent {
             get {
                 object obj = ResourceManager.GetObject("893-8933259_registration-tickets-icon-white-transparent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _992651_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("992651-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap abc {
+            get {
+                object obj = ResourceManager.GetObject("abc", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -174,6 +234,28 @@ namespace QuanLyThuVienApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap depositphotos_368205172_stock_illustration_seamless_pattern_of_hand_drawn_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("depositphotos_368205172-stock-illustration-seamless-pattern-of-hand-drawn-removeb" +
+                        "g-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap depositphotos_372944490_stock_illustration_set_of_hand_drawn_book_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("depositphotos_372944490-stock-illustration-set-of-hand-drawn-book-removebg-previe" +
+                        "w", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap document__v2 {
             get {
                 object obj = ResourceManager.GetObject("document--v2", resourceCulture);
@@ -197,6 +279,66 @@ namespace QuanLyThuVienApp.Properties {
         internal static System.Drawing.Bitmap images__1__removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("images__1_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images__2__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("images__2_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images__3__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("images__3_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images__4__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("images__4_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images__5__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("images__5_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images__6__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("images__6_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images__7__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("images__7_-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -244,6 +386,16 @@ namespace QuanLyThuVienApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap management_icon_png_16_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("management-icon-png-16-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Menhu_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("Menhu-removebg-preview", resourceCulture);
@@ -277,6 +429,49 @@ namespace QuanLyThuVienApp.Properties {
         internal static System.Drawing.Bitmap png_clipart_black_n_white_clock_icon_logo_thumbnail_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("png-clipart-black-n-white-clock-icon-logo-thumbnail-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_computer_icons_symbol_others_miscellaneous_repair_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-computer-icons-symbol-others-miscellaneous-repair-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_white_books_illustration_library_reading_book_icon_book_angle_comic_book_thumbnail {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-white-books-illustration-library-reading-book-icon-book-angle-comic-b" +
+                        "ook-thumbnail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_white_books_illustration_library_reading_book_icon_book_angle_comic_book_thumbnail_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-white-books-illustration-library-reading-book-icon-book-angle-comic-b" +
+                        "ook-thumbnail-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_white_books_illustration_library_reading_book_icon_book_angle_comic_book_thumbnail_removebg_preview___Copy {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-white-books-illustration-library-reading-book-icon-book-angle-comic-b" +
+                        "ook-thumbnail-removebg-preview - Copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -337,9 +532,79 @@ namespace QuanLyThuVienApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pngtree_tick_vector_icon_png_image_696437_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-tick-vector-icon-png-image_696437-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_tick_vector_icon_png_image_696437_removebg_preview1 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-tick-vector-icon-png-image_696437-removebg-preview1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sign_up_icon_png_21_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("sign-up-icon-png-21-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Support {
             get {
                 object obj = ResourceManager.GetObject("Support", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tl_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("tl-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tl_removebg_preview1 {
+            get {
+                object obj = ResourceManager.GetObject("tl-removebg-preview1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unlock_53_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("unlock-53-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap x_071c9m1bqy9w3hucaxrc6v4_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("x-071c9m1bqy9w3hucaxrc6v4-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

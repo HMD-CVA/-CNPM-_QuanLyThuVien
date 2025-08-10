@@ -55,6 +55,8 @@
             this.btnTroGiup = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnInfor = new System.Windows.Forms.Button();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.btnChatbox = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
@@ -72,6 +74,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +84,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.SkyBlue;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(72, 4);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -105,7 +108,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(8, 30);
             this.metroPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1156, 34);
+            this.metroPanel1.Size = new System.Drawing.Size(1464, 34);
             this.metroPanel1.TabIndex = 1;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -143,9 +146,9 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslbTimer,
             this.tslbThongTin});
-            this.toolStrip1.Location = new System.Drawing.Point(8, 767);
+            this.toolStrip1.Location = new System.Drawing.Point(8, 797);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1156, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1464, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -156,11 +159,12 @@
             this.sidebar.Controls.Add(this.panel1);
             this.sidebar.Controls.Add(this.panel2);
             this.sidebar.Controls.Add(this.panel3);
+            this.sidebar.Controls.Add(this.panel10);
             this.sidebar.Controls.Add(this.panel4);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.Location = new System.Drawing.Point(8, 64);
             this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(236, 703);
+            this.sidebar.Size = new System.Drawing.Size(236, 733);
             this.sidebar.TabIndex = 6;
             // 
             // menuContainer
@@ -376,11 +380,36 @@
             this.btnInfor.UseVisualStyleBackColor = false;
             this.btnInfor.Click += new System.EventHandler(this.btnInfor_Click_1);
             // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btnChatbox);
+            this.panel10.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel10.Location = new System.Drawing.Point(3, 259);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(233, 58);
+            this.panel10.TabIndex = 10;
+            // 
+            // btnChatbox
+            // 
+            this.btnChatbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnChatbox.ForeColor = System.Drawing.Color.White;
+            this.btnChatbox.Image = global::QuanLyThuVienApp.Properties.Resources.tl_removebg_preview1;
+            this.btnChatbox.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChatbox.Location = new System.Drawing.Point(-52, -14);
+            this.btnChatbox.Name = "btnChatbox";
+            this.btnChatbox.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
+            this.btnChatbox.Size = new System.Drawing.Size(319, 87);
+            this.btnChatbox.TabIndex = 8;
+            this.btnChatbox.Text = "                       Chatbox AI";
+            this.btnChatbox.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChatbox.UseVisualStyleBackColor = false;
+            this.btnChatbox.Click += new System.EventHandler(this.btnChatbox_Click);
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnDangXuat);
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(3, 259);
+            this.panel4.Location = new System.Drawing.Point(3, 323);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(233, 58);
             this.panel4.TabIndex = 9;
@@ -415,7 +444,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 800);
+            this.ClientSize = new System.Drawing.Size(1480, 830);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.metroPanel1);
@@ -446,6 +475,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -483,6 +513,8 @@
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.PictureBox btnHam;
         private System.Windows.Forms.Timer sidebarTransition;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button btnChatbox;
     }
 }
 

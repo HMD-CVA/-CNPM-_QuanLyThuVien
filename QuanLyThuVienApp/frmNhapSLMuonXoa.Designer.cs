@@ -55,19 +55,23 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(56, 88);
+            this.btnOK.Image = global::QuanLyThuVienApp.Properties.Resources.pngtree_tick_vector_icon_png_image_696437_removebg_preview1;
+            this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOK.Location = new System.Drawing.Point(71, 88);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(84, 23);
             this.btnOK.TabIndex = 2;
-            this.btnOK.Text = "OK";
+            this.btnOK.Text = "      Xác nhận";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(179, 88);
+            this.btnHuy.Image = global::QuanLyThuVienApp.Properties.Resources._1;
+            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHuy.Location = new System.Drawing.Point(194, 88);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(75, 23);
+            this.btnHuy.Size = new System.Drawing.Size(84, 23);
             this.btnHuy.TabIndex = 3;
             this.btnHuy.Text = "Thoát";
             this.btnHuy.UseVisualStyleBackColor = true;

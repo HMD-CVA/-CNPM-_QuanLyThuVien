@@ -30,9 +30,9 @@
         {
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnGiaHan = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnGiaHan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,29 +56,18 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Số ngày gia hạn";
             // 
-            // btnGiaHan
-            // 
-            this.btnGiaHan.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnGiaHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGiaHan.Location = new System.Drawing.Point(67, 114);
-            this.btnGiaHan.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGiaHan.Name = "btnGiaHan";
-            this.btnGiaHan.Size = new System.Drawing.Size(81, 25);
-            this.btnGiaHan.TabIndex = 2;
-            this.btnGiaHan.Text = "Gia hạn";
-            this.btnGiaHan.UseVisualStyleBackColor = false;
-            this.btnGiaHan.Click += new System.EventHandler(this.btnGiaHan_Click);
-            // 
             // btnThoat
             // 
             this.btnThoat.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(167, 114);
+            this.btnThoat.Image = global::QuanLyThuVienApp.Properties.Resources._1;
+            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThoat.Location = new System.Drawing.Point(172, 114);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(81, 25);
+            this.btnThoat.Size = new System.Drawing.Size(99, 25);
             this.btnThoat.TabIndex = 2;
-            this.btnThoat.Text = "Thoát";
+            this.btnThoat.Text = "   Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
@@ -93,6 +82,21 @@
             this.label2.Size = new System.Drawing.Size(219, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "GIA HẠN MƯỢN TÀI LIỆU";
+            // 
+            // btnGiaHan
+            // 
+            this.btnGiaHan.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnGiaHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGiaHan.Image = global::QuanLyThuVienApp.Properties.Resources.images__3__removebg_preview;
+            this.btnGiaHan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGiaHan.Location = new System.Drawing.Point(37, 114);
+            this.btnGiaHan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGiaHan.Name = "btnGiaHan";
+            this.btnGiaHan.Size = new System.Drawing.Size(99, 25);
+            this.btnGiaHan.TabIndex = 2;
+            this.btnGiaHan.Text = "    Gia hạn";
+            this.btnGiaHan.UseVisualStyleBackColor = false;
+            this.btnGiaHan.Click += new System.EventHandler(this.btnGiaHan_Click);
             // 
             // frmGiaHan
             // 

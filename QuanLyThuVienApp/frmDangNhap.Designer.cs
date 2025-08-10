@@ -152,7 +152,7 @@
             this.linkQuenMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkQuenMatKhau.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkQuenMatKhau.LinkColor = System.Drawing.Color.Red;
-            this.linkQuenMatKhau.Location = new System.Drawing.Point(136, 206);
+            this.linkQuenMatKhau.Location = new System.Drawing.Point(153, 206);
             this.linkQuenMatKhau.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkQuenMatKhau.Name = "linkQuenMatKhau";
             this.linkQuenMatKhau.Size = new System.Drawing.Size(122, 18);
@@ -191,10 +191,10 @@
             this.btnThoat.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnThoat.IconSize = 19;
             this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnThoat.Location = new System.Drawing.Point(216, 161);
+            this.btnThoat.Location = new System.Drawing.Point(231, 161);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(73, 25);
+            this.btnThoat.Size = new System.Drawing.Size(107, 25);
             this.btnThoat.TabIndex = 47;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -210,7 +210,7 @@
             this.btnDangNhap.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnDangNhap.IconSize = 19;
             this.btnDangNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangNhap.Location = new System.Drawing.Point(105, 161);
+            this.btnDangNhap.Location = new System.Drawing.Point(93, 161);
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(107, 25);

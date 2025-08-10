@@ -42,12 +42,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.SkyBlue;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label1.Location = new System.Drawing.Point(84, 33);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 20);
+            this.label1.Size = new System.Drawing.Size(197, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "XÁC THỰC TÀI KHOẢN";
             // 
@@ -55,10 +55,12 @@
             // 
             this.btnXacThuc.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnXacThuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXacThuc.Location = new System.Drawing.Point(50, 122);
+            this.btnXacThuc.Image = global::QuanLyThuVienApp.Properties.Resources.pngtree_tick_vector_icon_png_image_696437_removebg_preview;
+            this.btnXacThuc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXacThuc.Location = new System.Drawing.Point(6, 122);
             this.btnXacThuc.Margin = new System.Windows.Forms.Padding(2);
             this.btnXacThuc.Name = "btnXacThuc";
-            this.btnXacThuc.Size = new System.Drawing.Size(80, 25);
+            this.btnXacThuc.Size = new System.Drawing.Size(110, 25);
             this.btnXacThuc.TabIndex = 1;
             this.btnXacThuc.Text = "Xác thực";
             this.btnXacThuc.UseVisualStyleBackColor = false;
@@ -68,10 +70,12 @@
             // 
             this.btnGuiLai.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnGuiLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuiLai.Location = new System.Drawing.Point(134, 122);
+            this.btnGuiLai.Image = global::QuanLyThuVienApp.Properties.Resources.abc;
+            this.btnGuiLai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuiLai.Location = new System.Drawing.Point(116, 122);
             this.btnGuiLai.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuiLai.Name = "btnGuiLai";
-            this.btnGuiLai.Size = new System.Drawing.Size(80, 25);
+            this.btnGuiLai.Size = new System.Drawing.Size(110, 25);
             this.btnGuiLai.TabIndex = 2;
             this.btnGuiLai.Text = "Gửi lại";
             this.btnGuiLai.UseVisualStyleBackColor = false;
@@ -81,10 +85,12 @@
             // 
             this.btnThoat.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(218, 122);
+            this.btnThoat.Image = global::QuanLyThuVienApp.Properties.Resources._1;
+            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThoat.Location = new System.Drawing.Point(226, 122);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(80, 25);
+            this.btnThoat.Size = new System.Drawing.Size(110, 25);
             this.btnThoat.TabIndex = 3;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
@@ -95,12 +101,12 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(105, 165);
+            this.label5.Location = new System.Drawing.Point(17, 155);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(131, 17);
+            this.label5.Size = new System.Drawing.Size(312, 17);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Cần kết nối internet";
+            this.label5.Text = "*Lưu ý cần kết nối với Internet để nhận mã OTP*";
             // 
             // txtMaXacThuc
             // 
@@ -124,7 +130,7 @@
             // 
             // lblTimer
             // 
-            this.lblTimer.Location = new System.Drawing.Point(280, 169);
+            this.lblTimer.Location = new System.Drawing.Point(281, 180);
             this.lblTimer.Name = "lblTimer";
             this.lblTimer.Size = new System.Drawing.Size(53, 20);
             this.lblTimer.TabIndex = 10;

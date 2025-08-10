@@ -39,8 +39,6 @@
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BiKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLamMoi = new FontAwesome.Sharp.IconButton();
-            this.btnTimKiem = new FontAwesome.Sharp.IconButton();
             this.cbTimKiem = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
@@ -48,22 +46,24 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnDangKy = new System.Windows.Forms.Button();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.txtSuaSDT = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtSuaTen = new System.Windows.Forms.TextBox();
-            this.btnSuaEmail = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtSuaEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSuaEmail = new System.Windows.Forms.Button();
+            this.btnDangKy = new System.Windows.Forms.Button();
+            this.btnLamMoi = new FontAwesome.Sharp.IconButton();
+            this.btnTimKiem = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBanDoc)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -74,10 +74,10 @@
             // 
             this.panel1.Controls.Add(this.dgvBanDoc);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 166);
+            this.panel1.Location = new System.Drawing.Point(0, 187);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(915, 309);
+            this.panel1.Size = new System.Drawing.Size(1219, 537);
             this.panel1.TabIndex = 21;
             // 
             // dgvBanDoc
@@ -119,7 +119,7 @@
             this.dgvBanDoc.RowHeadersVisible = false;
             this.dgvBanDoc.RowHeadersWidth = 51;
             this.dgvBanDoc.RowTemplate.Height = 24;
-            this.dgvBanDoc.Size = new System.Drawing.Size(915, 309);
+            this.dgvBanDoc.Size = new System.Drawing.Size(1219, 537);
             this.dgvBanDoc.TabIndex = 1;
             this.dgvBanDoc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBanDoc_CellClick);
             // 
@@ -183,44 +183,6 @@
             this.SoLuong.ReadOnly = true;
             this.SoLuong.Width = 85;
             // 
-            // btnLamMoi
-            // 
-            this.btnLamMoi.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateBackward;
-            this.btnLamMoi.IconColor = System.Drawing.Color.Black;
-            this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnLamMoi.IconSize = 19;
-            this.btnLamMoi.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLamMoi.Location = new System.Drawing.Point(713, 104);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(85, 25);
-            this.btnLamMoi.TabIndex = 25;
-            this.btnLamMoi.Text = "Làm mới";
-            this.btnLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLamMoi.UseVisualStyleBackColor = false;
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.btnTimKiem.IconColor = System.Drawing.Color.Black;
-            this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnTimKiem.IconSize = 19;
-            this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnTimKiem.Location = new System.Drawing.Point(805, 104);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(85, 25);
-            this.btnTimKiem.TabIndex = 26;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTimKiem.UseVisualStyleBackColor = false;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
             // cbTimKiem
             // 
             this.cbTimKiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -230,7 +192,7 @@
             "Mã độc giả",
             "Tên độc giả",
             "Email"});
-            this.cbTimKiem.Location = new System.Drawing.Point(792, 27);
+            this.cbTimKiem.Location = new System.Drawing.Point(1094, 11);
             this.cbTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.cbTimKiem.Name = "cbTimKiem";
             this.cbTimKiem.Size = new System.Drawing.Size(114, 25);
@@ -240,7 +202,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(695, 31);
+            this.label1.Location = new System.Drawing.Point(997, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 17);
@@ -250,7 +212,7 @@
             // txtTimKiem
             // 
             this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(698, 63);
+            this.txtTimKiem.Location = new System.Drawing.Point(1000, 47);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(208, 23);
@@ -271,17 +233,17 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(278, 151);
+            this.groupBox1.Size = new System.Drawing.Size(495, 155);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thêm độc giả mới";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(95, 120);
+            this.progressBar1.Location = new System.Drawing.Point(156, 120);
             this.progressBar1.MarqueeAnimationSpeed = 33;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(174, 23);
+            this.progressBar1.Size = new System.Drawing.Size(313, 23);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 8;
             this.progressBar1.Visible = false;
@@ -291,7 +253,7 @@
             this.txtSDT.Location = new System.Drawing.Point(60, 75);
             this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(209, 23);
+            this.txtSDT.Size = new System.Drawing.Size(409, 23);
             this.txtSDT.TabIndex = 7;
             // 
             // label8
@@ -304,24 +266,12 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "SĐT:";
             // 
-            // btnDangKy
-            // 
-            this.btnDangKy.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDangKy.Location = new System.Drawing.Point(10, 118);
-            this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDangKy.Name = "btnDangKy";
-            this.btnDangKy.Size = new System.Drawing.Size(80, 25);
-            this.btnDangKy.TabIndex = 4;
-            this.btnDangKy.Text = "Đăng ký";
-            this.btnDangKy.UseVisualStyleBackColor = false;
-            this.btnDangKy.Click += new System.EventHandler(this.btnDangKy_Click);
-            // 
             // txtTen
             // 
             this.txtTen.Location = new System.Drawing.Point(60, 21);
             this.txtTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtTen.Name = "txtTen";
-            this.txtTen.Size = new System.Drawing.Size(209, 23);
+            this.txtTen.Size = new System.Drawing.Size(409, 23);
             this.txtTen.TabIndex = 3;
             // 
             // txtEmail
@@ -329,7 +279,7 @@
             this.txtEmail.Location = new System.Drawing.Point(60, 48);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(209, 23);
+            this.txtEmail.Size = new System.Drawing.Size(409, 23);
             this.txtEmail.TabIndex = 1;
             // 
             // label3
@@ -365,33 +315,21 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(293, 11);
+            this.groupBox2.Location = new System.Drawing.Point(523, 11);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(366, 151);
+            this.groupBox2.Size = new System.Drawing.Size(453, 155);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin độc giả";
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnXoa.Location = new System.Drawing.Point(195, 118);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(122, 25);
-            this.btnXoa.TabIndex = 10;
-            this.btnXoa.Text = "Xoá độc giả";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // txtSuaSDT
             // 
             this.txtSuaSDT.Location = new System.Drawing.Point(50, 78);
             this.txtSuaSDT.Margin = new System.Windows.Forms.Padding(2);
             this.txtSuaSDT.Name = "txtSuaSDT";
-            this.txtSuaSDT.Size = new System.Drawing.Size(303, 23);
+            this.txtSuaSDT.Size = new System.Drawing.Size(385, 23);
             this.txtSuaSDT.TabIndex = 9;
             // 
             // label6
@@ -409,20 +347,8 @@
             this.txtSuaTen.Location = new System.Drawing.Point(195, 18);
             this.txtSuaTen.Margin = new System.Windows.Forms.Padding(2);
             this.txtSuaTen.Name = "txtSuaTen";
-            this.txtSuaTen.Size = new System.Drawing.Size(158, 23);
+            this.txtSuaTen.Size = new System.Drawing.Size(240, 23);
             this.txtSuaTen.TabIndex = 5;
-            // 
-            // btnSuaEmail
-            // 
-            this.btnSuaEmail.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSuaEmail.Location = new System.Drawing.Point(50, 118);
-            this.btnSuaEmail.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSuaEmail.Name = "btnSuaEmail";
-            this.btnSuaEmail.Size = new System.Drawing.Size(122, 25);
-            this.btnSuaEmail.TabIndex = 4;
-            this.btnSuaEmail.Text = "Sửa thông tin";
-            this.btnSuaEmail.UseVisualStyleBackColor = false;
-            this.btnSuaEmail.Click += new System.EventHandler(this.btnSuaEmail_Click);
             // 
             // txtID
             // 
@@ -438,7 +364,7 @@
             this.txtSuaEmail.Location = new System.Drawing.Point(50, 51);
             this.txtSuaEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtSuaEmail.Name = "txtSuaEmail";
-            this.txtSuaEmail.Size = new System.Drawing.Size(303, 23);
+            this.txtSuaEmail.Size = new System.Drawing.Size(385, 23);
             this.txtSuaEmail.TabIndex = 4;
             // 
             // label5
@@ -471,12 +397,92 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Email";
             // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnXoa.Image = global::QuanLyThuVienApp.Properties.Resources.images__4__removebg_preview;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(313, 118);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(122, 25);
+            this.btnXoa.TabIndex = 10;
+            this.btnXoa.Text = "    Xoá độc giả";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSuaEmail
+            // 
+            this.btnSuaEmail.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSuaEmail.Image = global::QuanLyThuVienApp.Properties.Resources.png_clipart_computer_icons_symbol_others_miscellaneous_repair_removebg_preview;
+            this.btnSuaEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSuaEmail.Location = new System.Drawing.Point(50, 120);
+            this.btnSuaEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSuaEmail.Name = "btnSuaEmail";
+            this.btnSuaEmail.Size = new System.Drawing.Size(122, 25);
+            this.btnSuaEmail.TabIndex = 4;
+            this.btnSuaEmail.Text = "    Sửa thông tin";
+            this.btnSuaEmail.UseVisualStyleBackColor = false;
+            this.btnSuaEmail.Click += new System.EventHandler(this.btnSuaEmail_Click);
+            // 
+            // btnDangKy
+            // 
+            this.btnDangKy.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDangKy.Image = global::QuanLyThuVienApp.Properties.Resources.sign_up_icon_png_21_removebg_preview;
+            this.btnDangKy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDangKy.Location = new System.Drawing.Point(36, 120);
+            this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDangKy.Name = "btnDangKy";
+            this.btnDangKy.Size = new System.Drawing.Size(104, 25);
+            this.btnDangKy.TabIndex = 4;
+            this.btnDangKy.Text = "     Đăng ký";
+            this.btnDangKy.UseVisualStyleBackColor = false;
+            this.btnDangKy.Click += new System.EventHandler(this.btnDangKy_Click);
+            // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLamMoi.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateBackward;
+            this.btnLamMoi.IconColor = System.Drawing.Color.Black;
+            this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnLamMoi.IconSize = 19;
+            this.btnLamMoi.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnLamMoi.Location = new System.Drawing.Point(1000, 89);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(85, 25);
+            this.btnLamMoi.TabIndex = 25;
+            this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLamMoi.UseVisualStyleBackColor = false;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnTimKiem.IconColor = System.Drawing.Color.Black;
+            this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btnTimKiem.IconSize = 19;
+            this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnTimKiem.Location = new System.Drawing.Point(1123, 87);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(85, 25);
+            this.btnTimKiem.TabIndex = 26;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
             // frmQuanLyDocGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(915, 475);
+            this.ClientSize = new System.Drawing.Size(1219, 724);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLamMoi);

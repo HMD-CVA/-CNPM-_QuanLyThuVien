@@ -45,7 +45,7 @@
             // 
             this.textBoxInput.Location = new System.Drawing.Point(47, 75);
             this.textBoxInput.Name = "textBoxInput";
-            this.textBoxInput.Size = new System.Drawing.Size(100, 20);
+            this.textBoxInput.Size = new System.Drawing.Size(503, 20);
             this.textBoxInput.TabIndex = 1;
             // 
             // buttonSend

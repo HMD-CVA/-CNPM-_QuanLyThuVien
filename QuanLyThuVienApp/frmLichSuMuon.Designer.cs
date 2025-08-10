@@ -59,7 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.metroPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTiet)).BeginInit();
@@ -69,16 +68,15 @@
             // 
             // metroPanel1
             // 
-            this.metroPanel1.Controls.Add(this.groupBox2);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 8;
-            this.metroPanel1.Location = new System.Drawing.Point(0, 225);
+            this.metroPanel1.Location = new System.Drawing.Point(0, 468);
             this.metroPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Padding = new System.Windows.Forms.Padding(5);
-            this.metroPanel1.Size = new System.Drawing.Size(922, 256);
+            this.metroPanel1.Size = new System.Drawing.Size(1219, 256);
             this.metroPanel1.TabIndex = 0;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -87,11 +85,10 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvPhieuMuon);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(5, 5);
+            this.groupBox2.Location = new System.Drawing.Point(6, 243);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(912, 246);
+            this.groupBox2.Size = new System.Drawing.Size(1209, 475);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chi tiết phiếu mượn";
@@ -121,7 +118,7 @@
             this.dgvPhieuMuon.RowHeadersVisible = false;
             this.dgvPhieuMuon.RowHeadersWidth = 51;
             this.dgvPhieuMuon.RowTemplate.Height = 24;
-            this.dgvPhieuMuon.Size = new System.Drawing.Size(906, 223);
+            this.dgvPhieuMuon.Size = new System.Drawing.Size(1203, 452);
             this.dgvPhieuMuon.TabIndex = 2;
             this.dgvPhieuMuon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuMuon_CellClick);
             this.dgvPhieuMuon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhieuMuon_CellFormatting);
@@ -162,6 +159,7 @@
             this.NgayMuon.MinimumWidth = 6;
             this.NgayMuon.Name = "NgayMuon";
             this.NgayMuon.ReadOnly = true;
+            this.NgayMuon.Width = 109;
             // 
             // HanTra
             // 
@@ -173,7 +171,7 @@
             this.HanTra.MinimumWidth = 6;
             this.HanTra.Name = "HanTra";
             this.HanTra.ReadOnly = true;
-            this.HanTra.Width = 60;
+            this.HanTra.Width = 81;
             // 
             // NgayTra
             // 
@@ -185,7 +183,7 @@
             this.NgayTra.MinimumWidth = 6;
             this.NgayTra.Name = "NgayTra";
             this.NgayTra.ReadOnly = true;
-            this.NgayTra.Width = 81;
+            this.NgayTra.Width = 88;
             // 
             // DaTra
             // 
@@ -195,7 +193,7 @@
             this.DaTra.MinimumWidth = 6;
             this.DaTra.Name = "DaTra";
             this.DaTra.ReadOnly = true;
-            this.DaTra.Width = 90;
+            this.DaTra.Width = 98;
             // 
             // dgvChiTiet
             // 
@@ -220,7 +218,7 @@
             this.dgvChiTiet.RowHeadersVisible = false;
             this.dgvChiTiet.RowHeadersWidth = 51;
             this.dgvChiTiet.RowTemplate.Height = 24;
-            this.dgvChiTiet.Size = new System.Drawing.Size(670, 187);
+            this.dgvChiTiet.Size = new System.Drawing.Size(798, 198);
             this.dgvChiTiet.TabIndex = 2;
             // 
             // MaTaiLieu
@@ -289,10 +287,10 @@
             "Chưa trả",
             "Đã trả",
             "Trễ hạn"});
-            this.cbLoc.Location = new System.Drawing.Point(5, 166);
+            this.cbLoc.Location = new System.Drawing.Point(11, 177);
             this.cbLoc.Margin = new System.Windows.Forms.Padding(2);
             this.cbLoc.Name = "cbLoc";
-            this.cbLoc.Size = new System.Drawing.Size(181, 25);
+            this.cbLoc.Size = new System.Drawing.Size(318, 25);
             this.cbLoc.TabIndex = 5;
             this.cbLoc.SelectedIndexChanged += new System.EventHandler(this.cbLoc_SelectedIndexChanged);
             // 
@@ -304,7 +302,7 @@
             this.btnLamMoi.IconColor = System.Drawing.Color.Black;
             this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnLamMoi.IconSize = 19;
-            this.btnLamMoi.Location = new System.Drawing.Point(191, 44);
+            this.btnLamMoi.Location = new System.Drawing.Point(334, 46);
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(25, 25);
@@ -321,7 +319,7 @@
             this.btnTimKiem.IconColor = System.Drawing.Color.Black;
             this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnTimKiem.IconSize = 19;
-            this.btnTimKiem.Location = new System.Drawing.Point(189, 166);
+            this.btnTimKiem.Location = new System.Drawing.Point(334, 177);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(27, 25);
@@ -347,7 +345,7 @@
             // 
             // 
             this.txtEmail.CustomButton.Image = null;
-            this.txtEmail.CustomButton.Location = new System.Drawing.Point(189, 1);
+            this.txtEmail.CustomButton.Location = new System.Drawing.Point(302, 1);
             this.txtEmail.CustomButton.Name = "";
             this.txtEmail.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -366,7 +364,7 @@
             this.txtEmail.SelectionLength = 0;
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.ShortcutsEnabled = true;
-            this.txtEmail.Size = new System.Drawing.Size(211, 23);
+            this.txtEmail.Size = new System.Drawing.Size(324, 23);
             this.txtEmail.TabIndex = 14;
             this.txtEmail.UseSelectable = true;
             this.txtEmail.WaterMark = "Nhập email";
@@ -379,7 +377,7 @@
             // 
             // 
             this.txtSDT.CustomButton.Image = null;
-            this.txtSDT.CustomButton.Location = new System.Drawing.Point(189, 1);
+            this.txtSDT.CustomButton.Location = new System.Drawing.Point(301, 1);
             this.txtSDT.CustomButton.Name = "";
             this.txtSDT.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtSDT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -398,7 +396,7 @@
             this.txtSDT.SelectionLength = 0;
             this.txtSDT.SelectionStart = 0;
             this.txtSDT.ShortcutsEnabled = true;
-            this.txtSDT.Size = new System.Drawing.Size(211, 23);
+            this.txtSDT.Size = new System.Drawing.Size(323, 23);
             this.txtSDT.TabIndex = 16;
             this.txtSDT.UseSelectable = true;
             this.txtSDT.WaterMark = "Nhập số điện thoại";
@@ -422,7 +420,7 @@
             // 
             // 
             this.txtMaPhieu.CustomButton.Image = null;
-            this.txtMaPhieu.CustomButton.Location = new System.Drawing.Point(160, 1);
+            this.txtMaPhieu.CustomButton.Location = new System.Drawing.Point(302, 1);
             this.txtMaPhieu.CustomButton.Name = "";
             this.txtMaPhieu.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtMaPhieu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -441,7 +439,7 @@
             this.txtMaPhieu.SelectionLength = 0;
             this.txtMaPhieu.SelectionStart = 0;
             this.txtMaPhieu.ShortcutsEnabled = true;
-            this.txtMaPhieu.Size = new System.Drawing.Size(182, 23);
+            this.txtMaPhieu.Size = new System.Drawing.Size(324, 23);
             this.txtMaPhieu.TabIndex = 18;
             this.txtMaPhieu.UseSelectable = true;
             this.txtMaPhieu.WaterMark = "Nhập mã phiếu mượn";
@@ -463,10 +461,10 @@
             // 
             this.groupBox1.Controls.Add(this.dgvChiTiet);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(237, 6);
+            this.groupBox1.Location = new System.Drawing.Point(403, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(680, 214);
+            this.groupBox1.Size = new System.Drawing.Size(808, 225);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phiếu mượn";
@@ -483,9 +481,9 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txtEmail);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(5, 6);
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(226, 209);
+            this.groupBox3.Size = new System.Drawing.Size(379, 238);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tìm kiếm";
@@ -495,9 +493,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(922, 481);
+            this.ClientSize = new System.Drawing.Size(1219, 724);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.metroPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -505,7 +504,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLichSuMuon";
             this.Load += new System.EventHandler(this.frmLichSuMuon_Load);
-            this.metroPanel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTiet)).EndInit();
