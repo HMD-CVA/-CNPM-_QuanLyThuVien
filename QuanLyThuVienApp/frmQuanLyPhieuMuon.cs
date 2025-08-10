@@ -508,6 +508,7 @@ namespace QuanLyThuVienApp
             frmGiaHan frm = new frmGiaHan(maPhieu);
             frm.ShowDialog();
             if (giaHan) btnLamMoi.PerformClick();
+            loadPhieuMuon();
         }
 
         private void btnHuyPhieu_Click(object sender, EventArgs e)
@@ -578,6 +579,10 @@ namespace QuanLyThuVienApp
             frm.ShowDialog();            
         }
 
+        private void restorePhieuMuon(int maPhieu)
+        {
+
+        }
         private void btnChoMuon_Click(object sender, EventArgs e)
         {
             if (dgvPhieuMuon.Rows.Count == 0) return;

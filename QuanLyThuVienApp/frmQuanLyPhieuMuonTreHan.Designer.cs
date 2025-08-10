@@ -162,7 +162,6 @@
             this.MaChiTiet.Name = "MaChiTiet";
             this.MaChiTiet.ReadOnly = true;
             this.MaChiTiet.Visible = false;
-            this.MaChiTiet.Width = 32;
             // 
             // MaTaiLieu
             // 
@@ -239,6 +238,7 @@
             this.btnGiaHan.TabIndex = 41;
             this.btnGiaHan.Text = "Gia hạn";
             this.btnGiaHan.UseVisualStyleBackColor = false;
+            this.btnGiaHan.Click += new System.EventHandler(this.btnGiaHan_Click);
             // 
             // btnTraSach
             // 

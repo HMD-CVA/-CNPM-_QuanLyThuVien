@@ -386,8 +386,6 @@ namespace QuanLyThuVienApp
                 tl.SoTaiLieuMuon += chiTietPM.SoLuong;
             }
             db.SaveChanges();
-
-            // Tạm tắt event CellValidating để clear dgv
             dgvTLMuon.Rows.Clear();
 
             loadDuLieu();

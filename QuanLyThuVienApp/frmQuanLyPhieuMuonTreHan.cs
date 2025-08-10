@@ -292,5 +292,28 @@ namespace QuanLyThuVienApp
         {
             this.Close();
         }
+
+        private void btnGiaHan_Click(object sender, EventArgs e)
+        {
+            if (dgvPhieuMuon.Rows.Count == 0) return;
+            if (dgvPhieuMuon.CurrentRow == null) return;
+            DataGridViewRow row = dgvPhieuMuon.CurrentRow;
+            giaHan = false;
+            int maPhieu = int.Parse(row.Cells["MaPhieu"].Value.ToString().Substring(2));
+
+            QLTVEntities db = new QLTVEntities();
+            PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
+
+            if (phieuMuon.DaTra == true)
+            {
+                MessageBox.Show("Phiếu mượn đã được trả!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                return;
+            }
+
+            frmGiaHan frm = new frmGiaHan(maPhieu);
+            frm.ShowDialog();
+            if (giaHan) btnLamMoi.PerformClick();
+            loadPhieuMuon();
+        }
     }
 }
