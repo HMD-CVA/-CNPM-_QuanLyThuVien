@@ -70,6 +70,7 @@
             // 
             // btnOK
             // 
+
             this.btnOK.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

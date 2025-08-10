@@ -165,5 +165,10 @@ namespace QuanLyThuVienApp
             loaiDG = false;
             loadDuLieu() ;
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

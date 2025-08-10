@@ -17,13 +17,11 @@ namespace QuanLyThuVienApp
         private void ShowLoading()
         {
             progressBar1.Visible = true;
-            //progressBar1.MarqueeAnimationSpeed = 30;
             this.UseWaitCursor = true;
         }
         private void HideLoading()
         {
             progressBar1.Visible = false;
-           // progressBar1.MarqueeAnimationSpeed = 0;
             this.UseWaitCursor = false;
         }
         private List<(int, int)> listTL = new List<(int, int)>();
@@ -44,7 +42,7 @@ namespace QuanLyThuVienApp
         {
             QLTVEntities db = new QLTVEntities();
             var data = db.TaiLieux
-            .ToList() // chuyển về bộ nhớ để LINQ to Objects xử lý join
+            .ToList()
             .Join(
                 listTL,
                 taiLieu => taiLieu.MaTaiLieu,
@@ -342,6 +340,11 @@ namespace QuanLyThuVienApp
                     return;
                 }
             }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

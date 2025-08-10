@@ -35,59 +35,67 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnTitle = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnTitle.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBoxChat
             // 
-            this.richTextBoxChat.Location = new System.Drawing.Point(50, 117);
+            this.richTextBoxChat.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxChat.Location = new System.Drawing.Point(12, 138);
             this.richTextBoxChat.Name = "richTextBoxChat";
-            this.richTextBoxChat.Size = new System.Drawing.Size(698, 310);
+            this.richTextBoxChat.Size = new System.Drawing.Size(1195, 574);
             this.richTextBoxChat.TabIndex = 0;
             this.richTextBoxChat.Text = "";
             // 
             // textBoxInput
             // 
-            this.textBoxInput.Location = new System.Drawing.Point(124, 76);
+            this.textBoxInput.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxInput.Location = new System.Drawing.Point(146, 74);
             this.textBoxInput.Name = "textBoxInput";
-            this.textBoxInput.Size = new System.Drawing.Size(426, 20);
+            this.textBoxInput.Size = new System.Drawing.Size(825, 35);
             this.textBoxInput.TabIndex = 1;
             // 
             // buttonSend
             // 
-            this.buttonSend.Location = new System.Drawing.Point(673, 76);
+            this.buttonSend.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSend.Location = new System.Drawing.Point(977, 74);
             this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(75, 23);
+            this.buttonSend.Size = new System.Drawing.Size(108, 36);
             this.buttonSend.TabIndex = 2;
             this.buttonSend.Text = "Gửi";
             this.buttonSend.UseVisualStyleBackColor = true;
             // 
             // buttonClearChat
             // 
-            this.buttonClearChat.Location = new System.Drawing.Point(578, 76);
+            this.buttonClearChat.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClearChat.Location = new System.Drawing.Point(1091, 74);
             this.buttonClearChat.Name = "buttonClearChat";
-            this.buttonClearChat.Size = new System.Drawing.Size(75, 23);
+            this.buttonClearChat.Size = new System.Drawing.Size(116, 36);
             this.buttonClearChat.TabIndex = 3;
-            this.buttonClearChat.Text = "Làm Mới";
+            this.buttonClearChat.Text = "Làm mới";
             this.buttonClearChat.UseVisualStyleBackColor = true;
             this.buttonClearChat.Click += new System.EventHandler(this.buttonClearChat_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 76);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 77);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.Size = new System.Drawing.Size(146, 27);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Nhập câu hỏi";
+            this.label1.Text = "Nhập câu hỏi:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(349, 26);
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(474, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 24);
+            this.label2.Size = new System.Drawing.Size(270, 55);
             this.label2.TabIndex = 5;
             this.label2.Text = "TRỢ LÝ AI";
             // 
@@ -101,25 +109,43 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
+            // pnTitle
+            // 
+            this.pnTitle.Controls.Add(this.label2);
+            this.pnTitle.Controls.Add(this.buttonSend);
+            this.pnTitle.Controls.Add(this.buttonClearChat);
+            this.pnTitle.Controls.Add(this.label1);
+            this.pnTitle.Controls.Add(this.pictureBox1);
+            this.pnTitle.Controls.Add(this.textBoxInput);
+            this.pnTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnTitle.Name = "pnTitle";
+            this.pnTitle.Size = new System.Drawing.Size(1219, 122);
+            this.pnTitle.TabIndex = 13;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 122);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1219, 602);
+            this.panel1.TabIndex = 14;
+            // 
             // frmAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonClearChat);
-            this.Controls.Add(this.buttonSend);
-            this.Controls.Add(this.textBoxInput);
+            this.ClientSize = new System.Drawing.Size(1219, 724);
             this.Controls.Add(this.richTextBoxChat);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAI";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAL";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnTitle.ResumeLayout(false);
+            this.pnTitle.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -132,5 +158,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel pnTitle;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -17,9 +17,9 @@
         <AssociationConnector Association="DB_QLTVModel.FK__TaiLieu__MaTG__5EBF139D" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DB_QLTVModel.DocGia" Width="1.5" PointX="7.125" PointY="4.5" />
         <EntityTypeShape EntityType="DB_QLTVModel.ChiTietPhieuMuon" Width="1.5" PointX="0.5" PointY="8" />
-        <EntityTypeShape EntityType="DB_QLTVModel.PhieuMuon" Width="1.5" PointX="4.875" PointY="7.25" />
-        <AssociationConnector Association="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" />
         <AssociationConnector Association="DB_QLTVModel.FK__ChiTietPhi__MaTL__367C1819" />
+        <EntityTypeShape EntityType="DB_QLTVModel.PhieuMuon" Width="1.5" PointX="5.5" PointY="7.875" />
+        <AssociationConnector Association="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" />
         <AssociationConnector Association="DB_QLTVModel.FK__PhieuMuon__MaDG__2CF2ADDF" />
         <AssociationConnector Association="DB_QLTVModel.FK__PhieuMuon__MaNV__2DE6D218" />
         </Diagram>

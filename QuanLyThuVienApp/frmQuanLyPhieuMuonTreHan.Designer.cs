@@ -49,7 +49,6 @@
             this.btnTraSach = new System.Windows.Forms.Button();
             this.lbTienPhat1 = new System.Windows.Forms.Label();
             this.lbTienPhat2 = new System.Windows.Forms.Label();
-            this.btnHoaDonPhat = new System.Windows.Forms.Button();
             this.dgvPhieuMuon = new System.Windows.Forms.DataGridView();
             this.MaPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoTenDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +58,7 @@
             this.DaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnThoat = new FontAwesome.Sharp.IconButton();
+            this.btnHoaDonPhat = new System.Windows.Forms.Button();
             this.btnTimKiem = new FontAwesome.Sharp.IconButton();
             this.btnLamMoi = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
@@ -105,10 +105,10 @@
             // 
             this.panel1.Controls.Add(this.dgvChiTietPM);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 279);
+            this.panel1.Location = new System.Drawing.Point(0, 285);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(915, 196);
+            this.panel1.Size = new System.Drawing.Size(1219, 439);
             this.panel1.TabIndex = 28;
             // 
             // dgvChiTietPM
@@ -151,7 +151,7 @@
             this.dgvChiTietPM.RowHeadersVisible = false;
             this.dgvChiTietPM.RowHeadersWidth = 51;
             this.dgvChiTietPM.RowTemplate.Height = 24;
-            this.dgvChiTietPM.Size = new System.Drawing.Size(915, 196);
+            this.dgvChiTietPM.Size = new System.Drawing.Size(1219, 439);
             this.dgvChiTietPM.TabIndex = 2;
             // 
             // MaChiTiet
@@ -219,22 +219,24 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(227, 9);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(437, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 17);
+            this.label2.Size = new System.Drawing.Size(168, 18);
             this.label2.TabIndex = 38;
-            this.label2.Text = "Chi tiết phiếu";
+            this.label2.Text = "CHI TIẾT PHIẾU MƯỢN";
             // 
             // btnGiaHan
             // 
             this.btnGiaHan.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnGiaHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGiaHan.Location = new System.Drawing.Point(220, 222);
+            this.btnGiaHan.Image = global::QuanLyThuVienApp.Properties.Resources.images__6__removebg_preview;
+            this.btnGiaHan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGiaHan.Location = new System.Drawing.Point(374, 222);
             this.btnGiaHan.Margin = new System.Windows.Forms.Padding(2);
             this.btnGiaHan.Name = "btnGiaHan";
-            this.btnGiaHan.Size = new System.Drawing.Size(106, 25);
+            this.btnGiaHan.Size = new System.Drawing.Size(161, 25);
             this.btnGiaHan.TabIndex = 41;
             this.btnGiaHan.Text = "Gia hạn";
             this.btnGiaHan.UseVisualStyleBackColor = false;
@@ -244,10 +246,12 @@
             // 
             this.btnTraSach.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnTraSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTraSach.Location = new System.Drawing.Point(330, 222);
+            this.btnTraSach.Image = global::QuanLyThuVienApp.Properties.Resources.images__5__removebg_preview;
+            this.btnTraSach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTraSach.Location = new System.Drawing.Point(737, 222);
             this.btnTraSach.Margin = new System.Windows.Forms.Padding(2);
             this.btnTraSach.Name = "btnTraSach";
-            this.btnTraSach.Size = new System.Drawing.Size(106, 25);
+            this.btnTraSach.Size = new System.Drawing.Size(161, 25);
             this.btnTraSach.TabIndex = 41;
             this.btnTraSach.Text = "Trả sách";
             this.btnTraSach.UseVisualStyleBackColor = false;
@@ -258,7 +262,7 @@
             this.lbTienPhat1.AutoSize = true;
             this.lbTienPhat1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTienPhat1.ForeColor = System.Drawing.Color.Red;
-            this.lbTienPhat1.Location = new System.Drawing.Point(217, 255);
+            this.lbTienPhat1.Location = new System.Drawing.Point(8, 266);
             this.lbTienPhat1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTienPhat1.Name = "lbTienPhat1";
             this.lbTienPhat1.Size = new System.Drawing.Size(76, 17);
@@ -270,25 +274,12 @@
             this.lbTienPhat2.AutoSize = true;
             this.lbTienPhat2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTienPhat2.ForeColor = System.Drawing.Color.Red;
-            this.lbTienPhat2.Location = new System.Drawing.Point(287, 255);
+            this.lbTienPhat2.Location = new System.Drawing.Point(79, 266);
             this.lbTienPhat2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTienPhat2.Name = "lbTienPhat2";
             this.lbTienPhat2.Size = new System.Drawing.Size(49, 17);
             this.lbTienPhat2.TabIndex = 42;
             this.lbTienPhat2.Text = "0 VNĐ";
-            // 
-            // btnHoaDonPhat
-            // 
-            this.btnHoaDonPhat.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnHoaDonPhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHoaDonPhat.Location = new System.Drawing.Point(110, 222);
-            this.btnHoaDonPhat.Margin = new System.Windows.Forms.Padding(2);
-            this.btnHoaDonPhat.Name = "btnHoaDonPhat";
-            this.btnHoaDonPhat.Size = new System.Drawing.Size(106, 25);
-            this.btnHoaDonPhat.TabIndex = 41;
-            this.btnHoaDonPhat.Text = "Hóa đơn phạt";
-            this.btnHoaDonPhat.UseVisualStyleBackColor = false;
-            this.btnHoaDonPhat.Click += new System.EventHandler(this.btnHoaDonPhat_Click);
             // 
             // dgvPhieuMuon
             // 
@@ -330,7 +321,7 @@
             this.dgvPhieuMuon.RowHeadersWidth = 51;
             this.dgvPhieuMuon.RowTemplate.Height = 24;
             this.dgvPhieuMuon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPhieuMuon.Size = new System.Drawing.Size(654, 190);
+            this.dgvPhieuMuon.Size = new System.Drawing.Size(1197, 190);
             this.dgvPhieuMuon.TabIndex = 43;
             this.dgvPhieuMuon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuMuon_CellClick);
             // 
@@ -408,16 +399,31 @@
             this.btnThoat.IconColor = System.Drawing.Color.Black;
             this.btnThoat.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnThoat.IconSize = 19;
-            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnThoat.Location = new System.Drawing.Point(579, 222);
+            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThoat.Location = new System.Drawing.Point(1100, 222);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(86, 25);
+            this.btnThoat.Size = new System.Drawing.Size(106, 25);
             this.btnThoat.TabIndex = 44;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // btnHoaDonPhat
+            // 
+            this.btnHoaDonPhat.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnHoaDonPhat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHoaDonPhat.Image = global::QuanLyThuVienApp.Properties.Resources.images__7__removebg_preview;
+            this.btnHoaDonPhat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHoaDonPhat.Location = new System.Drawing.Point(11, 222);
+            this.btnHoaDonPhat.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHoaDonPhat.Name = "btnHoaDonPhat";
+            this.btnHoaDonPhat.Size = new System.Drawing.Size(161, 25);
+            this.btnHoaDonPhat.TabIndex = 41;
+            this.btnHoaDonPhat.Text = "Hóa đơn phạt";
+            this.btnHoaDonPhat.UseVisualStyleBackColor = false;
+            this.btnHoaDonPhat.Click += new System.EventHandler(this.btnHoaDonPhat_Click);
             // 
             // btnTimKiem
             // 
@@ -462,7 +468,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(915, 475);
+            this.ClientSize = new System.Drawing.Size(1219, 724);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.dgvPhieuMuon);
             this.Controls.Add(this.lbTienPhat2);

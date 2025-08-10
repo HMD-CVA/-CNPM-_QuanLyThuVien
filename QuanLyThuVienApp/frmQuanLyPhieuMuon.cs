@@ -115,7 +115,6 @@ namespace QuanLyThuVienApp
                 }
             }
         }
-
         public void loadPhieuMuon()
         {
             QLTVEntities db = new QLTVEntities();
@@ -241,6 +240,7 @@ namespace QuanLyThuVienApp
                 else if (daTra == "Đã huỷ")
                 {
                     lab_Huy.Text = "Phiếu mượn này đã bị huỷ!";
+                    restorePhieuMuon(maPhieuGhiNho);
                     return;
                 }
 
@@ -509,6 +509,7 @@ namespace QuanLyThuVienApp
             frm.ShowDialog();
             if (giaHan) btnLamMoi.PerformClick();
             loadPhieuMuon();
+            ChonLaiPhieu(maPhieu);
         }
 
         private void btnHuyPhieu_Click(object sender, EventArgs e)
@@ -581,7 +582,27 @@ namespace QuanLyThuVienApp
 
         private void restorePhieuMuon(int maPhieu)
         {
+            QLTVEntities db = new QLTVEntities();
+            int? tongSLMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).Select(p => p.TongSLMuon).FirstOrDefault();
+            if (tongSLMuon == 0)
+            {
+                return;
+            }
+            PhieuMuon pm = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
+            pm.TongSLMuon = 0;
+            foreach (DataGridViewRow row in dgvChiTietPM.Rows)
+            {
+                if (row.IsNewRow) continue;
 
+                string maTLString = row.Cells["MaTaiLieu"].Value.ToString();
+                int maTL = int.Parse(maTLString.Substring(2));
+
+                int soLuong = int.Parse(row.Cells["SoLuongBD"].Value.ToString());
+
+                TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == maTL).SingleOrDefault();
+                tl.SoTaiLieuMuon -= soLuong;
+            }
+            db.SaveChanges();
         }
         private void btnChoMuon_Click(object sender, EventArgs e)
         {
@@ -605,6 +626,7 @@ namespace QuanLyThuVienApp
             {
                 btnChoMuon.Enabled = false;
                 MessageBox.Show("Phiếu mượn này đã bị huỷ do hết thời gian chờ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                restorePhieuMuon(maPhieuGhiNho);
                 loadPhieuMuon(); // gọi lại để cập nhật
                 return;
             }

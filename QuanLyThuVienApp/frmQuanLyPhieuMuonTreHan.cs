@@ -292,7 +292,20 @@ namespace QuanLyThuVienApp
         {
             this.Close();
         }
-
+        private void ChonLaiPhieu(int maPhieu)
+        {
+            string maPhieuStr = "MP" + maPhieu.ToString();
+            foreach (DataGridViewRow row in dgvPhieuMuon.Rows)
+            {
+                if (row.Cells["MaPhieu"].Value != null &&
+                    row.Cells["MaPhieu"].Value.ToString() == maPhieuStr)
+                {
+                    row.Selected = true;
+                    dgvPhieuMuon.CurrentCell = row.Cells[0]; // Đặt lại focus
+                    break;
+                }
+            }
+        }
         private void btnGiaHan_Click(object sender, EventArgs e)
         {
             if (dgvPhieuMuon.Rows.Count == 0) return;
@@ -314,6 +327,7 @@ namespace QuanLyThuVienApp
             frm.ShowDialog();
             if (giaHan) btnLamMoi.PerformClick();
             loadPhieuMuon();
+            ChonLaiPhieu(maPhieu);
         }
     }
 }

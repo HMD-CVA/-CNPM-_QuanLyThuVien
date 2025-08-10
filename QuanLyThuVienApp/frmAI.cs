@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,7 +37,7 @@ namespace QuanLyThuVienApp
                 7. **DocGia**
                     - MaDocGia (PK), MaSo, HoTen, Email, LoaiDG, BiKhoa (BIT)
                 8. **PhieuMuon**
-                    - MaPhieu (PK), MaDG (FK → DocGia.MaDocGia), MaNV (FK → NhanVien.MaNV), NgayMuon, HanTra, DaTra (BIT), NgayTra, NgayTao, DaGuiMail, TongSLMuon, TongSLMuonBD
+                    - MaPhieu (PK), MaDG (FK → DocGia.MaDocGia), MaNV (FK → NhanVien.MaNV), NgayMuon, HanTra, DaTra (BIT), NgayTra, NgayTao, DaGuiMail, TongSLMuon
                 9. **ChiTietPhieuMuon**
                     - MaChiTiet (PK), MaPM (FK → PhieuMuon.MaPhieu), MaTL (FK → TaiLieu.MaTaiLieu), SoLuong, SoLuongBD
                     - Ràng buộc duy nhất: (MaPM, MaTL)
@@ -117,9 +118,8 @@ namespace QuanLyThuVienApp
 
         private async Task<(bool isNeedSQL, string content)> GenerateSQLFromAI(string userInput)
         {
+            string groqApiKey = "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";
             string groqEndpoint = "https://api.groq.com/openai/v1/chat/completions";
-            string groqApiKeyEncoded = "Z3NrX1NYTFJvWnh1cWdRenVVZUVRTHdFV0dkeWIzRlljRHlMc1ZoWENaMDQzamVXRVFTUFRPOWR=";
-            string groqApiKey = Encoding.UTF8.GetString(Convert.FromBase64String(groqApiKeyEncoded));
 
             using (var httpClient = new HttpClient())
             {
@@ -180,6 +180,8 @@ namespace QuanLyThuVienApp
                                 Yêu cầu bắt buộc:
                                 - Luôn giả định mọi câu hỏi của người dùng là về thư viện, ngay cả khi họ không nói rõ (ví dụ: 'có bao nhiêu quyển sách' hiểu là 'có bao nhiêu quyển sách trong thư viện').
                                 - Chỉ sử dụng các bảng và cột có trong sơ đồ cơ sở dữ liệu sau.
+                                - KHÔNG truy xuất về thông tin của admin ,nhân viên thư viện và đọc giả.
+                                - Nếu khách hàng hỏi thì cứ trả lời rằng thông tin cá nhân của thư viện không được tiết lộ.  
                                 - Hãy đọc hiểu câu hỏi của người dùng và tìm kiếm keyword phù hợp với SQL để sinh ra lệnh SQL chính xác nhất.
                                 - Trả về DUY NHẤT một câu lệnh SQL hợp lệ, không kèm giải thích, không kèm chú thích, không có văn bản thừa.
                                 - Luôn ưu tiên chính xác tuyệt đối, không suy đoán.
@@ -220,10 +222,39 @@ namespace QuanLyThuVienApp
             if (string.IsNullOrWhiteSpace(sqlResult))
                 return "Không có dữ liệu phù hợp để trả lời.";
 
-            string groqEndpoint = "https://api.groq.com/openai/v1/chat/completions";
-            string groqApiKeyEncoded = "Z3NrX1NYTFJvWnh1cWdRenVVZUVRTHdFV0dkeWIzRlljRHlMc1ZoWENaMDQzamVXRVFTUFRPOWR=";
-            string groqApiKey = Encoding.UTF8.GetString(Convert.FromBase64String(groqApiKeyEncoded));
+            DateTime now = DateTime.Now;
+            string currentDate = now.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string currentTime = now.ToString("HH:mm:ss", CultureInfo.InvariantCulture);
+            string currentDayOfWeek = now.DayOfWeek == DayOfWeek.Saturday ? "Thứ Bảy"
+                : now.DayOfWeek == DayOfWeek.Sunday ? "Chủ Nhật"
+                : $"Thứ {(int)now.DayOfWeek + 1}";
 
+            // Nếu kết quả SQL có ngày hạn trả, kiểm tra trễ hạn
+            string overdueInfo = "";
+            try
+            {
+                // Tìm tất cả các ngày trong chuỗi SQL Result
+                var dateMatches = Regex.Matches(sqlResult, @"\b\d{1,2}/\d{1,2}/\d{4}\b|\b\d{4}-\d{1,2}-\d{1,2}\b");
+                foreach (Match match in dateMatches)
+                {
+                    if (DateTime.TryParse(match.Value, out DateTime dueDate))
+                    {
+                        int daysDiff = (now.Date - dueDate.Date).Days;
+                        if (daysDiff > 0)
+                            overdueInfo += $"\n- Hạn {dueDate:dd/MM/yyyy}: ĐÃ trễ {daysDiff} ngày.";
+                        else if (daysDiff == 0)
+                            overdueInfo += $"\n- Hạn {dueDate:dd/MM/yyyy}: Hôm nay là hạn trả.";
+                        else
+                            overdueInfo += $"\n- Hạn {dueDate:dd/MM/yyyy}: Còn {-daysDiff} ngày nữa mới đến hạn.";
+                    }
+                }
+            }
+            catch
+            {
+                // Không cần xử lý nếu lỗi parse ngày
+            }
+            string groqApiKey = "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";
+            string groqEndpoint = "https://api.groq.com/openai/v1/chat/completions";
             var payload = new
             {
                 model = "llama3-70b-8192",
@@ -239,6 +270,8 @@ namespace QuanLyThuVienApp
                     "- KHÔNG hiển thị bảng dữ liệu thô.\n" +
                     "- KHÔNG được tự tạo thêm thông tin không có.\n" +
                     "- Chỉ sử dụng dữ liệu truy vấn từ SQL để trả lời.\n" +
+                    "- Nếu dữ liệu truy vấn không có thông tin cần thiết, hãy trả lời rõ ràng: 'Xin lỗi, tôi chưa có dữ liệu về nội dung này.'\n" +
+                    "- Nếu truy vấn về thông tin cá nhân của admin, nhân viên, đọc giả thì hã thông báo: 'Thông tin cá nhân không thể tiết lộ'.\n" +
                     "- TRẢ LỜI chính xác dựa trên kết quả SQL.\n" +
                     "- Viết như một người thật đang trò chuyện.\n" +
                     "- Nếu kết quả là danh sách (ví dụ tên tác giả), hãy liệt kê ngắn gọn (không cần số thứ tự).\n" +
@@ -284,9 +317,9 @@ namespace QuanLyThuVienApp
 
         private async Task<string> GenerateNaturalReply(string userInput)
         {
+            string groqApiKey = "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";
             string groqEndpoint = "https://api.groq.com/openai/v1/chat/completions";
-            string groqApiKeyEncoded = "Z3NrX1NYTFJvWnh1cWdRenVVZUVRTHdFV0dkeWIzRlljRHlMc1ZoWENaMDQzamVXRVFTUFRPOWR=";
-            string groqApiKey = Encoding.UTF8.GetString(Convert.FromBase64String(groqApiKeyEncoded));
+
 
             var prompt = new
             {
@@ -300,12 +333,7 @@ namespace QuanLyThuVienApp
                 " - Ưu tiên hỗ trợ các câu hỏi về thư viện, sách, mượn trả, tác giả, sự kiện, cơ sở vật chất, hoặc các thông tin có trong cơ sở dữ liệu." +
                 "-Nếu thông tin không có trong cơ sở dữ liệu, hãy thông báo rõ ràng:'Xin lỗi, tôi chưa có dữ liệu về nội dung này.', sau đó đưa ra gợi ý tìm kiếm khác và **trích dẫn nguồn nếu có**." +
                 "- Tuyệt đối KHÔNG tự suy đoán thông tin không có thật trong CSDL." +                
-                "- Nếu phát hiện người dùng sử dụng ngôn ngữ không phù hợp hoặc hỏi các thông tin khác ngoài trường học và thư viện thì hãy nhắc nhở lịch sự." +
-                "- Nếu người dùng hỏi về ngày/giờ/thứ, hãy sử dụng thông tin hiện tại:" +
-                "- Ngày: {now.ToString(\"dd/MM/yyyy\", CultureInfo.InvariantCulture)}" +
-                "- Giờ: {now.ToString(\"HH:mm:ss\", CultureInfo.InvariantCulture)}" +
-                "- Thứ: {(now.DayOfWeek == DayOfWeek.Saturday ? \"Thứ Bảy\" : now.DayOfWeek == DayOfWeek.Sunday ? \"Chủ Nhật\" : $\"Thứ {((int)now.DayOfWeek + 1)}\")}" +
-                "Nếu người dùng hỏi về ngày/giờ/thứ,... hãy sử dụng thông tin này để trả lời chính xác, không suy đoán."
+                "- Nếu phát hiện người dùng sử dụng ngôn ngữ không phù hợp hoặc hỏi các thông tin khác ngoài trường học và thư viện thì hãy nhắc nhở lịch sự."
             },
             new { role = "user", content = userInput }
         }
@@ -384,8 +412,8 @@ namespace QuanLyThuVienApp
         private void AddChatMessage(string sender, string message)
         {
             Color senderColor = sender == "Bạn" ? Color.DarkBlue : Color.DarkGreen;
-            Font senderFont = new Font("Segoe UI", 9, FontStyle.Bold);
-            Font messageFont = new Font("Segoe UI", 9, FontStyle.Regular);
+            Font senderFont = new Font("Times New Roman", 18, FontStyle.Bold);
+            Font messageFont = new Font("Times New Roman", 18, FontStyle.Regular);
 
             // Thêm tên người gửi
             richTextBoxChat.SelectionStart = richTextBoxChat.TextLength;

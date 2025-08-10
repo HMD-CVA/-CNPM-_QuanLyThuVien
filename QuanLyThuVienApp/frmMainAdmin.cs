@@ -52,25 +52,192 @@ namespace QuanLyThuVienApp
             tslbTimer.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss  ");
         }
 
-        private void btnInfor_Click(object sender, EventArgs e)
+        //private void btnInfor_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmInfor frm = new frmInfor();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnCaNhan_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmThongTinNV frm = new frmThongTinNV(tenDN, quyenHan);
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnDangXuat_Click(object sender, EventArgs e)
+        //{
+        //    frmHomes frm = new frmHomes();
+        //    this.Hide();
+        //    frm.ShowDialog();
+        //    this.Close();
+        //}
+
+        //private void btnSach_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmTaiLieu frm = new frmTaiLieu();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnQLSach_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmQuanLyTaiLieu frm = new frmQuanLyTaiLieu();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnQLBanDoc_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmQuanLyNhanVien frm = new frmQuanLyNhanVien();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnQLPhieuMuon_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    //frmQuanLyPhieuMuon frm = new frmQuanLyPhieuMuon();
+        //    //frm.MdiParent = this;
+        //    //frm.Show();
+        //}
+
+        //private void btnThongKe_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    //frmCColumn_SachTheoTheLoai frm = new frmCColumn_SachTheoTheLoai();
+        //    //frm.MdiParent = this;
+        //    //frm.Show();
+        //}
+        //private void btnPhanQuyen_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmPhanQuyen frm = new frmPhanQuyen();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void iconButton1_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmThongTinNV frm = new frmThongTinNV();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        //private void btnTroGiup_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmTroGiup frm = new frmTroGiup();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
+
+        bool menuExpand = false;
+
+        private void menuTransition_Tick(object sender, EventArgs e)
         {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmInfor frm = new frmInfor();
-            frm.MdiParent = this;
-            frm.Show();
+            if (menuExpand == false)
+            {
+                menuContainer.Height += 10;
+                if (menuContainer.Height >= 138)
+                {
+                    menuTransition.Stop();
+                    menuExpand = true;
+                }
+            }
+            else
+            {
+                menuContainer.Height -= 10;
+                if (menuContainer.Height <= 58)
+                {
+                    menuTransition.Stop();
+                    menuExpand = false;
+                }
+            }
         }
 
-        private void btnCaNhan_Click(object sender, EventArgs e)
+        private void menu_Click(object sender, EventArgs e)
+        {
+            menuTransition.Start();
+        }
+
+        bool sidebarExpand = true;
+
+        private void sidebarTransition_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if (sidebar.Width <= 67)
+                {
+                    sidebarExpand = false;
+                    sidebarTransition.Stop();
+                }
+            }
+            else
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width >= 236)
+                {
+                    sidebarExpand = true;
+                    sidebarTransition.Stop();
+                }
+            }
+        }
+
+        private void btnHam_Click(object sender, EventArgs e)
+        {
+            sidebarTransition.Start();
+        }
+
+        private void btnCaNhan_Click_1(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
             frmThongTinNV frm = new frmThongTinNV(tenDN, quyenHan);
             frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
         }
 
-        private void btnDangXuat_Click(object sender, EventArgs e)
+        private void btnTroGiup_Click_1(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmTroGiup frm = new frmTroGiup();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void btnInfor_Click_1(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmInfor frm = new frmInfor();
+            frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void btnDangXuat_Click_1(object sender, EventArgs e)
         {
             frmHomes frm = new frmHomes();
             this.Hide();
@@ -78,75 +245,52 @@ namespace QuanLyThuVienApp
             this.Close();
         }
 
-        private void btnSach_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmTaiLieu frm = new frmTaiLieu();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        //private void btnQLSach_Click_1(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmQuanLyTaiLieu frm = new frmQuanLyTaiLieu();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
 
-        private void btnQLSach_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmQuanLyTaiLieu frm = new frmQuanLyTaiLieu();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void btnQLBanDoc_Click(object sender, EventArgs e)
+        private void btnInfoNhanVien_Click(object sender, EventArgs e)
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
             frmQuanLyNhanVien frm = new frmQuanLyNhanVien();
             frm.MdiParent = this;
+            frm.Dock = DockStyle.Fill;
             frm.Show();
         }
 
-        private void btnQLPhieuMuon_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            //frmQuanLyPhieuMuon frm = new frmQuanLyPhieuMuon();
-            //frm.MdiParent = this;
-            //frm.Show();
-        }
+        //private void btnPhieuMuon_Click(object sender, EventArgs e)
+        //{
+           
+        //        foreach (Form form in this.MdiChildren)
+        //            form.Close();
+        //        //frmQuanLyPhieuMuon frm = new frmQuanLyPhieuMuon();
+        //        //frm.MdiParent = this;
+        //        //frm.Show();
+           
+        //}
 
-        private void btnThongKe_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            //frmCColumn_SachTheoTheLoai frm = new frmCColumn_SachTheoTheLoai();
-            //frm.MdiParent = this;
-            //frm.Show();
-        }
-        private void btnPhanQuyen_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmPhanQuyen frm = new frmPhanQuyen();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        //private void btnQLDocGia_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    frmQuanLyNhanVien frm = new frmQuanLyNhanVien();
+        //    frm.MdiParent = this;
+        //    frm.Show();
+        //}
 
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmThongTinNV frm = new frmThongTinNV();
-            frm.MdiParent = this;
-            frm.Show();
-        }
-
-        private void btnTroGiup_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-                form.Close();
-            frmTroGiup frm = new frmTroGiup();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        //private void btnThongKe_Click_1(object sender, EventArgs e)
+        //{
+        //    foreach (Form form in this.MdiChildren)
+        //        form.Close();
+        //    //frmCColumn_SachTheoTheLoai frm = new frmCColumn_SachTheoTheLoai();
+        //    //frm.MdiParent = this;
+        //    //frm.Show();
+        //}
     }
 }

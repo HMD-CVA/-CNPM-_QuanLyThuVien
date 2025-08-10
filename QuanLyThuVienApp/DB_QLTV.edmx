@@ -403,13 +403,13 @@
           </AssociationSet>
           <EntitySet Name="DocGias" EntityType="DB_QLTVModel.DocGia" />
           <EntitySet Name="ChiTietPhieuMuons" EntityType="DB_QLTVModel.ChiTietPhieuMuon" />
+          <AssociationSet Name="FK__ChiTietPhi__MaTL__367C1819" Association="DB_QLTVModel.FK__ChiTietPhi__MaTL__367C1819">
+            <End Role="TaiLieu" EntitySet="TaiLieux" />
+            <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuons" />
+          </AssociationSet>
           <EntitySet Name="PhieuMuons" EntityType="DB_QLTVModel.PhieuMuon" />
           <AssociationSet Name="FK__ChiTietPhi__MaPM__3587F3E0" Association="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0">
             <End Role="PhieuMuon" EntitySet="PhieuMuons" />
-            <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuons" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPhi__MaTL__367C1819" Association="DB_QLTVModel.FK__ChiTietPhi__MaTL__367C1819">
-            <End Role="TaiLieu" EntitySet="TaiLieux" />
             <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuons" />
           </AssociationSet>
           <AssociationSet Name="FK__PhieuMuon__MaDG__2CF2ADDF" Association="DB_QLTVModel.FK__PhieuMuon__MaDG__2CF2ADDF">
@@ -442,9 +442,21 @@
           <Property Name="MaTL" Type="Int32" />
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="SoLuongBD" Type="Int32" />
-          <NavigationProperty Name="PhieuMuon" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" FromRole="ChiTietPhieuMuon" ToRole="PhieuMuon" />
           <NavigationProperty Name="TaiLieu" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaTL__367C1819" FromRole="ChiTietPhieuMuon" ToRole="TaiLieu" />
+          <NavigationProperty Name="PhieuMuon" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" FromRole="ChiTietPhieuMuon" ToRole="PhieuMuon" />
         </EntityType>
+        <Association Name="FK__ChiTietPhi__MaTL__367C1819">
+          <End Type="DB_QLTVModel.TaiLieu" Role="TaiLieu" Multiplicity="0..1" />
+          <End Type="DB_QLTVModel.ChiTietPhieuMuon" Role="ChiTietPhieuMuon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiLieu">
+              <PropertyRef Name="MaTaiLieu" />
+            </Principal>
+            <Dependent Role="ChiTietPhieuMuon">
+              <PropertyRef Name="MaTL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="PhieuMuon">
           <Key>
             <PropertyRef Name="MaPhieu" />
@@ -472,18 +484,6 @@
             </Principal>
             <Dependent Role="ChiTietPhieuMuon">
               <PropertyRef Name="MaPM" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ChiTietPhi__MaTL__367C1819">
-          <End Type="DB_QLTVModel.TaiLieu" Role="TaiLieu" Multiplicity="0..1" />
-          <End Type="DB_QLTVModel.ChiTietPhieuMuon" Role="ChiTietPhieuMuon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TaiLieu">
-              <PropertyRef Name="MaTaiLieu" />
-            </Principal>
-            <Dependent Role="ChiTietPhieuMuon">
-              <PropertyRef Name="MaTL" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

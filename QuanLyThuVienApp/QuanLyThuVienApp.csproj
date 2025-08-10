@@ -541,6 +541,38 @@
       <DependentUpon>DB_QLTV.edmx</DependentUpon>
       <LastGenOutput>DB_QLTV.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\png-transparent-computer-icons-send-miscellaneous-angle-rectangle-thumbnail-removebg-preview.png" />
+    <None Include="Resources\depositphotos_372944490-stock-illustration-set-of-hand-drawn-book-removebg-preview.png" />
+    <None Include="Resources\depositphotos_368205172-stock-illustration-seamless-pattern-of-hand-drawn-removebg-preview.png" />
+    <None Include="Resources\images__7_-removebg-preview.png" />
+    <None Include="Resources\3022251-removebg-preview.png" />
+    <None Include="Resources\images__6_-removebg-preview.png" />
+    <None Include="Resources\images__5_-removebg-preview.png" />
+    <None Include="Resources\6e85433773df189370918acb9dc95e68_t-removebg-preview.png" />
+    <None Include="Resources\abc.png" />
+    <None Include="Resources\sign-up-icon-png-21-removebg-preview.png" />
+    <None Include="Resources\images__4_-removebg-preview.png" />
+    <None Include="Resources\png-clipart-computer-icons-symbol-others-miscellaneous-repair-removebg-preview.png" />
+    <None Include="Resources\992651-removebg-preview.png" />
+    <None Include="Resources\61457-removebg-preview.png" />
+    <None Include="Resources\unlock-53-removebg-preview.png" />
+    <None Include="Resources\management-icon-png-16-removebg-preview.png" />
+    <None Include="Resources\png-clipart-white-books-illustration-library-reading-book-icon-book-angle-comic-book-thumbnail-removebg-preview - Copy.png" />
+    <None Include="Resources\png-clipart-white-books-illustration-library-reading-book-icon-book-angle-comic-book-thumbnail-removebg-preview.png" />
+    <None Include="Resources\png-clipart-white-books-illustration-library-reading-book-icon-book-angle-comic-book-thumbnail.png" />
+    <None Include="Resources\images__3_-removebg-preview.png" />
+    <None Include="Resources\pngtree-tick-vector-icon-png-image_696437-removebg-preview1.png" />
+    <None Include="Resources\pngtree-tick-vector-icon-png-image_696437-removebg-preview.png" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\x-071c9m1bqy9w3hucaxrc6v4-removebg-preview.png" />
+    <None Include="Resources\tl-removebg-preview1.png" />
+    <None Include="Resources\tl-removebg-preview.png" />
+    <None Include="Resources\images__2_-removebg-preview.png" />
+    <None Include="Resources\369-3697204_be-the-change-you-wish-to-see-reading.png" />
+    <None Include="Resources\893-8933259_registration-tickets-icon-white-transparent.png" />
+    <None Include="Resources\images__1_-removebg-preview.png" />
+    <None Include="Resources\person1.png" />
+    <None Include="Resources\document--v21.png" />
     <None Include="Resources\png-transparent-computer-icons-hamburger-button-menu-symbol-exquisite-option-button-rectangle-black-interface.png" />
     <None Include="Resources\png-transparent-hamburger-button-computer-icons-menu-option-button-start-menu-menu-line-thumbnail-removebg-preview.png" />
     <None Include="Resources\3668255-middle-removebg-preview.png" />
