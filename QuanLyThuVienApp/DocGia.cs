@@ -21,9 +21,10 @@ namespace QuanLyThuVienApp
         }
     
         public int MaDocGia { get; set; }
+        public string MaSo { get; set; }
         public string HoTen { get; set; }
-        public string SDT { get; set; }
         public string Email { get; set; }
+        public bool LoaiDG { get; set; }
         public Nullable<bool> BiKhoa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

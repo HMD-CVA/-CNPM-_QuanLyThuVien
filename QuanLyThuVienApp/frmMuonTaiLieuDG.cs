@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,18 @@ namespace QuanLyThuVienApp
 {
     public partial class frmMuonTaiLieuDG : Form
     {
+        private void ShowLoading()
+        {
+            progressBar1.Visible = true;
+            //progressBar1.MarqueeAnimationSpeed = 30;
+            this.UseWaitCursor = true;
+        }
+        private void HideLoading()
+        {
+            progressBar1.Visible = false;
+           // progressBar1.MarqueeAnimationSpeed = 0;
+            this.UseWaitCursor = false;
+        }
         private List<(int, int)> listTL = new List<(int, int)>();
         public frmMuonTaiLieuDG()
         {
@@ -21,6 +34,8 @@ namespace QuanLyThuVienApp
      
         private void frmMuonSach_Load(object sender, EventArgs e)
         {
+            progressBar1.Visible = false;
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             listTL = frmTaiLieuDG.taiLieusMuon;
             loadDuLieu();
         }
@@ -71,7 +86,7 @@ namespace QuanLyThuVienApp
             {
                 if(int.Parse(dgvSachMuon.Rows[e.RowIndex].Cells["CoSan"].Value.ToString()) == 0)
                 {
-                    MessageBox.Show("Đã hết sách!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Đã hết sách!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -112,24 +127,24 @@ namespace QuanLyThuVienApp
             if (re.IsMatch(inputEmail)) return (true);
             else return (false);
         }
-        private void btnDangKy_Click(object sender, EventArgs e)
+        private async void btnDangKy_Click(object sender, EventArgs e)
         {
             if (dgvSachMuon.Rows.Count == 0)
             {
-                MessageBox.Show("Hãy đăng ký tài liệu để mượn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Hãy đăng ký tài liệu để mượn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             string emailDG = txtEmail.Text.Trim();
 
             if (string.IsNullOrEmpty(emailDG))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (!isEmail(emailDG))
             {
-                MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Email không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -137,43 +152,104 @@ namespace QuanLyThuVienApp
             DocGia dg = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
             if (dg == null)
             {
-                MessageBox.Show("Có vẻ bạn chưa đến thư viện này trước đây!\nVui lòng xác thực thông tin để mượn tài liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                using (frmDangKy frm = new frmDangKy(emailDG))
-                {
-                    DialogResult resultB = frm.ShowDialog(this);
-
-                    if (!frm.checkDK)
-                    {
-                        MessageBox.Show("Đăng ký thất bại hoặc đã bị hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtEmail.Focus();
-                        return;
-                    }
-                }
+                MessageBox.Show("Vui lòng sử dụng Email được nhà trường cung cấp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEmail.Focus();
+                return;
             }
             else if (dg.BiKhoa == true)
             {
-                MessageBox.Show("Email của bạn đã bị khoá!\nVui lòng liên hệ thủ thư để biết thêm chi tiết!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Email của bạn đã bị khoá!\nVui lòng liên hệ thủ thư để biết thêm chi tiết!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            PhieuMuon pm = db.PhieuMuons
+            .Where(p => p.MaDG == dg.MaDocGia &&
+                        p.DaTra == false &&
+                        p.NgayTra == null &&
+                        DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now))
+            .FirstOrDefault();
+            if (pm != null)
+            {
+                MessageBox.Show($"Bạn có phiếu mượn: {"MP" + pm.MaPhieu} trễ hạn chưa trả!\nVui lòng nhắc trả lại để có thể mượn tiếp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int? slTaiLieuConLai = 0;
+            List<PhieuMuon> phieuMoi = db.PhieuMuons
+                .Where(p => p.MaDG == dg.MaDocGia && p.DaTra == false)
+                .OrderByDescending(p => p.MaPhieu)
+                .ToList();
+
+            slTaiLieuConLai = 0;
+            foreach (PhieuMuon ph in phieuMoi)
+            {
+                slTaiLieuConLai += ph.TongSLMuon;
+            }
+
+
+            int slTaiLieu = 0;
+            foreach (var item in listTL)
+            {
+                slTaiLieu += item.Item2;
+            }
+
+            if (dg.LoaiDG == false)
+            {
+                if (slTaiLieu > 5)
+                {
+                    MessageBox.Show("Sinh viên không được mượn vượt quá 5 tài liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else if (slTaiLieuConLai + slTaiLieu > 5)
+                {
+                    MessageBox.Show("Sinh viên chỉ được mượn tối đa 5 tài liệu.\nVui lòng hoàn trả bớt tài liệu trước khi tiếp tục mượn thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else
+            {
+                if (slTaiLieu > 10)
+                {
+                    MessageBox.Show("Giảng viên không được mượn vượt quá 10 tài liệu mỗi lần mượn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            string OTP = new Random().Next(100000, 999999).ToString();
+            ShowLoading();
+            await Task.Run(() => GuiEmail.guiEmail(emailDG, "Mã xác thực của bạn là: " + OTP));
+            HideLoading();
+
+            using (frmXacThucDG frm = new frmXacThucDG(emailDG, OTP, DateTime.Now))
+            {
+                var dialogResult = frm.ShowDialog();
+
+                if (dialogResult != DialogResult.OK)
+                {
+                    MessageBox.Show("Xác thực không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
 
             DialogResult result = MessageBox.Show(
                 "Bạn có muốn đăng ký mượn sách không?",
-                "Thông báo!",
+                "Thông báo",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
 
             if (result == DialogResult.No) return;
 
-            DocGia DG = db.DocGias.Where(p => p.Email == emailDG).FirstOrDefault();
             PhieuMuon phieuMuon = new PhieuMuon();
-            phieuMuon.MaDG = DG.MaDocGia;
+            phieuMuon.MaDG = dg.MaDocGia;
             phieuMuon.MaNV = null;
             phieuMuon.NgayMuon = null;
             phieuMuon.HanTra = null;
             phieuMuon.DaTra = false;
             phieuMuon.NgayTra = null;
             phieuMuon.NgayTao = DateTime.Now;
+            phieuMuon.DaGuiMail = null;
+            phieuMuon.TongSLMuon = slTaiLieu;
             db.PhieuMuons.Add(phieuMuon);
             db.SaveChanges();
 
@@ -191,6 +267,7 @@ namespace QuanLyThuVienApp
                 chiTietPM.MaPM = phieuMuon.MaPhieu;
                 chiTietPM.MaTL = maTL;
                 chiTietPM.SoLuong = soLuong;
+                chiTietPM.SoLuongBD = soLuong;
                 db.ChiTietPhieuMuons.Add(chiTietPM);
 
                 TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == chiTietPM.MaTL).SingleOrDefault();
@@ -204,8 +281,8 @@ namespace QuanLyThuVienApp
             txtEmail.Text = string.Empty;
 
             loadDuLieu();
-            MessageBox.Show("Đăng ký mượn thành công!\nVui lòng đến gặp thủ thư trong vòng 15' để nhận được phiếu mượn," +
-                " nếu quá thời gian thì phiếu mượn sẽ tự động bị huỷ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Đăng ký mượn thành công!\nVui lòng đến gặp thủ thư trong vòng 15 phút để nhận được phiếu mượn," +
+                " nếu quá thời gian thì phiếu mượn sẽ tự động bị huỷ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnXoaSLM_Click(object sender, EventArgs e)

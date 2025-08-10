@@ -31,14 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangKy));
             this.label1 = new System.Windows.Forms.Label();
             this.txtEmail = new MetroFramework.Controls.MetroTextBox();
-            this.txtSDT = new MetroFramework.Controls.MetroTextBox();
             this.btnDangKy = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.txtHoTen = new MetroFramework.Controls.MetroTextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -90,41 +88,6 @@
             this.txtEmail.WaterMark = "Nhập email";
             this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtEmail.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // txtSDT
-            // 
-            // 
-            // 
-            // 
-            this.txtSDT.CustomButton.Image = null;
-            this.txtSDT.CustomButton.Location = new System.Drawing.Point(235, 1);
-            this.txtSDT.CustomButton.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSDT.CustomButton.Name = "";
-            this.txtSDT.CustomButton.Size = new System.Drawing.Size(23, 23);
-            this.txtSDT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtSDT.CustomButton.TabIndex = 1;
-            this.txtSDT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtSDT.CustomButton.UseSelectable = true;
-            this.txtSDT.CustomButton.Visible = false;
-            this.txtSDT.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.txtSDT.Lines = new string[0];
-            this.txtSDT.Location = new System.Drawing.Point(123, 85);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSDT.MaxLength = 32767;
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.PasswordChar = '\0';
-            this.txtSDT.PromptText = "Nhập số điện thoại";
-            this.txtSDT.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtSDT.SelectedText = "";
-            this.txtSDT.SelectionLength = 0;
-            this.txtSDT.SelectionStart = 0;
-            this.txtSDT.ShortcutsEnabled = true;
-            this.txtSDT.Size = new System.Drawing.Size(259, 25);
-            this.txtSDT.TabIndex = 1;
-            this.txtSDT.UseSelectable = true;
-            this.txtSDT.WaterMark = "Nhập số điện thoại";
-            this.txtSDT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtSDT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // btnDangKy
             // 
@@ -219,26 +182,13 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "     Họ và tên:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Image = global::QuanLyThuVienApp.Properties.Resources._3374f84310d608d74314b06797d29822_removebg_preview1;
-            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(8, 93);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 17);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "     Số điện thoại:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Image = global::QuanLyThuVienApp.Properties.Resources.images_removebg_preview;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(8, 130);
+            this.label2.Location = new System.Drawing.Point(17, 130);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 17);
@@ -255,10 +205,8 @@
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangKy);
             this.Controls.Add(this.txtHoTen);
-            this.Controls.Add(this.txtSDT);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.DisplayHeader = false;
@@ -281,9 +229,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private MetroFramework.Controls.MetroTextBox txtEmail;
-        private MetroFramework.Controls.MetroTextBox txtSDT;
         private System.Windows.Forms.Button btnDangKy;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Label label6;

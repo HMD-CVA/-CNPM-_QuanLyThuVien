@@ -17,13 +17,22 @@ namespace QuanLyThuVienApp
     {
         private int? maDG;
         public static bool giaHan = false;
+        public int TienPhat { get; private set; }
+        public int SoNgayTre { get; private set; }
         public frmQuanLyPhieuMuonTreHan()
         {
             InitializeComponent();
         }
 
+        public frmQuanLyPhieuMuonTreHan(int _maPhieu)
+        {
+            InitializeComponent();
+            TienPhat = TinhTienPhat(_maPhieu);
+        }
+
         private void frmQuanLyPhieuMuon_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             loadPhieuMuon();
         }
 
@@ -37,8 +46,7 @@ namespace QuanLyThuVienApp
                 .Include(p => p.DocGia)
                 .Include(p => p.NhanVien)
                 .OrderByDescending(p => p.MaPhieu)
-                .Where(p => (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value < today) ||
-                            (p.NgayTra != null && p.HanTra.HasValue && p.HanTra.Value < DbFunctions.TruncateTime(p.NgayTra.Value)))
+                .Where(p => (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value < today))
                 .ToList();
 
             dgvPhieuMuon.DataSource = danhSachPhieuMuon.Select(p => new
@@ -215,18 +223,18 @@ namespace QuanLyThuVienApp
 
         private void btnHoaDonPhat_Click(object sender, EventArgs e)
         {
-            if (dgvChiTietPM.Rows.Count == 0) return;
+            if (dgvPhieuMuon.Rows.Count == 0) return;
 
-            DateTime hanTra = (DateTime)dgvChiTietPM.Rows[0].Cells["HanTra"].Value;
-            int soNgay = (DateTime.Now.Date - hanTra.Date).Days;
-            int id = int.Parse(dgvChiTietPM.Rows[0].Cells["MaDocGia"].Value.ToString());
-            string strHanTra = hanTra.ToString("dd/MM/yyyy");
+            string maPhieustr = dgvPhieuMuon.SelectedRows[0].Cells["MaPhieu"].Value.ToString();
+            if (maPhieustr.StartsWith("MP"))
+            {
+                maPhieustr = maPhieustr.Substring(2);
+            }
+            int maPhieu = int.Parse(maPhieustr);
 
-            if (soNgay <= 0) soNgay = 0;
-
-            //frmReportHoaDonPhat frm = new frmReportHoaDonPhat(id, strHanTra, soNgay);
-            //frm.Owner = this;
-            //frm.ShowDialog();
+            frmReportHoaDonPhat frm = new frmReportHoaDonPhat(maPhieu, TinhTienPhat(maPhieu));
+            frm.Owner = this;
+            frm.ShowDialog();
         }
 
         private int TinhTienPhat(int maPhieu)
@@ -245,9 +253,13 @@ namespace QuanLyThuVienApp
             int soNgayTre = (ngayTra - hanTra).Days;
 
             if (soNgayTre <= 0)
+            {
+                SoNgayTre = 0;
                 return 0;
+            }
+            SoNgayTre = soNgayTre;
 
-            int tienPhat = 0;
+            int tienPhat = 1000 * phieuMuon.TongSLMuon.GetValueOrDefault(); // Mỗi quyển trễ là 1000
 
             if (soNgayTre >= 30)
             {
@@ -268,9 +280,9 @@ namespace QuanLyThuVienApp
             int ngay8_14 = Math.Min(Math.Max(soNgayTre - 7, 0), 7);
             int ngay15_29 = Math.Min(Math.Max(soNgayTre - 14, 0), 15);
 
-            tienPhat += ngay7dau * 2000; // 1 → 7 ngày  2.000 VNĐ / ngày
-            tienPhat += ngay8_14 * 5000; // 8 → 14 ngày 5.000 VNĐ / ngày
-            tienPhat += ngay15_29 * 10000; //15 → 29 ngày    10.000 VNĐ / ngày
+            tienPhat += ngay7dau * 2000;    // 1 → 7 ngày  2.000 VNĐ/ngày
+            tienPhat += ngay8_14 * 5000;    // 8 → 14 ngày 5.000 VNĐ/ngày
+            tienPhat += ngay15_29 * 10000; // 15 → 29 ngày 10.000 VNĐ/ngày
           
 
             return tienPhat;

@@ -14,7 +14,8 @@ namespace QuanLyThuVienApp
     {
         public  bool ktXacThuc = false;
         private Timer countdownTimer;
-        private int remainingSeconds = 45;
+        private int totalTime = 45;
+        private int remainingSeconds;
         private string email;
         private string OTP;
         private DateTime TGNhan;
@@ -62,7 +63,7 @@ namespace QuanLyThuVienApp
             if (remainingSeconds <= 0)
             {
                 countdownTimer.Stop();
-                MessageBox.Show(this, "Mã xác thực đã hết hạn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Mã xác thực đã hết hạn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public frmXacThucDG(string _Email, string _OTP, DateTime _TGNhan, Action<bool> callback)
@@ -77,11 +78,12 @@ namespace QuanLyThuVienApp
 
         private void frmXacNhanOTP_Load(object sender, EventArgs e)
         {
+            remainingSeconds = totalTime;
             progressBar1.Visible = false;
             countdownTimer = new Timer();
             countdownTimer.Interval = 1000; // 1 giây
             countdownTimer.Tick += CountdownTimer_Tick;
-            startTimer(30);
+            startTimer(totalTime);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -107,7 +109,7 @@ namespace QuanLyThuVienApp
 
             TGNhan = DateTime.Now;
 
-            startTimer(30);
+            startTimer(totalTime);
         }
 
         private void btnXacThuc_Click(object sender, EventArgs e)
@@ -126,7 +128,7 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            if (remainingSeconds < 0 || (DateTime.Now - TGNhan).TotalSeconds > 45)
+            if (remainingSeconds < 0 || (DateTime.Now - TGNhan).TotalSeconds > totalTime)
             {
                 MessageBox.Show(this, "Mã xác thực đã hết hạn!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMaXacThuc.Focus();

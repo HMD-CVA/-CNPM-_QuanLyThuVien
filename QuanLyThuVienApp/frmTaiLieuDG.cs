@@ -31,7 +31,6 @@ namespace QuanLyThuVienApp
 
             btnSUB.Enabled = false;
             loadDuLieu();
-            //themNutDGV();
         }
         private void themNutDGV()
         {
@@ -115,7 +114,7 @@ namespace QuanLyThuVienApp
 
             if (soLuongConLai == 0)
             {
-                MessageBox.Show("Đã hết sách!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Đã hết tài liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -135,7 +134,7 @@ namespace QuanLyThuVienApp
 
                         if (daMuon + soLuongMuon > tongSach)
                         {
-                            MessageBox.Show($"Tổng số lượng mượn vượt quá số sách còn lại ({soLuongConLai})!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Tổng số lượng mượn vượt quá số tài liệu còn lại ({soLuongConLai})!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             txtDaDK.Text = taiLieusMuon[i].Item2.ToString();
                             return;
                         }
@@ -201,55 +200,6 @@ namespace QuanLyThuVienApp
             {
                 HienThiDuLieu(0);
             }
-
-            //string luaChon = cbTimKiem.Text;
-            //if (luaChon == "")
-            //{
-            //    MessageBox.Show("Vui lòng chọn lựa chọn để tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    cbTimKiem.Focus();
-            //    return;
-            //}
-
-            //QLTVEntities db = new QLTVEntities();
-            //List<TaiLieu> sach = new List<TaiLieu>();
-
-            //if (luaChon == "Mã tài liệu")
-            //    sach = db.TaiLieux.Where(p => ("S" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Tên tài liệu")
-            //    sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Tác giả")
-            //    sach = db.TaiLieux.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Nhà xuất bản")
-            //    sach = db.TaiLieux.Where(p => p.NhaXuatBan.TenNXB.Contains(txtTimKiem.Text)).ToList();
-            //else if (luaChon == "Danh mục")
-            //    sach = db.TaiLieux.Where(p => p.DanhMucTaiLieu.TenDanhMuc.Contains(txtTimKiem.Text)).ToList();
-
-            //dgvSach.DataSource = sach.Select(p => new
-            //{
-            //    MaTaiLieu = "TL" + p.MaTaiLieu,
-            //    p.TenTaiLieu,
-            //    p.TacGia.TenTG,
-            //    p.NhaXuatBan.TenNXB,
-            //    p.DanhMucTaiLieu.TenDanhMuc,
-            //    p.TaiBan,
-            //    p.SoLuong,
-            //    p.SoTaiLieuMuon,
-            //    p.MoTa
-            //}).ToList();
-
-            //if (dgvSach.Rows.Count > 0)
-            //{
-            //    HienThiDuLieu(0);
-            //}
-            //else
-            //{
-            //    txtMaSach.Clear();
-            //    txtTenSach.Clear();
-            //    txtTacGia.Clear();
-            //    txtNXB.Clear();
-            //    txtTheLoai.Clear();
-            //    txtMoTa.Clear();
-            //}
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -258,7 +208,6 @@ namespace QuanLyThuVienApp
             txtSTenTL.Text = string.Empty;
             reset();
             loadDuLieu();
-            //themNutDGV();
         }
 
         private void reset()
@@ -299,17 +248,6 @@ namespace QuanLyThuVienApp
                 {
                     int soLuongXoa = nhapSoLuongForm.SoLuong;
 
-                    //int soLuongConLai = soLuongHienTai - soLuongMuonXoa;
-
-                    //if (soLuongConLai < 1)
-                    //{
-                    //    btnSUB.Enabled = false;
-                    //}
-                    //else
-                    //{
-                    //    row.Cells["SoLuong2"].Value = soLuongConLai;
-                    //}
-
                     for (int i = 0; i < taiLieusMuon.Count; i++)
                     {
                         if (taiLieusMuon[i].Item1 == maSach)
@@ -329,12 +267,7 @@ namespace QuanLyThuVienApp
                 else return;
             }
             MessageBox.Show("Đã xoá thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            string inKQ = string.Empty;
-            for (int i = 0; i < taiLieusMuon.Count; i++)
-            {
-                inKQ += taiLieusMuon[i].Item1.ToString() + " " + taiLieusMuon[i].Item2.ToString() + "\n";
-            }
-            MessageBox.Show(inKQ, "Thông ", MessageBoxButtons.OK);
+  
             for (int i = 0; i < dgvTaiLieu.Rows.Count; i++)
             {
                 var ma = dgvTaiLieu.Rows[i].Cells["MaTaiLieu"].Value?.ToString();

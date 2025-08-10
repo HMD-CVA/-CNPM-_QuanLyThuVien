@@ -61,6 +61,10 @@
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.sidebarTransition = new System.Windows.Forms.Timer(this.components);
+            //this.btnGuiMail = new FontAwesome.Sharp.IconButton();
+            //this.btnQLDocGia = new FontAwesome.Sharp.IconButton();
+            //this.btnQLPhieuMuon = new FontAwesome.Sharp.IconButton();
+            //this.btnQLTaiLieu = new FontAwesome.Sharp.IconButton();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -188,6 +192,20 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(233, 58);
             this.panel5.TabIndex = 9;
+
+            this.panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel2.Controls.Add(this.btnThongKe);
+            //this.panel2.Controls.Add(this.btnGuiMail);
+            //this.panel2.Controls.Add(this.btnQLDocGia);
+            //this.panel2.Controls.Add(this.btnQLPhieuMuon);
+            //this.panel2.Controls.Add(this.btnQLTaiLieu);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(8, 131);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(127, 481);
+            this.panel2.TabIndex = 4;
             // 
             // menu
             // 
@@ -263,6 +281,25 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(233, 58);
             this.panel10.TabIndex = 11;
+
+            //this.btnGuiMail.BackColor = System.Drawing.Color.LightSteelBlue;
+            //this.btnGuiMail.Cursor = System.Windows.Forms.Cursors.Default;
+            //this.btnGuiMail.Dock = System.Windows.Forms.DockStyle.Top;
+            //this.btnGuiMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.btnGuiMail.IconChar = FontAwesome.Sharp.IconChar.Google;
+            //this.btnGuiMail.IconColor = System.Drawing.Color.Black;
+            //this.btnGuiMail.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            //this.btnGuiMail.IconSize = 40;
+            //this.btnGuiMail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            //this.btnGuiMail.Location = new System.Drawing.Point(0, 201);
+            //this.btnGuiMail.Margin = new System.Windows.Forms.Padding(2);
+            //this.btnGuiMail.Name = "btnGuiMail";
+            //this.btnGuiMail.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            //this.btnGuiMail.Size = new System.Drawing.Size(127, 67);
+            //this.btnGuiMail.TabIndex = 5;
+            //this.btnGuiMail.Text = "\r\nGửi \r\nEmail\r\n\r\n  ";
+            //this.btnGuiMail.UseVisualStyleBackColor = false;
+            //this.btnGuiMail.Click += new System.EventHandler(this.btnGuiEmail_Click);
             // 
             // btnQLDocGia
             // 
@@ -439,6 +476,28 @@
             // 
             this.sidebarTransition.Interval = 10;
             this.sidebarTransition.Tick += new System.EventHandler(this.sidebarTransition_Tick);
+
+            // btnQLTaiLieu
+            // 
+            //this.btnQLTaiLieu.BackColor = System.Drawing.Color.LightSteelBlue;
+            //this.btnQLTaiLieu.Cursor = System.Windows.Forms.Cursors.Default;
+            //this.btnQLTaiLieu.Dock = System.Windows.Forms.DockStyle.Top;
+            //this.btnQLTaiLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.btnQLTaiLieu.IconChar = FontAwesome.Sharp.IconChar.Book;
+            //this.btnQLTaiLieu.IconColor = System.Drawing.Color.Black;
+            //this.btnQLTaiLieu.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            //this.btnQLTaiLieu.IconSize = 40;
+            //this.btnQLTaiLieu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            //this.btnQLTaiLieu.Location = new System.Drawing.Point(0, 0);
+            //this.btnQLTaiLieu.Margin = new System.Windows.Forms.Padding(2);
+            //this.btnQLTaiLieu.Name = "btnQLTaiLieu";
+            //this.btnQLTaiLieu.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            //this.btnQLTaiLieu.Size = new System.Drawing.Size(127, 67);
+            //this.btnQLTaiLieu.TabIndex = 3;
+            //this.btnQLTaiLieu.Text = "            Quản lý\r\n             tài liệu";
+            //this.btnQLTaiLieu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            //this.btnQLTaiLieu.UseVisualStyleBackColor = false;
+            //this.btnQLTaiLieu.Click += new System.EventHandler(this.btnQLTaiLieu_Click);
             // 
             // frmMainUserNV
             // 
@@ -515,6 +574,11 @@
         private System.Windows.Forms.PictureBox btnHam;
         private System.Windows.Forms.Timer menuTransition;
         private System.Windows.Forms.Timer sidebarTransition;
+        private FontAwesome.Sharp.IconButton btnQLPhieuMuon;
+       // private FontAwesome.Sharp.IconButton btnThongKe;
+        private FontAwesome.Sharp.IconButton btnQLTaiLieu;
+       // private FontAwesome.Sharp.IconButton btnQLDocGia;
+        private FontAwesome.Sharp.IconButton btnGuiMail;
     }
 }
 

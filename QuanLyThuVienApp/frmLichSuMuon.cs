@@ -15,7 +15,6 @@ namespace QuanLyThuVienApp
     {
         private class PhieuMuonResult
         {
-            //public int MaPhieuGoc { get; set; }
             public string MaPhieu { get; set; }
             public string TenDG { get; set; }
             public string TenNV { get; set; }
@@ -83,7 +82,7 @@ namespace QuanLyThuVienApp
                 p.TaiLieu.DanhMucTaiLieu.TenDanhMuc,
                 p.TaiLieu.TacGia.TenTG,
                 p.TaiLieu.NhaXuatBan.TenNXB,
-                p.SoLuong
+                p.SoLuongBD
             }).ToList();
         }
 
@@ -111,9 +110,9 @@ namespace QuanLyThuVienApp
         {
             string email = txtEmail.Text.Trim();
             string maPhieu = txtMaPhieu.Text.Trim();
-            string sdt = txtSDT.Text.Trim();
+            string ms = txtMS.Text.Trim();
 
-            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(maPhieu) && string.IsNullOrEmpty(sdt))
+            if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(maPhieu) && string.IsNullOrEmpty(ms))
             {
                 MessageBox.Show("Vui lòng nhập thông tin phiếu mượn của bạn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -126,7 +125,7 @@ namespace QuanLyThuVienApp
             .Where(pm =>
                 (string.IsNullOrEmpty(email) || pm.DocGia.Email.Contains(email)) &&
                 (string.IsNullOrEmpty(maPhieuSearch) || pm.MaPhieu.ToString().Contains(maPhieuSearch)) &&
-                (string.IsNullOrEmpty(sdt) || pm.DocGia.SDT.Contains(sdt))
+                (string.IsNullOrEmpty(ms) || pm.DocGia.MaSo.Contains(ms))
             )
             .Select(p => new PhieuMuonResult
             {
@@ -152,7 +151,7 @@ namespace QuanLyThuVienApp
         {
             txtEmail.Text = string.Empty;
             txtMaPhieu.Text = string.Empty;
-            txtSDT.Text = string.Empty;
+            txtMS.Text = string.Empty;
             cbLoc.Text = string.Empty;
             loadDuLieu();
         }

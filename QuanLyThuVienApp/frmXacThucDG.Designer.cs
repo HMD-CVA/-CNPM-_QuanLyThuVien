@@ -42,14 +42,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label1.Location = new System.Drawing.Point(84, 33);
+
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.SkyBlue;
+            this.label1.Location = new System.Drawing.Point(104, 33);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 20);
+            this.label1.Size = new System.Drawing.Size(143, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "XÁC THỰC TÀI KHOẢN";
+            this.label1.Text = "XÁC THỰC EMAIL";
             // 
             // btnXacThuc
             // 
@@ -111,7 +112,7 @@
             // txtMaXacThuc
             // 
             this.txtMaXacThuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaXacThuc.Location = new System.Drawing.Point(172, 73);
+            this.txtMaXacThuc.Location = new System.Drawing.Point(130, 73);
             this.txtMaXacThuc.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaXacThuc.Name = "txtMaXacThuc";
             this.txtMaXacThuc.Size = new System.Drawing.Size(88, 23);
@@ -121,7 +122,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(85, 76);
+            this.label2.Location = new System.Drawing.Point(43, 76);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 17);
@@ -130,19 +131,21 @@
             // 
             // lblTimer
             // 
-            this.lblTimer.Location = new System.Drawing.Point(281, 180);
+
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(223, 72);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(53, 20);
+            this.lblTimer.Size = new System.Drawing.Size(53, 24);
             this.lblTimer.TabIndex = 10;
             // 
             // progressBar1
             // 
             this.progressBar1.BackColor = System.Drawing.Color.Silver;
-            this.progressBar1.Location = new System.Drawing.Point(265, 73);
+            this.progressBar1.Location = new System.Drawing.Point(284, 72);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(5);
             this.progressBar1.Maximum = 100;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(23, 23);
+            this.progressBar1.Size = new System.Drawing.Size(24, 24);
             this.progressBar1.TabIndex = 11;
             this.progressBar1.UseSelectable = true;
             // 
@@ -150,7 +153,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 208);
+            this.ClientSize = new System.Drawing.Size(351, 194);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.label2);

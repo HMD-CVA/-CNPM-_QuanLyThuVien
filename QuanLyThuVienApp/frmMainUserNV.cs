@@ -28,9 +28,18 @@ namespace QuanLyThuVienApp
 
             if (_biKhoa == true)
             {
+<<<<<<< HEAD
                 text = "Tài khoản của bạn đang bị khóa, vui lòng đến thư viện để được xử lý!";
                 tslbThongTin.ForeColor = Color.Red;
                 //btnQLPhieuMuon.Enabled = false;
+=======
+                MessageBox.Show("Tài khoản của bạn đang bị khóa, vui lòng liên hệ ADMIN thư viện để được xử lý!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frmHomes frm = new frmHomes();
+                this.Hide();
+                frm.ShowDialog();
+                this.Close();
+                return;
+>>>>>>> 9b51b62adf28463f0fc8afad7ab40861ecaff59f
             }
             else if( _biKhoa == false)
             {
@@ -281,5 +290,44 @@ namespace QuanLyThuVienApp
             //frm.MdiParent = this;
             //frm.Show();
         }
+<<<<<<< HEAD
+=======
+
+        private void btnTroGiup_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmTroGiup frm = new frmTroGiup();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void btnQLTaiLieu_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmQuanLyTaiLieu frm = new frmQuanLyTaiLieu();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void btnQLDocGia_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmQuanLyDocGia frm = new frmQuanLyDocGia();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void btnGuiEmail_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
+            frmGuiEmailQuaHan frm = new frmGuiEmailQuaHan();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+>>>>>>> 9b51b62adf28463f0fc8afad7ab40861ecaff59f
     }
 }

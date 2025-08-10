@@ -159,11 +159,11 @@
     <Compile Include="DocGia.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
-    <Compile Include="frmAL.cs">
+    <Compile Include="frmAI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAL.Designer.cs">
-      <DependentUpon>frmAL.cs</DependentUpon>
+    <Compile Include="frmAI.Designer.cs">
+      <DependentUpon>frmAI.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGuiEmailQuaHan.cs">
       <SubType>Form</SubType>
@@ -183,6 +183,12 @@
     <Compile Include="frmQuanLyPhieuMuonTreHan.Designer.cs">
       <DependentUpon>frmQuanLyPhieuMuonTreHan.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReportHoaDonPhat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportHoaDonPhat.Designer.cs">
+      <DependentUpon>frmReportHoaDonPhat.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmThongTinDocGia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,12 +200,6 @@
     </Compile>
     <Compile Include="frmThongTinNV.Designer.cs">
       <DependentUpon>frmThongTinNV.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmDangKy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDangKy.Designer.cs">
-      <DependentUpon>frmDangKy.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDangNhap.cs">
       <SubType>Form</SubType>
@@ -358,6 +358,7 @@
       <DependentUpon>frmXacThucNV.cs</DependentUpon>
     </Compile>
     <Compile Include="GuiEmail.cs" />
+    <Compile Include="LibraryHelper.cs" />
     <Compile Include="NguoiDung.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
@@ -379,8 +380,8 @@
     <Compile Include="TaiLieu.cs">
       <DependentUpon>DB_QLTV.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmAL.resx">
-      <DependentUpon>frmAL.cs</DependentUpon>
+    <EmbeddedResource Include="frmAI.resx">
+      <DependentUpon>frmAI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGuiEmailQuaHan.resx">
       <DependentUpon>frmGuiEmailQuaHan.cs</DependentUpon>
@@ -391,14 +392,14 @@
     <EmbeddedResource Include="frmQuanLyPhieuMuonTreHan.resx">
       <DependentUpon>frmQuanLyPhieuMuonTreHan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReportHoaDonPhat.resx">
+      <DependentUpon>frmReportHoaDonPhat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmThongTinDocGia.resx">
       <DependentUpon>frmThongTinDocGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongTinNV.resx">
       <DependentUpon>frmThongTinNV.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDangKy.resx">
-      <DependentUpon>frmDangKy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
@@ -520,6 +521,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="rpHoaDonPhat.rdlc" />
     <EmbeddedResource Include="rpPrintPhieuMuon.rdlc" />
   </ItemGroup>
   <ItemGroup>

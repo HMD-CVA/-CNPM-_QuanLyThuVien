@@ -325,7 +325,7 @@
             this.btnCaNhan.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
             this.btnCaNhan.Size = new System.Drawing.Size(319, 87);
             this.btnCaNhan.TabIndex = 8;
-            this.btnCaNhan.Text = "                       Thông tin cá nhân";
+            this.btnCaNhan.Text = "                       Nhân viên thư viện";
             this.btnCaNhan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCaNhan.UseVisualStyleBackColor = false;
             this.btnCaNhan.Click += new System.EventHandler(this.btnCaNhan_Click);

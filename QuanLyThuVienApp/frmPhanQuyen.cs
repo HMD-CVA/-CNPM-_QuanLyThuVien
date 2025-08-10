@@ -19,6 +19,7 @@ namespace QuanLyThuVienApp
 
         private void frmCapQuyen_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             radioUser.Checked = true;
         }
 

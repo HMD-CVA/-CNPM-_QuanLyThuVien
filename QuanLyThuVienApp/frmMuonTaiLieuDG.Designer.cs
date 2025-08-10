@@ -65,6 +65,7 @@
             this.txtEmail = new MetroFramework.Controls.MetroTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnXoaSLM = new FontAwesome.Sharp.IconButton();
+            this.progressBar1 = new MetroFramework.Controls.MetroProgressSpinner();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSachMuon)).BeginInit();
@@ -540,10 +541,20 @@
             this.btnXoaSLM.Name = "btnXoaSLM";
             this.btnXoaSLM.Size = new System.Drawing.Size(87, 25);
             this.btnXoaSLM.TabIndex = 31;
-            this.btnXoaSLM.Text = "Xóa SLM";
+            this.btnXoaSLM.Text = "Sửa SLM";
             this.btnXoaSLM.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoaSLM.UseVisualStyleBackColor = false;
             this.btnXoaSLM.Click += new System.EventHandler(this.btnXoaSLM_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(874, 84);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(0);
+            this.progressBar1.Maximum = 100;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(30, 30);
+            this.progressBar1.TabIndex = 32;
+            this.progressBar1.UseSelectable = true;
             // 
             // frmMuonTaiLieuDG
             // 
@@ -551,6 +562,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1219, 724);
+
+            this.ClientSize = new System.Drawing.Size(915, 475);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnXoaSLM);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtEmail);
@@ -617,5 +631,6 @@
         private MetroFramework.Controls.MetroTextBox txtEmail;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton btnXoaSLM;
+        private MetroFramework.Controls.MetroProgressSpinner progressBar1;
     }
 }

@@ -21,6 +21,7 @@ namespace QuanLyThuVienApp
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             timer1.Enabled = true;
             frmInfor frm = new frmInfor();
             frm.MdiParent = this;

@@ -11,20 +11,22 @@ using System.Windows.Forms;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmReportPrintPhieuMuon : Form
+    public partial class frmReportHoaDonPhat : Form
     {
-        private int maPhieu;
+        private int soNgay, soTien, maPhieu;
+        private string hanTra, NguoiBiPhat, NguoiIn, Email;
 
-        public frmReportPrintPhieuMuon()
+        public frmReportHoaDonPhat()
         {
             InitializeComponent();
             loadFRM();
         }
 
-        public frmReportPrintPhieuMuon(int _maPhieu)
+        public frmReportHoaDonPhat(int _maPhieu, int _soTien)
         {
-            InitializeComponent();
             maPhieu = _maPhieu;
+            soTien = _soTien;
+            InitializeComponent();
             loadFRM();
         }
 
@@ -59,41 +61,27 @@ namespace QuanLyThuVienApp
         private void frmReportHoaDonPhat_Load(object sender, EventArgs e)
         {
             QLTVEntities db = new QLTVEntities();
-
             PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
-            if (phieuMuon == null)
-            {
-                MessageBox.Show("Phiếu mượn không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
-            string trangThai = string.Empty;
-            if (phieuMuon.HanTra.HasValue &&
-               ((phieuMuon.NgayTra.HasValue && phieuMuon.HanTra.Value.Date < phieuMuon.NgayTra.Value.Date) ||
-                (!phieuMuon.NgayTra.HasValue && phieuMuon.HanTra.Value.Date < DateTime.Now.Date)))
-            {
-                trangThai = "Trễ hạn";
-            }
-            else if (phieuMuon.DaTra == true)
-            {
-                trangThai = "Đã trả";
-            }
-            else
-            {
-                trangThai = "Chưa trả";
-            }
+            Email = phieuMuon.DocGia.Email;
+            NguoiBiPhat = phieuMuon.DocGia.HoTen;
+            NguoiIn = phieuMuon.NhanVien.HoTen;
+            hanTra = phieuMuon.HanTra.Value.ToString("dd/MM/yyyy");
 
-            ReportParameter[] para = new ReportParameter[9];
-            para[0] = new ReportParameter("NguoiIn", phieuMuon.NhanVien.HoTen);
-            para[1] = new ReportParameter("HoTenDocGia", phieuMuon.DocGia.HoTen);
-            para[2] = new ReportParameter("SDT", phieuMuon.DocGia.MaSo.ToString());
-            para[3] = new ReportParameter("Email", phieuMuon.DocGia.Email.ToString());
-            para[4] = new ReportParameter("NgayMuon", phieuMuon.NgayMuon.Value.ToString("dd/MM/yyyy"));
-            para[5] = new ReportParameter("HanTra", phieuMuon.HanTra.Value.ToString("dd/MM/yyyy"));
-            para[6] = new ReportParameter("TrangThai", trangThai);
-            para[7] = new ReportParameter("MaPhieu", "MP" + phieuMuon.MaPhieu.ToString());
-            para[8] = new ReportParameter("NgayTra", phieuMuon.NgayTra.HasValue ? phieuMuon.NgayTra.Value.ToString("dd/MM/yyyy"): "Chưa trả");
+            DateTime hanTras = phieuMuon.HanTra.Value.Date;
+            DateTime ngayTras = phieuMuon.DaTra == true && phieuMuon.NgayTra.HasValue
+                                ? phieuMuon.NgayTra.Value.Date
+                                : DateTime.Today;
 
+            soNgay = (ngayTras - hanTras).Days >= 0 ? (ngayTras - hanTras).Days : 0;
+
+            ReportParameter[] para = new ReportParameter[6];
+            para[0] = new ReportParameter("NguoiIn", NguoiIn);
+            para[1] = new ReportParameter("NguoiBiPhat", NguoiBiPhat);
+            para[2] = new ReportParameter("HanTra", hanTra);
+            para[3] = new ReportParameter("Email", Email);
+            para[4] = new ReportParameter("SoNgay", soNgay.ToString());
+            para[5] = new ReportParameter("SoTien", soTien.ToString());
 
             reportViewer1.LocalReport.SetParameters(para);
             this.reportViewer1.RefreshReport();
@@ -104,12 +92,11 @@ namespace QuanLyThuVienApp
             dt.TableName = "ChiTietPhieuMuon";
             dt.Columns.Add("MaPM", typeof(string));
             dt.Columns.Add("MaTL", typeof(string));
-            dt.Columns.Add("SoLuongBD", typeof(int));
-            dt.Columns.Add("SoLuong", typeof(string));
+            dt.Columns.Add("SoLuong", typeof(int));
 
             foreach (var item in ctPM)
             {
-                dt.Rows.Add(item.MaPM, item.TaiLieu.TenTaiLieu, item.SoLuongBD , item.SoLuong == 0 ? "Đã trả" : item.SoLuong.ToString());
+                dt.Rows.Add(item.MaPM, item.TaiLieu.TenTaiLieu, item.SoLuong);
             }
             ReportDataSource rds = new ReportDataSource("DataSet1", dt);
 
