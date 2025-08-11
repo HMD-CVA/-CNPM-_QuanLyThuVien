@@ -358,9 +358,9 @@
             this.label1.Location = new System.Drawing.Point(278, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 20);
+            this.label1.Size = new System.Drawing.Size(248, 20);
             this.label1.TabIndex = 14;
-            this.label1.Text = "DANH tài liệu NHÀ XUẤT BẢN";
+            this.label1.Text = "DANH SÁCH NHÀ XUẤT BẢN";
             // 
             // frmQuanLyNXB
             // 

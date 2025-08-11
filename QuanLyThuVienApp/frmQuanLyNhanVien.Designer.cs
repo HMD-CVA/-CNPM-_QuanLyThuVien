@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBack = new FontAwesome.Sharp.IconButton();
             this.btnDangKy = new System.Windows.Forms.Button();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -52,18 +53,18 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtSuaTen = new System.Windows.Forms.TextBox();
             this.btnXoaTK = new System.Windows.Forms.Button();
+            this.btnResetTK = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtSuaEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnLamMoi = new FontAwesome.Sharp.IconButton();
             this.btnTimKiem = new FontAwesome.Sharp.IconButton();
-            this.btnResetTK = new System.Windows.Forms.Button();
-            this.btnBack = new FontAwesome.Sharp.IconButton();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnXemTT = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -88,14 +89,14 @@
             this.dgvNhanVien.AllowUserToDeleteRows = false;
             this.dgvNhanVien.AllowUserToResizeRows = false;
             this.dgvNhanVien.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNhanVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNhanVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNhanVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNV,
@@ -104,14 +105,14 @@
             this.Email,
             this.NgayDangKi,
             this.TrangThai});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvNhanVien.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNhanVien.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNhanVien.Location = new System.Drawing.Point(0, 0);
             this.dgvNhanVien.Margin = new System.Windows.Forms.Padding(2);
@@ -165,8 +166,8 @@
             // 
             this.NgayDangKi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.NgayDangKi.DataPropertyName = "NgayDangKi";
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            this.NgayDangKi.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            this.NgayDangKi.DefaultCellStyle = dataGridViewCellStyle5;
             this.NgayDangKi.HeaderText = "Ngày đăng ký";
             this.NgayDangKi.MinimumWidth = 6;
             this.NgayDangKi.Name = "NgayDangKi";
@@ -236,6 +237,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tạo tài khoản mới";
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBack.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateBackward;
+            this.btnBack.IconColor = System.Drawing.Color.Black;
+            this.btnBack.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBack.IconSize = 19;
+            this.btnBack.Location = new System.Drawing.Point(271, 92);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(26, 26);
+            this.btnBack.TabIndex = 5;
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // btnDangKy
             // 
             this.btnDangKy.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -288,6 +304,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnXemTT);
             this.groupBox2.Controls.Add(this.txtSuaTen);
             this.groupBox2.Controls.Add(this.btnXoaTK);
             this.groupBox2.Controls.Add(this.btnResetTK);
@@ -319,14 +336,28 @@
             this.btnXoaTK.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnXoaTK.Image = global::QuanLyThuVienApp.Properties.Resources.images__4__removebg_preview;
             this.btnXoaTK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoaTK.Location = new System.Drawing.Point(344, 133);
+            this.btnXoaTK.Location = new System.Drawing.Point(390, 133);
             this.btnXoaTK.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaTK.Name = "btnXoaTK";
-            this.btnXoaTK.Size = new System.Drawing.Size(167, 25);
+            this.btnXoaTK.Size = new System.Drawing.Size(129, 25);
             this.btnXoaTK.TabIndex = 4;
             this.btnXoaTK.Text = "     Xoá tài khoản";
             this.btnXoaTK.UseVisualStyleBackColor = false;
             this.btnXoaTK.Click += new System.EventHandler(this.btnXoaTK_Click);
+            // 
+            // btnResetTK
+            // 
+            this.btnResetTK.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnResetTK.Image = global::QuanLyThuVienApp.Properties.Resources.abc;
+            this.btnResetTK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResetTK.Location = new System.Drawing.Point(190, 133);
+            this.btnResetTK.Margin = new System.Windows.Forms.Padding(2);
+            this.btnResetTK.Name = "btnResetTK";
+            this.btnResetTK.Size = new System.Drawing.Size(147, 25);
+            this.btnResetTK.TabIndex = 4;
+            this.btnResetTK.Text = "    Đặt lại tài khoản";
+            this.btnResetTK.UseVisualStyleBackColor = false;
+            this.btnResetTK.Click += new System.EventHandler(this.btnResetTK_Click);
             // 
             // txtID
             // 
@@ -389,20 +420,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tìm kiếm";
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 156);
-            this.progressBar1.MarqueeAnimationSpeed = 30;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(341, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 29;
-            this.progressBar1.Visible = false;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // btnLamMoi
             // 
             this.btnLamMoi.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -441,34 +458,33 @@
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // btnResetTK
+            // progressBar1
             // 
-            this.btnResetTK.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnResetTK.Image = global::QuanLyThuVienApp.Properties.Resources.abc;
-            this.btnResetTK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResetTK.Location = new System.Drawing.Point(103, 133);
-            this.btnResetTK.Margin = new System.Windows.Forms.Padding(2);
-            this.btnResetTK.Name = "btnResetTK";
-            this.btnResetTK.Size = new System.Drawing.Size(167, 25);
-            this.btnResetTK.TabIndex = 4;
-            this.btnResetTK.Text = "    Đặt lại tài khoản";
-            this.btnResetTK.UseVisualStyleBackColor = false;
-            this.btnResetTK.Click += new System.EventHandler(this.btnResetTK_Click);
+            this.progressBar1.Location = new System.Drawing.Point(12, 156);
+            this.progressBar1.MarqueeAnimationSpeed = 30;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(341, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 29;
+            this.progressBar1.Visible = false;
             // 
-            // btnBack
+            // errorProvider1
             // 
-            this.btnBack.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBack.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateBackward;
-            this.btnBack.IconColor = System.Drawing.Color.Black;
-            this.btnBack.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnBack.IconSize = 19;
-            this.btnBack.Location = new System.Drawing.Point(271, 92);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(26, 26);
-            this.btnBack.TabIndex = 5;
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // btnXemTT
+            // 
+            this.btnXemTT.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnXemTT.Image = global::QuanLyThuVienApp.Properties.Resources.dangki_removebg_preview1;
+            this.btnXemTT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXemTT.Location = new System.Drawing.Point(17, 133);
+            this.btnXemTT.Margin = new System.Windows.Forms.Padding(2);
+            this.btnXemTT.Name = "btnXemTT";
+            this.btnXemTT.Size = new System.Drawing.Size(130, 25);
+            this.btnXemTT.TabIndex = 6;
+            this.btnXemTT.Text = "    Xem thông tin";
+            this.btnXemTT.UseVisualStyleBackColor = false;
+            this.btnXemTT.Click += new System.EventHandler(this.btnXemTT_Click);
             // 
             // frmQuanLyNhanVien
             // 
@@ -534,5 +550,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayDangKi;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
+        private System.Windows.Forms.Button btnXemTT;
     }
 }

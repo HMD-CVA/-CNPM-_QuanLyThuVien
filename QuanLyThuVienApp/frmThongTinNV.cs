@@ -15,6 +15,7 @@ namespace QuanLyThuVienApp
     {
         public static string tenDN;
         public static string quyenHan;
+        public static int maNV;
 
         public frmThongTinNV()
         {
@@ -23,11 +24,26 @@ namespace QuanLyThuVienApp
 
         public frmThongTinNV(string _tenDN, string _quyenHan)
         {
-            tenDN = _tenDN;
-            quyenHan = _quyenHan;
             InitializeComponent();
+            tenDN = _tenDN;
+            quyenHan = _quyenHan;       
         }
-
+        public frmThongTinNV(int _maNV)
+        {  
+            InitializeComponent();
+            maNV = _maNV;    
+            btnDoiMatKhau.Visible = false;
+            btnDoiTenDangNhap.Visible = false;
+            btnDoiTen.Visible = false;
+            btnDoiNgaySinh.Visible = false;
+            btnDoiDC.Visible = false;
+            btnDoiSDT.Visible = false;
+            btnDoiEmail.Visible = false;
+            QLTVEntities db = new QLTVEntities();
+            int ngDID = db.NhanViens.Where(p => p.MaNV == maNV).Select(p => p.NguoiDungID).FirstOrDefault();
+            tenDN = db.NguoiDungs.Where(p => p.ID == ngDID).Select(p => p.TenDangNhap).FirstOrDefault();
+            quyenHan = db.NguoiDungs.Where(p => p.ID == ngDID).Select(p => p.QuyenHan).FirstOrDefault();
+        }
         private void frmCaNhan_Load(object sender, EventArgs e)
         {
             LibraryHelper.KiemTraVaKhoaTaiKhoan();
@@ -431,6 +447,11 @@ namespace QuanLyThuVienApp
             btnHuySDT.Hide();
             btnLuuSDT.Hide();
             txtSDT.ReadOnly = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

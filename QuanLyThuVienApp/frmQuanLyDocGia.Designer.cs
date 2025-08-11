@@ -44,6 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnKhoa = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbSinhVien = new System.Windows.Forms.RadioButton();
             this.rbGiangVien = new System.Windows.Forms.RadioButton();
@@ -228,6 +229,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnKhoa);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.txtTrangThai);
             this.groupBox1.Controls.Add(this.label3);
@@ -248,18 +250,31 @@
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin độc giả";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnKhoa
+            // 
+            this.btnKhoa.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnKhoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKhoa.Location = new System.Drawing.Point(468, 91);
+            this.btnKhoa.Margin = new System.Windows.Forms.Padding(2);
+            this.btnKhoa.Name = "btnKhoa";
+            this.btnKhoa.Size = new System.Drawing.Size(147, 27);
+            this.btnKhoa.TabIndex = 28;
+            this.btnKhoa.Text = "Mở khoá";
+            this.btnKhoa.UseVisualStyleBackColor = false;
+            this.btnKhoa.Click += new System.EventHandler(this.btnBiKhoa_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.rbSinhVien);
             this.groupBox2.Controls.Add(this.rbGiangVien);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(462, 113);
+            this.groupBox2.Location = new System.Drawing.Point(462, 126);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(150, 84);
+            this.groupBox2.Size = new System.Drawing.Size(147, 70);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Loại độc giả";
@@ -291,7 +306,7 @@
             // txtTrangThai
             // 
             this.txtTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTrangThai.Location = new System.Drawing.Point(462, 57);
+            this.txtTrangThai.Location = new System.Drawing.Point(468, 57);
             this.txtTrangThai.Margin = new System.Windows.Forms.Padding(2);
             this.txtTrangThai.Name = "txtTrangThai";
             this.txtTrangThai.ReadOnly = true;
@@ -518,5 +533,6 @@
         private System.Windows.Forms.RadioButton rbSinhVien;
         private System.Windows.Forms.RadioButton rbGiangVien;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnKhoa;
     }
 }

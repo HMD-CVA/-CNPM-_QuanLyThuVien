@@ -42,12 +42,16 @@
             this.btnLuuEmail = new FontAwesome.Sharp.IconButton();
             this.btnHuyEmail = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDoiDC = new System.Windows.Forms.Button();
             this.txtNgaySinh = new System.Windows.Forms.TextBox();
+            this.btnDoiSDT = new System.Windows.Forms.Button();
             this.btnHuyDC = new FontAwesome.Sharp.IconButton();
+            this.btnDoiNgaySinh = new System.Windows.Forms.Button();
             this.btnLuuDC = new FontAwesome.Sharp.IconButton();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.btnHuySDT = new FontAwesome.Sharp.IconButton();
             this.btnLuuSDT = new FontAwesome.Sharp.IconButton();
+            this.btnDoiTenDangNhap = new System.Windows.Forms.Button();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -58,11 +62,8 @@
             this.dsf = new System.Windows.Forms.Label();
             this.btnHuyTenDN = new FontAwesome.Sharp.IconButton();
             this.btnLuuTenDN = new FontAwesome.Sharp.IconButton();
-            this.btnDoiTenDangNhap = new System.Windows.Forms.Button();
-            this.btnDoiNgaySinh = new System.Windows.Forms.Button();
-            this.btnDoiSDT = new System.Windows.Forms.Button();
-            this.btnDoiDC = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,7 +134,7 @@
             // 
             this.btnDoiMatKhau.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDoiMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDoiMatKhau.Location = new System.Drawing.Point(769, 224);
+            this.btnDoiMatKhau.Location = new System.Drawing.Point(769, 86);
             this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(2);
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
             this.btnDoiMatKhau.Size = new System.Drawing.Size(218, 27);
@@ -159,7 +160,7 @@
             // 
             this.btnDoiTen.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnDoiTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDoiTen.Location = new System.Drawing.Point(769, 285);
+            this.btnDoiTen.Location = new System.Drawing.Point(769, 226);
             this.btnDoiTen.Margin = new System.Windows.Forms.Padding(2);
             this.btnDoiTen.Name = "btnDoiTen";
             this.btnDoiTen.Size = new System.Drawing.Size(218, 27);
@@ -277,6 +278,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bảng Thông tin và Chức năng";
             // 
+            // btnDoiDC
+            // 
+            this.btnDoiDC.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDoiDC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDoiDC.Location = new System.Drawing.Point(769, 450);
+            this.btnDoiDC.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDoiDC.Name = "btnDoiDC";
+            this.btnDoiDC.Size = new System.Drawing.Size(218, 27);
+            this.btnDoiDC.TabIndex = 11;
+            this.btnDoiDC.Text = "Thay đổi địa chỉ";
+            this.btnDoiDC.UseVisualStyleBackColor = false;
+            this.btnDoiDC.Click += new System.EventHandler(this.btnDoiDC_Click);
+            // 
             // txtNgaySinh
             // 
             this.txtNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -286,6 +300,19 @@
             this.txtNgaySinh.ReadOnly = true;
             this.txtNgaySinh.Size = new System.Drawing.Size(471, 23);
             this.txtNgaySinh.TabIndex = 21;
+            // 
+            // btnDoiSDT
+            // 
+            this.btnDoiSDT.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDoiSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDoiSDT.Location = new System.Drawing.Point(769, 380);
+            this.btnDoiSDT.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDoiSDT.Name = "btnDoiSDT";
+            this.btnDoiSDT.Size = new System.Drawing.Size(218, 27);
+            this.btnDoiSDT.TabIndex = 10;
+            this.btnDoiSDT.Text = "Thay đổi số điện thoại";
+            this.btnDoiSDT.UseVisualStyleBackColor = false;
+            this.btnDoiSDT.Click += new System.EventHandler(this.btnDoiSDT_Click);
             // 
             // btnHuyDC
             // 
@@ -302,6 +329,19 @@
             this.btnHuyDC.TabIndex = 20;
             this.btnHuyDC.UseVisualStyleBackColor = false;
             this.btnHuyDC.Click += new System.EventHandler(this.btnHuyDC_Click);
+            // 
+            // btnDoiNgaySinh
+            // 
+            this.btnDoiNgaySinh.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDoiNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDoiNgaySinh.Location = new System.Drawing.Point(769, 301);
+            this.btnDoiNgaySinh.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDoiNgaySinh.Name = "btnDoiNgaySinh";
+            this.btnDoiNgaySinh.Size = new System.Drawing.Size(218, 27);
+            this.btnDoiNgaySinh.TabIndex = 9;
+            this.btnDoiNgaySinh.Text = "Thay đổi ngày sinh";
+            this.btnDoiNgaySinh.UseVisualStyleBackColor = false;
+            this.btnDoiNgaySinh.Click += new System.EventHandler(this.btnDoiNgaySinh_Click);
             // 
             // btnLuuDC
             // 
@@ -361,6 +401,19 @@
             this.btnLuuSDT.UseVisualStyleBackColor = false;
             this.btnLuuSDT.Click += new System.EventHandler(this.btnLuuSDT_Click);
             // 
+            // btnDoiTenDangNhap
+            // 
+            this.btnDoiTenDangNhap.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnDoiTenDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDoiTenDangNhap.Location = new System.Drawing.Point(769, 155);
+            this.btnDoiTenDangNhap.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDoiTenDangNhap.Name = "btnDoiTenDangNhap";
+            this.btnDoiTenDangNhap.Size = new System.Drawing.Size(218, 27);
+            this.btnDoiTenDangNhap.TabIndex = 6;
+            this.btnDoiTenDangNhap.Text = "Thay đổi tên đăng nhập";
+            this.btnDoiTenDangNhap.UseVisualStyleBackColor = false;
+            this.btnDoiTenDangNhap.Click += new System.EventHandler(this.btnDoiTenDangNhap_Click);
+            // 
             // txtSDT
             // 
             this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -400,7 +453,7 @@
             this.btnLuuNgaySinh.IconColor = System.Drawing.Color.RoyalBlue;
             this.btnLuuNgaySinh.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLuuNgaySinh.IconSize = 20;
-            this.btnLuuNgaySinh.Location = new System.Drawing.Point(652, 304);
+            this.btnLuuNgaySinh.Location = new System.Drawing.Point(652, 301);
             this.btnLuuNgaySinh.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuuNgaySinh.Name = "btnLuuNgaySinh";
             this.btnLuuNgaySinh.Padding = new System.Windows.Forms.Padding(1, 2, 0, 0);
@@ -416,7 +469,7 @@
             this.btnHuyNgaySinh.IconColor = System.Drawing.Color.Brown;
             this.btnHuyNgaySinh.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnHuyNgaySinh.IconSize = 20;
-            this.btnHuyNgaySinh.Location = new System.Drawing.Point(695, 301);
+            this.btnHuyNgaySinh.Location = new System.Drawing.Point(695, 302);
             this.btnHuyNgaySinh.Margin = new System.Windows.Forms.Padding(2);
             this.btnHuyNgaySinh.Name = "btnHuyNgaySinh";
             this.btnHuyNgaySinh.Padding = new System.Windows.Forms.Padding(1, 2, 0, 0);
@@ -489,58 +542,6 @@
             this.btnLuuTenDN.UseVisualStyleBackColor = false;
             this.btnLuuTenDN.Click += new System.EventHandler(this.btnLuuTenDN_Click);
             // 
-            // btnDoiTenDangNhap
-            // 
-            this.btnDoiTenDangNhap.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDoiTenDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDoiTenDangNhap.Location = new System.Drawing.Point(769, 155);
-            this.btnDoiTenDangNhap.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDoiTenDangNhap.Name = "btnDoiTenDangNhap";
-            this.btnDoiTenDangNhap.Size = new System.Drawing.Size(218, 27);
-            this.btnDoiTenDangNhap.TabIndex = 6;
-            this.btnDoiTenDangNhap.Text = "Thay đổi tên đăng nhập";
-            this.btnDoiTenDangNhap.UseVisualStyleBackColor = false;
-            this.btnDoiTenDangNhap.Click += new System.EventHandler(this.btnDoiTenDangNhap_Click);
-            // 
-            // btnDoiNgaySinh
-            // 
-            this.btnDoiNgaySinh.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDoiNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDoiNgaySinh.Location = new System.Drawing.Point(769, 346);
-            this.btnDoiNgaySinh.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDoiNgaySinh.Name = "btnDoiNgaySinh";
-            this.btnDoiNgaySinh.Size = new System.Drawing.Size(218, 27);
-            this.btnDoiNgaySinh.TabIndex = 9;
-            this.btnDoiNgaySinh.Text = "Thay đổi ngày sinh";
-            this.btnDoiNgaySinh.UseVisualStyleBackColor = false;
-            this.btnDoiNgaySinh.Click += new System.EventHandler(this.btnDoiNgaySinh_Click);
-            // 
-            // btnDoiSDT
-            // 
-            this.btnDoiSDT.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDoiSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDoiSDT.Location = new System.Drawing.Point(769, 407);
-            this.btnDoiSDT.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDoiSDT.Name = "btnDoiSDT";
-            this.btnDoiSDT.Size = new System.Drawing.Size(218, 27);
-            this.btnDoiSDT.TabIndex = 10;
-            this.btnDoiSDT.Text = "Thay đổi số điện thoại";
-            this.btnDoiSDT.UseVisualStyleBackColor = false;
-            this.btnDoiSDT.Click += new System.EventHandler(this.btnDoiSDT_Click);
-            // 
-            // btnDoiDC
-            // 
-            this.btnDoiDC.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDoiDC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDoiDC.Location = new System.Drawing.Point(769, 468);
-            this.btnDoiDC.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDoiDC.Name = "btnDoiDC";
-            this.btnDoiDC.Size = new System.Drawing.Size(218, 27);
-            this.btnDoiDC.TabIndex = 11;
-            this.btnDoiDC.Text = "Thay đổi địa chỉ";
-            this.btnDoiDC.UseVisualStyleBackColor = false;
-            this.btnDoiDC.Click += new System.EventHandler(this.btnDoiDC_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -551,12 +552,23 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "THÔNG TIN CÁ NHÂN";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1147, -2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmThongTinNV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1219, 724);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -611,5 +623,6 @@
         private System.Windows.Forms.Button btnDoiDC;
         private System.Windows.Forms.TextBox txtNgaySinh;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
     }
 }

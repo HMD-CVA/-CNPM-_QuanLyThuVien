@@ -26,6 +26,7 @@ namespace QuanLyThuVienApp
 
         private void frmQuanLyBanDoc_Load(object sender, EventArgs e)
         {
+            LibraryHelper.KiemTraVaKhoaTaiKhoan();
             rbSinhVien.Checked = true;
             loadDuLieu();
         }
@@ -91,6 +92,15 @@ namespace QuanLyThuVienApp
                 txtHoVaTen.Text = dgvBanDoc.Rows[index].Cells["HoTen"].Value.ToString();
                 txtMaSo.Text = dgvBanDoc.Rows[index].Cells["MaSo"].Value.ToString();
                 txtTrangThai.Text = dgvBanDoc.Rows[index].Cells["BiKhoa"].Value.ToString();
+
+                if (txtTrangThai.Text == "Bị khoá")
+                {   
+                    btnKhoa.Text = "Mở khoá";
+                }
+                else
+                {
+                    btnKhoa.Text = "Khoá tài khoản";
+                }
             }
             else ResetBTN();
         }
@@ -164,11 +174,6 @@ namespace QuanLyThuVienApp
         {
             loaiDG = false;
             loadDuLieu() ;
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -357,5 +357,18 @@ namespace QuanLyThuVienApp
             txtSuaEmail.Clear();
             txtSuaTen.Clear();
         }
+
+        private void btnXemTT_Click(object sender, EventArgs e)
+        {
+            string maNVstr = txtID.Text.Trim();
+            int maNV = 0;
+       
+            maNVstr = maNVstr.Substring(2);
+
+            maNV = int.Parse(maNVstr);
+
+            frmThongTinNV frm = new frmThongTinNV(maNV);
+            frm.Show();
+        }
     }
 }

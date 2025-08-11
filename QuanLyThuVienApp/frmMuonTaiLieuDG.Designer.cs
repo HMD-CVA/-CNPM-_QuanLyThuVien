@@ -55,8 +55,6 @@
             this.txtTenSach = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTacGia = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtConSan = new System.Windows.Forms.TextBox();
             this.txtTheLoai = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -317,8 +315,6 @@
             this.groupBox1.Controls.Add(this.txtTenSach);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtTacGia);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtConSan);
             this.groupBox1.Controls.Add(this.txtTheLoai);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label9);
@@ -419,33 +415,11 @@
             this.txtTacGia.Size = new System.Drawing.Size(195, 23);
             this.txtTacGia.TabIndex = 3;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(233, 37);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 17);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Còn sẵn";
-            // 
-            // txtConSan
-            // 
-            this.txtConSan.BackColor = System.Drawing.Color.White;
-            this.txtConSan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConSan.Location = new System.Drawing.Point(297, 31);
-            this.txtConSan.Margin = new System.Windows.Forms.Padding(2);
-            this.txtConSan.Name = "txtConSan";
-            this.txtConSan.ReadOnly = true;
-            this.txtConSan.Size = new System.Drawing.Size(115, 23);
-            this.txtConSan.TabIndex = 3;
-            // 
             // txtTheLoai
             // 
             this.txtTheLoai.BackColor = System.Drawing.Color.White;
             this.txtTheLoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTheLoai.Location = new System.Drawing.Point(236, 148);
+            this.txtTheLoai.Location = new System.Drawing.Point(238, 92);
             this.txtTheLoai.Margin = new System.Windows.Forms.Padding(2);
             this.txtTheLoai.Name = "txtTheLoai";
             this.txtTheLoai.ReadOnly = true;
@@ -456,7 +430,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(233, 73);
+            this.label5.Location = new System.Drawing.Point(235, 17);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 17);
@@ -467,7 +441,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(233, 129);
+            this.label9.Location = new System.Drawing.Point(235, 73);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 17);
@@ -478,7 +452,7 @@
             // 
             this.txtNXB.BackColor = System.Drawing.Color.White;
             this.txtNXB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNXB.Location = new System.Drawing.Point(236, 92);
+            this.txtNXB.Location = new System.Drawing.Point(238, 36);
             this.txtNXB.Margin = new System.Windows.Forms.Padding(2);
             this.txtNXB.Name = "txtNXB";
             this.txtNXB.ReadOnly = true;
@@ -605,8 +579,6 @@
         private System.Windows.Forms.TextBox txtTenSach;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTacGia;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtConSan;
         private System.Windows.Forms.TextBox txtTheLoai;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;

@@ -167,7 +167,7 @@ namespace QuanLyThuVienApp
                 p.TaiLieu.TacGia.TenTG,
                 p.TaiLieu.NhaXuatBan.TenNXB,
                 p.SoLuongBD,
-                SoLuong = (p.SoLuong == 0) ? "Đã trả" : p.SoLuong.ToString(),
+                SoLuong = (p.SoLuong == 0) ? "Đã trả" : (p.SoLuong < 0) ? "Đã huỷ" :  p.SoLuong.ToString(),
 
                 p.PhieuMuon.DaTra,
                 p.PhieuMuon.NgayTra,
@@ -310,13 +310,15 @@ namespace QuanLyThuVienApp
             {
                 var row = dgvChiTietPM.Rows[e.RowIndex];
 
-                bool daTra = Convert.ToBoolean(row.Cells["DaTra"].Value);
-                DateTime? ngayTra = row.Cells["NgayTra"].Value as DateTime?;
-                DateTime? hanTra = row.Cells["HanTra"].Value as DateTime?;
+                string maPhieu = row.Cells["MaPM"].Value.ToString();
+                //maPhieu = maPhieu.Substring(2);
+                QLTVEntities db = new QLTVEntities();
+                PhieuMuon pm = db.PhieuMuons.Where(p => p.MaPhieu.ToString() == maPhieu).FirstOrDefault();
+                if (pm == null)  return;
 
-                // Nếu chưa trả, chưa nhập ngày trả và quá hạn
-                if (!daTra && ngayTra == null && hanTra.HasValue && hanTra.Value.Date < DateTime.Now.Date)
-                { 
+                if ((pm.NgayMuon == null && pm.HanTra == null && pm.MaNV == null) || (pm.NgayTra.HasValue) ||
+                    (pm.DaTra == false && pm.NgayTra == null && pm.HanTra.HasValue && pm.HanTra.Value.Date < DateTime.Now.Date))
+                {
                     dgvChiTietPM.Columns["btnTra"].Visible = false;
                 }
             }
@@ -584,25 +586,33 @@ namespace QuanLyThuVienApp
         {
             QLTVEntities db = new QLTVEntities();
             int? tongSLMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).Select(p => p.TongSLMuon).FirstOrDefault();
-            if (tongSLMuon == 0)
+            if (tongSLMuon == null || tongSLMuon == 0)
             {
                 return;
             }
-            PhieuMuon pm = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
-            pm.TongSLMuon = 0;
-            foreach (DataGridViewRow row in dgvChiTietPM.Rows)
+            else
             {
-                if (row.IsNewRow) continue;
+                PhieuMuon pm = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
+                pm.TongSLMuon = 0;
+                foreach (DataGridViewRow row in dgvChiTietPM.Rows)
+                {
+                    if (row.IsNewRow) continue;
 
-                string maTLString = row.Cells["MaTaiLieu"].Value.ToString();
-                int maTL = int.Parse(maTLString.Substring(2));
+                    string maCT = row.Cells["MaChiTiet"].Value.ToString();
 
-                int soLuong = int.Parse(row.Cells["SoLuongBD"].Value.ToString());
+                    string maTLString = row.Cells["MaTaiLieu"].Value.ToString();
+                    int maTL = int.Parse(maTLString.Substring(2));
 
-                TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == maTL).SingleOrDefault();
-                tl.SoTaiLieuMuon -= soLuong;
+                    int soLuong = int.Parse(row.Cells["SoLuongBD"].Value.ToString());
+
+                    TaiLieu tl = db.TaiLieux.Where(p => p.MaTaiLieu == maTL).SingleOrDefault();
+                    tl.SoTaiLieuMuon -= soLuong;
+
+                    ChiTietPhieuMuon ctpm = db.ChiTietPhieuMuons.Where(p => p.MaChiTiet.ToString() == maCT).FirstOrDefault();
+                    ctpm.SoLuong = -1;
+                }
+                db.SaveChanges();
             }
-            db.SaveChanges();
         }
         private void btnChoMuon_Click(object sender, EventArgs e)
         {
