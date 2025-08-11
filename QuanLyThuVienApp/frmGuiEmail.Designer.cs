@@ -1,6 +1,6 @@
 ﻿namespace QuanLyThuVienApp
 {
-    partial class frmGuiEmailQuaHan
+    partial class frmGuiEmail
     {
         /// <summary>
         /// Required designer variable.

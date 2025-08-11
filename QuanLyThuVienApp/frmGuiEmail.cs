@@ -16,7 +16,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace QuanLyThuVienApp
 {
-    public partial class frmGuiEmailQuaHan : Form
+    public partial class frmGuiEmail : Form
     {
         private void ShowLoading()
         {
@@ -31,7 +31,7 @@ namespace QuanLyThuVienApp
             progressBar1.Visible = false;
             this.UseWaitCursor = false;
         }
-        public frmGuiEmailQuaHan()
+        public frmGuiEmail()
         {
             InitializeComponent();
         }

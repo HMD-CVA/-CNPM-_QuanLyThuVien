@@ -271,7 +271,7 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmGuiEmailQuaHan frm = new frmGuiEmailQuaHan();
+            frmGuiEmail frm = new frmGuiEmail();
             frm.MdiParent = this;
             frm.Dock = DockStyle.Fill;
             frm.Show();
@@ -318,7 +318,7 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            frmGuiEmailQuaHan frm = new frmGuiEmailQuaHan();
+            frmGuiEmail frm = new frmGuiEmail();
             frm.MdiParent = this;
             frm.Show();
         }
