@@ -165,11 +165,11 @@
     <Compile Include="frmAI.Designer.cs">
       <DependentUpon>frmAI.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGuiEmailQuaHan.cs">
+    <Compile Include="frmGuiEmail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGuiEmailQuaHan.Designer.cs">
-      <DependentUpon>frmGuiEmailQuaHan.cs</DependentUpon>
+    <Compile Include="frmGuiEmail.Designer.cs">
+      <DependentUpon>frmGuiEmail.cs</DependentUpon>
     </Compile>
     <Compile Include="frmQuanLyDocGia.cs">
       <SubType>Form</SubType>
@@ -383,8 +383,8 @@
     <EmbeddedResource Include="frmAI.resx">
       <DependentUpon>frmAI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGuiEmailQuaHan.resx">
-      <DependentUpon>frmGuiEmailQuaHan.cs</DependentUpon>
+    <EmbeddedResource Include="frmGuiEmail.resx">
+      <DependentUpon>frmGuiEmail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQuanLyDocGia.resx">
       <DependentUpon>frmQuanLyDocGia.cs</DependentUpon>

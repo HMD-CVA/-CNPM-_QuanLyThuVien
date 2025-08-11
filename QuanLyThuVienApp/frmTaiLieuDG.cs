@@ -278,5 +278,25 @@ namespace QuanLyThuVienApp
                 }
             }
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTLConLai_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDaDK_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
