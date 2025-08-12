@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -51,22 +52,43 @@ namespace QuanLyThuVienApp
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
-            dgvPhieuMuon.DataSource = db.PhieuMuons
-                .Where(p => p.MaPhieu == 0)
+            //dgvPhieuMuon.DataSource = db.PhieuMuons
+            //    .Where(p => p.MaPhieu == 0)
+            //    .OrderByDescending(p => p.MaPhieu)
+            //    .Select(p => new
+            //    {
+            //        MaPhieu = "MP" + p.MaPhieu,
+            //        TenDG = p.DocGia.HoTen,
+            //        TenNV = p.NhanVien.HoTen,
+            //        p.NgayMuon,
+            //        p.HanTra,
+            //        DaTra = (
+            //        (p.NgayTra == null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now)) ||
+            //        (p.NgayTra != null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(p.NgayTra))
+            //    ) ? "Trễ hạn" : (p.DaTra == true ? "Đã trả" : "Chưa trả"),
+            //        NgayTra = (p.DaTra == true) ? p.NgayTra : null
+            //    }).ToList();
+            var danhSachPhieuMuon = db.PhieuMuons
+                .Include(p => p.DocGia)
+                .Include(p => p.NhanVien)
                 .OrderByDescending(p => p.MaPhieu)
-                .Select(p => new
-                {
-                    MaPhieu = "MP" + p.MaPhieu,
-                    TenDG = p.DocGia.HoTen,
-                    TenNV = p.NhanVien.HoTen,
-                    p.NgayMuon,
-                    p.HanTra,
-                    DaTra = (
-                    (p.NgayTra == null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now)) ||
-                    (p.NgayTra != null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(p.NgayTra))
-                ) ? "Trễ hạn" : (p.DaTra == true ? "Đã trả" : "Chưa trả"),
-                    NgayTra = (p.DaTra == true) ? p.NgayTra : null
-                }).ToList();
+                .ToList();
+
+            dgvPhieuMuon.DataSource = danhSachPhieuMuon.Select(p => new
+            {
+                MaPhieu = "MP" + p.MaPhieu,
+                HoTenDG = p.DocGia != null ? p.DocGia.HoTen : string.Empty,
+                HoTenNV = p.NhanVien != null ? p.NhanVien.HoTen : string.Empty,
+                p.NgayMuon,
+                p.HanTra,
+                DaTra = (
+                    (p.NgayMuon == null && (DateTime.Now - p.NgayTao).TotalSeconds > 15) ? "Đã huỷ" :
+                     p.NgayMuon == null ? "Chờ duyệt" :
+                     p.DaTra == true ? "Đã trả" :
+                    (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value.Date < DateTime.Now.Date) ? "Trễ hạn" : "Chưa trả"
+                ),
+                NgayTra = (p.DaTra == true) ? p.NgayTra : null
+            }).ToList();
 
             loadChiTietPM(0);
         }
@@ -121,26 +143,29 @@ namespace QuanLyThuVienApp
             string maPhieuSearch = maPhieu.Replace("MP", "").Trim();
 
             QLTVEntities db = new QLTVEntities();
+            var now = DateTime.Now;
+
             _filteredPhieuMuons = db.PhieuMuons
             .Where(pm =>
                 (string.IsNullOrEmpty(email) || pm.DocGia.Email.Contains(email)) &&
-                (string.IsNullOrEmpty(maPhieuSearch) || pm.MaPhieu.ToString().Contains(maPhieuSearch)) &&
+                (string.IsNullOrEmpty(maPhieuSearch) || SqlFunctions.StringConvert((double)pm.MaPhieu).Contains(maPhieuSearch)) &&
                 (string.IsNullOrEmpty(ms) || pm.DocGia.MaSo.Contains(ms))
             )
             .Select(p => new PhieuMuonResult
             {
-                //MaPhieuGoc = p.MaPhieu,
                 MaPhieu = "MP" + p.MaPhieu,
-                TenDG = p.DocGia.HoTen,
-                TenNV = p.NhanVien.HoTen,
+                TenDG = p.DocGia != null ? p.DocGia.HoTen : string.Empty,
+                TenNV = p.NhanVien != null ? p.NhanVien.HoTen : string.Empty,
                 NgayMuon = p.NgayMuon,
                 HanTra = p.HanTra,
-                DaTra = (
-                    (p.NgayTra == null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now)) ||
-                    (p.NgayTra != null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(p.NgayTra))
-                ) ? "Trễ hạn" : (p.DaTra == true ? "Đã trả" : "Chưa trả"),
-                NgayTra = (p.DaTra == true) ? p.NgayTra : null
-            }).ToList();
+                DaTra = p.NgayMuon == null
+                    ? (DbFunctions.DiffSeconds(p.NgayTao, now) > 15 ? "Đã huỷ" : "Chờ duyệt")
+                    : p.DaTra == true ? "Đã trả"
+                    : (p.NgayTra == null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(now)) ? "Trễ hạn"
+                    : "Chưa trả",
+                NgayTra = p.DaTra == true ? p.NgayTra : null
+            })
+            .ToList();
 
             cbLoc.Enabled = _filteredPhieuMuons.Count > 0;
             cbLoc.SelectedIndex = 0; // Reset về "Tất cả"
