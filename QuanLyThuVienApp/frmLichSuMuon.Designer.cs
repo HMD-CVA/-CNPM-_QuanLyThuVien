@@ -217,7 +217,7 @@
             this.dgvChiTiet.RowHeadersVisible = false;
             this.dgvChiTiet.RowHeadersWidth = 51;
             this.dgvChiTiet.RowTemplate.Height = 24;
-            this.dgvChiTiet.Size = new System.Drawing.Size(798, 198);
+            this.dgvChiTiet.Size = new System.Drawing.Size(816, 211);
             this.dgvChiTiet.TabIndex = 2;
             // 
             // MaTaiLieu
@@ -286,10 +286,10 @@
             "Chưa trả",
             "Đã trả",
             "Trễ hạn"});
-            this.cbLoc.Location = new System.Drawing.Point(11, 177);
+            this.cbLoc.Location = new System.Drawing.Point(6, 176);
             this.cbLoc.Margin = new System.Windows.Forms.Padding(2);
             this.cbLoc.Name = "cbLoc";
-            this.cbLoc.Size = new System.Drawing.Size(254, 25);
+            this.cbLoc.Size = new System.Drawing.Size(367, 25);
             this.cbLoc.TabIndex = 5;
             this.cbLoc.SelectedIndexChanged += new System.EventHandler(this.cbLoc_SelectedIndexChanged);
             // 
@@ -301,10 +301,10 @@
             this.btnLamMoi.IconColor = System.Drawing.Color.Black;
             this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnLamMoi.IconSize = 19;
-            this.btnLamMoi.Location = new System.Drawing.Point(300, 175);
+            this.btnLamMoi.Location = new System.Drawing.Point(191, 205);
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(25, 25);
+            this.btnLamMoi.Size = new System.Drawing.Size(83, 25);
             this.btnLamMoi.TabIndex = 11;
             this.btnLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLamMoi.UseVisualStyleBackColor = false;
@@ -318,10 +318,10 @@
             this.btnTimKiem.IconColor = System.Drawing.Color.Black;
             this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnTimKiem.IconSize = 19;
-            this.btnTimKiem.Location = new System.Drawing.Point(269, 176);
+            this.btnTimKiem.Location = new System.Drawing.Point(72, 205);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(27, 25);
+            this.btnTimKiem.Size = new System.Drawing.Size(83, 25);
             this.btnTimKiem.TabIndex = 12;
             this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTimKiem.UseVisualStyleBackColor = false;
@@ -344,7 +344,7 @@
             // 
             // 
             this.txtEmail.CustomButton.Image = null;
-            this.txtEmail.CustomButton.Location = new System.Drawing.Point(302, 1);
+            this.txtEmail.CustomButton.Location = new System.Drawing.Point(346, 1);
             this.txtEmail.CustomButton.Name = "";
             this.txtEmail.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -363,7 +363,7 @@
             this.txtEmail.SelectionLength = 0;
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.ShortcutsEnabled = true;
-            this.txtEmail.Size = new System.Drawing.Size(324, 23);
+            this.txtEmail.Size = new System.Drawing.Size(368, 23);
             this.txtEmail.TabIndex = 14;
             this.txtEmail.UseSelectable = true;
             this.txtEmail.WaterMark = "Nhập email";
@@ -376,7 +376,7 @@
             // 
             // 
             this.txtMaPhieu.CustomButton.Image = null;
-            this.txtMaPhieu.CustomButton.Location = new System.Drawing.Point(302, 1);
+            this.txtMaPhieu.CustomButton.Location = new System.Drawing.Point(346, 1);
             this.txtMaPhieu.CustomButton.Name = "";
             this.txtMaPhieu.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtMaPhieu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -395,7 +395,7 @@
             this.txtMaPhieu.SelectionLength = 0;
             this.txtMaPhieu.SelectionStart = 0;
             this.txtMaPhieu.ShortcutsEnabled = true;
-            this.txtMaPhieu.Size = new System.Drawing.Size(324, 23);
+            this.txtMaPhieu.Size = new System.Drawing.Size(368, 23);
             this.txtMaPhieu.TabIndex = 18;
             this.txtMaPhieu.UseSelectable = true;
             this.txtMaPhieu.WaterMark = "Nhập mã phiếu mượn";
@@ -417,10 +417,10 @@
             // 
             this.groupBox1.Controls.Add(this.dgvChiTiet);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(403, 12);
+            this.groupBox1.Location = new System.Drawing.Point(385, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(808, 225);
+            this.groupBox1.Size = new System.Drawing.Size(826, 238);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Phiếu mượn";
@@ -450,7 +450,7 @@
             // 
             // 
             this.txtMS.CustomButton.Image = null;
-            this.txtMS.CustomButton.Location = new System.Drawing.Point(301, 1);
+            this.txtMS.CustomButton.Location = new System.Drawing.Point(345, 1);
             this.txtMS.CustomButton.Name = "";
             this.txtMS.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtMS.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -469,7 +469,7 @@
             this.txtMS.SelectionLength = 0;
             this.txtMS.SelectionStart = 0;
             this.txtMS.ShortcutsEnabled = true;
-            this.txtMS.Size = new System.Drawing.Size(323, 23);
+            this.txtMS.Size = new System.Drawing.Size(367, 23);
             this.txtMS.TabIndex = 16;
             this.txtMS.UseSelectable = true;
             this.txtMS.WaterMark = "Nhập số mã số sinh viên/giảng viên";

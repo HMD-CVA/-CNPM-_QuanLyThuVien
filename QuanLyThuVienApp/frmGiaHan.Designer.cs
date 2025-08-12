@@ -39,7 +39,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(181, 65);
+            this.numericUpDown1.Location = new System.Drawing.Point(177, 65);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(67, 23);
@@ -49,7 +49,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(66, 67);
+            this.label1.Location = new System.Drawing.Point(62, 67);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 17);
@@ -62,7 +62,7 @@
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.Image = global::QuanLyThuVienApp.Properties.Resources._1;
             this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThoat.Location = new System.Drawing.Point(172, 114);
+            this.btnThoat.Location = new System.Drawing.Point(171, 114);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(99, 25);
@@ -77,7 +77,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label2.Location = new System.Drawing.Point(43, 30);
+            this.label2.Location = new System.Drawing.Point(44, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(219, 20);
             this.label2.TabIndex = 3;
@@ -89,7 +89,7 @@
             this.btnGiaHan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGiaHan.Image = global::QuanLyThuVienApp.Properties.Resources.images__3__removebg_preview;
             this.btnGiaHan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGiaHan.Location = new System.Drawing.Point(37, 114);
+            this.btnGiaHan.Location = new System.Drawing.Point(36, 114);
             this.btnGiaHan.Margin = new System.Windows.Forms.Padding(2);
             this.btnGiaHan.Name = "btnGiaHan";
             this.btnGiaHan.Size = new System.Drawing.Size(99, 25);

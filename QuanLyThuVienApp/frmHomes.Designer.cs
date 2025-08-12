@@ -113,7 +113,9 @@
             // 
             // btnHam
             // 
+            this.btnHam.ErrorImage = null;
             this.btnHam.Image = global::QuanLyThuVienApp.Properties.Resources.png_transparent_computer_icons_hamburger_button_menu_symbol_exquisite_option_button_rectangle_black_interface;
+            this.btnHam.InitialImage = null;
             this.btnHam.Location = new System.Drawing.Point(0, 0);
             this.btnHam.Name = "btnHam";
             this.btnHam.Size = new System.Drawing.Size(67, 34);

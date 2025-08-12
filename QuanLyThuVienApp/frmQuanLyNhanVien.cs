@@ -27,47 +27,277 @@ namespace QuanLyThuVienApp
             progressBar1.Visible = false;
             this.UseWaitCursor = false;
         }
-
         public frmQuanLyNhanVien()
         {
             InitializeComponent();
         }
 
-        private void frmQuanLyBanDoc_Load(object sender, EventArgs e)
+        private void frmCapQuyen_Load(object sender, EventArgs e)
         {
             LibraryHelper.KiemTraVaKhoaTaiKhoan();
-            loadDuLieu();
+            radioUser.Checked = true;
+            btnLuuEmail.Visible = false;
+            progressBar1.Visible = false;   
         }
 
-        private async void loadDuLieu()
+        private void radioUser_CheckedChanged(object sender, EventArgs e)
         {
-            ShowLoading();
-            await Task.Run(() =>
-            {
-                QLTVEntities db = new QLTVEntities();
-                var data = db.NhanViens.Where(p => p.NguoiDung.QuyenHan == "user")
+            loadUser();
+            btnResetTK.Enabled = true;
+            btnXoaTK.Enabled = true;
+        }
+
+        private void radioDangKhoa_CheckedChanged(object sender, EventArgs e)
+        {
+            loadDangKhoa();
+        }
+
+        private void loadUser()
+        {
+            QLTVEntities db = new QLTVEntities();
+            List<int> taiKhoan_User = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == false).Select(p => p.ID).ToList();
+            dgvNguoiDung.DataSource = db.NhanViens.Where(p => taiKhoan_User.Contains(p.NguoiDungID))
                 .Select(p => new
                 {
-                    MaNV = "NV" + p.NguoiDungID,
-                    p.NguoiDung.TenDangNhap,
+                    MaNV = "NV" + p.MaNV,
                     p.HoTen,
+                    p.NgaySinh,
+                    p.SDT,
+                    p.DiaChi,
                     p.Email,
                     p.NgayDangKi,
-                    TrangThai =  (p.NguoiDung.BiKhoa == true) ? "Tạm khóa"  : (p.TrangThaiXacThuc == false) ? "Chờ kích hoạt" : "Hoạt động"
+                    QuyenHan = "user",
                 }).ToList();
 
-                Invoke(new Action(() => {
-                    dgvNhanVien.DataSource = data;
-                    if (dgvNhanVien.Rows.Count > 0) HienThiDuLieu(0);
-                }));
-            });
-            HideLoading();
+            btnKhoaTaiKhoan.Show();
+            btnMoKhoa.Hide();
+
+            loadChiTiet();
         }
-        private void HienThiDuLieu(int index)
+
+        private void loadDangKhoa()
         {
-            txtID.Text = dgvNhanVien.Rows[index].Cells["MaNV"].Value.ToString();
-            txtSuaEmail.Text = dgvNhanVien.Rows[index].Cells["Email"].Value.ToString();
-            txtSuaTen.Text = dgvNhanVien.Rows[index].Cells["HoTen"].Value.ToString();
+            QLTVEntities db = new QLTVEntities();
+            List<int> taiKhoan_UserLocked = db.NguoiDungs.Where(p => p.BiKhoa == true).Select(p => p.ID).ToList();
+            dgvNguoiDung.DataSource = db.NhanViens.Where(p => taiKhoan_UserLocked.Contains(p.NguoiDungID))
+                .Select(p => new
+                {
+                    MaNV = "NV" + p.MaNV,
+                    p.HoTen,
+                    p.NgaySinh,
+                    p.SDT,
+                    p.DiaChi,
+                    p.Email,
+                    p.NgayDangKi,
+                    QuyenHan = "locked",
+                }).ToList();
+
+            btnKhoaTaiKhoan.Hide();
+            btnMoKhoa.Show();
+
+            loadChiTiet();
+        }
+
+        private void loadChiTiet(int rowIndex = 0)
+        {
+            if (dgvNguoiDung.Rows.Count > 0)
+            { 
+                txtID.Text = dgvNguoiDung.Rows[rowIndex].Cells["MaNV"].Value.ToString();
+
+                if (dgvNguoiDung.Rows[rowIndex].Cells["HoTen"].Value != null) txtTen.Text = dgvNguoiDung.Rows[rowIndex].Cells["HoTen"].Value.ToString();
+                else txtTen.Text = string.Empty;
+
+                if (dgvNguoiDung.Rows[rowIndex].Cells["Email"].Value != null) txtEmail.Text = dgvNguoiDung.Rows[rowIndex].Cells["Email"].Value.ToString();
+                else txtEmail.Text = string.Empty;
+
+                if (dgvNguoiDung.Rows[rowIndex].Cells["NgaySinh"].Value != null) txtNgaySinh.Text = ((DateTime)dgvNguoiDung.Rows[rowIndex].Cells["NgaySinh"].Value).ToString("dd/MM/yyyy");
+                else txtNgaySinh.Text = string.Empty;
+
+                if (dgvNguoiDung.Rows[rowIndex].Cells["SDT"].Value != null) txtSDT.Text = dgvNguoiDung.Rows[rowIndex].Cells["SDT"].Value.ToString();
+                else txtSDT.Text = string.Empty;
+
+                if (dgvNguoiDung.Rows[rowIndex].Cells["DiaChi"].Value != null) txtDC.Text = dgvNguoiDung.Rows[rowIndex].Cells["DiaChi"].Value.ToString();
+                else txtDC.Text = string.Empty;
+
+                if (dgvNguoiDung.Rows[rowIndex].Cells["NgayDangKi"].Value != null) txtNgayDangKy.Text = ((DateTime)dgvNguoiDung.Rows[rowIndex].Cells["NgayDangKi"].Value).ToString("dd/MM/yyyy");
+                else txtNgayDangKy.Text = string.Empty;
+
+                if (dgvNguoiDung.Rows[rowIndex].Cells["QuyenHan"].Value != null) txtQuyenHan.Text = dgvNguoiDung.Rows[rowIndex].Cells["QuyenHan"].Value.ToString();
+                else txtQuyenHan.Text = string.Empty;
+            }
+            else
+            {
+                txtID.Clear();
+                txtTen.Clear();
+                txtEmail.Clear();
+                txtNgayDangKy.Clear();
+                txtQuyenHan.Clear();
+            }
+        }
+        private void dgvNguoiDung_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+
+            loadChiTiet(e.RowIndex);
+        }
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string luaChon = cbTimKiem.Text;
+            if (luaChon == "") return;
+
+            QLTVEntities db = new QLTVEntities();
+            List<NhanVien> nguoiDungs = new List<NhanVien>();
+
+            if (radioUser.Checked)
+            {
+                List<int> listUser = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == false).Select(p => p.ID).ToList();
+
+                if (luaChon == "Mã")
+                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) 
+                    && ("NV" + p.MaNV.ToString()).Contains(txtTimKiem.Text)).ToList();
+
+                else if (luaChon == "Họ tên nhân viên")
+                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) 
+                    && p.HoTen.Contains(txtTimKiem.Text)).ToList();
+
+                else if (luaChon == "Email")
+                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) 
+                    && p.Email.Contains(txtTimKiem.Text)).ToList();
+
+                else if (luaChon == "SDT")
+                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID)
+                    && p.SDT.Contains(txtTimKiem.Text)).ToList();
+
+                else return;
+
+                dgvNguoiDung.DataSource = nguoiDungs.Select(p => new
+                {
+                    MaNV = "NV" + p.MaNV,
+                    p.HoTen,
+                    p.NgaySinh,
+                    p.SDT,
+                    p.DiaChi,
+                    p.Email,
+                    p.NgayDangKi,
+                    QuyenHan = "user",
+                }).ToList();
+            } 
+            else if (radioDangKhoa.Checked)
+            {
+                List<int> listUser = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == true).Select(p => p.ID).ToList();
+
+                if (luaChon == "Mã")
+                    nguoiDungs = db.NhanViens.Where(p => p.TrangThaiXacThuc == true && listUser.Contains(p.NguoiDungID)
+                    && ("NV" + p.MaNV.ToString()).Contains(txtTimKiem.Text)).ToList();
+
+                else if (luaChon == "Họ tên nhân viên")
+                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) && p.TrangThaiXacThuc == true
+                    && p.HoTen.Contains(txtTimKiem.Text)).ToList();
+
+                else if (luaChon == "Email")
+                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) && p.TrangThaiXacThuc == true
+                    && p.Email.Contains(txtTimKiem.Text)).ToList();
+
+                else if (luaChon == "SDT")
+                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) && p.TrangThaiXacThuc == true
+                    && p.SDT.Contains(txtTimKiem.Text)).ToList();
+
+                else return;
+
+                dgvNguoiDung.DataSource = nguoiDungs.Select(p => new
+                {
+                    MaNV = "NV" + p.MaNV,
+                    p.HoTen,
+                    p.NgaySinh,
+                    p.SDT,
+                    p.DiaChi,
+                    p.Email,
+                    p.NgayDangKi,
+                    QuyenHan = "locked",
+                }).ToList();
+            }
+
+            loadChiTiet();
+        }
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            if (radioUser.Checked) loadUser();
+            else loadDangKhoa();
+        }
+        private void btnCapQuyenAdmin_Click(object sender, EventArgs e)
+        {
+            if (txtID.Text == "") return;
+
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc cấp quyền admin cho tài khoản này?",
+                "Thông báo",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No) return;
+
+            QLTVEntities db = new QLTVEntities();
+            int maNV = int.Parse(txtID.Text.Substring(2));
+            var ngD = db.NhanViens.FirstOrDefault(p => p.MaNV == maNV);
+
+            NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == ngD.NguoiDungID).FirstOrDefault();
+
+            nguoiDung.QuyenHan = "admin";
+            db.SaveChanges();
+            loadUser();
+
+            MessageBox.Show("Cấp quyền admin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void btnKhoaTaiKhoan_Click(object sender, EventArgs e)
+        {
+            if (txtID.Text == "") return;
+
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc muốn khoá tài khoản này không ?",
+                "Thông báo",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No) return;
+
+            QLTVEntities db = new QLTVEntities();
+            int maNV = int.Parse(txtID.Text.Substring(2));
+            var ngD = db.NhanViens.FirstOrDefault(p => p.MaNV == maNV);
+
+            NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == ngD.NguoiDungID).FirstOrDefault();
+            nguoiDung.BiKhoa = true;
+            db.SaveChanges();
+            loadUser();
+
+            MessageBox.Show("Khóa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void btnMoKhoa_Click(object sender, EventArgs e)
+        {
+            if (txtID.Text == "") return;
+
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc muốn mở khoá tài khoản này không ?",
+                "Thông báo",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No) return;
+
+
+            QLTVEntities db = new QLTVEntities();
+            int maNV = int.Parse(txtID.Text.Substring(2));
+            var ngD = db.NhanViens.FirstOrDefault(p => p.MaNV == maNV);
+
+
+            NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == ngD.NguoiDungID).FirstOrDefault();
+            nguoiDung.BiKhoa = false;
+            db.SaveChanges();
+            loadDangKhoa();
+
+            MessageBox.Show("Mở khóa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private bool isEmail(string inputEmail)
         {
@@ -81,134 +311,28 @@ namespace QuanLyThuVienApp
             else
                 return (false);
         }
-
-        private void btnBack_Click(object sender, EventArgs e)
+        private void btnResetTK_Click(object sender, EventArgs e)
         {
-            txtEmail.Clear();
-            txtTen.Clear();
-        }
-
-        private async void btnDangKy_Click(object sender, EventArgs e)
-        {
-            string email = txtEmail.Text.Trim();
-            string hoTen = txtTen.Text.Trim();
-
-
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(hoTen))
+            if (string.IsNullOrWhiteSpace(txtID.Text))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn nhân viên cần đặt lại tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            
-            if (!isEmail(email))
-            {
-                MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            QLTVEntities db = new QLTVEntities();
-            NhanVien nhanViens = db.NhanViens.Where(p => p.Email == email).FirstOrDefault();
-
-            if (nhanViens != null)
-            {
-                MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            DialogResult result = MessageBox.Show(
-                "Bạn có muốn đăng ký tài khoản mới không?",
-                "Thông báo!",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.No) return;
-            ShowLoading();
-            await Task.Run(() =>
-            {
-                Random random = new Random();
-                string matKhau = random.Next(100000, 999999).ToString();
-
-                MD5 mD5 = MD5.Create();
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(matKhau);
-                byte[] hashBytes = mD5.ComputeHash(inputBytes);
-
-                string tenDangNhap = "nv" + (db.NguoiDungs.Max(u => (int?)u.ID) ?? 0 + 1).ToString();
-                NguoiDung nguoiDung = new NguoiDung();
-                nguoiDung.TenDangNhap = tenDangNhap;
-                nguoiDung.MatKhau = hashBytes;
-                nguoiDung.QuyenHan = "user";
-                nguoiDung.BiKhoa = false;
-                db.NguoiDungs.Add(nguoiDung);
-                db.SaveChanges();
-           
-                NhanVien nhanVien = new NhanVien();
-                nhanVien.HoTen = hoTen;
-                nhanVien.Email = email;
-                nhanVien.NgayDangKi = null;
-                nhanVien.MaOTP = null;
-                nhanVien.ThoiGianNhanOTP = null;
-                nhanVien.TrangThaiXacThuc = false;
-                nhanVien.NguoiDungID = nguoiDung.ID;
-
-                db.NhanViens.Add(nhanVien);
-                db.SaveChanges();
-                GuiEmail.guiEmail(email, $"Tên đăng nhập của bạn là: {nguoiDung.TenDangNhap}\nMật khẩu đăng nhập của bạn là: {matKhau}\n\nCảnh báo: Vui lòng đăng nhập và đổi thông tin ngay để bảo đảm tính bảo mật!");
-            });
-            HideLoading();
-            txtEmail.Clear();
-            txtTen.Clear();
-            loadDuLieu();
-            MessageBox.Show("Tạo tài khoản nhân viên thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);  
-        }
-
-        private void btnLamMoi_Click(object sender, EventArgs e)
-        {
-            loadDuLieu();
-        }
-
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            string luaChon = cbTimKiem.Text;
-            string tuKhoa = txtTimKiem.Text.Trim();
-            if (string.IsNullOrWhiteSpace(luaChon) || string.IsNullOrWhiteSpace(tuKhoa)) return;
-
-            QLTVEntities db = new QLTVEntities();
-            List<NhanVien> nhanViens = db.NhanViens.Where(p => p.NguoiDung.QuyenHan == "user").ToList();
-            List<NhanVien> ketQua = new List<NhanVien>();
-
-            if (luaChon == "Mã nhân viên")
-                ketQua = nhanViens.Where(nv => ("NV" + nv.NguoiDungID.ToString()).Contains(tuKhoa)).ToList();
-            else if (luaChon == "Tên nhân viên")
-                ketQua = nhanViens.Where(nv => nv.HoTen != null && nv.HoTen.Contains(tuKhoa)).ToList();
-            else if (luaChon == "Email")
-                ketQua = nhanViens.Where(nv => nv.Email != null && nv.Email.Contains(tuKhoa)).ToList();
-            else return;
-
-            dgvNhanVien.DataSource = ketQua.Select(nv => new
-            {
-                MaNV = "NV" + nv.NguoiDungID,
-                nv.NguoiDung.TenDangNhap,
-                nv.HoTen,
-                nv.Email,
-                nv.NgayDangKi,
-                TrangThai = nv.NguoiDung.BiKhoa == true ? "Tạm khóa" : nv.TrangThaiXacThuc == false ? "Chưa kích hoạt" : "Hoạt động"
-            }).ToList();
-
-            if (dgvNhanVien.Rows.Count > 0) HienThiDuLieu(0);
-            else ClearFormInputs();
+            MessageBox.Show("Vui lòng nhập email mới để đặt lại tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtEmail.ReadOnly = false;
+            txtEmail.Focus();
+            btnLuuEmail.Visible = true;
         }
 
         private async void btnXoaTK_Click(object sender, EventArgs e)
         {
-            if (dgvNhanVien.CurrentRow == null)
+            if (dgvNguoiDung.CurrentRow == null)
             {
                 MessageBox.Show("Vui lòng chọn một nhân viên để xoá.");
                 return;
             }
 
-            string maNV = dgvNhanVien.CurrentRow.Cells["MaNV"].Value.ToString();
+            string maNV = dgvNguoiDung.CurrentRow.Cells["MaNV"].Value.ToString();
             int nguoiDungID;
 
             if (!int.TryParse(maNV.Replace("NV", ""), out nguoiDungID))
@@ -220,20 +344,20 @@ namespace QuanLyThuVienApp
             var nd_Check = db.NguoiDungs.SingleOrDefault(p => p.ID == nguoiDungID);
             if (nd_Check.BiKhoa == true)
             {
-                MessageBox.Show("Tài khoản này hiện đang bị khóa, không thể xoá!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tài khoản này hiện đang bị khóa, không thể xoá!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             PhieuMuon nv_pm = db.PhieuMuons.Where(p => p.MaNV == nguoiDungID && p.DaTra == false).FirstOrDefault();
             if (nv_pm != null)
             {
-                MessageBox.Show("Tài khoản này hiện đang phụ trách phiếu mượn chưa trả, không thể xoá!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tài khoản này hiện đang phụ trách phiếu mượn chưa trả, không thể xoá!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             DialogResult result = MessageBox.Show(
                 "Bạn có muốn xoá tài khoản này không?",
-                "Thông báo!",
+                "Thông báo",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
@@ -242,59 +366,65 @@ namespace QuanLyThuVienApp
 
             ShowLoading();
             await Task.Run(() => {
-                   
-                   var nv = db.NhanViens.SingleOrDefault(p => p.NguoiDungID == nguoiDungID);
-                   if (nv != null) db.NhanViens.Remove(nv);
 
-                   var nd = db.NguoiDungs.SingleOrDefault(p => p.ID == nguoiDungID);
-                   if (nd != null) db.NguoiDungs.Remove(nd);
+                var nv = db.NhanViens.SingleOrDefault(p => p.NguoiDungID == nguoiDungID);
+                if (nv != null) db.NhanViens.Remove(nv);
 
-                   db.SaveChanges();   
+                var nd = db.NguoiDungs.SingleOrDefault(p => p.ID == nguoiDungID);
+                if (nd != null) db.NguoiDungs.Remove(nd);
+
+                db.SaveChanges();
             });
             HideLoading();
-            loadDuLieu();
-            MessageBox.Show("Xoá tài khoản thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            loadUser();
+            MessageBox.Show("Xoá tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private async void btnResetTK_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtID.Text))
+            this.Close();   
+        }
+
+        private async void btnLuuEmail_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txtID.Text.Trim().Substring(2));
+            string emailMoi = txtEmail.Text.Trim();
+
+            if (!isEmail(emailMoi) || string.IsNullOrEmpty(emailMoi))
             {
-                MessageBox.Show("Vui lòng chọn nhân viên cần đặt lại tài khoản.", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Email không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            int id = int.Parse(txtID.Text.Substring(2));
-            string emailMoi = txtSuaEmail.Text.Trim();
-            string hoTenMoi = txtSuaTen.Text.Trim();
-            if (!isEmail(emailMoi))
-            {
-                MessageBox.Show("Email không hợp lệ!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+
             QLTVEntities db = new QLTVEntities();
             NguoiDung nguoiDung_Check = db.NguoiDungs.FirstOrDefault(p => p.ID == id);
             if (nguoiDung_Check.BiKhoa == true)
             {
-                MessageBox.Show("Tài khoản này hiện đang bị khóa, không thể đặt lại!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            NhanVien nhanViens = db.NhanViens.Where(p => p.Email == emailMoi && p.NguoiDungID != nguoiDung_Check.ID).FirstOrDefault();
-
-            if (nhanViens != null)
-            {
-                MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tài khoản này hiện đang bị khóa, không thể đặt lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             DialogResult result = MessageBox.Show(
                 "Bạn có muốn đặt lại tài khoản này không?",
-                "Thông báo!",
+                "Thông báo",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
 
             if (result == DialogResult.No) return;
+
+            NhanVien nhanViens = db.NhanViens.Where(p => p.Email == emailMoi).FirstOrDefault();
+
+            if (nhanViens != null && nhanViens.NguoiDungID != nguoiDung_Check.ID)
+            {
+                MessageBox.Show("Email đã được sử dụng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (nhanViens != null && nhanViens.NguoiDungID == nguoiDung_Check.ID)
+            {
+                MessageBox.Show("Vui lòng nhập email mới để đặt lại tài khoản!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
             string thongBaoLoi = null;
             bool thanhCong = false;
@@ -316,8 +446,7 @@ namespace QuanLyThuVienApp
                 byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(matKhau);
                 byte[] hashBytes = mD5.ComputeHash(inputBytes);
 
-                nguoiDung.MatKhau = hashBytes;           
-                nhanVien.HoTen = hoTenMoi;
+                nguoiDung.MatKhau = hashBytes;
 
                 bool doiEmail = nhanVien.Email != emailMoi;
 
@@ -342,33 +471,11 @@ namespace QuanLyThuVienApp
 
             });
             HideLoading();
-            loadDuLieu();
-            if(thongBaoLoi != null) MessageBox.Show(thongBaoLoi, "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (thanhCong) MessageBox.Show("Mật khẩu mới sẽ được gửi về email đăng ký!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        private void dgvBanDoc_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && dgvNhanVien.Rows.Count > 0) HienThiDuLieu(e.RowIndex);
-            else ClearFormInputs();
-        }
-        private void ClearFormInputs()
-        {
-            txtID.Clear();
-            txtSuaEmail.Clear();
-            txtSuaTen.Clear();
-        }
-
-        private void btnXemTT_Click(object sender, EventArgs e)
-        {
-            string maNVstr = txtID.Text.Trim();
-            int maNV = 0;
-       
-            maNVstr = maNVstr.Substring(2);
-
-            maNV = int.Parse(maNVstr);
-
-            frmThongTinNV frm = new frmThongTinNV(maNV);
-            frm.Show();
+            txtEmail.ReadOnly = true;
+            btnLuuEmail.Visible = false;
+            loadUser();
+            if (thongBaoLoi != null) MessageBox.Show(thongBaoLoi, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (thanhCong) MessageBox.Show("Mật khẩu mới sẽ được gửi về email đăng ký!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
