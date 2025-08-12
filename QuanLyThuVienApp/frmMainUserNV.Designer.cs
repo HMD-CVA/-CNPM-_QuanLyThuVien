@@ -38,6 +38,14 @@
             this.tslbThongTin = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCaNhan = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnTroGiup = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnInfor = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnDangXuat = new System.Windows.Forms.Button();
             this.menuContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.menu = new System.Windows.Forms.Button();
@@ -50,14 +58,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnGuiEmail = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCaNhan = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnTroGiup = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnInfor = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnDangXuat = new System.Windows.Forms.Button();
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.sidebarTransition = new System.Windows.Forms.Timer(this.components);
             this.panel9 = new System.Windows.Forms.Panel();
@@ -65,16 +65,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.sidebar.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.menuContainer.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -155,8 +156,8 @@
             // 
             this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.sidebar.Controls.Add(this.menuContainer);
-            this.sidebar.Controls.Add(this.panel1);
             this.sidebar.Controls.Add(this.panel2);
+            this.sidebar.Controls.Add(this.panel1);
             this.sidebar.Controls.Add(this.panel3);
             this.sidebar.Controls.Add(this.panel4);
             this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
@@ -164,6 +165,109 @@
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(236, 733);
             this.sidebar.TabIndex = 11;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnCaNhan);
+            this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(3, 71);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(233, 58);
+            this.panel1.TabIndex = 7;
+            // 
+            // btnCaNhan
+            // 
+            this.btnCaNhan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnCaNhan.ForeColor = System.Drawing.Color.White;
+            this.btnCaNhan.Image = global::QuanLyThuVienApp.Properties.Resources.person;
+            this.btnCaNhan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCaNhan.Location = new System.Drawing.Point(-52, -14);
+            this.btnCaNhan.Name = "btnCaNhan";
+            this.btnCaNhan.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
+            this.btnCaNhan.Size = new System.Drawing.Size(319, 87);
+            this.btnCaNhan.TabIndex = 8;
+            this.btnCaNhan.Text = "                       Thông tin cá nhân";
+            this.btnCaNhan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCaNhan.UseVisualStyleBackColor = false;
+            this.btnCaNhan.Click += new System.EventHandler(this.btnCaNhan_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel2.Controls.Add(this.btnTroGiup);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(2, 66);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(233, 0);
+            this.panel2.TabIndex = 9;
+            // 
+            // btnTroGiup
+            // 
+            this.btnTroGiup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnTroGiup.ForeColor = System.Drawing.Color.White;
+            this.btnTroGiup.Image = global::QuanLyThuVienApp.Properties.Resources.Support;
+            this.btnTroGiup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTroGiup.Location = new System.Drawing.Point(-52, -14);
+            this.btnTroGiup.Name = "btnTroGiup";
+            this.btnTroGiup.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
+            this.btnTroGiup.Size = new System.Drawing.Size(319, 87);
+            this.btnTroGiup.TabIndex = 8;
+            this.btnTroGiup.Text = "                       Trợ giúp";
+            this.btnTroGiup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTroGiup.UseVisualStyleBackColor = false;
+            this.btnTroGiup.Click += new System.EventHandler(this.btnTroGiup_Click_1);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnInfor);
+            this.panel3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Location = new System.Drawing.Point(3, 135);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(233, 58);
+            this.panel3.TabIndex = 9;
+            // 
+            // btnInfor
+            // 
+            this.btnInfor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnInfor.ForeColor = System.Drawing.Color.White;
+            this.btnInfor.Image = global::QuanLyThuVienApp.Properties.Resources.istockphoto_1369278773_612x612_removebg_preview;
+            this.btnInfor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInfor.Location = new System.Drawing.Point(-52, -14);
+            this.btnInfor.Name = "btnInfor";
+            this.btnInfor.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
+            this.btnInfor.Size = new System.Drawing.Size(319, 87);
+            this.btnInfor.TabIndex = 8;
+            this.btnInfor.Text = "                       Thông tin nhà phát triển";
+            this.btnInfor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInfor.UseVisualStyleBackColor = false;
+            this.btnInfor.Click += new System.EventHandler(this.btnInfor_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnDangXuat);
+            this.panel4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel4.Location = new System.Drawing.Point(3, 199);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(233, 58);
+            this.panel4.TabIndex = 9;
+            // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnDangXuat.ForeColor = System.Drawing.Color.White;
+            this.btnDangXuat.Image = global::QuanLyThuVienApp.Properties.Resources.log_out_removebg_preview;
+            this.btnDangXuat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDangXuat.Location = new System.Drawing.Point(-52, -14);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
+            this.btnDangXuat.Size = new System.Drawing.Size(319, 87);
+            this.btnDangXuat.TabIndex = 8;
+            this.btnDangXuat.Text = "                       Đăng xuất";
+            this.btnDangXuat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDangXuat.UseVisualStyleBackColor = false;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click_1);
             // 
             // menuContainer
             // 
@@ -304,125 +408,30 @@
             this.btnGuiEmail.UseVisualStyleBackColor = false;
             this.btnGuiEmail.Click += new System.EventHandler(this.btnGuiEmail_Click_1);
             // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.btnThongKe);
+            this.panel9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel9.Location = new System.Drawing.Point(3, 323);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(233, 58);
+            this.panel9.TabIndex = 10;
+            // 
             // btnThongKe
             // 
             this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.btnThongKe.ForeColor = System.Drawing.Color.White;
             this.btnThongKe.Image = global::QuanLyThuVienApp.Properties.Resources._3668255_middle_removebg_preview;
             this.btnThongKe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThongKe.Location = new System.Drawing.Point(-52, -14);
+            this.btnThongKe.Location = new System.Drawing.Point(-49, -13);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
             this.btnThongKe.Size = new System.Drawing.Size(319, 87);
             this.btnThongKe.TabIndex = 8;
-            this.btnThongKe.Text = "                       Thống kê và thông báo";
+            this.btnThongKe.Text = "                       Thống kê";
             this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThongKe.UseVisualStyleBackColor = false;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click_1);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnCaNhan);
-            this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(3, 67);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(233, 58);
-            this.panel1.TabIndex = 7;
-            // 
-            // btnCaNhan
-            // 
-            this.btnCaNhan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.btnCaNhan.ForeColor = System.Drawing.Color.White;
-            this.btnCaNhan.Image = global::QuanLyThuVienApp.Properties.Resources.person;
-            this.btnCaNhan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCaNhan.Location = new System.Drawing.Point(-52, -14);
-            this.btnCaNhan.Name = "btnCaNhan";
-            this.btnCaNhan.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
-            this.btnCaNhan.Size = new System.Drawing.Size(319, 87);
-            this.btnCaNhan.TabIndex = 8;
-            this.btnCaNhan.Text = "                       Thông tin cá nhân";
-            this.btnCaNhan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCaNhan.UseVisualStyleBackColor = false;
-            this.btnCaNhan.Click += new System.EventHandler(this.btnCaNhan_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.AliceBlue;
-            this.panel2.Controls.Add(this.btnThongKe);
-            this.panel2.Controls.Add(this.btnTroGiup);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(2, 130);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(233, 0);
-            this.panel2.TabIndex = 9;
-            // 
-            // btnTroGiup
-            // 
-            this.btnTroGiup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.btnTroGiup.ForeColor = System.Drawing.Color.White;
-            this.btnTroGiup.Image = global::QuanLyThuVienApp.Properties.Resources.Support;
-            this.btnTroGiup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTroGiup.Location = new System.Drawing.Point(-52, -14);
-            this.btnTroGiup.Name = "btnTroGiup";
-            this.btnTroGiup.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
-            this.btnTroGiup.Size = new System.Drawing.Size(319, 87);
-            this.btnTroGiup.TabIndex = 8;
-            this.btnTroGiup.Text = "                       Trợ giúp";
-            this.btnTroGiup.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTroGiup.UseVisualStyleBackColor = false;
-            this.btnTroGiup.Click += new System.EventHandler(this.btnTroGiup_Click_1);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnInfor);
-            this.panel3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(3, 135);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(233, 58);
-            this.panel3.TabIndex = 9;
-            // 
-            // btnInfor
-            // 
-            this.btnInfor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.btnInfor.ForeColor = System.Drawing.Color.White;
-            this.btnInfor.Image = global::QuanLyThuVienApp.Properties.Resources.istockphoto_1369278773_612x612_removebg_preview;
-            this.btnInfor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInfor.Location = new System.Drawing.Point(-52, -14);
-            this.btnInfor.Name = "btnInfor";
-            this.btnInfor.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
-            this.btnInfor.Size = new System.Drawing.Size(319, 87);
-            this.btnInfor.TabIndex = 8;
-            this.btnInfor.Text = "                       Thông tin nhà phát triển";
-            this.btnInfor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInfor.UseVisualStyleBackColor = false;
-            this.btnInfor.Click += new System.EventHandler(this.btnInfor_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnDangXuat);
-            this.panel4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.Location = new System.Drawing.Point(3, 199);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(233, 58);
-            this.panel4.TabIndex = 9;
-            // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.btnDangXuat.ForeColor = System.Drawing.Color.White;
-            this.btnDangXuat.Image = global::QuanLyThuVienApp.Properties.Resources.log_out_removebg_preview;
-            this.btnDangXuat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangXuat.Location = new System.Drawing.Point(-52, -14);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
-            this.btnDangXuat.Size = new System.Drawing.Size(319, 87);
-            this.btnDangXuat.TabIndex = 8;
-            this.btnDangXuat.Text = "                       Đăng xuất";
-            this.btnDangXuat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangXuat.UseVisualStyleBackColor = false;
-            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click_1);
             // 
             // menuTransition
             // 
@@ -468,16 +477,17 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.sidebar.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.menuContainer.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
