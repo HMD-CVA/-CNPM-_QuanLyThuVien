@@ -298,7 +298,7 @@
             this.btnThongKe.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
             this.btnThongKe.Size = new System.Drawing.Size(319, 87);
             this.btnThongKe.TabIndex = 8;
-            this.btnThongKe.Text = "                       Thống kê và thông báo";
+            this.btnThongKe.Text = "                       Thống kê";
             this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThongKe.UseVisualStyleBackColor = false;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click_1);
