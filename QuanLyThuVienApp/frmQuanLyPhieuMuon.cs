@@ -133,7 +133,7 @@ namespace QuanLyThuVienApp
                 p.NgayMuon,
                 p.HanTra,
                 DaTra = (
-                    (p.NgayMuon == null && (DateTime.Now - p.NgayTao).TotalSeconds > 15) ? "Đã huỷ" :
+                    (p.NgayMuon == null && (DateTime.Now - p.NgayTao).TotalMinutes > 15) ? "Đã huỷ" :
                      p.NgayMuon == null ? "Chờ duyệt" :
                      p.DaTra == true ? "Đã trả" :
                     (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value.Date < DateTime.Now.Date) ? "Trễ hạn":  "Chưa trả"
