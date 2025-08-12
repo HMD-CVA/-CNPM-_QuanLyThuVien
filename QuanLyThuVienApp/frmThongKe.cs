@@ -66,7 +66,7 @@ namespace QuanLyThuVienApp
                 // ===== Thống kê bên trái =====
                 int tongTaiLieu = db.TaiLieux.Sum(t => (int?)t.SoLuong) ?? 0;
                 int taiLieuDangMuon = duLieuChiTiet
-                    .Where(ct => ct.PhieuMuon.NgayTra == null)
+                    .Where(ct => ct.PhieuMuon.NgayTra == null && ct.SoLuong != -1)
                     .Sum(ct => (int?)ct.SoLuong) ?? 0;
 
                 int taiLieuCoSan = tongTaiLieu - taiLieuDangMuon;
@@ -81,6 +81,7 @@ namespace QuanLyThuVienApp
 
                 // ===== Biểu đồ bên phải =====
                 var topTaiLieu = duLieuChiTiet
+                    .Where(ct => ct.SoLuong != -1)
                     .GroupBy(ct => ct.MaTL)
                     .Select(nhom => new
                     {
@@ -132,7 +133,7 @@ namespace QuanLyThuVienApp
 
                 // Độc giả đang mượn
                 int dgDangMuon = phieuQuery
-                    .Where(pm => pm.NgayTra == null)
+                    .Where(pm => pm.NgayTra == null && pm.TongSLMuon != 0)
                     .Select(pm => pm.MaDG)
                     .Distinct()
                     .Count();
