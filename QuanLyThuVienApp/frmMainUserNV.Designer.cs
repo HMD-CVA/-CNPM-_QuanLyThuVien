@@ -49,7 +49,6 @@
             this.btnQLDocGia = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnGuiEmail = new System.Windows.Forms.Button();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCaNhan = new System.Windows.Forms.Button();
@@ -61,6 +60,7 @@
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.menuTransition = new System.Windows.Forms.Timer(this.components);
             this.sidebarTransition = new System.Windows.Forms.Timer(this.components);
+            this.panel9 = new System.Windows.Forms.Panel();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHam)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -304,14 +304,6 @@
             this.btnGuiEmail.UseVisualStyleBackColor = false;
             this.btnGuiEmail.Click += new System.EventHandler(this.btnGuiEmail_Click_1);
             // 
-            // panel9
-            // 
-            this.panel9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel9.Location = new System.Drawing.Point(3, 323);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(233, 58);
-            this.panel9.TabIndex = 10;
-            // 
             // btnThongKe
             // 
             this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
@@ -323,7 +315,7 @@
             this.btnThongKe.Padding = new System.Windows.Forms.Padding(60, 0, 0, 0);
             this.btnThongKe.Size = new System.Drawing.Size(319, 87);
             this.btnThongKe.TabIndex = 8;
-            this.btnThongKe.Text = "                       Thống kê\r\n";
+            this.btnThongKe.Text = "                       Thống kê và thông báo";
             this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThongKe.UseVisualStyleBackColor = false;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click_1);
@@ -442,6 +434,14 @@
             this.sidebarTransition.Interval = 10;
             this.sidebarTransition.Tick += new System.EventHandler(this.sidebarTransition_Tick);
             // 
+            // panel9
+            // 
+            this.panel9.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel9.Location = new System.Drawing.Point(3, 323);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(233, 58);
+            this.panel9.TabIndex = 10;
+            // 
             // frmMainUserNV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -503,7 +503,6 @@
         private System.Windows.Forms.Button btnPhieuMuon;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button btnQLDocGia;
-        private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCaNhan;
@@ -521,6 +520,7 @@
         private FontAwesome.Sharp.IconButton btnQLTaiLieu;
        // private FontAwesome.Sharp.IconButton btnQLDocGia;
         private FontAwesome.Sharp.IconButton btnGuiMail;
+        private System.Windows.Forms.Panel panel9;
     }
 }
 
