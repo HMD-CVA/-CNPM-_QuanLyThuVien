@@ -255,9 +255,10 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            //frmCColumn_SachTheoTheLoai frm = new frmCColumn_SachTheoTheLoai();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmThongKe frm = new frmThongKe();
+            frm.MdiParent = this;
+            frm.Dock= DockStyle.Fill;
+            frm.Show();
         }
 
         private void btnChatbox_Click(object sender, EventArgs e)

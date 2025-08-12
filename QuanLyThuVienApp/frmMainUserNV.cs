@@ -281,9 +281,9 @@ namespace QuanLyThuVienApp
         {
             foreach (Form form in this.MdiChildren)
                 form.Close();
-            //frmCColumn_SachTheoTheLoai frm = new frmCColumn_SachTheoTheLoai();
-            //frm.MdiParent = this;
-            //frm.Show();
+            frmThongKe frm = new frmThongKe();
+            frm.MdiParent = this;
+            frm.Show();
         }
 
 
