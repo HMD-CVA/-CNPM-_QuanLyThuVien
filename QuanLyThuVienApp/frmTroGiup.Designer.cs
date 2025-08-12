@@ -104,9 +104,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
             this.label3.Location = new System.Drawing.Point(12, 302);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(408, 24);
+            this.label3.Size = new System.Drawing.Size(276, 24);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Cách gia hạn mượn tài liệu trên ứng dụng?";
+            this.label3.Text = "Cách gia hạn mượn tài liệu ?";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
@@ -116,9 +116,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
             this.label4.Location = new System.Drawing.Point(12, 398);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(429, 24);
+            this.label4.Size = new System.Drawing.Size(323, 24);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Tôi không đặt lại được mật khẩu hoặc email?";
+            this.label4.Text = "Làm thế nào để tìm kiếm tài liệu ?";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
@@ -128,9 +128,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
             this.label5.Location = new System.Drawing.Point(12, 494);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(450, 24);
+            this.label5.Size = new System.Drawing.Size(415, 24);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Cách cho mượn tài liệu cho bạn chưa đăng ký?";
+            this.label5.Text = "Cách xem tình trạng mượn sách của mình ?";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
@@ -140,9 +140,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
             this.label6.Location = new System.Drawing.Point(12, 590);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(501, 24);
+            this.label6.Size = new System.Drawing.Size(232, 24);
             this.label6.TabIndex = 2;
-            this.label6.Text = "Làm thế nào để đăng ký tài khoản cho bạn đọc mới?";
+            this.label6.Text = "Bạn có thắc mắc khác ?";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
