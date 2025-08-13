@@ -197,7 +197,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Số điện thoại: " +  Parameters!SDT.Value</Value>
+                    <Value>="Mã số: " +  Parameters!SDT.Value</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                       <TextDecoration>None</TextDecoration>
