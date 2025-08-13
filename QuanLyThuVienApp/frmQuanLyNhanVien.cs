@@ -253,17 +253,27 @@ namespace QuanLyThuVienApp
         {
             if (txtID.Text == "") return;
 
+            QLTVEntities db = new QLTVEntities();
+            int maNV = int.Parse(txtID.Text.Substring(2));
+            
+            string text = string.Empty;
+            PhieuMuon pm = db.PhieuMuons.Where(p => p.MaNV == maNV && p.DaTra == false).FirstOrDefault();
+            if (pm != null)
+            {
+                text = "Nhân viên vẫn đang phụ trách phiếu mượn chưa trả!\n\n";
+            }
+
             DialogResult result = MessageBox.Show(
+                text +
                 "Bạn có chắc muốn khoá tài khoản này không ?",
                 "Thông báo",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
+                MessageBoxIcon.Warning
             );
 
             if (result == DialogResult.No) return;
 
-            QLTVEntities db = new QLTVEntities();
-            int maNV = int.Parse(txtID.Text.Substring(2));
+            
             var ngD = db.NhanViens.FirstOrDefault(p => p.MaNV == maNV);
 
             NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == ngD.NguoiDungID).FirstOrDefault();
