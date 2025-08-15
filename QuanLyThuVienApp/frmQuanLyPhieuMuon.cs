@@ -133,7 +133,7 @@ namespace QuanLyThuVienApp
                 p.NgayMuon,
                 p.HanTra,
                 DaTra = (
-                    (p.NgayMuon == null && (DateTime.Now - p.NgayTao).TotalMinutes > 15) ? "Đã huỷ" :
+                    (p.NgayMuon == null && (DateTime.Now - p.NgayTao).TotalMinutes > 159/*!!!!!!!!!!!!!!!!!*/) ? "Đã huỷ" :
                      p.NgayMuon == null ? "Chờ duyệt" :
                      p.DaTra == true ? "Đã trả" :
                     (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value.Date < DateTime.Now.Date) ? "Trễ hạn":  "Chưa trả"
@@ -155,6 +155,20 @@ namespace QuanLyThuVienApp
                 dgvChiTietPM.Columns.Add(btnColumn);
             }
         }
+        private void AddButtonHuyToCTPM()
+        {
+            // Tránh thêm nhiều lần
+            if (!dgvChiTietPM.Columns.Contains("btnHuyTL"))
+            {
+                DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
+                btnColumn.Name = "btnHuyTL";
+                btnColumn.HeaderText = "";
+                btnColumn.Text = "Huỷ";
+                btnColumn.UseColumnTextForButtonValue = true;
+                btnColumn.Width = 60;
+                dgvChiTietPM.Columns.Add(btnColumn);
+            }
+        }
         private void loadChiTietPM(int maPhieu)
         {
             QLTVEntities db = new QLTVEntities();
@@ -167,7 +181,9 @@ namespace QuanLyThuVienApp
                 p.TaiLieu.TacGia.TenTG,
                 p.TaiLieu.NhaXuatBan.TenNXB,
                 p.SoLuongBD,
-                SoLuong = (p.SoLuong == 0) ? "Đã trả" : (p.SoLuong < 0) ? "Đã huỷ" :  p.SoLuong.ToString(),
+                SoLuong = (p.SoLuong == 0 && p.PhieuMuon.NgayMuon != null) ? "Đã trả" :
+                          (p.SoLuong == 0 && p.PhieuMuon.NgayMuon == null) ? "Đã huỷ" :
+                          (p.SoLuong < 0) ? "Đã huỷ" :  p.SoLuong.ToString(),
 
                 p.PhieuMuon.DaTra,
                 p.PhieuMuon.NgayTra,
@@ -178,8 +194,16 @@ namespace QuanLyThuVienApp
             dgvChiTietPM.Columns["NgayTra"].Visible = false;
             dgvChiTietPM.Columns["HanTra"].Visible = false;
 
-            AddButtonTraToCTPM();
-            dgvChiTietPM.Columns["btnTra"].Visible = true;
+            //if (SoLuong == "Đã huỷ")
+            //{
+            //    AddButtonHuyToCTPM();
+            //    dgvChiTietPM.Columns["btnHuyTL"].Visible = true;
+            //}
+            //else
+            //{
+            //    AddButtonTraToCTPM();
+            //    dgvChiTietPM.Columns["btnTra"].Visible = true;
+            //}
         }
         private void dgvPhieuMuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -187,79 +211,114 @@ namespace QuanLyThuVienApp
             OffButton();
             btnTTDG.Enabled = true;
             if (e.RowIndex < 0) return;
-          
-            string maPhieuStr = dgvPhieuMuon.Rows[e.RowIndex].Cells["MaPhieu"].Value.ToString();
-            string trangThaiStr = dgvPhieuMuon.Rows[e.RowIndex].Cells["DaTra"].Value.ToString();
-            if (trangThaiStr == "Chờ duyệt")
+
+            var row = dgvPhieuMuon.Rows[e.RowIndex];
+            string maPhieuStr = row.Cells["MaPhieu"].Value?.ToString() ?? string.Empty;
+            string trangThaiStr = row.Cells["DaTra"].Value?.ToString() ?? string.Empty;
+            DateTime? ngayMuon = row.Cells["NgayMuon"].Value as DateTime?;
+
+            switch (trangThaiStr)
             {
-                btnChoMuon.Enabled = true;
-                btnHuyPhieu.Enabled = true;
-            }
-            else if (trangThaiStr == "Chưa trả")
-            {
-                btnTraTL.Enabled = true;
-                btnGiaHan.Enabled = true;
-                btnInPM.Enabled = true;
-            }
-            else if (trangThaiStr == "Đã trả")
-            {
-                btnInPM.Enabled = true;
-            }
-            else if (trangThaiStr == "Trễ hạn")
-            {
-                btnGiaHan.Enabled = true;
-                btnTraTL.Enabled = true;
-                btnInPM.Enabled = true;
-            }
-            if (maPhieuStr.StartsWith("MP"))
-            {
-                string soMaPhieu = maPhieuStr.Substring(2);
-
-                QLTVEntities db = new QLTVEntities();
-                maDG = db.PhieuMuons.Where(p => p.MaPhieu.ToString() == soMaPhieu).Select(p => (int?)p.MaDG).FirstOrDefault();
-
-
-                int.TryParse(soMaPhieu, out int maPhieuGhiNho);
-
-                if (int.TryParse(soMaPhieu, out int maPhieu)) loadChiTietPM(maPhieu);
-
-                string daTra = dgvPhieuMuon.Rows[e.RowIndex].Cells["DaTra"].Value.ToString();
-
-                if (daTra != "Đã huỷ" && daTra != "Chờ duyệt")
-                {
-                    return;
-                }
-
-                if (daTra == "Chờ duyệt")
-                {
-                    loadPhieuMuon();
-                    ChonLaiPhieu(maPhieuGhiNho);
+                case "Chờ duyệt":
                     btnChoMuon.Enabled = true;
-                    return;
-                }
-                else if (daTra == "Đã huỷ")
+                    btnHuyPhieu.Enabled = true;
+                    AddButtonHuyToCTPM();
+                    break;
+
+                case "Chưa trả":
+                    btnTraTL.Enabled = true;
+                    btnGiaHan.Enabled = true;
+                    btnInPM.Enabled = true;
+                    AddButtonTraToCTPM();
+                    break;
+
+                case "Đã trả":
+                    btnInPM.Enabled = true;
+                    break;
+
+                case "Trễ hạn":
+                    btnGiaHan.Enabled = true;
+                    btnTraTL.Enabled = true;
+                    btnInPM.Enabled = true;
+                    break;
+            }
+
+            //if (trangThaiStr == "Chờ duyệt")
+            //{
+            //    btnChoMuon.Enabled = true;
+            //    btnHuyPhieu.Enabled = true;
+            //    AddButtonHuyToCTPM();
+            //}
+            //else if (trangThaiStr == "Chưa trả")
+            //{
+            //    btnTraTL.Enabled = true;
+            //    btnGiaHan.Enabled = true;
+            //    btnInPM.Enabled = true;
+            //    AddButtonTraToCTPM();
+            //}
+            //else if (trangThaiStr == "Đã trả")
+            //{
+            //    btnInPM.Enabled = true;
+            //}
+            //else if (trangThaiStr == "Trễ hạn")
+            //{
+            //    btnGiaHan.Enabled = true;
+            //    btnTraTL.Enabled = true;
+            //    btnInPM.Enabled = true;
+            //}
+
+            if (!maPhieuStr.StartsWith("MP"))
+            {
+                MessageBox.Show("Mã phiếu bị lỗi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string soMaPhieu = maPhieuStr.Substring(2);
+
+            QLTVEntities db = new QLTVEntities();
+            maDG = db.PhieuMuons.Where(p => p.MaPhieu.ToString() == soMaPhieu).Select(p => (int?)p.MaDG).FirstOrDefault();
+
+
+            int.TryParse(soMaPhieu, out int maPhieuGhiNho);
+
+            if (int.TryParse(soMaPhieu, out int maPhieu)) loadChiTietPM(maPhieu);
+
+            string daTra = dgvPhieuMuon.Rows[e.RowIndex].Cells["DaTra"].Value.ToString();
+
+            if (daTra != "Đã huỷ" && daTra != "Chờ duyệt")
+            {
+                return;
+            }
+
+            if (daTra == "Chờ duyệt")
+            {
+                loadPhieuMuon();
+                ChonLaiPhieu(maPhieuGhiNho);
+                btnChoMuon.Enabled = true;
+                return;
+            }
+            else if (daTra == "Đã huỷ")
+            {
+                lab_Huy.Text = "Phiếu mượn này đã bị huỷ!";
+                restorePhieuMuon(maPhieuGhiNho);
+                return;
+            }
+
+            if (dgvPhieuMuon.Rows[e.RowIndex].Cells["NgayMuon"].Value == null && daTra != "Đã huỷ")
+            {
+                btnChoMuon.Show();
+                btnChoMuon.Enabled = true;
+            }
+            else
+            {
+                btnChoMuon.Enabled = false;
+
+                if (daTra == "Đã huỷ")
                 {
                     lab_Huy.Text = "Phiếu mượn này đã bị huỷ!";
-                    restorePhieuMuon(maPhieuGhiNho);
+                    loadPhieuMuon();
+                    ChonLaiPhieu(maPhieuGhiNho);
                     return;
-                }
-
-                if (dgvPhieuMuon.Rows[e.RowIndex].Cells["NgayMuon"].Value == null && daTra != "Đã huỷ")
-                {
-                    btnChoMuon.Show();
-                    btnChoMuon.Enabled = true;
-                }
-                else
-                {
-                    btnChoMuon.Enabled = false;
-
-                    if (daTra == "Đã huỷ")
-                    {
-                        lab_Huy.Text = "Phiếu mượn này đã bị huỷ!";
-                        loadPhieuMuon();
-                        ChonLaiPhieu(maPhieuGhiNho);
-                        return;
-                    }
                 }
             }
         }
@@ -314,7 +373,7 @@ namespace QuanLyThuVienApp
                 //maPhieu = maPhieu.Substring(2);
                 QLTVEntities db = new QLTVEntities();
                 PhieuMuon pm = db.PhieuMuons.Where(p => p.MaPhieu.ToString() == maPhieu).FirstOrDefault();
-                if (pm == null)  return;
+                if (pm == null) return;
 
                 if ((pm.NgayMuon == null && pm.HanTra == null && pm.MaNV == null) || (pm.NgayTra.HasValue) ||
                     (pm.DaTra == false && pm.NgayTra == null && pm.HanTra.HasValue && pm.HanTra.Value.Date < DateTime.Now.Date))
@@ -325,15 +384,23 @@ namespace QuanLyThuVienApp
         }
         private void dgvChiTietPM_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex < 0 || dgvChiTietPM.Columns[e.ColumnIndex].Name != "btnTra") return;
-            int soLuong = dgvChiTietPM.Rows[e.RowIndex].Cells["SoLuong"].Value.ToString() == "Đã trả" ? 0 : int.Parse(dgvChiTietPM.Rows[e.RowIndex].Cells["SoLuong"].Value.ToString());
+            if (e.RowIndex < 0 || e.ColumnIndex < 0 || (dgvChiTietPM.Columns[e.ColumnIndex].Name != "btnTra" && dgvChiTietPM.Columns[e.ColumnIndex].Name != "btnHuyTL")) return;
+
+            bool ok = true;
+
+            if (dgvChiTietPM.Columns[e.ColumnIndex].Name == "btnHuyTL") ok = false;
+
+            int soLuong;
+            if (ok) soLuong = dgvChiTietPM.Rows[e.RowIndex].Cells["SoLuong"].Value.ToString() == "Đã trả" ? 0 : int.Parse(dgvChiTietPM.Rows[e.RowIndex].Cells["SoLuong"].Value.ToString());
+            else soLuong = dgvChiTietPM.Rows[e.RowIndex].Cells["SoLuong"].Value.ToString() == "Đã huỷ" ? 0 : int.Parse(dgvChiTietPM.Rows[e.RowIndex].Cells["SoLuong"].Value.ToString());
             int maPhieu = int.Parse(dgvChiTietPM.Rows[e.RowIndex].Cells["MaPM"].Value.ToString());
             int maTL = int.Parse(dgvChiTietPM.Rows[e.RowIndex].Cells["MaTaiLieu"].Value.ToString().Substring(2));
             int maCT = int.Parse(dgvChiTietPM.Rows[e.RowIndex].Cells["MaChiTiet"].Value.ToString());
 
             if (soLuong <= 0)
             {
-                MessageBox.Show("Đã trả hết tài liệu này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ok) MessageBox.Show("Đã trả hết tài liệu này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else MessageBox.Show("Đã huỷ hết tài liệu này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             
@@ -369,8 +436,9 @@ namespace QuanLyThuVienApp
 
             db.SaveChanges();
 
-            MessageBox.Show("Đã trả thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+            if (ok) MessageBox.Show("Đã trả thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Đã huỷ thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             loadPhieuMuon();
             ChonLaiPhieu(maPhieu);
             loadChiTietPM(maPhieu);
@@ -536,15 +604,17 @@ namespace QuanLyThuVienApp
             PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
             phieuMuon.NgayMuon = null;
             phieuMuon.NgayTao = DateTime.Now.AddDays(-1);
+            phieuMuon.TongSLMuon = 0;
 
-            int tongTL = 0;
             foreach (DataGridViewRow Irow in dgvChiTietPM.Rows)
             {
                 int maTL = int.Parse(Irow.Cells["MaTaiLieu"].Value.ToString().Substring(2));
-                int soLuong = int.Parse(Irow.Cells["SoLuong"].Value.ToString());
-                tongTL += soLuong;
+                int soLuong = Irow.Cells["SoLuong"].Value.ToString() == "Đã huỷ" ? 0 : int.Parse(Irow.Cells["SoLuong"].Value.ToString());
+
                 TaiLieu TL = db.TaiLieux.Where(p => p.MaTaiLieu == maTL).FirstOrDefault();
                 TL.SoTaiLieuMuon -= soLuong;
+                ChiTietPhieuMuon ctPM = db.ChiTietPhieuMuons.Where(p => p.MaPM == maPhieu && p.MaTL == maTL).FirstOrDefault();
+                ctPM.SoLuong = 0;
             }
 
             db.SaveChanges();

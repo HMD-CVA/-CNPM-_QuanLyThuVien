@@ -40,11 +40,13 @@ namespace QuanLyThuVienApp
             {
                 MaDocGia = "DG" + p.MaDocGia,
                 p.MaSo,
+                Loai = (p.LoaiDG == false) ? "Sinh viên" : "Giảng viên",
                 p.HoTen,
                 p.Email,
-                LoaiDG = (p.LoaiDG == false) ? "Sinh viên" : "Giảng viên",
-                BiKhoa = (p.BiKhoa == true) ? "Bị khoá" : "Đang hoạt động",
+                BiKhoa = ((p.NgayHetHan < DateTime.Now)) ? "Hết hạn" : ((p.BiKhoa == true) ? "Bị khoá" : "Đang hoạt động"),
                 SoLuong = db.PhieuMuons.Where(pm => pm.MaDG == p.MaDocGia).ToList().Count,
+                NgayDk = p.NgayDangKy,
+                NgayHH = p.NgayHetHan
             }).ToList();
         }
 
@@ -92,14 +94,27 @@ namespace QuanLyThuVienApp
                 txtHoVaTen.Text = dgvBanDoc.Rows[index].Cells["HoTen"].Value.ToString();
                 txtMaSo.Text = dgvBanDoc.Rows[index].Cells["MaSo"].Value.ToString();
                 txtTrangThai.Text = dgvBanDoc.Rows[index].Cells["BiKhoa"].Value.ToString();
+                txtNgayDK.Text = (dgvBanDoc.Rows[index].Cells["NgayDk"].Value != null)
+                                ? ((DateTime)dgvBanDoc.Rows[index].Cells["NgayDk"].Value).ToString("dd/MM/yyyy")
+                                : string.Empty;
 
-                if (txtTrangThai.Text == "Bị khoá")
-                {   
-                    btnKhoa.Text = "Mở khoá";
+                txtNgayHetHan.Text = (dgvBanDoc.Rows[index].Cells["NgayHH"].Value != null)
+                                    ? ((DateTime)dgvBanDoc.Rows[index].Cells["NgayHH"].Value).ToString("dd/MM/yyyy")
+                                    : string.Empty;
+
+                if (txtTrangThai.Text == "Hết hạn")
+                {
+                    btnKhoa.Enabled = false;
                 }
-                else
+                else if (txtTrangThai.Text == "Bị khoá")
+                {
+                    btnKhoa.Text = "Mở khoá";
+                    btnKhoa.Enabled = true;
+                }
+                else 
                 {
                     btnKhoa.Text = "Khoá tài khoản";
+                    btnKhoa.Enabled = true;
                 }
             }
             else ResetBTN();
@@ -174,6 +189,26 @@ namespace QuanLyThuVienApp
         {
             loaiDG = false;
             loadDuLieu() ;
+        }
+
+        private void btnGiaHan_Click(object sender, EventArgs e)
+        {
+            frmGiaHan frm = new frmGiaHan(maDG);
+            frm.FormClosed += (s, args) => {
+                loadDuLieu();
+            };
+            frm.ShowDialog();
+            foreach (DataGridViewRow row in dgvBanDoc.Rows)
+            {
+                if (row.Cells["MaDocGia"].Value != null &&
+                    row.Cells["MaDocGia"].Value.ToString().Substring(2) == maDG)
+                {
+                    row.Selected = true;
+                    dgvBanDoc.CurrentCell = row.Cells[0]; // Focus vào cột đầu tiên
+                    HienThiDuLieu(row.Index); // Hiển thị lại thông tin
+                    break;
+                }
+            }
         }
     }
 }

@@ -188,31 +188,6 @@ namespace QuanLyThuVienApp
                 int tongLuotTra = duLieuPhieuMuon.Count(pm => pm.NgayTra != null);
                 int traDungHan = duLieuPhieuMuon.Count(pm => pm.NgayTra != null && pm.NgayTra <= pm.HanTra);
                 int traTreHan = duLieuPhieuMuon.Count(pm => pm.NgayTra != null && pm.NgayTra > pm.HanTra);
-
-                // Cập nhật label
-                lbTongLuotMuon.Text = "Tổng lượt mượn: " + tongLuotMuon;
-                lbTongLuotTra.Text = "Tổng lượt trả: " + tongLuotTra;
-                lbTraDungHan.Text = "Trả đúng hạn: " + traDungHan;
-                lbTraTreHan.Text = "Trả trễ hạn: " + traTreHan;
-
-                // Biểu đồ đường (số lượt mượn theo ngày)
-                var thongKeNgayMuon = duLieuPhieuMuon
-                .GroupBy(pm => pm.NgayMuon.Value.Date)
-                .Select(g => new
-                {
-                    Ngay = g.Key,
-                    SoLuot = g.Count()
-                })
-                .OrderBy(x => x.Ngay)
-                .ToList();
-
-                var bieuDoDuong = chartMuonTra.Series[0];
-                bieuDoDuong.Points.Clear();
-
-                foreach (var item in thongKeNgayMuon)
-                {
-                    bieuDoDuong.Points.AddXY(item.Ngay.ToString("dd/MM"), item.SoLuot);
-                }
             }
         }
 

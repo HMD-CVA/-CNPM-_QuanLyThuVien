@@ -35,6 +35,8 @@
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="LoaiDG" Type="bit" Nullable="false" />
           <Property Name="BiKhoa" Type="bit" />
+          <Property Name="NgayDangKy" Type="datetime" />
+          <Property Name="NgayHetHan" Type="datetime" />
         </EntityType>
         <EntityType Name="NguoiDung">
           <Key>
@@ -108,6 +110,8 @@
           <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="SoTaiLieuMuon" Type="int" />
+          <Property Name="NgayNhap" Type="datetime" />
+          <Property Name="TrangThai" Type="bit" />
         </EntityType>
         <Association Name="FK__ChiTietPhi__MaPM__3587F3E0">
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="0..1" />
@@ -329,6 +333,8 @@
           <NavigationProperty Name="NhaXuatBan" Relationship="Self.FK__TaiLieu__MaNXB__5FB337D6" FromRole="TaiLieu" ToRole="NhaXuatBan" />
           <NavigationProperty Name="TacGia" Relationship="Self.FK__TaiLieu__MaTG__5EBF139D" FromRole="TaiLieu" ToRole="TacGia" />
           <NavigationProperty Name="ChiTietPhieuMuons" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaTL__367C1819" FromRole="TaiLieu" ToRole="ChiTietPhieuMuon" />
+          <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+          <Property Name="TrangThai" Type="Boolean" />
         </EntityType>
         <Association Name="FK__TaiLieu__MaDanhM__5DCAEF64">
           <End Role="DanhMucTaiLieu" Type="Self.DanhMucTaiLieu" Multiplicity="0..1" />
@@ -432,6 +438,8 @@
           <Property Name="LoaiDG" Type="Boolean" Nullable="false" />
           <Property Name="BiKhoa" Type="Boolean" />
           <NavigationProperty Name="PhieuMuons" Relationship="DB_QLTVModel.FK__PhieuMuon__MaDG__2CF2ADDF" FromRole="DocGia" ToRole="PhieuMuon" />
+          <Property Name="NgayDangKy" Type="DateTime" Precision="3" />
+          <Property Name="NgayHetHan" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ChiTietPhieuMuon">
           <Key>
@@ -579,6 +587,8 @@
           <EntitySetMapping Name="TaiLieux">
             <EntityTypeMapping TypeName="DB_QLTVModel.TaiLieu">
               <MappingFragment StoreEntitySet="TaiLieu">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
                 <ScalarProperty Name="MaTaiLieu" ColumnName="MaTaiLieu" />
                 <ScalarProperty Name="TenTaiLieu" ColumnName="TenTaiLieu" />
                 <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
@@ -594,6 +604,8 @@
           <EntitySetMapping Name="DocGias">
             <EntityTypeMapping TypeName="DB_QLTVModel.DocGia">
               <MappingFragment StoreEntitySet="DocGia">
+                <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
+                <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
                 <ScalarProperty Name="BiKhoa" ColumnName="BiKhoa" />
                 <ScalarProperty Name="LoaiDG" ColumnName="LoaiDG" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

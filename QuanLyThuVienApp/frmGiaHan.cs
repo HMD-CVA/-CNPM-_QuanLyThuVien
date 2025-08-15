@@ -12,6 +12,7 @@ namespace QuanLyThuVienApp
 {
     public partial class frmGiaHan : MetroFramework.Forms.MetroForm
     {
+        public static string maDG = string.Empty;
         public static int maPhieu;
         public static frmQuanLyPhieuMuon frm;
         public frmGiaHan()
@@ -21,10 +22,16 @@ namespace QuanLyThuVienApp
 
         public frmGiaHan(int _maPhieu)
         {
-            maPhieu = _maPhieu;
             InitializeComponent();
+            maPhieu = _maPhieu;         
         }
-
+        public frmGiaHan(string _maDG)
+        {
+            InitializeComponent();
+            numericUpDown1.Minimum = 0;
+            numericUpDown1.Maximum = 1000;
+            maDG = _maDG;           
+        }
         private void frmGiaHan_Load(object sender, EventArgs e)
         {
 
@@ -45,6 +52,21 @@ namespace QuanLyThuVienApp
             }
 
             QLTVEntities db = new QLTVEntities();
+
+            if (!string.IsNullOrEmpty(maDG))
+            {
+                int maDGs = int.Parse(maDG);
+                DocGia dg = db.DocGias.Where(p => p.MaDocGia == maDGs).FirstOrDefault();
+                DateTime han = dg.NgayHetHan.Value;
+                dg.NgayHetHan = han.AddDays(days);
+                if (dg.NgayHetHan.Value > DateTime.Now) dg.BiKhoa = false; 
+                db.SaveChanges();
+                MessageBox.Show("Gia hạn thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                return;
+            }
+
+            
             PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
 
             DateTime hanTra = phieuMuon.HanTra.Value;

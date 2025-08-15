@@ -20,11 +20,11 @@ namespace QuanLyThuVienApp
 
         private void frmQuanLySach_Load(object sender, EventArgs e)
         {
+            loadDuLieu();
             cbNXB.SelectedIndex = -1;
             cbTheLoai.SelectedIndex = -1;
             cbTacGia.SelectedIndex = -1;
-
-            loadDuLieu();
+            
             radioSuaXoa.Checked = true;
         }
 
@@ -44,7 +44,9 @@ namespace QuanLyThuVienApp
             cbTheLoai.ValueMember = "MaDanhMuc";
             cbTheLoai.DataSource = db.DanhMucTaiLieux.ToList();
 
-            dgvSach.DataSource = db.TaiLieux.Select(p => new {
+            dgvSach.DataSource = db.TaiLieux
+                .Where(p => p.TrangThai == true)
+                .Select(p => new {
                 MaTaiLieu = "TL" + p.MaTaiLieu,
                 p.TenTaiLieu,
                 p.DanhMucTaiLieu.TenDanhMuc,
@@ -56,15 +58,14 @@ namespace QuanLyThuVienApp
                 p.SoTaiLieuMuon,
             }).ToList();
 
-            if (radioThem.Checked) return;
+            HienThiDuLieu(-1);
 
-            if (dgvSach.Rows.Count > 0)
-            {               
-                HienThiDuLieu(0);
-            }
+            if (radioThem.Checked) return;
         }
         private void HienThiDuLieu(int RowIndex)
         {
+            if (RowIndex < 0) return;
+
             QLTVEntities db = new QLTVEntities();
 
             string tenTheLoai = dgvSach.Rows[RowIndex].Cells[2].Value.ToString();
@@ -90,7 +91,7 @@ namespace QuanLyThuVienApp
         }
         private void dgvSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == -1) return;
+            if (e.RowIndex < 0) return;
 
             if (radioThem.Checked) return;
 
@@ -424,6 +425,16 @@ namespace QuanLyThuVienApp
 
         private void radioSuaXoa_CheckedChanged(object sender, EventArgs e)
         {
+            cbTacGia.SelectedIndex = -1;
+            cbNXB.SelectedIndex = -1;
+            cbTheLoai.SelectedIndex = -1;
+            txtMaSach.Clear();
+            txtTenSach.Clear();
+            txtSoLuong.Clear();
+            txtDangMuon.Clear();
+            txtMoTa.Clear();
+            txtTaiBan.Clear();
+
             btnSua.Show();
             btnXoa.Show();
             txtMaSach.Show();
@@ -462,6 +473,74 @@ namespace QuanLyThuVienApp
                 loadDuLieu();
             };
             frm.ShowDialog();
+        }
+
+        private void btnHidden_Click(object sender, EventArgs e)
+        {
+            frmTaiLieuHidden frm = new frmTaiLieuHidden();
+            frm.FormClosed += (s, args) => {
+                loadDuLieu();
+            };
+            frm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string maTL = txtMaSach.Text.Trim();
+            string soNam = txtSoNamHidden.Text.Trim();
+
+            QLTVEntities db = new QLTVEntities();
+
+            if (string.IsNullOrEmpty(soNam))
+            {
+                if (string.IsNullOrEmpty(maTL))
+                {
+                    MessageBox.Show("Vui lòng chọn tài liệu để ẩn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult result = MessageBox.Show(
+                    "Bạn có muốn ẩn tài liệu không?",
+                    "Thông báo",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+                if (result == DialogResult.No) return;
+
+                TaiLieu tl = db.TaiLieux.Where(p => "TL" + p.MaTaiLieu.ToString() == maTL).FirstOrDefault();
+                if (tl == null) return;
+                tl.TrangThai = false;
+                db.SaveChanges();
+                loadDuLieu();
+                MessageBox.Show("Đã ẩn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+
+            }
+            if (!int.TryParse(soNam, out int Nam))
+            {
+                MessageBox.Show("Vui lòng nhập đúng định dạng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult results = MessageBox.Show(
+                   $"Bạn có chắc muốn ẩn những tài liệu quá {Nam} năm này không?",
+                   "Thông báo",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question
+               );
+
+            if (results == DialogResult.No) return;
+
+            List<TaiLieu> ListTL = db.TaiLieux.Where(p => System.Data.Entity.DbFunctions.DiffYears(p.NgayNhap, DateTime.Now) >= Nam).ToList();
+            foreach (TaiLieu TLs in ListTL)
+            {
+                TLs.TrangThai = false;
+            }
+            db.SaveChanges();
+            loadDuLieu();
+            MessageBox.Show("Đã ẩn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtSoNamHidden.Clear();
+            return;
         }
     }
 }

@@ -26,6 +26,8 @@ namespace QuanLyThuVienApp
         public string Email { get; set; }
         public bool LoaiDG { get; set; }
         public Nullable<bool> BiKhoa { get; set; }
+        public Nullable<System.DateTime> NgayDangKy { get; set; }
+        public Nullable<System.DateTime> NgayHetHan { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuMuon> PhieuMuons { get; set; }

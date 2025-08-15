@@ -32,7 +32,9 @@ namespace QuanLyThuVienApp
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
-            dgvTaiLieu.DataSource = db.TaiLieux.Select(p => new {
+            dgvTaiLieu.DataSource = db.TaiLieux
+                .Where(p => p.TrangThai == true)
+                .Select(p => new {
                 MaTaiLieu = "TL" + p.MaTaiLieu, 
                 p.TenTaiLieu, 
                 p.TacGia.TenTG, 
@@ -87,7 +89,9 @@ namespace QuanLyThuVienApp
                 {
                     var query = SearchTool.FilterTaiLieu(db, maTL, tenTL, tacGia, nxb, theLoai);
 
-                    return query.Select(p => new
+                    return query
+                    .Where(p => p.TrangThai == true)
+                    .Select(p => new
                     {
                         MaTaiLieu = "TL" + p.MaTaiLieu,
                         p.TenTaiLieu,

@@ -401,7 +401,6 @@
             this.txtTLConLai.Name = "txtTLConLai";
             this.txtTLConLai.Size = new System.Drawing.Size(106, 24);
             this.txtTLConLai.TabIndex = 33;
-            this.txtTLConLai.TextChanged += new System.EventHandler(this.txtTLConLai_TextChanged);
             // 
             // txtDaDK
             // 
@@ -410,7 +409,6 @@
             this.txtDaDK.Name = "txtDaDK";
             this.txtDaDK.Size = new System.Drawing.Size(81, 24);
             this.txtDaDK.TabIndex = 31;
-            this.txtDaDK.TextChanged += new System.EventHandler(this.txtDaDK_TextChanged);
             // 
             // label6
             // 
@@ -421,7 +419,6 @@
             this.label6.Size = new System.Drawing.Size(58, 18);
             this.label6.TabIndex = 32;
             this.label6.Text = "Còn lại:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label9
             // 
@@ -432,7 +429,6 @@
             this.label9.Size = new System.Drawing.Size(86, 18);
             this.label9.TabIndex = 30;
             this.label9.Text = "Đã đăng ký:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // groupBox2
             // 

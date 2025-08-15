@@ -189,6 +189,12 @@
     <Compile Include="frmReportHoaDonPhat.Designer.cs">
       <DependentUpon>frmReportHoaDonPhat.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTaiLieuHidden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaiLieuHidden.Designer.cs">
+      <DependentUpon>frmTaiLieuHidden.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmThongKe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportHoaDonPhat.resx">
       <DependentUpon>frmReportHoaDonPhat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaiLieuHidden.resx">
+      <DependentUpon>frmTaiLieuHidden.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongKe.resx">
       <DependentUpon>frmThongKe.cs</DependentUpon>

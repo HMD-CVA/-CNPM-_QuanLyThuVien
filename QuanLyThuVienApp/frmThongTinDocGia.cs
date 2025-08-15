@@ -35,6 +35,7 @@ namespace QuanLyThuVienApp
 
         private void loadDuLieu()
         {
+            btnBiKhoa.Enabled = true;
             QLTVEntities db = new QLTVEntities();
             DocGia DG = db.DocGias.Where(p => p.MaDocGia == maDG).FirstOrDefault();
 
@@ -60,6 +61,13 @@ namespace QuanLyThuVienApp
             {
                 labMS.Text = "Mã số giảng viên";
                 txtLoaiDG.Text = "Giảng Viên";
+            }
+
+            if (DG.NgayHetHan < DateTime.Now)
+            {
+                txtTrangThai.Text = "Hết hạn";
+                btnBiKhoa.Enabled = false;
+                return;
             }
 
             if (DG.BiKhoa == true)

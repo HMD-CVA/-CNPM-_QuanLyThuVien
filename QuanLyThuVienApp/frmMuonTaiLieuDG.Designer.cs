@@ -39,11 +39,6 @@
             this.TaiBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLamMoi = new FontAwesome.Sharp.IconButton();
-            this.btnTimKiem = new FontAwesome.Sharp.IconButton();
-            this.cbTimKiem = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnDangKy = new FontAwesome.Sharp.IconButton();
             this.btnXoaHet = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -91,7 +86,6 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách đăng ký mượn";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // dgvSachMuon
             // 
@@ -193,80 +187,6 @@
             this.MoTa.Name = "MoTa";
             this.MoTa.Visible = false;
             // 
-            // btnLamMoi
-            // 
-            this.btnLamMoi.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.IconChar = FontAwesome.Sharp.IconChar.ArrowRotateBackward;
-            this.btnLamMoi.IconColor = System.Drawing.Color.Black;
-            this.btnLamMoi.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnLamMoi.IconSize = 19;
-            this.btnLamMoi.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnLamMoi.Location = new System.Drawing.Point(912, 65);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(87, 25);
-            this.btnLamMoi.TabIndex = 14;
-            this.btnLamMoi.Text = "Làm mới";
-            this.btnLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLamMoi.UseVisualStyleBackColor = false;
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.btnTimKiem.IconColor = System.Drawing.Color.Black;
-            this.btnTimKiem.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btnTimKiem.IconSize = 19;
-            this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnTimKiem.Location = new System.Drawing.Point(1121, 65);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(87, 25);
-            this.btnTimKiem.TabIndex = 15;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTimKiem.UseVisualStyleBackColor = false;
-            // 
-            // cbTimKiem
-            // 
-            this.cbTimKiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbTimKiem.FormattingEnabled = true;
-            this.cbTimKiem.Items.AddRange(new object[] {
-            "Mã sách",
-            "Tên sách",
-            "Tác giả",
-            "Nhà xuất bản",
-            "Thể loại"});
-            this.cbTimKiem.Location = new System.Drawing.Point(1075, 9);
-            this.cbTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.cbTimKiem.Name = "cbTimKiem";
-            this.cbTimKiem.Size = new System.Drawing.Size(133, 25);
-            this.cbTimKiem.TabIndex = 13;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(969, 16);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 17);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Tìm kiếm theo";
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(912, 38);
-            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(296, 23);
-            this.txtTimKiem.TabIndex = 11;
-            // 
             // btnDangKy
             // 
             this.btnDangKy.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -276,7 +196,7 @@
             this.btnDangKy.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnDangKy.IconSize = 19;
             this.btnDangKy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangKy.Location = new System.Drawing.Point(1118, 160);
+            this.btnDangKy.Location = new System.Drawing.Point(1121, 171);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(87, 25);
@@ -295,7 +215,7 @@
             this.btnXoaHet.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.btnXoaHet.IconSize = 19;
             this.btnXoaHet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoaHet.Location = new System.Drawing.Point(910, 160);
+            this.btnXoaHet.Location = new System.Drawing.Point(913, 171);
             this.btnXoaHet.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaHet.Name = "btnXoaHet";
             this.btnXoaHet.Size = new System.Drawing.Size(87, 25);
@@ -474,7 +394,7 @@
             this.txtEmail.CustomButton.UseSelectable = true;
             this.txtEmail.CustomButton.Visible = false;
             this.txtEmail.Lines = new string[0];
-            this.txtEmail.Location = new System.Drawing.Point(912, 132);
+            this.txtEmail.Location = new System.Drawing.Point(915, 143);
             this.txtEmail.MaxLength = 32767;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
@@ -495,7 +415,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(909, 111);
+            this.label1.Location = new System.Drawing.Point(912, 122);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 18);
             this.label1.TabIndex = 2;
@@ -503,7 +423,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(1180, 125);
+            this.progressBar1.Location = new System.Drawing.Point(1183, 136);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(0);
             this.progressBar1.Maximum = 100;
             this.progressBar1.Name = "progressBar1";
@@ -517,7 +437,7 @@
             this.btnXoaSLM.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoaSLM.Image = global::QuanLyThuVienApp.Properties.Resources.png_clipart_computer_icons_symbol_others_miscellaneous_repair_removebg_preview;
             this.btnXoaSLM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoaSLM.Location = new System.Drawing.Point(1008, 160);
+            this.btnXoaSLM.Location = new System.Drawing.Point(1011, 171);
             this.btnXoaSLM.Name = "btnXoaSLM";
             this.btnXoaSLM.Size = new System.Drawing.Size(99, 25);
             this.btnXoaSLM.TabIndex = 33;
@@ -538,11 +458,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnXoaHet);
             this.Controls.Add(this.btnDangKy);
-            this.Controls.Add(this.btnLamMoi);
-            this.Controls.Add(this.btnTimKiem);
-            this.Controls.Add(this.cbTimKiem);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -563,11 +478,6 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvSachMuon;
-        private FontAwesome.Sharp.IconButton btnLamMoi;
-        private FontAwesome.Sharp.IconButton btnTimKiem;
-        private System.Windows.Forms.ComboBox cbTimKiem;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtTimKiem;
         private FontAwesome.Sharp.IconButton btnDangKy;
         private FontAwesome.Sharp.IconButton btnXoaHet;
         private System.Windows.Forms.GroupBox groupBox1;

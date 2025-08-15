@@ -118,7 +118,7 @@ namespace QuanLyThuVienApp
 
         private async Task<(bool isNeedSQL, string content)> GenerateSQLFromAI(string userInput)
         {
-            string groqApiKey = "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";
+            string groqApiKey = "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";
             string groqEndpoint = "https://api.groq.com/openai/v1/chat/completions";
 
             using (var httpClient = new HttpClient())
@@ -253,7 +253,7 @@ namespace QuanLyThuVienApp
             {
                 // Không cần xử lý nếu lỗi parse ngày
             }
-            string groqApiKey = "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";
+            string groqApiKey = "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";
             string groqEndpoint = "https://api.groq.com/openai/v1/chat/completions";
             var payload = new
             {
@@ -317,7 +317,7 @@ namespace QuanLyThuVienApp
 
         private async Task<string> GenerateNaturalReply(string userInput)
         {
-            string groqApiKey = "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";
+            string groqApiKey = "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";
             string groqEndpoint = "https://api.groq.com/openai/v1/chat/completions";
 
 
