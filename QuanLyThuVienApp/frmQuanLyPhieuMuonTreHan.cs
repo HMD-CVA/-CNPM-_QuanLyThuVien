@@ -15,6 +15,9 @@ namespace QuanLyThuVienApp
 {
     public partial class frmQuanLyPhieuMuonTreHan : Form
     {
+        public static List<Tuple<int, string>> dsLyDo = new List<Tuple<int, string>>();
+        private int maCT;
+        private int maLD;
         private int? maDG;
         public static bool giaHan = false;
         public int TienPhat { get; private set; }
@@ -33,59 +36,114 @@ namespace QuanLyThuVienApp
         private void frmQuanLyPhieuMuon_Load(object sender, EventArgs e)
         {
             LibraryHelper.KiemTraVaKhoaTaiKhoan();
+            cbLydo.SelectedIndex = -1;
+            cbLydo.Enabled = false;
+            for (int i = 0; i < cbLydo.Items.Count; i++)
+            {
+                dsLyDo.Add(Tuple.Create(i, cbLydo.Items[i].ToString()));
+            }
             loadPhieuMuon();
         }
 
-        private void loadPhieuMuon()
+        public void loadPhieuMuon()
         {
             QLTVEntities db = new QLTVEntities();
-
-            var today = DateTime.Today;
 
             var danhSachPhieuMuon = db.PhieuMuons
                 .Include(p => p.DocGia)
                 .Include(p => p.NhanVien)
                 .OrderByDescending(p => p.MaPhieu)
-                .Where(p => (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value < today))
                 .ToList();
 
-            dgvPhieuMuon.DataSource = danhSachPhieuMuon.Select(p => new
+            dgvPhieuMuon.DataSource = danhSachPhieuMuon
+            .Where(p => p.NgayMuon != null && p.MaNV != null && p.HanTra != null)
+            .Select(p => new
             {
                 MaPhieu = "MP" + p.MaPhieu,
                 HoTenDG = p.DocGia != null ? p.DocGia.HoTen : string.Empty,
                 HoTenNV = p.NhanVien != null ? p.NhanVien.HoTen : string.Empty,
                 p.NgayMuon,
                 p.HanTra,
-                DaTra = "Trễ hạn",
+                DaTra = (
+                     p.DaTra == true ? "Đã trả" :
+                    (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value.Date < DateTime.Now.Date) ? "Trễ hạn" : "Chưa trả"
+                ),
                 NgayTra = (p.DaTra == true) ? p.NgayTra : null
             }).ToList();
-        }
 
+            btnHuyLD.Visible = false;
+            btnLuuLD.Visible = false;
+            AddButtonHLDToCTPM();
+        }
+        private void AddButtonHLDToCTPM()
+        {
+            // Tránh thêm nhiều lần
+            if (!dgvChiTietPM.Columns.Contains("btnLD"))
+            {
+                DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
+                btnColumn.Name = "btnLD";
+                btnColumn.HeaderText = "";
+                btnColumn.Text = "Sự cố";
+                btnColumn.UseColumnTextForButtonValue = true;
+                btnColumn.Width = 60;
+                dgvChiTietPM.Columns.Add(btnColumn);
+            }
+            dgvChiTietPM.Columns["btnLD"].Visible = true;
+        }
         private void loadChiTietPM(int maPhieu)
         {
             QLTVEntities db = new QLTVEntities();
-            dgvChiTietPM.DataSource = db.ChiTietPhieuMuons.Where(p => p.MaPM == maPhieu).Select(p => new {
-                //MaChiTiet = "MCT" + p.MaChiTiet,
-                MaTaiLieu = "TL" + p.MaTL,
-                p.TaiLieu.TenTaiLieu,
-                p.TaiLieu.DanhMucTaiLieu.TenDanhMuc,
-                p.TaiLieu.TacGia.TenTG,
-                p.TaiLieu.NhaXuatBan.TenNXB,
-                p.SoLuong
-            }).ToList();
+            var data = db.ChiTietPhieuMuons
+                .Where(p => p.MaPM == maPhieu)
+                .Select(p => new {
+                    p.MaChiTiet,
+                    MaPM = p.MaPM.ToString(),
+                    MaTaiLieu = "TL" + p.MaTL,
+                    p.TaiLieu.TenTaiLieu,
+                    p.TaiLieu.DanhMucTaiLieu.TenDanhMuc,
+                    p.TaiLieu.TacGia.TenTG,
+                    p.TaiLieu.NhaXuatBan.TenNXB,
+                    p.SoLuongBD,
+                    SoLuong = (p.SoLuong == 0 && p.PhieuMuon.NgayMuon != null) ? "Đã trả" :
+                              (p.SoLuong < 0) ? "Đã huỷ" : p.SoLuong.ToString(),
+                    p.MaLyDo
+                })
+                .ToList();
+            dgvChiTietPM.DataSource = data;
+            
         }
-        
+
         private void dgvPhieuMuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
+            cbLydo.Text = string.Empty;
+            QLTVEntities db = new QLTVEntities();
             string maPhieuStr = dgvPhieuMuon.Rows[e.RowIndex].Cells["MaPhieu"].Value.ToString();
+
+            string daTraValue = dgvPhieuMuon.Rows[e.RowIndex].Cells["DaTra"].Value?.ToString();
+
+            if (daTraValue == "Trễ hạn")
+            {
+                dgvChiTietPM.Columns["btnLD"].Visible = false;
+                cbLydo.SelectedIndex = 1;
+                int maPhieus = int.Parse(maPhieuStr.Substring(2));
+
+                var listCT = db.ChiTietPhieuMuons.Where(p => p.MaPM == maPhieus);
+                foreach (var t in listCT)
+                {
+                    t.MaLyDo = 1;
+                }
+                db.SaveChanges();
+            }
+            else
+            {
+                dgvChiTietPM.Columns["btnLD"].Visible = true;
+            }
+
             if (maPhieuStr.StartsWith("MP"))
             {
                 maPhieuStr = maPhieuStr.Substring(2);
             }
-
-            QLTVEntities db = new QLTVEntities();
-            maDG = db.PhieuMuons.Where(p => p.MaPhieu.ToString() == maPhieuStr).Select(p => (int?)p.MaDG).FirstOrDefault();
 
             int.TryParse(maPhieuStr, out int maPhieuGhiNho);
 
@@ -103,13 +161,32 @@ namespace QuanLyThuVienApp
             if (dgvPhieuMuon.Columns[e.ColumnIndex].Name == "DaTra")
             {
                 string daTraValue = dgvPhieuMuon.Rows[e.RowIndex].Cells["DaTra"].Value?.ToString();
+                
                 if (daTraValue == "Trễ hạn")
                 {
                     dgvPhieuMuon.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
                 }
             }
         }
-
+        private void dgvChiTietPM_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+            maCT = int.Parse(dgvChiTietPM.Rows[e.RowIndex].Cells["MaChiTiet"].Value.ToString());
+            if (dgvChiTietPM.Columns[e.ColumnIndex].Name != "btnLD")
+            {
+                QLTVEntities db = new QLTVEntities();
+                ChiTietPhieuMuon ctpm = db.ChiTietPhieuMuons.Where(p => p.MaChiTiet == maCT).FirstOrDefault();
+                if (ctpm.MaLyDo != null) cbLydo.SelectedIndex = ctpm.MaLyDo ?? 0;
+                return;
+            }
+            cbLydo.Enabled = true;
+            btnHuyLD.Visible = true;
+            btnLuuLD.Visible = true;
+            int maLyDo = cbLydo.SelectedIndex;
+            MessageBox.Show("Vui lòng chọn sự cố!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            cbLydo.Focus();
+            
+        }
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string keyword = txtTimKiem.Text.Trim();
@@ -231,8 +308,8 @@ namespace QuanLyThuVienApp
                 maPhieustr = maPhieustr.Substring(2);
             }
             int maPhieu = int.Parse(maPhieustr);
-
-            frmReportHoaDonPhat frm = new frmReportHoaDonPhat(maPhieu, TinhTienPhat(maPhieu));
+            string lyDo = cbLydo.Text;
+            frmReportHoaDonPhat frm = new frmReportHoaDonPhat(lyDo, maPhieu, TinhTienPhat(maPhieu));
             frm.Owner = this;
             frm.ShowDialog();
         }
@@ -328,6 +405,34 @@ namespace QuanLyThuVienApp
             if (giaHan) btnLamMoi.PerformClick();
             loadPhieuMuon();
             ChonLaiPhieu(maPhieu);
+        }
+
+        private void btnHuyLD_Click(object sender, EventArgs e)
+        {
+            btnHuyLD.Visible = false;
+            btnLuuLD.Visible = false;
+            cbLydo.Enabled = false;
+            QLTVEntities db = new QLTVEntities();
+            ChiTietPhieuMuon ct = db.ChiTietPhieuMuons.Where(p => p.MaChiTiet == maCT).FirstOrDefault();
+            cbLydo.SelectedIndex = ct.MaLyDo ?? 0;
+        }
+
+        private void btnLuuLD_Click(object sender, EventArgs e)
+        {
+            maLD = cbLydo.SelectedIndex;
+            QLTVEntities db = new QLTVEntities();
+            ChiTietPhieuMuon ct = db.ChiTietPhieuMuons.Where(p => p.MaChiTiet == maCT).FirstOrDefault();
+            if (ct.PhieuMuon.DaTra == true && maLD == 1)
+            {
+                MessageBox.Show("Phiếu mượn đã được trả đúng hạn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            ct.MaLyDo = maLD;
+            db.SaveChanges();
+            MessageBox.Show("Đã thêm sự cố thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnHuyLD.Visible = false;
+            btnLuuLD.Visible = false;
+            cbLydo.Enabled = false;
         }
     }
 }

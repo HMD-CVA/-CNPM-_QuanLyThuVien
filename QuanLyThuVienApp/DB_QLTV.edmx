@@ -14,6 +14,7 @@
           <Property Name="MaTL" Type="int" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="SoLuongBD" Type="int" />
+          <Property Name="MaLyDo" Type="int" />
         </EntityType>
         <EntityType Name="DanhMucTaiLieu">
           <Key>
@@ -452,6 +453,7 @@
           <Property Name="SoLuongBD" Type="Int32" />
           <NavigationProperty Name="TaiLieu" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaTL__367C1819" FromRole="ChiTietPhieuMuon" ToRole="TaiLieu" />
           <NavigationProperty Name="PhieuMuon" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" FromRole="ChiTietPhieuMuon" ToRole="PhieuMuon" />
+          <Property Name="MaLyDo" Type="Int32" />
         </EntityType>
         <Association Name="FK__ChiTietPhi__MaTL__367C1819">
           <End Type="DB_QLTVModel.TaiLieu" Role="TaiLieu" Multiplicity="0..1" />
@@ -618,6 +620,7 @@
           <EntitySetMapping Name="ChiTietPhieuMuons">
             <EntityTypeMapping TypeName="DB_QLTVModel.ChiTietPhieuMuon">
               <MappingFragment StoreEntitySet="ChiTietPhieuMuon">
+                <ScalarProperty Name="MaLyDo" ColumnName="MaLyDo" />
                 <ScalarProperty Name="SoLuongBD" ColumnName="SoLuongBD" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="MaTL" ColumnName="MaTL" />

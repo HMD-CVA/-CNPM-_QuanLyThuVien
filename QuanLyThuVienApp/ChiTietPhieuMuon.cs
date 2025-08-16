@@ -19,6 +19,7 @@ namespace QuanLyThuVienApp
         public Nullable<int> MaTL { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<int> SoLuongBD { get; set; }
+        public Nullable<int> MaLyDo { get; set; }
     
         public virtual TaiLieu TaiLieu { get; set; }
         public virtual PhieuMuon PhieuMuon { get; set; }

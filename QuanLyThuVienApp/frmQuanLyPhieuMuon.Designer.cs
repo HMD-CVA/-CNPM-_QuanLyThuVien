@@ -35,6 +35,15 @@
             this.btnTimKiem = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvChiTietPM = new System.Windows.Forms.DataGridView();
+            this.MaChiTiet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaPM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNXB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuongBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLamMoi = new FontAwesome.Sharp.IconButton();
             this.cbTimKiem = new System.Windows.Forms.ComboBox();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
@@ -62,15 +71,6 @@
             this.btnTTDG = new FontAwesome.Sharp.IconButton();
             this.btnHuyPhieu = new FontAwesome.Sharp.IconButton();
             this.btnXLTreHan = new FontAwesome.Sharp.IconButton();
-            this.MaChiTiet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaPM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTaiLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenDanhMuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNXB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuongBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietPM)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupPhieuTra.SuspendLayout();
@@ -153,6 +153,86 @@
             this.dgvChiTietPM.TabIndex = 1;
             this.dgvChiTietPM.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChiTietPM_CellClick);
             this.dgvChiTietPM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvChiTietPM_CellFormatting);
+            
+            // 
+            // MaChiTiet
+            // 
+            this.MaChiTiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MaChiTiet.DataPropertyName = "MaChiTiet";
+            this.MaChiTiet.HeaderText = "Mã";
+            this.MaChiTiet.Name = "MaChiTiet";
+            this.MaChiTiet.ReadOnly = true;
+            this.MaChiTiet.Visible = false;
+            // 
+            // MaPM
+            // 
+            this.MaPM.DataPropertyName = "MaPM";
+            this.MaPM.HeaderText = "Mã phiếu mượn";
+            this.MaPM.Name = "MaPM";
+            this.MaPM.ReadOnly = true;
+            this.MaPM.Visible = false;
+            // 
+            // MaTaiLieu
+            // 
+            this.MaTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MaTaiLieu.DataPropertyName = "MaTaiLieu";
+            this.MaTaiLieu.HeaderText = "Mã";
+            this.MaTaiLieu.Name = "MaTaiLieu";
+            this.MaTaiLieu.ReadOnly = true;
+            this.MaTaiLieu.Width = 51;
+            // 
+            // TenTaiLieu
+            // 
+            this.TenTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TenTaiLieu.DataPropertyName = "TenTaiLieu";
+            this.TenTaiLieu.HeaderText = "Tên tài liệu";
+            this.TenTaiLieu.Name = "TenTaiLieu";
+            this.TenTaiLieu.ReadOnly = true;
+            // 
+            // TenDanhMuc
+            // 
+            this.TenDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
+            this.TenDanhMuc.HeaderText = "Danh mục";
+            this.TenDanhMuc.Name = "TenDanhMuc";
+            this.TenDanhMuc.ReadOnly = true;
+            this.TenDanhMuc.Width = 92;
+            // 
+            // TenTG
+            // 
+            this.TenTG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TenTG.DataPropertyName = "TenTG";
+            this.TenTG.HeaderText = "Tác giả";
+            this.TenTG.Name = "TenTG";
+            this.TenTG.ReadOnly = true;
+            this.TenTG.Width = 78;
+            // 
+            // TenNXB
+            // 
+            this.TenNXB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TenNXB.DataPropertyName = "TenNXB";
+            this.TenNXB.HeaderText = "NXB";
+            this.TenNXB.Name = "TenNXB";
+            this.TenNXB.ReadOnly = true;
+            this.TenNXB.Width = 59;
+            // 
+            // SoLuongBD
+            // 
+            this.SoLuongBD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SoLuongBD.DataPropertyName = "SoLuongBD";
+            this.SoLuongBD.HeaderText = "Số lượng";
+            this.SoLuongBD.Name = "SoLuongBD";
+            this.SoLuongBD.ReadOnly = true;
+            this.SoLuongBD.Width = 85;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SoLuong.DataPropertyName = "SoLuong";
+            this.SoLuong.HeaderText = "Chưa trả";
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.ReadOnly = true;
+            this.SoLuong.Width = 81;
             // 
             // btnLamMoi
             // 
@@ -448,7 +528,7 @@
             this.btnInPM.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInPM.Image = global::QuanLyThuVienApp.Properties.Resources._3022251_removebg_preview;
             this.btnInPM.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInPM.Location = new System.Drawing.Point(688, 226);
+            this.btnInPM.Location = new System.Drawing.Point(677, 226);
             this.btnInPM.Margin = new System.Windows.Forms.Padding(2);
             this.btnInPM.Name = "btnInPM";
             this.btnInPM.Size = new System.Drawing.Size(106, 25);
@@ -493,7 +573,7 @@
             this.btnTTDG.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.btnTTDG.IconSize = 19;
             this.btnTTDG.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnTTDG.Location = new System.Drawing.Point(798, 226);
+            this.btnTTDG.Location = new System.Drawing.Point(787, 226);
             this.btnTTDG.Margin = new System.Windows.Forms.Padding(2);
             this.btnTTDG.Name = "btnTTDG";
             this.btnTTDG.Size = new System.Drawing.Size(149, 25);
@@ -534,92 +614,12 @@
             this.btnXLTreHan.Location = new System.Drawing.Point(567, 226);
             this.btnXLTreHan.Margin = new System.Windows.Forms.Padding(2);
             this.btnXLTreHan.Name = "btnXLTreHan";
-            this.btnXLTreHan.Size = new System.Drawing.Size(117, 25);
+            this.btnXLTreHan.Size = new System.Drawing.Size(106, 25);
             this.btnXLTreHan.TabIndex = 47;
-            this.btnXLTreHan.Text = "Xử lý trễ hạn";
+            this.btnXLTreHan.Text = "Xử lý sự cố";
             this.btnXLTreHan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXLTreHan.UseVisualStyleBackColor = false;
             this.btnXLTreHan.Click += new System.EventHandler(this.btnXLTreHan_Click);
-            // 
-            // MaChiTiet
-            // 
-            this.MaChiTiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MaChiTiet.DataPropertyName = "MaChiTiet";
-            this.MaChiTiet.HeaderText = "Mã";
-            this.MaChiTiet.Name = "MaChiTiet";
-            this.MaChiTiet.ReadOnly = true;
-            this.MaChiTiet.Visible = false;
-            this.MaChiTiet.Width = 32;
-            // 
-            // MaPM
-            // 
-            this.MaPM.DataPropertyName = "MaPM";
-            this.MaPM.HeaderText = "Mã phiếu mượn";
-            this.MaPM.Name = "MaPM";
-            this.MaPM.ReadOnly = true;
-            this.MaPM.Visible = false;
-            // 
-            // MaTaiLieu
-            // 
-            this.MaTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MaTaiLieu.DataPropertyName = "MaTaiLieu";
-            this.MaTaiLieu.HeaderText = "Mã";
-            this.MaTaiLieu.Name = "MaTaiLieu";
-            this.MaTaiLieu.ReadOnly = true;
-            this.MaTaiLieu.Width = 51;
-            // 
-            // TenTaiLieu
-            // 
-            this.TenTaiLieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TenTaiLieu.DataPropertyName = "TenTaiLieu";
-            this.TenTaiLieu.HeaderText = "Tên tài liệu";
-            this.TenTaiLieu.Name = "TenTaiLieu";
-            this.TenTaiLieu.ReadOnly = true;
-            // 
-            // TenDanhMuc
-            // 
-            this.TenDanhMuc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TenDanhMuc.DataPropertyName = "TenDanhMuc";
-            this.TenDanhMuc.HeaderText = "Danh mục";
-            this.TenDanhMuc.Name = "TenDanhMuc";
-            this.TenDanhMuc.ReadOnly = true;
-            this.TenDanhMuc.Width = 92;
-            // 
-            // TenTG
-            // 
-            this.TenTG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TenTG.DataPropertyName = "TenTG";
-            this.TenTG.HeaderText = "Tác giả";
-            this.TenTG.Name = "TenTG";
-            this.TenTG.ReadOnly = true;
-            this.TenTG.Width = 78;
-            // 
-            // TenNXB
-            // 
-            this.TenNXB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TenNXB.DataPropertyName = "TenNXB";
-            this.TenNXB.HeaderText = "NXB";
-            this.TenNXB.Name = "TenNXB";
-            this.TenNXB.ReadOnly = true;
-            this.TenNXB.Width = 59;
-            // 
-            // SoLuongBD
-            // 
-            this.SoLuongBD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SoLuongBD.DataPropertyName = "SoLuongBD";
-            this.SoLuongBD.HeaderText = "Số lượng";
-            this.SoLuongBD.Name = "SoLuongBD";
-            this.SoLuongBD.ReadOnly = true;
-            this.SoLuongBD.Width = 85;
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SoLuong.DataPropertyName = "SoLuong";
-            this.SoLuong.HeaderText = "Chưa trả";
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.ReadOnly = true;
-            this.SoLuong.Width = 81;
             // 
             // frmQuanLyPhieuMuon
             // 

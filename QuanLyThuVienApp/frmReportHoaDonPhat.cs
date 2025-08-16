@@ -13,8 +13,9 @@ namespace QuanLyThuVienApp
 {
     public partial class frmReportHoaDonPhat : Form
     {
+        private List<Tuple<int, string>> dsCombo = new List<Tuple<int, string>>(frmQuanLyPhieuMuonTreHan.dsLyDo);
         private int soNgay, soTien, maPhieu;
-        private string hanTra, NguoiBiPhat, NguoiIn, Email;
+        private string lyDo, hanTra, NguoiBiPhat, NguoiIn, Email;
 
         public frmReportHoaDonPhat()
         {
@@ -22,10 +23,11 @@ namespace QuanLyThuVienApp
             loadFRM();
         }
 
-        public frmReportHoaDonPhat(int _maPhieu, int _soTien)
+        public frmReportHoaDonPhat(string _lyDo, int _maPhieu, int _soTien)
         {
             maPhieu = _maPhieu;
             soTien = _soTien;
+            lyDo = _lyDo;
             InitializeComponent();
             loadFRM();
         }
@@ -81,7 +83,7 @@ namespace QuanLyThuVienApp
             para[2] = new ReportParameter("HanTra", hanTra);
             para[3] = new ReportParameter("Email", Email);
             para[4] = new ReportParameter("SoNgay", soNgay.ToString());
-            para[5] = new ReportParameter("SoTien", soTien.ToString());
+            para[5] = new ReportParameter("SoTien", soTien.ToString()); 
 
             reportViewer1.LocalReport.SetParameters(para);
             this.reportViewer1.RefreshReport();
@@ -93,10 +95,13 @@ namespace QuanLyThuVienApp
             dt.Columns.Add("MaPM", typeof(string));
             dt.Columns.Add("MaTL", typeof(string));
             dt.Columns.Add("SoLuong", typeof(int));
+            dt.Columns.Add("MaLyDo", typeof(string));
 
             foreach (var item in ctPM)
             {
-                dt.Rows.Add(item.MaPM, item.TaiLieu.TenTaiLieu, item.SoLuong);
+                var lyDo = dsCombo.FirstOrDefault(x => x.Item1 == item.MaLyDo);
+                string lyDoText = lyDo != null ? lyDo.Item2 : "Không rõ lý do";
+                dt.Rows.Add(item.MaPM, item.TaiLieu.TenTaiLieu, item.SoLuong, lyDoText);
             }
             ReportDataSource rds = new ReportDataSource("DataSet1", dt);
 
