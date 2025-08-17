@@ -74,7 +74,9 @@ namespace QuanLyThuVienApp
                 .OrderByDescending(p => p.MaPhieu)
                 .ToList();
 
-            dgvPhieuMuon.DataSource = danhSachPhieuMuon.Select(p => new
+            dgvPhieuMuon.DataSource = danhSachPhieuMuon
+            .Where(p => p.MaPhieu == 0)
+            .Select(p => new
             {
                 MaPhieu = "MP" + p.MaPhieu,
                 HoTenDG = p.DocGia != null ? p.DocGia.HoTen : string.Empty,
