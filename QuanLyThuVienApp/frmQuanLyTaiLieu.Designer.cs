@@ -73,7 +73,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txtSMaTL = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grbHidden = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnHidden = new System.Windows.Forms.Button();
             this.btnAnTL = new System.Windows.Forms.Button();
@@ -89,7 +89,7 @@
             this.groupBox1.SuspendLayout();
             this.btnHiddenTL.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grbHidden.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -486,7 +486,7 @@
             // btnHiddenTL
             // 
             this.btnHiddenTL.Controls.Add(this.groupBox3);
-            this.btnHiddenTL.Controls.Add(this.groupBox2);
+            this.btnHiddenTL.Controls.Add(this.grbHidden);
             this.btnHiddenTL.Controls.Add(this.cbTheLoai);
             this.btnHiddenTL.Controls.Add(this.groupBox1);
             this.btnHiddenTL.Controls.Add(this.txtMoTa);
@@ -642,18 +642,18 @@
             this.txtSMaTL.Size = new System.Drawing.Size(93, 23);
             this.txtSMaTL.TabIndex = 15;
             // 
-            // groupBox2
+            // grbHidden
             // 
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.btnHidden);
-            this.groupBox2.Controls.Add(this.btnAnTL);
-            this.groupBox2.Controls.Add(this.txtSoNamHidden);
-            this.groupBox2.Location = new System.Drawing.Point(6, 151);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(241, 103);
-            this.groupBox2.TabIndex = 27;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ẩn tài liệu";
+            this.grbHidden.Controls.Add(this.label1);
+            this.grbHidden.Controls.Add(this.btnHidden);
+            this.grbHidden.Controls.Add(this.btnAnTL);
+            this.grbHidden.Controls.Add(this.txtSoNamHidden);
+            this.grbHidden.Location = new System.Drawing.Point(6, 151);
+            this.grbHidden.Name = "grbHidden";
+            this.grbHidden.Size = new System.Drawing.Size(241, 103);
+            this.grbHidden.TabIndex = 27;
+            this.grbHidden.TabStop = false;
+            this.grbHidden.Text = "Ẩn tài liệu";
             // 
             // label1
             // 
@@ -837,8 +837,8 @@
             this.btnHiddenTL.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grbHidden.ResumeLayout(false);
+            this.grbHidden.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -887,7 +887,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnHidden;
         private System.Windows.Forms.Button btnAnTL;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grbHidden;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSoNamHidden;
         private System.Windows.Forms.GroupBox groupBox3;

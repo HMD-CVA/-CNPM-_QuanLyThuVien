@@ -115,6 +115,10 @@ namespace QuanLyThuVienApp
 
         private void dgvPhieuMuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            cbLydo.SelectedIndex = -1;
+            cbLydo.Enabled = false;
+            btnLuuLD.Visible = false;
+            btnHuyLD.Visible = false;
             if (e.RowIndex < 0) return;
             cbLydo.Text = string.Empty;
             QLTVEntities db = new QLTVEntities();
