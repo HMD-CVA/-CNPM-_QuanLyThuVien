@@ -133,6 +133,7 @@ namespace QuanLyThuVienApp
                 p.HanTra,
                 DaTra = (
                     (p.NgayMuon == null && (DateTime.Now - p.NgayTao).TotalMinutes > 159/*!!!!!!!!!!!!!!!!!*/) ? "Đã huỷ" :
+                    (p.NgayMuon == null && p.TongSLMuon == 0) ? "Đã huỷ" :
                      p.NgayMuon == null ? "Chờ duyệt" :
                      p.DaTra == true ? "Đã trả" :
                     (p.NgayTra == null && p.HanTra.HasValue && p.HanTra.Value.Date < DateTime.Now.Date) ? "Trễ hạn":  "Chưa trả"
@@ -190,17 +191,7 @@ namespace QuanLyThuVienApp
                           (p.SoLuong == 0 && p.PhieuMuon.NgayMuon == null) ? "Đã huỷ" :
                           (p.SoLuong < 0) ? "Đã huỷ" :  p.SoLuong.ToString(),
 
-                //p.PhieuMuon.DaTra,
-                //p.PhieuMuon.NgayTra,
-                //p.PhieuMuon.HanTra
-
             }).ToList();
-            //dgvChiTietPM.Columns["DaTra"].Visible = false;
-            //dgvChiTietPM.Columns["NgayTra"].Visible = false;
-            //dgvChiTietPM.Columns["HanTra"].Visible = false;
-  
-            //dgvChiTietPM.Columns["btnHuyTL"].Visible = true;
-            //dgvChiTietPM.Columns["btnTra"].Visible = false;
 
         }
         private void dgvChiTietPM_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -407,14 +398,6 @@ namespace QuanLyThuVienApp
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
         
         private void radioPhieuMuon_CheckedChanged(object sender, EventArgs e)
         {

@@ -181,7 +181,8 @@ namespace QuanLyThuVienApp
                 QLTVEntities db = new QLTVEntities();
                 ChiTietPhieuMuon ctpm = db.ChiTietPhieuMuons.Where(p => p.MaChiTiet == maCT).FirstOrDefault();
                 if (ctpm.MaLyDo != null) cbLydo.SelectedIndex = ctpm.MaLyDo ?? 0;
-                return;
+                else cbLydo.SelectedIndex = 0;
+                    return;
             }
             cbLydo.Enabled = true;
             btnHuyLD.Visible = true;
