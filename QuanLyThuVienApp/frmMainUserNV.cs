@@ -12,6 +12,7 @@ namespace QuanLyThuVienApp
 {
     public partial class frmMainUserNV : MetroFramework.Forms.MetroForm
     {
+        public static frmMainUserNV Instance;
         public static string quyenHan = "user";
         public static string tenDN;
         public static string text;
@@ -20,12 +21,13 @@ namespace QuanLyThuVienApp
         public frmMainUserNV()
         {
             InitializeComponent();
+            Instance = this;
         }
 
         public frmMainUserNV(string _tenDangNhap, bool? _biKhoa)
         {
             InitializeComponent();
-
+            Instance = this;
             if (_biKhoa == true)
             {
 

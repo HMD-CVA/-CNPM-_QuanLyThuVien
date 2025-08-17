@@ -79,8 +79,8 @@ namespace QuanLyThuVienApp
             .Select(p => new
             {
                 MaPhieu = "MP" + p.MaPhieu,
-                HoTenDG = p.DocGia != null ? p.DocGia.HoTen : string.Empty,
-                HoTenNV = p.NhanVien != null ? p.NhanVien.HoTen : string.Empty,
+                HoTenDG = p.DocGia.HoTen != null ? p.DocGia.HoTen : string.Empty,
+                HoTenNV = p.NhanVien.HoTen != null ? p.NhanVien.HoTen : string.Empty,
                 p.NgayMuon,
                 p.HanTra,
                 DaTra = (

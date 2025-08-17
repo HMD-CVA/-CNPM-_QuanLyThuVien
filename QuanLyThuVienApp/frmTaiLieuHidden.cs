@@ -20,7 +20,16 @@ namespace QuanLyThuVienApp
 
         private void frmSach_Load(object sender, EventArgs e)
         {
+            QLTVEntities db = new QLTVEntities();
+            cbbSDM.DataSource = db.DanhMucTaiLieux.Select(p => p.TenDanhMuc).ToList();
+            cbbSNXB.DataSource = db.NhaXuatBans.Select(p => p.TenNXB).ToList();
+            cbbSTG.DataSource = db.TacGias.Select(p => p.TenTG).ToList();
+            cbbSNXB.SelectedIndex = -1;
+            cbbSDM.SelectedIndex = -1;
+            cbbSTG.SelectedIndex = -1;
+
             loadDuLieu();
+
         }
 
         private void loadDuLieu()
@@ -67,41 +76,47 @@ namespace QuanLyThuVienApp
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string luaChon = cbTimKiem.Text;
-            if (luaChon == "")
+
+            string maTL = txtSMaTL.Text.Trim();
+            string tenTL = txtSTenTL.Text.Trim();
+            string tenTG = string.IsNullOrEmpty(cbbSTG.Text.Trim()) ? string.Empty : cbbSTG.SelectedItem != null ? cbbSTG.SelectedItem.ToString().Trim() : string.Empty;
+            string tenNXB = string.IsNullOrEmpty(cbbSNXB.Text.Trim()) ? string.Empty : cbbSNXB.SelectedItem != null ? cbbSNXB.SelectedItem.ToString().Trim() : string.Empty;
+            string theLoai = string.IsNullOrEmpty(cbbSDM.Text.Trim()) ? string.Empty : cbbSDM.SelectedItem != null ? cbbSDM.SelectedItem.ToString().Trim() : string.Empty;
+            // Nếu tất cả đều trống thì cảnh báo.
+            if (string.IsNullOrEmpty(maTL) && string.IsNullOrEmpty(tenTL) &&
+                string.IsNullOrEmpty(tenTG) && string.IsNullOrEmpty(tenNXB) && string.IsNullOrEmpty(theLoai))
             {
-                MessageBox.Show("Vui lòng chọn lựa chọn để tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cbTimKiem.Focus();
+                MessageBox.Show("Vui lòng nhập thông tin để tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            //QLTVEntities db = new QLTVEntities();
 
-            QLTVEntities db = new QLTVEntities();
-            List<TaiLieu> sach = new List<TaiLieu>();
+            string cacheKey = $"TL_{maTL}_{tenTL}_{tenTG}_{tenNXB}_{theLoai}";
 
-            if (luaChon == "Mã tài liệu")
-                sach = db.TaiLieux.Where(p => ("TL" + p.MaTaiLieu.ToString()).Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Tên tài liệu")
-                sach = db.TaiLieux.Where(p => p.TenTaiLieu.Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Tác giả")
-                sach = db.TaiLieux.Where(p => p.TacGia.TenTG.Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Nhà xuất bản")
-                sach = db.TaiLieux.Where(p => p.NhaXuatBan.TenNXB.Contains(txtTimKiem.Text)).ToList();
-            else if (luaChon == "Thể loại")
-                sach = db.TaiLieux.Where(p => p.DanhMucTaiLieu.TenDanhMuc.Contains(txtTimKiem.Text)).ToList();
+            var result = SearchTool.SearchWithCache(cacheKey, () =>
+            {
+                using (QLTVEntities db = new QLTVEntities())
+                {
+                    var query = SearchTool.FilterTaiLieu(db, maTL, tenTL, tenTG, tenNXB, theLoai);
 
-            dgvSach.DataSource = db.TaiLieux
-                .Where(p => p.TrangThai == false)
-                .Select(p => new {
-                    MaTaiLieu = "TL" + p.MaTaiLieu,
-                    p.TenTaiLieu,
-                    p.TacGia.TenTG,
-                    p.NhaXuatBan.TenNXB,
-                    p.DanhMucTaiLieu.TenDanhMuc,
-                    p.TaiBan,
-                    p.SoLuong,
-                    p.SoTaiLieuMuon,
-                    p.MoTa
-                }).ToList();
+                    return query
+                    .Where(p => p.TrangThai == false)
+                    .Select(p => new
+                    {
+                        MaTaiLieu = "TL" + p.MaTaiLieu,
+                        p.TenTaiLieu,
+                        p.TacGia.TenTG,
+                        p.NhaXuatBan.TenNXB,
+                        p.DanhMucTaiLieu.TenDanhMuc,
+                        p.TaiBan,
+                        p.SoLuong,
+                        p.SoTaiLieuMuon,
+                        p.MoTa
+                    }).ToList();
+                }
+            });
+
+            dgvSach.DataSource = result;
 
             if (dgvSach.Rows.Count > 0)
             {
@@ -122,11 +137,17 @@ namespace QuanLyThuVienApp
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             loadDuLieu();
+            cbbSNXB.SelectedIndex = -1;
+            cbbSDM.SelectedIndex = -1;
+            cbbSTG.SelectedIndex = -1;
+
+            txtSMaTL.Text = string.Empty;
+            txtSTenTL.Text = string.Empty;
         }
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
-            if (txtTimKiem.Text == string.Empty) loadDuLieu();
+            //if (txtTimKiem.Text == string.Empty) loadDuLieu();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)

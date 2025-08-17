@@ -21,10 +21,18 @@ namespace QuanLyThuVienApp
         private void frmQuanLySach_Load(object sender, EventArgs e)
         {
             loadDuLieu();
+            QLTVEntities db = new QLTVEntities();
             cbNXB.SelectedIndex = -1;
             cbTheLoai.SelectedIndex = -1;
             cbTacGia.SelectedIndex = -1;
-            
+
+            cbbSDM.DataSource = db.DanhMucTaiLieux.Select(p => p.TenDanhMuc).ToList();
+            cbbSNXB.DataSource = db.NhaXuatBans.Select(p => p.TenNXB).ToList();
+            cbbSTG.DataSource = db.TacGias.Select(p => p.TenTG).ToList();
+            cbbSNXB.SelectedIndex = -1;
+            cbbSDM.SelectedIndex = -1;
+            cbbSTG.SelectedIndex = -1;
+
             radioSuaXoa.Checked = true;
         }
 
@@ -45,8 +53,8 @@ namespace QuanLyThuVienApp
             cbTheLoai.DataSource = db.DanhMucTaiLieux.ToList();
 
             dgvSach.DataSource = db.TaiLieux
-                .Where(p => p.TrangThai == true)
-                .Select(p => new {
+            .Where(p => p.TrangThai == true)
+            .Select(p => new {
                 MaTaiLieu = "TL" + p.MaTaiLieu,
                 p.TenTaiLieu,
                 p.DanhMucTaiLieu.TenDanhMuc,
@@ -100,13 +108,11 @@ namespace QuanLyThuVienApp
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string maTL = txtMaSach.Text.Trim();
-            string tenTL = txtTenSach.Text.Trim();
-
-            string tenTG = cbTacGia.Text.Trim();
-            string tenNXB = cbNXB.Text.Trim();
-            string theLoai = cbTheLoai.Text.Trim();
-
+            string maTL = txtSMaTL.Text.Trim();
+            string tenTL = txtSTenTL.Text.Trim();
+            string tenTG = string.IsNullOrEmpty(cbbSTG.Text.Trim()) ? string.Empty : cbbSTG.SelectedItem != null ? cbbSTG.SelectedItem.ToString().Trim() : string.Empty;
+            string tenNXB = string.IsNullOrEmpty(cbbSNXB.Text.Trim()) ? string.Empty : cbbSNXB.SelectedItem != null ? cbbSNXB.SelectedItem.ToString().Trim() : string.Empty;
+            string theLoai = string.IsNullOrEmpty(cbbSDM.Text.Trim()) ? string.Empty : cbbSDM.SelectedItem != null ? cbbSDM.SelectedItem.ToString().Trim() : string.Empty;
             // Nếu tất cả đều trống thì cảnh báo.
             if (string.IsNullOrEmpty(maTL) && string.IsNullOrEmpty(tenTL) &&
                 string.IsNullOrEmpty(tenTG) && string.IsNullOrEmpty(tenNXB) && string.IsNullOrEmpty(theLoai))
@@ -123,7 +129,9 @@ namespace QuanLyThuVienApp
                 {
                     var query = SearchTool.FilterTaiLieu(db, maTL, tenTL, tenTG, tenNXB, theLoai);
 
-                    return query.Select(p => new
+                    return query
+                    .Where(p => p.TrangThai == true)
+                    .Select(p => new
                     {
                         MaTaiLieu = "TL" + p.MaTaiLieu,
                         p.TenTaiLieu,
@@ -150,9 +158,13 @@ namespace QuanLyThuVienApp
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            cbNXB.SelectedIndex = -1;
-            cbTheLoai.SelectedIndex = -1;
-            cbTacGia.SelectedIndex = -1;
+            cbbSNXB.SelectedIndex = -1;
+            cbbSDM.SelectedIndex = -1;
+            cbbSTG.SelectedIndex = -1;
+
+            txtSMaTL.Text = string.Empty;
+            txtSTenTL.Text = string.Empty;
+
             loadDuLieu();
         }
 
@@ -477,11 +489,14 @@ namespace QuanLyThuVienApp
 
         private void btnHidden_Click(object sender, EventArgs e)
         {
+            foreach (Form form in this.MdiChildren)
+                form.Close();
             frmTaiLieuHidden frm = new frmTaiLieuHidden();
+            frm.MdiParent = frmMainUserNV.Instance; 
             frm.FormClosed += (s, args) => {
                 loadDuLieu();
             };
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
