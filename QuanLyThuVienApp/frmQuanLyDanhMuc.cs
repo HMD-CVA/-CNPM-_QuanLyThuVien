@@ -26,7 +26,7 @@ namespace QuanLyThuVienApp
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
-            dgvTheLoai.DataSource = db.DanhMucTaiLieux.Select(p => new
+            dgvTheLoai.DataSource = db.DanhMucTaiLieux.Where(p => p.TrangThaiAnHien == true).Select(p => new
             {
                 MaDanhMuc = "DM" + p.MaDanhMuc,
                 p.TenDanhMuc,
@@ -73,7 +73,8 @@ namespace QuanLyThuVienApp
             }
             else return;
 
-            dgvTheLoai.DataSource = theLoais.Select(p => new
+            dgvTheLoai.DataSource = theLoais.Where(p => p.TrangThaiAnHien == true)
+            .Select(p => new
             {
                 MaDanhMuc = "DM" + p.MaDanhMuc,
                 p.TenDanhMuc,
@@ -124,6 +125,7 @@ namespace QuanLyThuVienApp
             theLoai.ViTri = txtViTri.Text;
             theLoai.MoTa = txtMoTa.Text;
             theLoai.SoLuongTL = 0;
+            theLoai.TrangThaiAnHien = true;
 
             QLTVEntities db = new QLTVEntities();
             db.DanhMucTaiLieux.Add(theLoai);
@@ -185,7 +187,7 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            db.DanhMucTaiLieux.Remove(theLoai);
+            theLoai.TrangThaiAnHien = false;
             db.SaveChanges();
             loadDuLieu();
             MessageBox.Show("Xóa thể loại thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);

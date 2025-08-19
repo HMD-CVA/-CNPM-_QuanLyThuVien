@@ -55,7 +55,7 @@ namespace QuanLyThuVienApp
         private void loadUser()
         {
             QLTVEntities db = new QLTVEntities();
-            List<int> taiKhoan_User = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == false).Select(p => p.ID).ToList();
+            List<int> taiKhoan_User = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == false && p.TrangThaiAnHien == true).Select(p => p.ID).ToList();
             dgvNguoiDung.DataSource = db.NhanViens.Where(p => taiKhoan_User.Contains(p.NguoiDungID))
                 .Select(p => new
                 {
@@ -78,7 +78,7 @@ namespace QuanLyThuVienApp
         private void loadDangKhoa()
         {
             QLTVEntities db = new QLTVEntities();
-            List<int> taiKhoan_UserLocked = db.NguoiDungs.Where(p => p.BiKhoa == true).Select(p => p.ID).ToList();
+            List<int> taiKhoan_UserLocked = db.NguoiDungs.Where(p => p.BiKhoa == true && p.TrangThaiAnHien == true).Select(p => p.ID).ToList();
             dgvNguoiDung.DataSource = db.NhanViens.Where(p => taiKhoan_UserLocked.Contains(p.NguoiDungID))
                 .Select(p => new
                 {
@@ -150,7 +150,7 @@ namespace QuanLyThuVienApp
 
             if (radioUser.Checked)
             {
-                List<int> listUser = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == false).Select(p => p.ID).ToList();
+                List<int> listUser = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == false && p.TrangThaiAnHien == true).Select(p => p.ID).ToList();
 
                 if (luaChon == "Mã")
                     nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) 
@@ -170,7 +170,8 @@ namespace QuanLyThuVienApp
 
                 else return;
 
-                dgvNguoiDung.DataSource = nguoiDungs.Select(p => new
+                dgvNguoiDung.DataSource = nguoiDungs
+                .Select(p => new
                 {
                     MaNV = "NV" + p.MaNV,
                     p.HoTen,
@@ -184,7 +185,7 @@ namespace QuanLyThuVienApp
             } 
             else if (radioDangKhoa.Checked)
             {
-                List<int> listUser = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == true).Select(p => p.ID).ToList();
+                List<int> listUser = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == true && p.TrangThaiAnHien == true).Select(p => p.ID).ToList();
 
                 if (luaChon == "Mã")
                     nguoiDungs = db.NhanViens.Where(p => p.TrangThaiXacThuc == true && listUser.Contains(p.NguoiDungID)
@@ -224,31 +225,7 @@ namespace QuanLyThuVienApp
             if (radioUser.Checked) loadUser();
             else loadDangKhoa();
         }
-        private void btnCapQuyenAdmin_Click(object sender, EventArgs e)
-        {
-            if (txtID.Text == "") return;
-
-            DialogResult result = MessageBox.Show(
-                "Bạn có chắc cấp quyền admin cho tài khoản này?",
-                "Thông báo",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.No) return;
-
-            QLTVEntities db = new QLTVEntities();
-            int maNV = int.Parse(txtID.Text.Substring(2));
-            var ngD = db.NhanViens.FirstOrDefault(p => p.MaNV == maNV);
-
-            NguoiDung nguoiDung = db.NguoiDungs.Where(p => p.ID == ngD.NguoiDungID).FirstOrDefault();
-
-            nguoiDung.QuyenHan = "admin";
-            db.SaveChanges();
-            loadUser();
-
-            MessageBox.Show("Cấp quyền admin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        
         private void btnKhoaTaiKhoan_Click(object sender, EventArgs e)
         {
             if (txtID.Text == "") return;
@@ -381,7 +358,7 @@ namespace QuanLyThuVienApp
                 if (nv != null) db.NhanViens.Remove(nv);
 
                 var nd = db.NguoiDungs.SingleOrDefault(p => p.ID == nguoiDungID);
-                if (nd != null) db.NguoiDungs.Remove(nd);
+                if (nd != null) nd.TrangThaiAnHien = false;
 
                 db.SaveChanges();
             });

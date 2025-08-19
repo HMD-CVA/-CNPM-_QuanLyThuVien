@@ -46,28 +46,13 @@ namespace QuanLyThuVienApp
         private void frmLichSuMuon_Load(object sender, EventArgs e)
         {
             loadDuLieu();
+            cbLoc.SelectedIndex = 0;
             cbLoc.Enabled = false;
         }
 
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
-            //dgvPhieuMuon.DataSource = db.PhieuMuons
-            //    .Where(p => p.MaPhieu == 0)
-            //    .OrderByDescending(p => p.MaPhieu)
-            //    .Select(p => new
-            //    {
-            //        MaPhieu = "MP" + p.MaPhieu,
-            //        TenDG = p.DocGia.HoTen,
-            //        TenNV = p.NhanVien.HoTen,
-            //        p.NgayMuon,
-            //        p.HanTra,
-            //        DaTra = (
-            //        (p.NgayTra == null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(DateTime.Now)) ||
-            //        (p.NgayTra != null && p.HanTra.HasValue && DbFunctions.TruncateTime(p.HanTra) < DbFunctions.TruncateTime(p.NgayTra))
-            //    ) ? "Trễ hạn" : (p.DaTra == true ? "Đã trả" : "Chưa trả"),
-            //        NgayTra = (p.DaTra == true) ? p.NgayTra : null
-            //    }).ToList();
             var danhSachPhieuMuon = db.PhieuMuons
                 .Include(p => p.DocGia)
                 .Include(p => p.NhanVien)
@@ -79,8 +64,8 @@ namespace QuanLyThuVienApp
             .Select(p => new
             {
                 MaPhieu = "MP" + p.MaPhieu,
-                HoTenDG = p.DocGia.HoTen != null ? p.DocGia.HoTen : string.Empty,
-                HoTenNV = p.NhanVien.HoTen != null ? p.NhanVien.HoTen : string.Empty,
+                TenDG = p.DocGia.HoTen != null ? p.DocGia.HoTen : string.Empty,
+                TenNV = p.NhanVien.HoTen != null ? p.NhanVien.HoTen : string.Empty,
                 p.NgayMuon,
                 p.HanTra,
                 DaTra = (
@@ -91,7 +76,6 @@ namespace QuanLyThuVienApp
                 ),
                 NgayTra = (p.DaTra == true) ? p.NgayTra : null
             }).ToList();
-
             loadChiTietPM(0);
         }
 
@@ -170,7 +154,6 @@ namespace QuanLyThuVienApp
             .ToList();
 
             cbLoc.Enabled = _filteredPhieuMuons.Count > 0;
-            cbLoc.SelectedIndex = 0; // Reset về "Tất cả"
             LoadDataToGrid();
         }
 
@@ -179,7 +162,7 @@ namespace QuanLyThuVienApp
             txtEmail.Text = string.Empty;
             txtMaPhieu.Text = string.Empty;
             txtMS.Text = string.Empty;
-            cbLoc.Text = string.Empty;
+            cbLoc.SelectedIndex = 0;
             loadDuLieu();
         }
 

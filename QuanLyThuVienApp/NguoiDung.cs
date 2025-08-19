@@ -25,6 +25,7 @@ namespace QuanLyThuVienApp
         public byte[] MatKhau { get; set; }
         public string QuyenHan { get; set; }
         public Nullable<bool> BiKhoa { get; set; }
+        public Nullable<bool> TrangThaiAnHien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NhanVien> NhanViens { get; set; }

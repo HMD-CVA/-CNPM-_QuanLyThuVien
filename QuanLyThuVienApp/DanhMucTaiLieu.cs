@@ -25,6 +25,7 @@ namespace QuanLyThuVienApp
         public string ViTri { get; set; }
         public Nullable<int> SoLuongTL { get; set; }
         public string MoTa { get; set; }
+        public Nullable<bool> TrangThaiAnHien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaiLieu> TaiLieux { get; set; }

@@ -285,7 +285,8 @@
             "Tất cả",
             "Chưa trả",
             "Đã trả",
-            "Trễ hạn"});
+            "Trễ hạn",
+            "Đã huỷ"});
             this.cbLoc.Location = new System.Drawing.Point(6, 176);
             this.cbLoc.Margin = new System.Windows.Forms.Padding(2);
             this.cbLoc.Name = "cbLoc";

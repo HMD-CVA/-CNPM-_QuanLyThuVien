@@ -26,9 +26,9 @@ namespace QuanLyThuVienApp
             cbTheLoai.SelectedIndex = -1;
             cbTacGia.SelectedIndex = -1;
 
-            cbbSDM.DataSource = db.DanhMucTaiLieux.Select(p => p.TenDanhMuc).ToList();
-            cbbSNXB.DataSource = db.NhaXuatBans.Select(p => p.TenNXB).ToList();
-            cbbSTG.DataSource = db.TacGias.Select(p => p.TenTG).ToList();
+            cbbSDM.DataSource = db.DanhMucTaiLieux.Where(p => p.TrangThaiAnHien == true).Select(p => p.TenDanhMuc).ToList();
+            cbbSNXB.DataSource = db.NhaXuatBans.Where(p => p.TrangThaiAnHien == true).Select(p => p.TenNXB).ToList();
+            cbbSTG.DataSource = db.TacGias.Where(p => p.TrangThaiAnHien == true).Select(p => p.TenTG).ToList();
             cbbSNXB.SelectedIndex = -1;
             cbbSDM.SelectedIndex = -1;
             cbbSTG.SelectedIndex = -1;
@@ -42,18 +42,18 @@ namespace QuanLyThuVienApp
 
             cbTacGia.DisplayMember = "TenTG";
             cbTacGia.ValueMember = "MaTG";
-            cbTacGia.DataSource = db.TacGias.ToList();
+            cbTacGia.DataSource = db.TacGias.Where(p => p.TrangThaiAnHien == true).ToList();
 
             cbNXB.DisplayMember = "TenNXB";
             cbNXB.ValueMember = "MaNXB";
-            cbNXB.DataSource = db.NhaXuatBans.ToList();
+            cbNXB.DataSource = db.NhaXuatBans.Where(p => p.TrangThaiAnHien == true).ToList();
 
             cbTheLoai.DisplayMember = "TenDanhMuc";
             cbTheLoai.ValueMember = "MaDanhMuc";
-            cbTheLoai.DataSource = db.DanhMucTaiLieux.ToList();
+            cbTheLoai.DataSource = db.DanhMucTaiLieux.Where(p => p.TrangThaiAnHien == true).ToList();
 
             dgvSach.DataSource = db.TaiLieux
-            .Where(p => p.TrangThai == true)
+            .Where(p => p.TrangThai == true && p.TrangThaiAnHien == true)
             .Select(p => new {
                 MaTaiLieu = "TL" + p.MaTaiLieu,
                 p.TenTaiLieu,
@@ -130,7 +130,7 @@ namespace QuanLyThuVienApp
                     var query = SearchTool.FilterTaiLieu(db, maTL, tenTL, tenTG, tenNXB, theLoai);
 
                     return query
-                    .Where(p => p.TrangThai == true)
+                    .Where(p => p.TrangThai == true && p.TrangThaiAnHien == true)
                     .Select(p => new
                     {
                         MaTaiLieu = "TL" + p.MaTaiLieu,
@@ -267,9 +267,12 @@ namespace QuanLyThuVienApp
             sach.SoTaiLieuMuon = 0;
             sach.MoTa = moTa;
             sach.TaiBan = int.Parse(taiBan);
+            sach.TrangThai = true;
+            sach.TrangThaiAnHien = true;
 
             tacGia.SoLuongTL += 1;
             nhaXuatBan.SoLuongTL += 1;
+            theLoai.SoLuongTL += 1;
 
             db.TaiLieux.Add(sach);
             db.SaveChanges();
@@ -345,9 +348,9 @@ namespace QuanLyThuVienApp
            
             if (theLoaiMoi.MaDanhMuc != sach.MaDanhMuc)
             {
-                //theLoaiMoi.SoMaSach += 1;
+                theLoaiMoi.SoLuongTL += 1;
                 DanhMucTaiLieu theLoaiCu = db.DanhMucTaiLieux.Where(p => p.MaDanhMuc == sach.MaDanhMuc).FirstOrDefault();
-                //theLoaiCu.SoMaSach -= 1;
+                theLoaiCu.SoLuongTL -= 1;
             }
             sach.MaDanhMuc = int.Parse(cbTheLoai.SelectedValue.ToString());
 
@@ -400,15 +403,15 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            TacGia tacGia = db.TacGias.Where(p => p.MaTG == sach.MaTG).FirstOrDefault();
-            NhaXuatBan nhaXuatBan = db.NhaXuatBans.Where(p => p.MaNXB == sach.MaNXB).FirstOrDefault();
-            DanhMucTaiLieu danhMuc = db.DanhMucTaiLieux.Where(p => p.MaDanhMuc == sach.MaDanhMuc).FirstOrDefault();
+            TacGia tacGia = db.TacGias.Where(p => p.MaTG == sach.MaTG && p.TrangThaiAnHien == true).FirstOrDefault();
+            NhaXuatBan nhaXuatBan = db.NhaXuatBans.Where(p => p.MaNXB == sach.MaNXB && p.TrangThaiAnHien == true).FirstOrDefault();
+            DanhMucTaiLieu danhMuc = db.DanhMucTaiLieux.Where(p => p.MaDanhMuc == sach.MaDanhMuc && p.TrangThaiAnHien == true).FirstOrDefault();
 
             tacGia.SoLuongTL -= 1;
             nhaXuatBan.SoLuongTL -= 1;
             danhMuc.SoLuongTL -= 1;
 
-            db.TaiLieux.Remove(sach);
+            sach.TrangThaiAnHien = false;
             db.SaveChanges();
             loadDuLieu();
             MessageBox.Show("Xóa tài liệu thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);

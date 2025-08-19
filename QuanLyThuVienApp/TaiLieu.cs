@@ -31,6 +31,7 @@ namespace QuanLyThuVienApp
         public Nullable<int> SoTaiLieuMuon { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
         public Nullable<bool> TrangThai { get; set; }
+        public Nullable<bool> TrangThaiAnHien { get; set; }
     
         public virtual DanhMucTaiLieu DanhMucTaiLieu { get; set; }
         public virtual NhaXuatBan NhaXuatBan { get; set; }

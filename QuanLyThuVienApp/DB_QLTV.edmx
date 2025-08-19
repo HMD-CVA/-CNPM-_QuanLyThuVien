@@ -25,6 +25,7 @@
           <Property Name="ViTri" Type="nvarchar" MaxLength="100" />
           <Property Name="SoLuongTL" Type="int" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
+          <Property Name="TrangThaiAnHien" Type="bit" />
         </EntityType>
         <EntityType Name="DocGia">
           <Key>
@@ -48,6 +49,7 @@
           <Property Name="MatKhau" Type="varbinary(max)" Nullable="false" />
           <Property Name="QuyenHan" Type="varchar" MaxLength="5" />
           <Property Name="BiKhoa" Type="bit" />
+          <Property Name="TrangThaiAnHien" Type="bit" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -73,6 +75,7 @@
           <Property Name="TenNXB" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SoLuongTL" Type="int" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
+          <Property Name="TrangThaiAnHien" Type="bit" />
         </EntityType>
         <EntityType Name="PhieuMuon">
           <Key>
@@ -88,6 +91,7 @@
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
           <Property Name="DaGuiMail" Type="datetime" />
           <Property Name="TongSLMuon" Type="int" />
+          <Property Name="TrangThaiAnHien" Type="bit" />
         </EntityType>
         <EntityType Name="TacGia">
           <Key>
@@ -97,6 +101,7 @@
           <Property Name="TenTG" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SoLuongTL" Type="int" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
+          <Property Name="TrangThaiAnHien" Type="bit" />
         </EntityType>
         <EntityType Name="TaiLieu">
           <Key>
@@ -113,6 +118,7 @@
           <Property Name="SoTaiLieuMuon" Type="int" />
           <Property Name="NgayNhap" Type="datetime" />
           <Property Name="TrangThai" Type="bit" />
+          <Property Name="TrangThaiAnHien" Type="bit" />
         </EntityType>
         <Association Name="FK__ChiTietPhi__MaPM__3587F3E0">
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="0..1" />
@@ -267,6 +273,7 @@
           <Property Name="SoLuongTL" Type="Int32" />
           <NavigationProperty Name="TaiLieux" Relationship="Self.FK__TaiLieu__MaDanhM__5DCAEF64" FromRole="DanhMucTaiLieu" ToRole="TaiLieu" />
           <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThaiAnHien" Type="Boolean" />
         </EntityType>
         <EntityType Name="NguoiDung">
           <Key>
@@ -278,6 +285,7 @@
           <Property Name="QuyenHan" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="BiKhoa" Type="Boolean" />
           <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__NguoiD__52593CB8" FromRole="NguoiDung" ToRole="NhanVien" />
+          <Property Name="TrangThaiAnHien" Type="Boolean" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -306,6 +314,7 @@
           <Property Name="SoLuongTL" Type="Int32" />
           <NavigationProperty Name="TaiLieux" Relationship="Self.FK__TaiLieu__MaNXB__5FB337D6" FromRole="NhaXuatBan" ToRole="TaiLieu" />
           <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThaiAnHien" Type="Boolean" />
         </EntityType>
         <EntityType Name="TacGia">
           <Key>
@@ -316,6 +325,7 @@
           <Property Name="SoLuongTL" Type="Int32" />
           <NavigationProperty Name="TaiLieux" Relationship="Self.FK__TaiLieu__MaTG__5EBF139D" FromRole="TacGia" ToRole="TaiLieu" />
           <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThaiAnHien" Type="Boolean" />
         </EntityType>
         <EntityType Name="TaiLieu">
           <Key>
@@ -336,6 +346,7 @@
           <NavigationProperty Name="ChiTietPhieuMuons" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaTL__367C1819" FromRole="TaiLieu" ToRole="ChiTietPhieuMuon" />
           <Property Name="NgayNhap" Type="DateTime" Precision="3" />
           <Property Name="TrangThai" Type="Boolean" />
+          <Property Name="TrangThaiAnHien" Type="Boolean" />
         </EntityType>
         <Association Name="FK__TaiLieu__MaDanhM__5DCAEF64">
           <End Role="DanhMucTaiLieu" Type="Self.DanhMucTaiLieu" Multiplicity="0..1" />
@@ -484,6 +495,7 @@
           <NavigationProperty Name="ChiTietPhieuMuons" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" FromRole="PhieuMuon" ToRole="ChiTietPhieuMuon" />
           <NavigationProperty Name="DocGia" Relationship="DB_QLTVModel.FK__PhieuMuon__MaDG__2CF2ADDF" FromRole="PhieuMuon" ToRole="DocGia" />
           <NavigationProperty Name="NhanVien" Relationship="DB_QLTVModel.FK__PhieuMuon__MaNV__2DE6D218" FromRole="PhieuMuon" ToRole="NhanVien" />
+          <Property Name="TrangThaiAnHien" Type="Boolean" />
         </EntityType>
         <Association Name="FK__ChiTietPhi__MaPM__3587F3E0">
           <End Type="DB_QLTVModel.PhieuMuon" Role="PhieuMuon" Multiplicity="0..1" />
@@ -530,6 +542,7 @@
           <EntitySetMapping Name="DanhMucTaiLieux">
             <EntityTypeMapping TypeName="DB_QLTVModel.DanhMucTaiLieu">
               <MappingFragment StoreEntitySet="DanhMucTaiLieu">
+                <ScalarProperty Name="TrangThaiAnHien" ColumnName="TrangThaiAnHien" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
                 <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
@@ -541,6 +554,7 @@
           <EntitySetMapping Name="NguoiDungs">
             <EntityTypeMapping TypeName="DB_QLTVModel.NguoiDung">
               <MappingFragment StoreEntitySet="NguoiDung">
+                <ScalarProperty Name="TrangThaiAnHien" ColumnName="TrangThaiAnHien" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
@@ -569,6 +583,7 @@
           <EntitySetMapping Name="NhaXuatBans">
             <EntityTypeMapping TypeName="DB_QLTVModel.NhaXuatBan">
               <MappingFragment StoreEntitySet="NhaXuatBan">
+                <ScalarProperty Name="TrangThaiAnHien" ColumnName="TrangThaiAnHien" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
                 <ScalarProperty Name="TenNXB" ColumnName="TenNXB" />
@@ -579,6 +594,7 @@
           <EntitySetMapping Name="TacGias">
             <EntityTypeMapping TypeName="DB_QLTVModel.TacGia">
               <MappingFragment StoreEntitySet="TacGia">
+                <ScalarProperty Name="TrangThaiAnHien" ColumnName="TrangThaiAnHien" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="MaTG" ColumnName="MaTG" />
                 <ScalarProperty Name="TenTG" ColumnName="TenTG" />
@@ -589,6 +605,7 @@
           <EntitySetMapping Name="TaiLieux">
             <EntityTypeMapping TypeName="DB_QLTVModel.TaiLieu">
               <MappingFragment StoreEntitySet="TaiLieu">
+                <ScalarProperty Name="TrangThaiAnHien" ColumnName="TrangThaiAnHien" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
                 <ScalarProperty Name="MaTaiLieu" ColumnName="MaTaiLieu" />
@@ -632,6 +649,7 @@
           <EntitySetMapping Name="PhieuMuons">
             <EntityTypeMapping TypeName="DB_QLTVModel.PhieuMuon">
               <MappingFragment StoreEntitySet="PhieuMuon">
+                <ScalarProperty Name="TrangThaiAnHien" ColumnName="TrangThaiAnHien" />
                 <ScalarProperty Name="TongSLMuon" ColumnName="TongSLMuon" />
                 <ScalarProperty Name="DaGuiMail" ColumnName="DaGuiMail" />
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />

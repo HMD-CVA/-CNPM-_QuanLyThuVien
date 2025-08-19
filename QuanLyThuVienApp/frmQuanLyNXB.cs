@@ -23,7 +23,9 @@ namespace QuanLyThuVienApp
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
-            dgvNXB.DataSource = db.NhaXuatBans.Select(p => new
+            dgvNXB.DataSource = db.NhaXuatBans
+            .Where(p => p.TrangThaiAnHien == true)    
+            .Select(p => new
             {
                 MaNXB = "NXB" + p.MaNXB,
                 p.TenNXB,
@@ -59,7 +61,9 @@ namespace QuanLyThuVienApp
             }
             else return;
 
-            dgvNXB.DataSource = nxbs.Select(p => new
+            dgvNXB.DataSource = nxbs
+            .Where(p => p.TrangThaiAnHien == true)
+            .Select(p => new
             {
                 MaNXB = "NXB" + p.MaNXB,
                 p.TenNXB,
@@ -113,6 +117,7 @@ namespace QuanLyThuVienApp
             nxb.TenNXB = txtTenNXB.Text;
             nxb.SoLuongTL = 0;
             nxb.MoTa = txtMoTaNXB.Text;
+            nxb.TrangThaiAnHien = true;
 
             QLTVEntities db = new QLTVEntities();
             db.NhaXuatBans.Add(nxb);
@@ -173,7 +178,7 @@ namespace QuanLyThuVienApp
                 return;
             }
 
-            db.NhaXuatBans.Remove(nxb);
+            nxb.TrangThaiAnHien = false;
             db.SaveChanges();
             loadDuLieu();
             MessageBox.Show("Xóa nhà xuất bản thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);

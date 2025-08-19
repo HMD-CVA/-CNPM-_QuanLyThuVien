@@ -25,7 +25,7 @@ namespace QuanLyThuVienApp
         private void loadDuLieu()
         {
             QLTVEntities db = new QLTVEntities();
-            dgvTacGia.DataSource = db.TacGias.Select(p => new
+            dgvTacGia.DataSource = db.TacGias.Where(p => p.TrangThaiAnHien == true).Select(p => new
             {
                 MaTG = "TG" + p.MaTG,
                 p.TenTG,
@@ -69,7 +69,9 @@ namespace QuanLyThuVienApp
             }
             else return;
 
-            dgvTacGia.DataSource = tacGias.Select(p => new
+            dgvTacGia.DataSource = tacGias
+            .Where(p => p.TrangThaiAnHien == true)
+            .Select(p => new
             {
                 MaTG = "TG" + p.MaTG,
                 p.TenTG,
@@ -117,6 +119,7 @@ namespace QuanLyThuVienApp
             tacGia.TenTG = txtTenTG.Text;
             tacGia.SoLuongTL = 0;
             tacGia.MoTa = txtMoTaTG.Text;
+            tacGia.TrangThaiAnHien = true;
 
             QLTVEntities db = new QLTVEntities();
             db.TacGias.Add(tacGia);
@@ -176,8 +179,8 @@ namespace QuanLyThuVienApp
                 MessageBox.Show("Tác giả đang có tài liệu trong thư viện!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
-            db.TacGias.Remove(tacGia);
+
+            tacGia.TrangThaiAnHien = false;
             db.SaveChanges();
             loadDuLieu();
             MessageBox.Show("Xóa tác giả thành công!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
