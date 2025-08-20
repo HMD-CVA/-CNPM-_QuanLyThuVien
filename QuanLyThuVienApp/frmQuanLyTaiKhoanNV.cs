@@ -52,7 +52,7 @@ namespace QuanLyThuVienApp
             await Task.Run(() =>
             {
                 QLTVEntities db = new QLTVEntities();
-                var data = db.NhanViens.Where(p => p.NguoiDung.QuyenHan == "user")
+                var data = db.NhanViens.Where(p => p.NguoiDung.QuyenHan == "user" && p.TrangThaiAnHien == true)
                 .Select(p => new
                 {
                     MaNV = "NV" + p.NguoiDungID,
@@ -117,7 +117,7 @@ namespace QuanLyThuVienApp
             QLTVEntities db = new QLTVEntities();
             NhanVien nhanViens = db.NhanViens.Where(p => p.Email == email).FirstOrDefault();
 
-            if (nhanViens != null)
+            if (nhanViens != null && nhanViens.TrangThaiAnHien == true)
             {
                 MessageBox.Show("Email đã được sử dụng!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -147,6 +147,7 @@ namespace QuanLyThuVienApp
                 nguoiDung.MatKhau = hashBytes;
                 nguoiDung.QuyenHan = "user";
                 nguoiDung.BiKhoa = false;
+                nguoiDung.TrangThaiAnHien = true;
                 db.NguoiDungs.Add(nguoiDung);
                 db.SaveChanges();
            
@@ -158,6 +159,7 @@ namespace QuanLyThuVienApp
                 nhanVien.ThoiGianNhanOTP = null;
                 nhanVien.TrangThaiXacThuc = false;
                 nhanVien.NguoiDungID = nguoiDung.ID;
+                nhanVien.TrangThaiAnHien = true;
 
                 db.NhanViens.Add(nhanVien);
                 db.SaveChanges();
@@ -182,7 +184,7 @@ namespace QuanLyThuVienApp
             if (string.IsNullOrWhiteSpace(luaChon) || string.IsNullOrWhiteSpace(tuKhoa)) return;
 
             QLTVEntities db = new QLTVEntities();
-            List<NhanVien> nhanViens = db.NhanViens.Where(p => p.NguoiDung.QuyenHan == "user").ToList();
+            List<NhanVien> nhanViens = db.NhanViens.Where(p => p.NguoiDung.QuyenHan == "user" && p.TrangThaiAnHien == true).ToList();
             List<NhanVien> ketQua = new List<NhanVien>();
 
             if (luaChon == "Mã nhân viên")
@@ -221,18 +223,18 @@ namespace QuanLyThuVienApp
 
         private void btnXemTT_Click(object sender, EventArgs e)
         {
-            //string maNVstr = txtID.Text.Trim();
-            //int maNV = 0;
-
-            //maNVstr = maNVstr.Substring(2);
-
-            //maNV = int.Parse(maNVstr);
             foreach (Form form in this.MdiChildren)
                 form.Close();
             
             frmQuanLyNhanVien frm = new frmQuanLyNhanVien();
             frm.MdiParent = frmMainAdmin;
             frm.Dock = DockStyle.Fill;
+
+            frm.FormClosed += (s, args) =>
+            {
+                loadDuLieu();
+            };
+
             frm.Show();
         }
     }

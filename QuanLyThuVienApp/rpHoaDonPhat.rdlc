@@ -145,7 +145,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
-            <Top>2.03412cm</Top>
+            <Top>3.43641cm</Top>
             <Left>0.57954cm</Left>
             <Height>0.6cm</Height>
             <Width>7.89751cm</Width>
@@ -248,7 +248,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
-            <Top>3.43641cm</Top>
+            <Top>4.78578cm</Top>
             <Left>0.57954cm</Left>
             <Height>0.6cm</Height>
             <Width>7.89751cm</Width>
@@ -549,6 +549,39 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Mã phiếu: " + Parameters!MaPhieu.Value</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox6</rd:DefaultName>
+            <Top>2.03412cm</Top>
+            <Left>0.57954cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.89751cm</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>4.42371in</Height>
         <Style />
@@ -717,6 +750,10 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="MaPhieu">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -752,6 +789,11 @@
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>1</RowIndex>
           <ParameterName>SoTien</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>MaPhieu</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

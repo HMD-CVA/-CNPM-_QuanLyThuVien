@@ -56,7 +56,7 @@ namespace QuanLyThuVienApp
         {
             QLTVEntities db = new QLTVEntities();
             List<int> taiKhoan_User = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == false && p.TrangThaiAnHien == true).Select(p => p.ID).ToList();
-            dgvNguoiDung.DataSource = db.NhanViens.Where(p => taiKhoan_User.Contains(p.NguoiDungID))
+            dgvNguoiDung.DataSource = db.NhanViens.Where(p => taiKhoan_User.Contains(p.NguoiDungID) && p.TrangThaiAnHien == true)
                 .Select(p => new
                 {
                     MaNV = "NV" + p.MaNV,
@@ -79,7 +79,7 @@ namespace QuanLyThuVienApp
         {
             QLTVEntities db = new QLTVEntities();
             List<int> taiKhoan_UserLocked = db.NguoiDungs.Where(p => p.BiKhoa == true && p.TrangThaiAnHien == true).Select(p => p.ID).ToList();
-            dgvNguoiDung.DataSource = db.NhanViens.Where(p => taiKhoan_UserLocked.Contains(p.NguoiDungID))
+            dgvNguoiDung.DataSource = db.NhanViens.Where(p => taiKhoan_UserLocked.Contains(p.NguoiDungID) && p.TrangThaiAnHien == true)
                 .Select(p => new
                 {
                     MaNV = "NV" + p.MaNV,
@@ -153,19 +153,19 @@ namespace QuanLyThuVienApp
                 List<int> listUser = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == false && p.TrangThaiAnHien == true).Select(p => p.ID).ToList();
 
                 if (luaChon == "Mã")
-                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) 
+                    nguoiDungs = db.NhanViens.Where(p => p.TrangThaiAnHien == true && listUser.Contains(p.NguoiDungID) 
                     && ("NV" + p.MaNV.ToString()).Contains(txtTimKiem.Text)).ToList();
 
                 else if (luaChon == "Họ tên nhân viên")
-                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) 
+                    nguoiDungs = db.NhanViens.Where(p => p.TrangThaiAnHien == true && listUser.Contains(p.NguoiDungID) 
                     && p.HoTen.Contains(txtTimKiem.Text)).ToList();
 
                 else if (luaChon == "Email")
-                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) 
+                    nguoiDungs = db.NhanViens.Where(p => p.TrangThaiAnHien == true && listUser.Contains(p.NguoiDungID) 
                     && p.Email.Contains(txtTimKiem.Text)).ToList();
 
                 else if (luaChon == "SDT")
-                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID)
+                    nguoiDungs = db.NhanViens.Where(p => p.TrangThaiAnHien == true && listUser.Contains(p.NguoiDungID)
                     && p.SDT.Contains(txtTimKiem.Text)).ToList();
 
                 else return;
@@ -188,19 +188,19 @@ namespace QuanLyThuVienApp
                 List<int> listUser = db.NguoiDungs.Where(p => p.QuyenHan == "user" && p.BiKhoa == true && p.TrangThaiAnHien == true).Select(p => p.ID).ToList();
 
                 if (luaChon == "Mã")
-                    nguoiDungs = db.NhanViens.Where(p => p.TrangThaiXacThuc == true && listUser.Contains(p.NguoiDungID)
+                    nguoiDungs = db.NhanViens.Where(p => p.TrangThaiAnHien == true && p.TrangThaiXacThuc == true && listUser.Contains(p.NguoiDungID)
                     && ("NV" + p.MaNV.ToString()).Contains(txtTimKiem.Text)).ToList();
 
                 else if (luaChon == "Họ tên nhân viên")
-                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) && p.TrangThaiXacThuc == true
+                    nguoiDungs = db.NhanViens.Where(p => p.TrangThaiAnHien == true && listUser.Contains(p.NguoiDungID) && p.TrangThaiXacThuc == true
                     && p.HoTen.Contains(txtTimKiem.Text)).ToList();
 
                 else if (luaChon == "Email")
-                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) && p.TrangThaiXacThuc == true
+                    nguoiDungs = db.NhanViens.Where(p => p.TrangThaiAnHien == true && listUser.Contains(p.NguoiDungID) && p.TrangThaiXacThuc == true
                     && p.Email.Contains(txtTimKiem.Text)).ToList();
 
                 else if (luaChon == "SDT")
-                    nguoiDungs = db.NhanViens.Where(p => listUser.Contains(p.NguoiDungID) && p.TrangThaiXacThuc == true
+                    nguoiDungs = db.NhanViens.Where(p => p.TrangThaiAnHien == true && listUser.Contains(p.NguoiDungID) && p.TrangThaiXacThuc == true
                     && p.SDT.Contains(txtTimKiem.Text)).ToList();
 
                 else return;
@@ -355,7 +355,7 @@ namespace QuanLyThuVienApp
             await Task.Run(() => {
 
                 var nv = db.NhanViens.SingleOrDefault(p => p.NguoiDungID == nguoiDungID);
-                if (nv != null) db.NhanViens.Remove(nv);
+                if (nv != null) nv.TrangThaiAnHien = false;
 
                 var nd = db.NguoiDungs.SingleOrDefault(p => p.ID == nguoiDungID);
                 if (nd != null) nd.TrangThaiAnHien = false;

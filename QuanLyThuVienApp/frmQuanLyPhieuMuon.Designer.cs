@@ -54,13 +54,6 @@
             this.radioPhieuTra = new System.Windows.Forms.RadioButton();
             this.radioPhieuMuon = new System.Windows.Forms.RadioButton();
             this.dgvPhieuMuon = new System.Windows.Forms.DataGridView();
-            this.MaPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTenDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoTenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.btnMuonMoi = new System.Windows.Forms.Button();
             this.btnGiaHan = new System.Windows.Forms.Button();
@@ -71,6 +64,13 @@
             this.btnTTDG = new FontAwesome.Sharp.IconButton();
             this.btnHuyPhieu = new FontAwesome.Sharp.IconButton();
             this.btnXLTreHan = new FontAwesome.Sharp.IconButton();
+            this.MaPhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTenDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoTenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DaTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietPM)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupPhieuTra.SuspendLayout();
@@ -153,7 +153,6 @@
             this.dgvChiTietPM.TabIndex = 1;
             this.dgvChiTietPM.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChiTietPM_CellClick);
             this.dgvChiTietPM.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvChiTietPM_CellFormatting);
-            
             // 
             // MaChiTiet
             // 
@@ -400,72 +399,6 @@
             this.dgvPhieuMuon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuMuon_CellClick);
             this.dgvPhieuMuon.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvPhieuMuon_CellFormatting);
             // 
-            // MaPhieu
-            // 
-            this.MaPhieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MaPhieu.DataPropertyName = "MaPhieu";
-            this.MaPhieu.HeaderText = "Mã";
-            this.MaPhieu.MinimumWidth = 6;
-            this.MaPhieu.Name = "MaPhieu";
-            this.MaPhieu.ReadOnly = true;
-            this.MaPhieu.Width = 51;
-            // 
-            // HoTenDG
-            // 
-            this.HoTenDG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HoTenDG.DataPropertyName = "HoTenDG";
-            this.HoTenDG.HeaderText = "Độc giả";
-            this.HoTenDG.MinimumWidth = 6;
-            this.HoTenDG.Name = "HoTenDG";
-            this.HoTenDG.ReadOnly = true;
-            // 
-            // HoTenNV
-            // 
-            this.HoTenNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.HoTenNV.DataPropertyName = "HoTenNV";
-            this.HoTenNV.HeaderText = "Nhân viên";
-            this.HoTenNV.MinimumWidth = 6;
-            this.HoTenNV.Name = "HoTenNV";
-            this.HoTenNV.ReadOnly = true;
-            // 
-            // NgayMuon
-            // 
-            this.NgayMuon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.NgayMuon.DataPropertyName = "NgayMuon";
-            this.NgayMuon.HeaderText = "Ngày mượn";
-            this.NgayMuon.MinimumWidth = 6;
-            this.NgayMuon.Name = "NgayMuon";
-            this.NgayMuon.ReadOnly = true;
-            this.NgayMuon.Width = 101;
-            // 
-            // HanTra
-            // 
-            this.HanTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.HanTra.DataPropertyName = "HanTra";
-            this.HanTra.HeaderText = "Hạn trả";
-            this.HanTra.Name = "HanTra";
-            this.HanTra.ReadOnly = true;
-            this.HanTra.Width = 75;
-            // 
-            // DaTra
-            // 
-            this.DaTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.DaTra.DataPropertyName = "DaTra";
-            this.DaTra.HeaderText = "Trạng thái";
-            this.DaTra.MinimumWidth = 6;
-            this.DaTra.Name = "DaTra";
-            this.DaTra.ReadOnly = true;
-            this.DaTra.Width = 92;
-            // 
-            // NgayTra
-            // 
-            this.NgayTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.NgayTra.DataPropertyName = "NgayTra";
-            this.NgayTra.HeaderText = "Ngày trả";
-            this.NgayTra.Name = "NgayTra";
-            this.NgayTra.ReadOnly = true;
-            this.NgayTra.Width = 83;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -621,6 +554,72 @@
             this.btnXLTreHan.UseVisualStyleBackColor = false;
             this.btnXLTreHan.Click += new System.EventHandler(this.btnXLTreHan_Click);
             // 
+            // MaPhieu
+            // 
+            this.MaPhieu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MaPhieu.DataPropertyName = "MaPhieu";
+            this.MaPhieu.HeaderText = "Mã";
+            this.MaPhieu.MinimumWidth = 6;
+            this.MaPhieu.Name = "MaPhieu";
+            this.MaPhieu.ReadOnly = true;
+            this.MaPhieu.Width = 51;
+            // 
+            // HoTenDG
+            // 
+            this.HoTenDG.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HoTenDG.DataPropertyName = "HoTenDG";
+            this.HoTenDG.HeaderText = "Độc giả";
+            this.HoTenDG.MinimumWidth = 6;
+            this.HoTenDG.Name = "HoTenDG";
+            this.HoTenDG.ReadOnly = true;
+            // 
+            // HoTenNV
+            // 
+            this.HoTenNV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.HoTenNV.DataPropertyName = "HoTenNV";
+            this.HoTenNV.HeaderText = "Nhân viên";
+            this.HoTenNV.MinimumWidth = 6;
+            this.HoTenNV.Name = "HoTenNV";
+            this.HoTenNV.ReadOnly = true;
+            // 
+            // NgayMuon
+            // 
+            this.NgayMuon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NgayMuon.DataPropertyName = "NgayMuon";
+            this.NgayMuon.HeaderText = "Ngày mượn";
+            this.NgayMuon.MinimumWidth = 6;
+            this.NgayMuon.Name = "NgayMuon";
+            this.NgayMuon.ReadOnly = true;
+            this.NgayMuon.Width = 101;
+            // 
+            // HanTra
+            // 
+            this.HanTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.HanTra.DataPropertyName = "HanTra";
+            this.HanTra.HeaderText = "Hạn trả";
+            this.HanTra.Name = "HanTra";
+            this.HanTra.ReadOnly = true;
+            this.HanTra.Width = 75;
+            // 
+            // DaTra
+            // 
+            this.DaTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.DaTra.DataPropertyName = "DaTra";
+            this.DaTra.HeaderText = "Trạng thái";
+            this.DaTra.MinimumWidth = 6;
+            this.DaTra.Name = "DaTra";
+            this.DaTra.ReadOnly = true;
+            this.DaTra.Width = 92;
+            // 
+            // NgayTra
+            // 
+            this.NgayTra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.NgayTra.DataPropertyName = "NgayTra";
+            this.NgayTra.HeaderText = "Ngày trả";
+            this.NgayTra.Name = "NgayTra";
+            this.NgayTra.ReadOnly = true;
+            this.NgayTra.Width = 83;
+            // 
             // frmQuanLyPhieuMuon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -681,13 +680,6 @@
         private System.Windows.Forms.Button btnInPM;
         private System.Windows.Forms.RadioButton rdbAll;
         private System.Windows.Forms.RadioButton rdbTreHan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaPhieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenDG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayMuon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HanTra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DaTra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayTra;
         private System.Windows.Forms.Button btnChoMuon;
         private MetroFramework.Controls.MetroLabel lab_Huy;
         private FontAwesome.Sharp.IconButton btnTTDG;
@@ -702,5 +694,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TenNXB;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongBD;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaPhieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenDG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoTenNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayMuon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HanTra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DaTra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayTra;
     }
 }

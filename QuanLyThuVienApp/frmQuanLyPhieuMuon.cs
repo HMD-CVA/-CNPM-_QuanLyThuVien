@@ -198,14 +198,6 @@ namespace QuanLyThuVienApp
         {
             if (e.RowIndex < 0) return;
 
-            //var row = dgvChiTietPM.Rows[e.RowIndex];
-            //QLTVEntities db = new QLTVEntities();
-            //int maPhieu = int.Parse(row.Cells["MaPM"].Value.ToString());
-            //PhieuMuon pm = db.PhieuMuons.FirstOrDefault(p => p.MaPhieu == maPhieu);
-            //if (pm == null) return;
-            
-            //dgvChiTietPM.Columns["btnHuyTL"].Visible = true;
-
             if (dgvChiTietPM.Columns[e.ColumnIndex].Name == "btnHuyTL" && e.RowIndex >= 0)
             {
                 var row = dgvChiTietPM.Rows[e.RowIndex];
@@ -221,7 +213,7 @@ namespace QuanLyThuVienApp
                 var row = dgvChiTietPM.Rows[e.RowIndex];
 
                 string maPhieu = row.Cells["MaPM"].Value.ToString();
-                //maPhieu = maPhieu.Substring(2);
+
                 QLTVEntities db = new QLTVEntities();
                 PhieuMuon pm = db.PhieuMuons.Where(p => p.MaPhieu.ToString() == maPhieu).FirstOrDefault();
                 if (pm == null) return;
@@ -551,7 +543,8 @@ namespace QuanLyThuVienApp
 
             MessageBox.Show("Trả sách thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             loadPhieuMuon();
-            loadChiTietPM(0);
+            ChonLaiPhieu(maPhieu);
+            loadChiTietPM(maPhieu);
         }
 
         private void btnGiaHan_Click(object sender, EventArgs e)
@@ -576,6 +569,7 @@ namespace QuanLyThuVienApp
             if (giaHan) btnLamMoi.PerformClick();
             loadPhieuMuon();
             ChonLaiPhieu(maPhieu);
+            loadChiTietPM(maPhieu);
         }
 
         private void btnHuyPhieu_Click(object sender, EventArgs e)
@@ -619,6 +613,7 @@ namespace QuanLyThuVienApp
             MessageBox.Show("Hủy phiếu đăng ký thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             loadPhieuMuon();
             ChonLaiPhieu(maPhieu);
+            loadChiTietPM(maPhieu);
         }
 
         private void btnMuonMoi_Click(object sender, EventArgs e)
@@ -632,6 +627,7 @@ namespace QuanLyThuVienApp
             frm.FormClosed += (s, args) =>
             {
                 loadPhieuMuon(); // Gọi lại hàm load dữ liệu
+                loadChiTietPM(0);
             };
             frm.Show();
         }
@@ -734,6 +730,7 @@ namespace QuanLyThuVienApp
             MessageBox.Show("Cho mượn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             loadPhieuMuon();
             ChonLaiPhieu(maPhieu);
+            loadChiTietPM(maPhieu);
         }
 
         private void btnTTDG_Click(object sender, EventArgs e)

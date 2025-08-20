@@ -65,6 +65,7 @@ namespace QuanLyThuVienApp
             QLTVEntities db = new QLTVEntities();
             PhieuMuon phieuMuon = db.PhieuMuons.Where(p => p.MaPhieu == maPhieu).FirstOrDefault();
 
+
             Email = phieuMuon.DocGia.Email;
             NguoiBiPhat = phieuMuon.DocGia.HoTen;
             NguoiIn = phieuMuon.NhanVien.HoTen;
@@ -77,13 +78,14 @@ namespace QuanLyThuVienApp
 
             soNgay = (ngayTras - hanTras).Days >= 0 ? (ngayTras - hanTras).Days : 0;
 
-            ReportParameter[] para = new ReportParameter[6];
+            ReportParameter[] para = new ReportParameter[7];
             para[0] = new ReportParameter("NguoiIn", NguoiIn);
             para[1] = new ReportParameter("NguoiBiPhat", NguoiBiPhat);
             para[2] = new ReportParameter("HanTra", hanTra);
             para[3] = new ReportParameter("Email", Email);
             para[4] = new ReportParameter("SoNgay", soNgay.ToString());
-            para[5] = new ReportParameter("SoTien", soTien.ToString()); 
+            para[5] = new ReportParameter("SoTien", soTien.ToString());
+            para[6] = new ReportParameter("MaPhieu", "MP" + maPhieu.ToString());
 
             reportViewer1.LocalReport.SetParameters(para);
             this.reportViewer1.RefreshReport();
@@ -100,7 +102,7 @@ namespace QuanLyThuVienApp
             foreach (var item in ctPM)
             {
                 var lyDo = dsCombo.FirstOrDefault(x => x.Item1 == item.MaLyDo);
-                string lyDoText = lyDo != null ? lyDo.Item2 : "Không rõ lý do";
+                string lyDoText = lyDo != null ? lyDo.Item2 : "Không có";
                 dt.Rows.Add(item.MaPM, item.TaiLieu.TenTaiLieu, item.SoLuong, lyDoText);
             }
             ReportDataSource rds = new ReportDataSource("DataSet1", dt);

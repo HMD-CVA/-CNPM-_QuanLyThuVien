@@ -66,6 +66,7 @@
           <Property Name="ThoiGianNhanOTP" Type="datetime" />
           <Property Name="TrangThaiXacThuc" Type="bit" />
           <Property Name="NguoiDungID" Type="int" Nullable="false" />
+          <Property Name="TrangThaiAnHien" Type="bit" />
         </EntityType>
         <EntityType Name="NhaXuatBan">
           <Key>
@@ -91,7 +92,6 @@
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
           <Property Name="DaGuiMail" Type="datetime" />
           <Property Name="TongSLMuon" Type="int" />
-          <Property Name="TrangThaiAnHien" Type="bit" />
         </EntityType>
         <EntityType Name="TacGia">
           <Key>
@@ -304,6 +304,7 @@
           <Property Name="NguoiDungID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NguoiDung" Relationship="Self.FK__NhanVien__NguoiD__52593CB8" FromRole="NhanVien" ToRole="NguoiDung" />
           <NavigationProperty Name="PhieuMuons" Relationship="DB_QLTVModel.FK__PhieuMuon__MaNV__2DE6D218" FromRole="NhanVien" ToRole="PhieuMuon" />
+          <Property Name="TrangThaiAnHien" Type="Boolean" />
         </EntityType>
         <EntityType Name="NhaXuatBan">
           <Key>
@@ -449,9 +450,9 @@
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="LoaiDG" Type="Boolean" Nullable="false" />
           <Property Name="BiKhoa" Type="Boolean" />
-          <NavigationProperty Name="PhieuMuons" Relationship="DB_QLTVModel.FK__PhieuMuon__MaDG__2CF2ADDF" FromRole="DocGia" ToRole="PhieuMuon" />
           <Property Name="NgayDangKy" Type="DateTime" Precision="3" />
           <Property Name="NgayHetHan" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PhieuMuons" Relationship="DB_QLTVModel.FK__PhieuMuon__MaDG__2CF2ADDF" FromRole="DocGia" ToRole="PhieuMuon" />
         </EntityType>
         <EntityType Name="ChiTietPhieuMuon">
           <Key>
@@ -463,8 +464,8 @@
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="SoLuongBD" Type="Int32" />
           <NavigationProperty Name="TaiLieu" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaTL__367C1819" FromRole="ChiTietPhieuMuon" ToRole="TaiLieu" />
-          <NavigationProperty Name="PhieuMuon" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" FromRole="ChiTietPhieuMuon" ToRole="PhieuMuon" />
           <Property Name="MaLyDo" Type="Int32" />
+          <NavigationProperty Name="PhieuMuon" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" FromRole="ChiTietPhieuMuon" ToRole="PhieuMuon" />
         </EntityType>
         <Association Name="FK__ChiTietPhi__MaTL__367C1819">
           <End Type="DB_QLTVModel.TaiLieu" Role="TaiLieu" Multiplicity="0..1" />
@@ -495,7 +496,6 @@
           <NavigationProperty Name="ChiTietPhieuMuons" Relationship="DB_QLTVModel.FK__ChiTietPhi__MaPM__3587F3E0" FromRole="PhieuMuon" ToRole="ChiTietPhieuMuon" />
           <NavigationProperty Name="DocGia" Relationship="DB_QLTVModel.FK__PhieuMuon__MaDG__2CF2ADDF" FromRole="PhieuMuon" ToRole="DocGia" />
           <NavigationProperty Name="NhanVien" Relationship="DB_QLTVModel.FK__PhieuMuon__MaNV__2DE6D218" FromRole="PhieuMuon" ToRole="NhanVien" />
-          <Property Name="TrangThaiAnHien" Type="Boolean" />
         </EntityType>
         <Association Name="FK__ChiTietPhi__MaPM__3587F3E0">
           <End Type="DB_QLTVModel.PhieuMuon" Role="PhieuMuon" Multiplicity="0..1" />
@@ -566,6 +566,7 @@
           <EntitySetMapping Name="NhanViens">
             <EntityTypeMapping TypeName="DB_QLTVModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="TrangThaiAnHien" ColumnName="TrangThaiAnHien" />
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
@@ -649,7 +650,6 @@
           <EntitySetMapping Name="PhieuMuons">
             <EntityTypeMapping TypeName="DB_QLTVModel.PhieuMuon">
               <MappingFragment StoreEntitySet="PhieuMuon">
-                <ScalarProperty Name="TrangThaiAnHien" ColumnName="TrangThaiAnHien" />
                 <ScalarProperty Name="TongSLMuon" ColumnName="TongSLMuon" />
                 <ScalarProperty Name="DaGuiMail" ColumnName="DaGuiMail" />
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
